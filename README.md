@@ -61,15 +61,15 @@ Après l’approbation finale, l’audit croisé T1/T2/T3 a ajouté sans modifie
 - le JSON canonique `RESTAURATION-T3` v1.0.0 et son schéma ;
 - le contrat exécutable des douze écrans et une simulation navigateur ;
 - les schémas RenderJob, RenderResult et RenderError ;
-- un adaptateur avec rotation déterministe des quatre musiques, sans répétition du dernier rendu réussi ;
-- un stress test de 10 000 sélections sans répétition adjacente ;
+- un adaptateur avec rotation persistante stricte `1→2→3→4→1` après chaque réussite ;
+- un stress test de 10 000 sélections dans l’ordre exact, 2 500 par piste ;
 - un golden conformance lock ;
 - un ZIP intégrateur déterministe, son manifest et sa validation après extraction propre ;
 - une passation explicite vers le futur plan de contrôle Cloudflare commun.
 
 `ota_implemented=false`, `android_integration_implemented=false` et `cloudflare_deployed=false` restent explicites. Aucun Worker, secret, compte, bucket ou endpoint de production n’est dupliqué dans le JSON du gabarit. Le workflow du paquet peut publier une Release uniquement sur demande, avec l’option désactivée par défaut.
 
-La rotation possède désormais un état JSON réellement persistant côté intégrateur (`schemas/T3_music_selection_state.schema.json`). `build_render_job_from_state` lit `last_successful_music_id`; `tools/record_t3_music_result.py` écrit atomiquement cet état uniquement après un succès. Un échec ne crée ni ne modifie le fichier, et un callback réussi rejoué est idempotent. Le choix explicite comme le choix automatique rejettent donc toute répétition adjacente sans modifier le master de référence D.
+La rotation possède un état JSON réellement persistant côté intégrateur (`schemas/T3_music_selection_state.schema.json`). `build_render_job_from_state` lit `last_successful_music_id`; `tools/record_t3_music_result.py` écrit atomiquement cet état uniquement après un succès. L’état initial impose la piste 1; chaque réussite impose son successeur exact et le retour `4→1`; un échec ne crée ni ne modifie le fichier. Le registre durable `successful_render_jobs` rend idempotent le rejeu de tout ancien succès, même après un tour complet. Un choix explicite de production ne peut que confirmer le successeur attendu. Le master historique D reste un exemplaire canonique séparé et ne contourne pas cette politique runtime.
 
 **Remédiation vocale clôturée :** l’audit avait déclaré l’absence de quatre démonstrations vocales candidates comparables. La branche `fix/t3-four-voice-candidates` archive maintenant `VOIX-A` à `VOIX-D`, toutes sur le même texte français, sans retiming, avec mesures et hashes. Le propriétaire a choisi explicitement **VOIX-A**, qui correspond à `voice-02` déjà utilisée par le master approuvé. Cette remédiation est rétrospective et ne réécrit pas l’histoire. La CI, le rendu/mixage GitHub post-sélection et le paquet intégrateur téléchargé sont validés; le MP4 est byte-identique au master approuvé, son visuel reste immuable et le statut atteint **18 — Paquet prêt pour l’agent intégrateur**.
 
@@ -133,7 +133,7 @@ Le workflow historique **Rendu silencieux T3 sur GitHub** :
 - `.github/workflows/render-complete-voice-music-D.yml` — rendu serveur, artefact et pré-Release ;
 - `config/T3_COULISSES_TEMPLATE_V1_0_0.json` — identité canonique et métadonnées OTA honnêtes ;
 - `config/T3_CAPTURE_FLOW_V1_0_0.json` — machine exécutable des douze écrans ;
-- `adapter/t3_adapter.py` — RenderJob, état persistant et rotation musicale anti-répétition ;
+- `adapter/t3_adapter.py` — RenderJob, registre persistant et rotation musicale stricte ;
 - `tools/record_t3_music_result.py` — écriture atomique de l’état après succès uniquement ;
 - `schemas/T3_music_selection_state.schema.json` — contrat de persistance entre rendus ;
 - `schemas/render_job.schema.json`, `render_result.schema.json`, `render_error.schema.json` — frontière runtime stricte ;

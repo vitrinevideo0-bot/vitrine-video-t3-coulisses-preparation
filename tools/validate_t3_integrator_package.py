@@ -107,6 +107,20 @@ def main() -> int:
                 schema_ok &= not errors
                 schema_details.append({"instance": instance_name, "errors": [error.message for error in errors]})
             checks.append(check("strict_schemas_and_fixtures", schema_ok, schema_details))
+            state_schema = json.loads((package_root / "schemas/T3_music_selection_state.schema.json").read_text(encoding="utf-8"))
+            Draft202012Validator.check_schema(state_schema)
+            initial_state = {
+                "schema_version": "1.0.0",
+                "last_successful_music_id": None,
+                "last_successful_render_job_id": None,
+                "successful_render_count": 0,
+                "successful_render_jobs": {},
+            }
+            checks.append(check(
+                "music_state_schema_accepts_strict_initial_state",
+                not list(Draft202012Validator(state_schema).iter_errors(initial_state)),
+                initial_state,
+            ))
 
             checks.append(check("canonical_identity", canonical["template_id"] == "RESTAURATION-T3" and canonical["version"] == "1.0.0" and canonical["audio_profile"] == "afrobeat_amapiano"))
             checks.append(check("canonical_audio_profile_semantic", all(token not in canonical["audio_profile"].lower() for token in (".mp3", "dlozi", "245452", "t3_music_")), canonical["audio_profile"]))
@@ -189,23 +203,25 @@ def main() -> int:
             sys.path.insert(0, str(package_root))
             module = importlib.import_module("adapter.t3_adapter")
             variants = module.approved_variant_ids()
-            repeat_ok = True
+            observed = []
             last = None
             counts = {item: 0 for item in variants}
             for index in range(10_000):
                 selected = module.select_music_variant(f"t3-stress-{index:05d}", last)
-                repeat_ok &= selected != last
+                observed.append(selected)
                 counts[selected] += 1
                 last = selected
-            checks.append(check("music_rotation_10000_zero_adjacent_repeat", repeat_ok, counts))
-            deterministic = module.select_music_variant("t3-determinism-sample", variants[0]) == module.select_music_variant("t3-determinism-sample", variants[0])
-            checks.append(check("music_rotation_deterministic", deterministic))
+            exact_cycle = observed == variants * 2500
+            checks.append(check("music_rotation_10000_exact_strict_cycle", exact_cycle, counts))
+            deterministic = module.select_music_variant("t3-determinism-sample", variants[0]) == module.select_music_variant("t3-determinism-sample", variants[0]) == variants[1]
+            checks.append(check("music_rotation_deterministic_exact_successor", deterministic))
             try:
-                module.select_music_variant("t3-explicit-repeat", variants[0], variants[0])
+                module.select_music_variant("t3-explicit-skip", variants[0], variants[2])
                 explicit_rejected = False
             except module.MusicRepeatError:
                 explicit_rejected = True
-            checks.append(check("explicit_repeat_rejected", explicit_rejected))
+            explicit_next = module.select_music_variant("t3-explicit-next", variants[0], variants[1]) == variants[1]
+            checks.append(check("explicit_selection_requires_exact_successor", explicit_rejected and explicit_next))
             state_path = Path(temp_name) / "t3-music-state.json"
             first = module.select_music_variant_from_state("t3-package-state-0001", state_path)
             module.record_music_render_result(
@@ -224,8 +240,33 @@ def main() -> int:
             second = module.select_music_variant_from_state("t3-package-state-0002", state_path)
             checks.append(check(
                 "music_state_persists_success_only",
-                failure_unchanged and committed["last_successful_music_id"] == first and second != first,
+                failure_unchanged
+                and committed["last_successful_music_id"] == first
+                and committed["successful_render_jobs"] == {"t3-package-state-0001": first}
+                and second == variants[1],
                 {"first": first, "second": second, "state": committed},
+            ))
+            for index, selected in enumerate(variants[1:], 2):
+                module.record_music_render_result(
+                    state_path=state_path,
+                    render_job_id=f"t3-package-state-{index:04d}",
+                    selected_music_id=selected,
+                    succeeded=True,
+                )
+            after_cycle = module.load_music_selection_state(state_path)
+            replayed = module.record_music_render_result(
+                state_path=state_path,
+                render_job_id="t3-package-state-0001",
+                selected_music_id=variants[0],
+                succeeded=True,
+            )
+            checks.append(check(
+                "old_success_replay_after_full_cycle_is_idempotent",
+                replayed == after_cycle
+                and replayed["successful_render_count"] == 4
+                and replayed["last_successful_music_id"] == variants[3]
+                and len(replayed["successful_render_jobs"]) == 4,
+                replayed,
             ))
 
             golden = spec["external_golden_master"]

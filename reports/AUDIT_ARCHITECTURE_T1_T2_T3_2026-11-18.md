@@ -16,7 +16,7 @@ Le style de montage propre à T2 ou T3 n’est pas un écart : T1 fournit une m�
 |---|---:|---|---|---|
 | T1 | **104/104 PASS** après rematérialisation du golden depuis sa Release | Release complète existante | **Non** — héritage ancien, voix candidates non archivées, workflow Release destructif, branches fragmentées | **Non déployé** |
 | T2 | **59/59 PASS** + dry-build et intégration Worker/R2/GitHub PASS | v0.7 approuvé en artefact privé | **Non** — rotation 4 pistes absente, quatre voix candidates absentes, paquet OTA/ZIP absent, Release v0.7 non autorisée | **Plan testé, non déployé** |
-| T3 | **43/43 PASS** local, CI et paquet extrait; rendu **22/22 + 45/45 + 45/45**; ZIP **34/34 + 34/34** | Rendu `44574915753` byte-identique; paquet `44577055304` contrôlé | **Oui pour le paquet de gabarit courant** — quatre voix comparables archivées, VOIX-A / voice-02 choisie, zéro écart connu restant | **Non déployé, frontière documentée** |
+| T3 | **49/49 PASS local** après migration du cycle durable; preuves historiques CI/paquet **43/43**; rendu **22/22 + 45/45 + 45/45**; ZIP historique **34/34 + 34/34** | Rendu `44574915753` byte-identique; paquet `44577055304` contrôlé | **Oui pour le paquet de gabarit courant** — quatre voix comparables archivées, VOIX-A / voice-02 choisie, zéro écart connu restant | **Non déployé, frontière documentée** |
 
 ## T1
 
@@ -67,9 +67,9 @@ Le master n’a pas été modifié. Ont été ajoutés :
 - schémas stricts RenderJob, RenderResult et RenderError;
 - fixtures complètes;
 - adaptateur hors ligne;
-- rotation déterministe des quatre pistes excluant le dernier rendu réussi;
-- rejet d’un choix explicite identique au précédent;
-- stress test de 10 000 rendus : zéro répétition adjacente;
+- rotation persistante stricte des quatre pistes `1→2→3→4→1` après chaque réussite;
+- choix explicite limité au successeur exact et registre durable `successful_render_jobs`;
+- stress test de 10 000 rendus : ordre exact, 2 500 sélections par piste;
 - golden conformance lock;
 - constructeur ZIP déterministe et validation après extraction propre;
 - frontière Cloudflare/intégrateur explicite;
@@ -77,11 +77,11 @@ Le master n’a pas été modifié. Ont été ajoutés :
 
 Préflight local du paquet après correction vocale :
 
-- **43/43 tests PASS**;
-- **34/34 contrôles du ZIP PASS**;
+- **49/49 tests PASS** après migration du cycle durable;
+- **37/37 contrôles du ZIP PASS**;
 - deux constructions locales byte-identiques;
-- suite embarquée rejouée après extraction propre : **43/43 PASS**;
-- 126 fichiers dans le payload contrôlé;
+- suite embarquée rejouée après extraction propre : **49/49 PASS**;
+- 128 fichiers dans le payload contrôlé;
 - quatre démonstrations vocales sources et quatre WAV normalisés, même texte français, sans retiming;
 - choix propriétaire enregistré : **VOIX-A**, identifiant interne `voice-02`;
 - golden master complet inclus et verrouillé;

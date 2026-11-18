@@ -40,7 +40,7 @@
       "additionalProperties": false,
       "required": ["selection_mode", "selected_variant_id", "last_successful_variant_id", "state_update_policy"],
       "properties": {
-        "selection_mode": {"enum": ["explicit", "deterministic_excluding_last_successful"]},
+        "selection_mode": {"enum": ["explicit", "strict_success_cycle"]},
         "selected_variant_id": {"enum": ["t3_music_481806", "t3_music_360659", "t3_music_485507", "t3_music_245452"]},
         "last_successful_variant_id": {"type": ["string", "null"], "enum": [null, "t3_music_481806", "t3_music_360659", "t3_music_485507", "t3_music_245452"]},
         "state_update_policy": {"const": "after_success_only"}

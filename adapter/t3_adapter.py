@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Offline T3 adapter and deterministic non-repeating music selector."""
+"""Offline T3 adapter with strict, persistent four-track music rotation."""
 from __future__ import annotations
 
 import fcntl
-import hashlib
 import json
 import os
 import tempfile
@@ -13,10 +12,16 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 MUSIC_PACK = ROOT / "config/T3_MUSIC_PACK_V1_0_0.json"
 CANONICAL_TEMPLATE = ROOT / "config/T3_COULISSES_TEMPLATE_V1_0_0.json"
+EXPECTED_VARIANTS = [
+    "t3_music_481806",
+    "t3_music_360659",
+    "t3_music_485507",
+    "t3_music_245452",
+]
 
 
 class MusicRepeatError(ValueError):
-    """Raised when an explicit choice repeats the last successful track."""
+    """Raised when a music choice violates the strict approved cycle."""
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -25,9 +30,22 @@ def _load(path: Path) -> dict[str, Any]:
 
 def approved_variant_ids(music_pack_path: Path = MUSIC_PACK) -> list[str]:
     pack = _load(music_pack_path)
-    variants = list(pack["selection_contract"]["owner_approved_variant_ids"])
-    if len(variants) != 4 or len(set(variants)) != 4:
-        raise ValueError("T3 requires exactly four distinct approved music variants")
+    selection = pack.get("selection_contract", {})
+    variants = list(selection.get("owner_approved_variant_ids", []))
+    automatic = selection.get("automatic_selection", {})
+    if (
+        variants != EXPECTED_VARIANTS
+        or selection.get("allowed_variant_ids") != EXPECTED_VARIANTS
+        or [track.get("id") for track in pack.get("tracks", [])] != EXPECTED_VARIANTS
+        or automatic.get("algorithm") != "strict approved order 1→2→3→4→1 from last successful variant"
+        or automatic.get("first_render_pool") != "first_owner_approved_variant_only"
+        or automatic.get("subsequent_pool") != "single_next_variant_in_approved_order"
+        or automatic.get("explicit_selection_policy") != "exact_successor_only"
+        or automatic.get("idempotency_ledger_key") != "successful_render_jobs"
+        or automatic.get("state_update_policy") != "after_success_only"
+        or automatic.get("failed_render_state_policy") != "unchanged"
+    ):
+        raise ValueError("T3 requires the exact four-track success cycle and durable idempotency ledger")
     return variants
 
 
@@ -37,23 +55,28 @@ def select_music_variant(
     explicit_variant_id: str | None = None,
     music_pack_path: Path = MUSIC_PACK,
 ) -> str:
-    """Select one approved track offline, never repeating the previous success.
+    """Select one approved track offline in the strict 1 → 2 → 3 → 4 cycle.
 
-    The caller persists the returned ID only after a successful render. This
-    function performs no I/O beyond reading the immutable music catalogue.
+    The caller persists the returned ID only after a successful render. Failed
+    attempts therefore retry the same track, and the first successful render is
+    always variant 1. This function performs no I/O beyond reading the immutable
+    music catalogue.
     """
     variants = approved_variant_ids(music_pack_path)
+    if not render_job_id:
+        raise ValueError("render_job_id is required")
     if last_successful_variant_id is not None and last_successful_variant_id not in variants:
         raise ValueError("Unknown last successful music variant")
+    previous_index = -1 if last_successful_variant_id is None else variants.index(last_successful_variant_id)
+    expected = variants[(previous_index + 1) % len(variants)]
     if explicit_variant_id is not None:
         if explicit_variant_id not in variants:
             raise ValueError("Explicit music variant is not approved")
-        if explicit_variant_id == last_successful_variant_id:
-            raise MusicRepeatError("Explicit music choice repeats the last successful render")
-        return explicit_variant_id
-    eligible = [item for item in variants if item != last_successful_variant_id]
-    digest = hashlib.sha256(render_job_id.encode("utf-8")).digest()
-    return eligible[int.from_bytes(digest[:8], "big") % len(eligible)]
+        if explicit_variant_id != expected:
+            raise MusicRepeatError(
+                f"Strict T3 cycle expects {expected}; {explicit_variant_id} cannot bypass it"
+            )
+    return expected
 
 
 MUSIC_STATE_SCHEMA_VERSION = "1.0.0"
@@ -67,6 +90,7 @@ def load_music_selection_state(state_path: Path) -> dict[str, Any]:
             "last_successful_music_id": None,
             "last_successful_render_job_id": None,
             "successful_render_count": 0,
+            "successful_render_jobs": {},
         }
     state = _load(state_path)
     required = {
@@ -74,6 +98,7 @@ def load_music_selection_state(state_path: Path) -> dict[str, Any]:
         "last_successful_music_id",
         "last_successful_render_job_id",
         "successful_render_count",
+        "successful_render_jobs",
     }
     if set(state) != required or state["schema_version"] != MUSIC_STATE_SCHEMA_VERSION:
         raise ValueError("Invalid T3 music rotation state")
@@ -81,8 +106,19 @@ def load_music_selection_state(state_path: Path) -> dict[str, Any]:
         raise ValueError("Unknown last successful music ID in T3 state")
     if not isinstance(state["successful_render_count"], int) or state["successful_render_count"] < 0:
         raise ValueError("Invalid T3 successful render count")
+    receipts = state["successful_render_jobs"]
+    if (
+        not isinstance(receipts, dict)
+        or any(not isinstance(job_id, str) or not job_id or music_id not in EXPECTED_VARIANTS for job_id, music_id in receipts.items())
+        or len(receipts) != state["successful_render_count"]
+    ):
+        raise ValueError("Invalid T3 successful render ledger")
     if (state["last_successful_music_id"] is None) != (state["last_successful_render_job_id"] is None):
         raise ValueError("T3 state must pair the successful music and render job IDs")
+    if (state["successful_render_count"] == 0) != (state["last_successful_music_id"] is None):
+        raise ValueError("An empty T3 state cannot contain a successful render, and conversely")
+    if state["last_successful_render_job_id"] is not None and receipts.get(state["last_successful_render_job_id"]) != state["last_successful_music_id"]:
+        raise ValueError("The last T3 success must exist in the idempotency ledger")
     return state
 
 
@@ -118,17 +154,23 @@ def _record_music_render_result_unlocked(
     current = load_music_selection_state(state_path)
     if not succeeded:
         return current
-    if current["last_successful_render_job_id"] == render_job_id:
-        if current["last_successful_music_id"] != selected_music_id:
+    if render_job_id in current["successful_render_jobs"]:
+        if current["successful_render_jobs"][render_job_id] != selected_music_id:
             raise ValueError("An idempotent successful callback cannot change music")
         return current
-    if current["last_successful_music_id"] == selected_music_id:
-        raise MusicRepeatError("Successful render repeats the immediately previous music")
+    variants = approved_variant_ids(music_pack_path)
+    previous_id = current["last_successful_music_id"]
+    expected_id = variants[0] if previous_id is None else variants[(variants.index(previous_id) + 1) % len(variants)]
+    if selected_music_id != expected_id:
+        raise MusicRepeatError(
+            f"Successful T3 render must follow the strict cycle: expected {expected_id}, got {selected_music_id}"
+        )
     updated = {
         "schema_version": MUSIC_STATE_SCHEMA_VERSION,
         "last_successful_music_id": selected_music_id,
         "last_successful_render_job_id": render_job_id,
         "successful_render_count": current["successful_render_count"] + 1,
+        "successful_render_jobs": {**current["successful_render_jobs"], render_job_id: selected_music_id},
     }
     state_path.parent.mkdir(parents=True, exist_ok=True)
     descriptor, temporary_name = tempfile.mkstemp(prefix=f".{state_path.name}.", dir=state_path.parent)
@@ -196,7 +238,7 @@ def build_render_job(
         "merchant_payload": merchant_payload,
         "captures": captures,
         "music": {
-            "selection_mode": "explicit" if explicit_variant_id else "deterministic_excluding_last_successful",
+            "selection_mode": "explicit" if explicit_variant_id else "strict_success_cycle",
             "selected_variant_id": selected,
             "last_successful_variant_id": last_successful_variant_id,
             "state_update_policy": "after_success_only"

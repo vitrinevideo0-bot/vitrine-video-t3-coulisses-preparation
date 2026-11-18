@@ -3,6 +3,8 @@ from __future__ import annotations
 import json
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+import subprocess
+import sys
 import tempfile
 import unittest
 
@@ -71,22 +73,29 @@ class T3IntegratorArchitectureTest(unittest.TestCase):
         guide = json.loads((ROOT / "capture-guide/consignes_T3.json").read_text(encoding="utf-8"))
         self.assertEqual(build_capture_flow(guide), self.capture)
 
-    def test_music_rotation_never_repeats_for_10000_successes(self) -> None:
+    def test_music_rotation_is_the_strict_cycle_for_10000_successes(self) -> None:
+        variants = approved_variant_ids()
         last = None
-        observed = set()
+        observed = []
         for index in range(10_000):
             selected = select_music_variant(f"t3-stress-{index:05d}", last)
-            self.assertNotEqual(selected, last)
-            observed.add(selected)
+            observed.append(selected)
             last = selected
-        self.assertEqual(observed, set(approved_variant_ids()))
+        self.assertEqual(observed, [variants[index % 4] for index in range(10_000)])
+        self.assertTrue(all(left != right for left, right in zip(observed, observed[1:])))
 
-    def test_music_rotation_is_deterministic_and_explicit_repeat_is_rejected(self) -> None:
-        previous = approved_variant_ids()[0]
+    def test_music_rotation_is_deterministic_and_explicit_choice_must_be_exact_successor(self) -> None:
+        variants = approved_variant_ids()
+        previous = variants[0]
         first = select_music_variant("t3-same-job", previous)
         self.assertEqual(first, select_music_variant("t3-same-job", previous))
+        self.assertEqual(select_music_variant("t3-explicit-next", previous, variants[1]), variants[1])
         with self.assertRaises(MusicRepeatError):
             select_music_variant("t3-repeat", previous, previous)
+        with self.assertRaises(MusicRepeatError):
+            select_music_variant("t3-skip", previous, variants[2])
+        with self.assertRaises(MusicRepeatError):
+            select_music_variant("t3-initial-skip", None, variants[1])
 
     def test_persistent_music_state_advances_only_after_success(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -108,8 +117,9 @@ class T3IntegratorArchitectureTest(unittest.TestCase):
             )
             self.assertEqual(load_music_selection_state(state_path), committed)
             self.assertEqual(committed["successful_render_count"], 1)
+            self.assertEqual(committed["successful_render_jobs"], {"t3-state-job-0001": first})
             second = select_music_variant_from_state("t3-state-job-0002", state_path)
-            self.assertNotEqual(second, first)
+            self.assertEqual(second, approved_variant_ids()[1])
             unchanged = record_music_render_result(
                 state_path=state_path,
                 render_job_id="t3-state-job-0002",
@@ -148,6 +158,36 @@ class T3IntegratorArchitectureTest(unittest.TestCase):
             schema = json.loads((ROOT / "schemas/T3_music_selection_state.schema.json").read_text(encoding="utf-8"))
             Draft202012Validator(schema).validate(load_music_selection_state(state_path))
 
+    def test_old_success_replay_after_full_cycle_is_idempotent(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            state_path = Path(temporary) / "music-state.json"
+            variants = approved_variant_ids()
+            for index, selected in enumerate(variants, 1):
+                record_music_render_result(
+                    state_path=state_path,
+                    render_job_id=f"t3-cycle-{index:04d}",
+                    selected_music_id=selected,
+                    succeeded=True,
+                )
+            after_cycle = load_music_selection_state(state_path)
+            replayed = record_music_render_result(
+                state_path=state_path,
+                render_job_id="t3-cycle-0001",
+                selected_music_id=variants[0],
+                succeeded=True,
+            )
+            self.assertEqual(replayed, after_cycle)
+            self.assertEqual(replayed["successful_render_count"], 4)
+            self.assertEqual(replayed["last_successful_music_id"], variants[3])
+            self.assertEqual(len(replayed["successful_render_jobs"]), 4)
+            with self.assertRaises(ValueError):
+                record_music_render_result(
+                    state_path=state_path,
+                    render_job_id="t3-cycle-0001",
+                    selected_music_id=variants[1],
+                    succeeded=True,
+                )
+
     def test_concurrent_duplicate_success_is_serialized(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             state_path = Path(temporary) / "music-state.json"
@@ -171,6 +211,23 @@ class T3IntegratorArchitectureTest(unittest.TestCase):
             state = load_music_selection_state(state_path)
             self.assertEqual(state["last_successful_music_id"], selected)
             self.assertEqual(state["successful_render_count"], 1)
+            self.assertEqual(len(state["successful_render_jobs"]), 1)
+
+    def test_interprocess_concurrent_success_is_serialized(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            state_path = Path(temporary) / "music-state.json"
+            selected = approved_variant_ids()[0]
+            tool = ROOT / "tools/record_t3_music_result.py"
+            processes = [subprocess.Popen([
+                sys.executable, str(tool), "--state", str(state_path), "--render-job-id", job_id,
+                "--selected-music-id", selected, "--status", "success",
+            ], cwd=ROOT, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+                for job_id in ("t3-process-0001", "t3-process-0002")]
+            results = [process.communicate(timeout=30) for process in processes]
+            self.assertEqual(sorted(process.returncode for process in processes), [0, 1], results)
+            state = load_music_selection_state(state_path)
+            self.assertEqual(state["successful_render_count"], 1)
+            self.assertEqual(len(state["successful_render_jobs"]), 1)
 
     def test_render_job_can_be_built_from_persisted_last_success(self) -> None:
         fixture = json.loads((ROOT / "fixtures/t3-coulisses/render_job.valid.json").read_text(encoding="utf-8"))
@@ -191,25 +248,35 @@ class T3IntegratorArchitectureTest(unittest.TestCase):
                 control_plane=fixture["control_plane"],
             )
             self.assertEqual(job["music"]["last_successful_variant_id"], previous)
-            self.assertNotEqual(job["music"]["selected_variant_id"], previous)
+            self.assertEqual(job["music"]["selected_variant_id"], approved_variant_ids()[1])
 
     def test_reference_render_D_does_not_replace_runtime_rotation(self) -> None:
         selection = self.music["selection_contract"]
         self.assertEqual(selection["reference_render"]["choice"], "D")
         self.assertTrue(selection["automatic_selection"]["offline"])
-        self.assertEqual(selection["automatic_selection"]["explicit_repeat_policy"], "reject")
+        self.assertEqual(selection["automatic_selection"]["explicit_selection_policy"], "exact_successor_only")
+        self.assertEqual(selection["automatic_selection"]["idempotency_ledger_key"], "successful_render_jobs")
         self.assertEqual(selection["automatic_selection"]["state_update_policy"], "after_success_only")
         self.assertEqual(selection["automatic_selection"]["failed_render_state_policy"], "unchanged")
         self.assertEqual(selection["automatic_selection"]["persistent_state_schema"], "schemas/T3_music_selection_state.schema.json")
 
-    def test_adapter_rebuilds_committed_complete_fixture(self) -> None:
+    def test_historical_reference_D_is_separate_from_strict_production_selection(self) -> None:
         fixture = json.loads((ROOT / "fixtures/t3-coulisses/render_job.valid.json").read_text(encoding="utf-8"))
-        rebuilt = build_render_job(
-            job_id=fixture["job_id"], merchant_payload=fixture["merchant_payload"], captures=fixture["captures"],
-            explicit_variant_id=fixture["music"]["selected_variant_id"], voice_mode=fixture["voice"]["mode"], control_plane=fixture["control_plane"]
+        self.assertEqual(fixture, json.loads((ROOT / "demo/render_job_complete_v1_0_0.json").read_text(encoding="utf-8")))
+        self.assertEqual(fixture["music"]["selected_variant_id"], approved_variant_ids()[3])
+        self.assertEqual(self.music["selection_contract"]["reference_render"]["variant_id"], fixture["music"]["selected_variant_id"])
+        with self.assertRaises(MusicRepeatError):
+            build_render_job(
+                job_id=fixture["job_id"], merchant_payload=fixture["merchant_payload"], captures=fixture["captures"],
+                explicit_variant_id=fixture["music"]["selected_variant_id"], voice_mode=fixture["voice"]["mode"], control_plane=fixture["control_plane"]
+            )
+        production = build_render_job(
+            job_id="t3-production-initial-0001",
+            merchant_payload=fixture["merchant_payload"],
+            captures=fixture["captures"],
+            control_plane=fixture["control_plane"],
         )
-        self.assertEqual(rebuilt, fixture)
-        self.assertEqual(rebuilt, json.loads((ROOT / "demo/render_job_complete_v1_0_0.json").read_text(encoding="utf-8")))
+        self.assertEqual(production["music"]["selected_variant_id"], approved_variant_ids()[0])
 
     def test_cloudflare_boundary_is_separate_and_not_deployed(self) -> None:
         boundary = json.loads((ROOT / "integration-handoff/T3_CLOUDFLARE_BOUNDARY_V1.json").read_text(encoding="utf-8"))
