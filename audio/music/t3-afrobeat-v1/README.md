@@ -15,7 +15,9 @@ Ce dossier contient **exactement quatre dérivés de 30 secondes** approuvés pa
 - MP3 stéréo, 48 kHz, 192 kbit/s;
 - même fenêtre source et même traitement pour les quatre choix;
 - cible d’audition : −18 LUFS, true peak ≤ −1,5 dBTP;
-- choix du rendu complet : **D**;
+- choix de l’exemplaire canonique : **D**;
+- runtime : sélection déterministe parmi les quatre, exclusion du dernier rendu réussi, mise à jour d’état après succès seulement;
+- un choix explicite identique au précédent est rejeté;
 - manifeste de production : `config/T3_MUSIC_PACK_V1_0_0.json`;
 - provenance : `BUILD_PROVENANCE.json` et `source_manifest.json`;
 - preuves capturées depuis les pages officielles : `evidence/`.

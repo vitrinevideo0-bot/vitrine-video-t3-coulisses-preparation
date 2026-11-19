@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "template_version": "1.0.0",
+  "status": "handoff_contract_only_not_deployed",
+  "cloudflare_worker_in_template_repository": false,
+  "cloudflare_deployed": false,
+  "deployment_authorized": false,
+  "ota_implemented": false,
+  "production_render_plane": "github_actions",
+  "cloudflare_rendering_forbidden": true,
+  "expected_common_control_plane_capabilities": [
+    "authenticated client job creation",
+    "idempotency",
+    "capture storage with SHA-256 metadata",
+    "RenderJob dispatch to GitHub Actions",
+    "RenderResult or RenderError callback",
+    "status lookup without exposing merchant data",
+    "future signed package manifest distribution"
+  ],
+  "required_runtime_contracts": {
+    "render_job": "schemas/render_job.schema.json",
+    "render_result": "schemas/render_result.schema.json",
+    "render_error": "schemas/render_error.schema.json",
+    "capture_flow": "config/T3_CAPTURE_FLOW_V1_0_0.json"
+  },
+  "secret_names_for_future_common_control_plane": [
+    "CLOUDFLARE_API_TOKEN",
+    "CLOUDFLARE_ACCOUNT_ID",
+    "GITHUB_DISPATCH_TOKEN",
+    "CALLBACK_TOKEN",
+    "CLIENT_API_TOKEN"
+  ],
+  "secret_values_committed": false,
+  "production_urls_committed": false,
+  "next_owner_authorization_required_for": [
+    "creation or selection of the shared catalogue repository",
+    "Cloudflare account binding",
+    "R2/KV/D1 provisioning",
+    "secret installation",
+    "production deployment",
+    "Android OTA integration"
+  ]
+}

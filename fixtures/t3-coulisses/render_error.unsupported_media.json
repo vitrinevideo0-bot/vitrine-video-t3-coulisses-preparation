@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0.0",
+  "job_id": "t3-casa-tacos-reference-v1",
+  "template_id": "RESTAURATION-T3",
+  "template_version": "1.0.0",
+  "status": "FAILED",
+  "code": "UNSUPPORTED_MEDIA",
+  "message": "Capture S2 uses an unsupported media container.",
+  "retryable": false,
+  "stage": "FETCH_CAPTURES"
+}

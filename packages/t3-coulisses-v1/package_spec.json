@@ -1,0 +1,171 @@
+{
+  "schema_version": "1.0.0",
+  "package_id": "restauration-t3-coulisses-v1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "template_version": "1.0.0",
+  "audio_profile": "afrobeat_amapiano",
+  "status": "source_spec_ready_for_deterministic_build",
+  "include": [
+    {
+      "path": "README.md",
+      "role": "template_readme"
+    },
+    {
+      "path": "STATUS.json",
+      "role": "workflow_status"
+    },
+    {
+      "path": "requirements.txt",
+      "role": "python_dependencies"
+    },
+    {
+      "path": "config/T3_COULISSES_TEMPLATE_V1_0_0.json",
+      "role": "canonical_template"
+    },
+    {
+      "path": "packages/t3-coulisses-v1/package_spec.json",
+      "role": "package_source_spec"
+    },
+    {
+      "path": "config/T3_CAPTURE_FLOW_V1_0_0.json",
+      "role": "capture_flow"
+    },
+    {
+      "path": "config/T3_TEXT_MOTION_V0_4_0.json",
+      "role": "text_motion_contract"
+    },
+    {
+      "path": "config/T3_MUSIC_PACK_V1_0_0.json",
+      "role": "music_catalogue"
+    },
+    {
+      "path": "config/T3_VOICE_MIX_V1_0_0.json",
+      "role": "voice_mix_contract"
+    },
+    {
+      "path": "reverse-engineering/T3_TRANSITIONS_30S.json",
+      "role": "transition_contract"
+    },
+    {
+      "path": "form/questions_T3.json",
+      "role": "merchant_form"
+    },
+    {
+      "path": "capture-guide/consignes_T3.json",
+      "role": "capture_guide"
+    },
+    {
+      "path": "ui-screens/approved",
+      "role": "twelve_screen_proofs"
+    },
+    {
+      "path": "simulation",
+      "role": "twelve_screen_browser_simulation"
+    },
+    {
+      "path": "assets/fonts",
+      "role": "fonts_and_licenses"
+    },
+    {
+      "path": "audio/music/t3-afrobeat-v1",
+      "role": "four_approved_music_derivatives"
+    },
+    {
+      "path": "audio/voice/t3-voice-v1",
+      "role": "selected_voice_and_four_scene_clips"
+    },
+    {
+      "path": "audio/scripts/build_t3_complete_voice.py",
+      "role": "complete_audio_builder"
+    },
+    {
+      "path": "adapter",
+      "role": "runtime_adapter_and_music_rotation"
+    },
+    {
+      "path": "engine",
+      "role": "visual_engine"
+    },
+    {
+      "path": "schemas",
+      "role": "strict_schemas"
+    },
+    {
+      "path": "conformance/T3_GOLDEN_V1.json",
+      "role": "golden_conformance_lock"
+    },
+    {
+      "path": "fixtures/t3-coulisses",
+      "role": "runtime_fixtures"
+    },
+    {
+      "path": "demo/render_job_complete_v1_0_0.json",
+      "role": "complete_render_job_example"
+    },
+    {
+      "path": "tools/build_t3_capture_flow.py",
+      "role": "capture_contract_builder"
+    },
+    {
+      "path": "tools/fetch_rushes.py",
+      "role": "capture_materializer"
+    },
+    {
+      "path": "tools/validate_complete.py",
+      "role": "complete_output_validator"
+    },
+    {
+      "path": "tools/build_t3_integrator_package.py",
+      "role": "package_builder"
+    },
+    {
+      "path": "tools/validate_t3_integrator_package.py",
+      "role": "package_validator"
+    },
+    {
+      "path": "tests",
+      "role": "test_suite"
+    },
+    {
+      "path": "integration-handoff",
+      "role": "integrator_handoff"
+    },
+    {
+      "path": "proofs/complete-v0.7-server/T3_COMPLETE_SERVER_VALIDATION_RUN_44564485698.json",
+      "role": "server_validation"
+    },
+    {
+      "path": "proofs/complete-v0.7-server/T3_COMPLETE_DOWNLOADED_RELEASE_VALIDATION_RUN_44564485698.json",
+      "role": "downloaded_release_validation"
+    },
+    {
+      "path": "proofs/complete-v0.7-server/T3_COMPLETE_GITHUB_RELEASE_AUDIT_RUN_44564485698.json",
+      "role": "github_release_audit"
+    },
+    {
+      "path": "reports/AUDIT_ARCHITECTURE_T1_T2_T3_2026-11-18.md",
+      "role": "cross_template_architecture_audit"
+    },
+    {
+      "path": "reports/AUDIT_ARCHITECTURE_T1_T2_T3_2026-11-18.json",
+      "role": "cross_template_architecture_audit_machine"
+    }
+  ],
+  "external_golden_master": {
+    "required_in_built_zip": true,
+    "package_path": "golden/VIDEO_T3_COMPLETE_V1_0_0.mp4",
+    "source_release_tag": "t3-coulisses-v0.7.0-complete-D-1",
+    "source_filename": "VIDEO_T3_COMPLETE_VOIX_MUSIQUE_D_V0_7_A_VALIDER.mp4",
+    "sha256": "4208d58f52804b2440845c9ce5b249695e9072d8b707ae134386d4bc494740de",
+    "bytes": 11363724,
+    "video_bitstream_sha256": "8e415063add70f5807e009b2306c6b1154b0ec19bf35d5b9350012a5f4abe666"
+  },
+  "constraints": {
+    "full_pixabay_sources_forbidden": true,
+    "secrets_forbidden": true,
+    "temporary_paths_forbidden": true,
+    "cloudflare_worker_bundled": false,
+    "ota_implemented": false,
+    "deterministic_zip": true
+  }
+}

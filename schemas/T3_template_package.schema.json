@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "T3_template_package.schema.json",
+  "title": "RESTAURATION-T3 canonical template package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "schema_version", "template_id", "version", "display_name", "sector", "catalog_status", "audio_profile", "purpose", "format", "merchant_payload", "capture", "creative_contracts", "runtime_contracts", "approved_reference", "catalogue_preparation", "known_protocol_deviations"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": "1.0.0"},
+    "template_id": {"const": "RESTAURATION-T3"},
+    "version": {"const": "1.0.0"},
+    "display_name": {"const": "Coulisses de préparation"},
+    "sector": {"const": "RESTAURATION"},
+    "catalog_status": {"type": "string"},
+    "audio_profile": {"const": "afrobeat_amapiano"},
+    "purpose": {"type": "string", "minLength": 1},
+    "format": {
+      "type": "object",
+      "required": ["width", "height", "orientation", "fps", "frames", "duration_s", "scene_durations_s", "video_codec", "pixel_format", "delivery_audio"],
+      "properties": {
+        "width": {"const": 720}, "height": {"const": 1280}, "orientation": {"const": "portrait"},
+        "fps": {"const": 30}, "frames": {"const": 900}, "duration_s": {"const": 30.0},
+        "scene_durations_s": {"const": [6, 8, 7, 9]}, "video_codec": {"const": "h264"},
+        "pixel_format": {"const": "yuv420p"}, "delivery_audio": {"const": "aac_stereo_48000_hz"}
+      },
+      "additionalProperties": false
+    },
+    "merchant_payload": {"type": "object"},
+    "capture": {"type": "object"},
+    "creative_contracts": {"type": "object"},
+    "runtime_contracts": {"type": "object"},
+    "approved_reference": {"type": "object"},
+    "catalogue_preparation": {
+      "type": "object",
+      "required": ["package_manifest", "music_catalogue_linked", "offline_reconstruction_required", "ota_implemented", "network_or_cloudflare_code_added", "android_integration_implemented"],
+      "properties": {
+        "package_manifest": {"type": "string"},
+        "music_catalogue_linked": {"const": true},
+        "offline_reconstruction_required": {"const": true},
+        "ota_implemented": {"const": false},
+        "network_or_cloudflare_code_added": {"const": false},
+        "android_integration_implemented": {"const": false}
+      },
+      "additionalProperties": false
+    },
+    "known_protocol_deviations": {"type": "array"}
+  }
+}

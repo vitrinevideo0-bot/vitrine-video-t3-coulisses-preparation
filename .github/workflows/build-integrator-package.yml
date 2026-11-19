@@ -1,0 +1,110 @@
+name: T3 — paquet intégrateur hors ligne
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish_package_release:
+        description: Publier une Release additive du paquet intégrateur
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: t3-integrator-package-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build-validate-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Installer les dépendances verrouillées
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Compiler et exécuter la suite complète
+        run: |
+          set -euo pipefail
+          python -m compileall -q adapter engine tools tests
+          python -m unittest discover -s tests -v
+          python tools/build_t3_capture_flow.py --output /tmp/T3_CAPTURE_FLOW_V1_0_0.json
+          cmp config/T3_CAPTURE_FLOW_V1_0_0.json /tmp/T3_CAPTURE_FLOW_V1_0_0.json
+
+      - name: Matérialiser le golden master approuvé depuis sa Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p .tmp/golden
+          gh release download t3-coulisses-v0.7.0-complete-D-1 \
+            --pattern VIDEO_T3_COMPLETE_VOIX_MUSIQUE_D_V0_7_A_VALIDER.mp4 \
+            --dir .tmp/golden
+          echo '4208d58f52804b2440845c9ce5b249695e9072d8b707ae134386d4bc494740de  .tmp/golden/VIDEO_T3_COMPLETE_VOIX_MUSIQUE_D_V0_7_A_VALIDER.mp4' | sha256sum --check --strict
+          STREAM_HASH="$(ffmpeg -v error -i .tmp/golden/VIDEO_T3_COMPLETE_VOIX_MUSIQUE_D_V0_7_A_VALIDER.mp4 -map 0:v:0 -c copy -f hash -hash sha256 - | cut -d= -f2 | tr 'A-F' 'a-f')"
+          test "$STREAM_HASH" = '8e415063add70f5807e009b2306c6b1154b0ec19bf35d5b9350012a5f4abe666'
+
+      - name: Construire deux fois et prouver le ZIP déterministe
+        run: |
+          set -euo pipefail
+          GOLDEN=.tmp/golden/VIDEO_T3_COMPLETE_VOIX_MUSIQUE_D_V0_7_A_VALIDER.mp4
+          python tools/build_t3_integrator_package.py --golden-master "$GOLDEN" --output-dir dist/build-a
+          python tools/build_t3_integrator_package.py --golden-master "$GOLDEN" --output-dir dist/build-b
+          cmp dist/build-a/restauration-t3-coulisses-v1.0.0.zip dist/build-b/restauration-t3-coulisses-v1.0.0.zip
+          sha256sum dist/build-a/restauration-t3-coulisses-v1.0.0.zip dist/build-b/restauration-t3-coulisses-v1.0.0.zip
+
+      - name: Valider après extraction propre
+        run: |
+          set -euo pipefail
+          python tools/validate_t3_integrator_package.py \
+            --zip dist/build-a/restauration-t3-coulisses-v1.0.0.zip \
+            --proof dist/build-a/T3_INTEGRATOR_PACKAGE_VALIDATION.json
+
+      - name: Assembler la livraison
+        run: |
+          set -euo pipefail
+          mkdir -p release-package
+          cp dist/build-a/restauration-t3-coulisses-v1.0.0.zip release-package/
+          cp dist/build-a/T3_INTEGRATOR_PACKAGE_BUILD_REPORT.json release-package/
+          cp dist/build-a/T3_INTEGRATOR_PACKAGE_VALIDATION.json release-package/
+          cp packages/t3-coulisses-v1/package_spec.json release-package/T3_PACKAGE_SPEC.json
+          cp integration-handoff/T3_INTEGRATOR_HANDOFF_V1.md release-package/
+          (cd release-package && find . -maxdepth 1 -type f ! -name SHA256SUMS.txt -printf '%f\n' | sort | xargs sha256sum > SHA256SUMS.txt)
+          cat release-package/SHA256SUMS.txt
+
+      - name: Publier l’artefact GitHub Actions
+        uses: actions/upload-artifact@v4
+        with:
+          name: T3-integrator-package-${{ github.run_id }}
+          path: release-package/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publier éventuellement une Release additive
+        if: inputs.publish_package_release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          TAG="t3-coulisses-v1.0.0-integrator-package-${GITHUB_RUN_NUMBER}"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "La Release $TAG existe déjà : refus de l’écraser." >&2
+            exit 1
+          fi
+          gh release create "$TAG" release-package/* \
+            --target "$GITHUB_SHA" \
+            --title "T3 Coulisses — paquet intégrateur v1.0.0 #${GITHUB_RUN_NUMBER}" \
+            --notes "Paquet hors ligne contrôlé. OTA, Android et Cloudflare restent non déployés. Publication désactivée par défaut." \
+            --prerelease

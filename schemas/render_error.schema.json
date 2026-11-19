@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "render_error.schema.json",
+  "title": "RESTAURATION-T3 RenderError",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "job_id", "template_id", "template_version", "status", "code", "message", "retryable", "stage"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "job_id": {"type": "string"},
+    "template_id": {"const": "RESTAURATION-T3"},
+    "template_version": {"const": "1.0.0"},
+    "status": {"const": "FAILED"},
+    "code": {"enum": ["INVALID_JOB", "MISSING_CAPTURE", "UNSUPPORTED_MEDIA", "CAPTURE_HASH_MISMATCH", "CAPTURE_DURATION_INVALID", "MUSIC_VARIANT_INVALID", "MUSIC_REPEAT_FORBIDDEN", "VOICE_SOURCE_INVALID", "VISUAL_LOCK_MISMATCH", "AUDIO_QC_FAILED", "OUTPUT_QC_FAILED", "INTERNAL_ERROR"]},
+    "message": {"type": "string", "minLength": 1, "maxLength": 500},
+    "retryable": {"type": "boolean"},
+    "stage": {"enum": ["VALIDATE_JOB", "FETCH_CAPTURES", "RENDER_VISUAL", "MIX_AUDIO", "VALIDATE_OUTPUT", "PUBLISH"]}
+  }
+}
