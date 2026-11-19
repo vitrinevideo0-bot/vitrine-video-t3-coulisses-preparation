@@ -7,7 +7,7 @@
 - contrat exécutable des douze écrans A/B/C;
 - moteur visuel, transitions et textes dynamiques;
 - silencieux v0.4 approuvé et verrouillé par SHA-256 de fichier et de flux;
-- quatre dérivés musicaux approuvés avec rotation locale anti-répétition;
+- quatre dérivés musicaux approuvés avec rotation locale anti-répétition et état JSON persistant;
 - voix `voice-02`, quatre clips, tige 30 s et ducking approuvés;
 - master complet D produit sur GitHub Actions et revalidé après téléchargement;
 - schémas RenderJob, RenderResult et RenderError;
@@ -17,8 +17,8 @@
 
 1. consommer `config/T3_CAPTURE_FLOW_V1_0_0.json` dans l’application caméra réelle;
 2. stocker les quatre captures et recalculer leurs SHA-256;
-3. construire un RenderJob strict avec `adapter/t3_adapter.py`;
-4. conserver le dernier variant musical **après un rendu réussi seulement**;
+3. construire un RenderJob strict avec `build_render_job_from_state` dans `adapter/t3_adapter.py`;
+4. appeler `tools/record_t3_music_result.py` après le callback : `success` écrit atomiquement selon `schemas/T3_music_selection_state.schema.json`, `failed` laisse l’état inchangé;
 5. déclencher GitHub Actions depuis le plan de contrôle commun;
 6. vérifier le callback RenderResult/RenderError;
 7. télécharger, vérifier et activer le paquet selon la future politique OTA;

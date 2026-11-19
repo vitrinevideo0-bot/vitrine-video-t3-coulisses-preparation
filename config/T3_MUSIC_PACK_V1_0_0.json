@@ -36,6 +36,9 @@
       "subsequent_pool": "exclude_last_successful_variant",
       "explicit_repeat_policy": "reject",
       "state_update_policy": "after_success_only",
+      "failed_render_state_policy": "unchanged",
+      "persistent_state_schema": "schemas/T3_music_selection_state.schema.json",
+      "state_writer": "tools/record_t3_music_result.py",
       "offline": true,
       "implementation": "adapter/t3_adapter.py"
     },
