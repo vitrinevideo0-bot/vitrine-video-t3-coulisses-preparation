@@ -26,7 +26,7 @@ def check(name: str, condition: bool, detail: object = "") -> dict[str, object]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--output-dir", type=Path, default=Path("output/t3-silent-v0.3.0"))
+    parser.add_argument("--output-dir", type=Path, default=Path("output/t3-silent-v0.4.0"))
     parser.add_argument("--proof", type=Path)
     args = parser.parse_args()
 
@@ -84,6 +84,11 @@ def main() -> int:
         check("technical_labels_not_rendered", report.get("technical_labels_rendered") is False),
         check("visible_texts_do_not_contain_forbidden_labels", not ({text.upper() for values in report.get("visible_text_contract", {}).values() for text in values} & {text.upper() for text in report.get("forbidden_visible_strings", [])})),
         check("owner_feedback_legibility_corrected", report.get("owner_feedback_legibility_corrected") is True),
+        check("owner_feedback_blue_lines_corrected", report.get("owner_feedback_blue_lines_corrected") is True),
+        check("no_visible_transition_guides", report.get("transition_visibility_audit", {}).get("visible_transition_guides_rendered") is False),
+        check("panel_match_has_zero_gap_and_border", report.get("transition_visibility_audit", {}).get("R4_MULTI_PANEL_MATCH_CUT", {}).get("gap_px") == 0 and report.get("transition_visibility_audit", {}).get("R4_MULTI_PANEL_MATCH_CUT", {}).get("border_px") == 0),
+        check("panel_match_separators_disabled", report.get("transition_visibility_audit", {}).get("R4_MULTI_PANEL_MATCH_CUT", {}).get("separator_lines") is False and report.get("transition_visibility_audit", {}).get("R4_MULTI_PANEL_MATCH_CUT", {}).get("separator_color") is None),
+        check("panel_match_separator_proof_frames", report.get("transition_visibility_audit", {}).get("R4_MULTI_PANEL_MATCH_CUT", {}).get("proof_frames") == [771, 778]),
         check("variable_font_weights_explicit", report.get("typography_audit", {}).get("variable_font_weights_explicit") is True),
         check("small_text_effective_size", all(float(report.get("typography_audit", {}).get("roles", {}).get(name, {}).get("effective_minimum_at_preview_scale_px", 0)) >= float(report.get("typography_audit", {}).get("required_effective_font_px", 999)) for name in ["merchant_name", "location", "cta", "phone"])),
         check("text_contrast_ratio", all(float(item.get("contrast_ratio", 0)) >= float(report.get("typography_audit", {}).get("required_contrast_ratio", 999)) for item in report.get("typography_audit", {}).get("roles", {}).values())),
@@ -135,6 +140,7 @@ def main() -> int:
         "- quatre blocs de motion design alimentés uniquement par merchant_payload ;\n"
         "- poids variables explicites, petits textes ≥ 600, taille effective ≥ 11 px à 40 % ;\n"
         "- contraste typographique contractuel ≥ 7:1 sur le fond protégé ;\n"
+        "- aucun trait séparateur bleu horizontal ou vertical dans la transition multi-panneaux ;\n"
         "- aucun titre de scène, durée, mot démo, mot rush ou provenance média visible ;\n"
         "- validation humaine encore requise.\n",
         encoding="utf-8",

@@ -1,5 +1,7 @@
 # T3 — Contrat de lisibilité typographique v0.3
 
+Ce contrat typographique reste actif dans la v0.4. Le candidat vidéo v0.3 a été rejeté pour des traits de transition sans rapport avec les polices; la lisibilité corrigée est conservée.
+
 ## Défaut constaté sur la v0.2
 
 Le propriétaire a validé la fluidité des transitions mais a rejeté la lisibilité de plusieurs petits textes. Les captures de preuve sont conservées dans :

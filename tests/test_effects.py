@@ -35,13 +35,21 @@ class EffectsSmokeTest(unittest.TestCase):
             lambda: r.rotating_mask(self.frame, 0.5),
             lambda: r.radial_cross(self.frame, self.frame[::-1].copy(), 0.5),
             lambda: r.whip_zoom(self.frame, 0.5),
-            lambda: r.panel_match(self.frame, 0.5),
+            lambda: r.panel_match(self.frame, 0.5, {"gap_px": 0, "border_px": 0, "separator_lines": False, "separator_color": None}),
             lambda: r.diagonal_rotating_wipe(self.frame, 0.75),
             lambda: r.background_fade(self.frame, 0.8),
         ]
         for function in functions:
             with self.subTest(function=function):
                 self.assert_frame(function())
+
+    def test_panel_match_has_no_horizontal_or_vertical_separator_lines(self) -> None:
+        frame = np.full((r.H, r.W, 3), 90, dtype=np.uint8)
+        profile = {"gap_px": 0, "border_px": 0, "separator_lines": False, "separator_color": None}
+        for progress in (0.25, 0.75):
+            with self.subTest(progress=progress):
+                rendered = r.panel_match(frame, progress, profile)
+                self.assertTrue(np.all(rendered == 90))
 
 
 if __name__ == "__main__":

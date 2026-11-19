@@ -3,8 +3,8 @@
   "sector": "RESTAURATION",
   "catalog_name": "Coulisses de préparation",
   "catalog_status": "À DÉVELOPPER",
-  "workflow_status_number": 9,
-  "workflow_status": "Candidat silencieux lisible v0.3 à valider",
+  "workflow_status_number": 8,
+  "workflow_status": "Suppression des traits bleus v0.4 en cours",
   "reference_batch_current": "LOT-03",
   "selected_reference": "R3-B03-REF-02 + R3-B03-REF-04",
   "branch_planned": "main",
@@ -88,7 +88,12 @@
     "reports/RAPPORT_RENDU_SILENCIEUX_GITHUB_RUN_44551121356.md",
     "proofs/typography-v0.3-server/T3_V0_3_IDENTITE_FRAME_086_40_PERCENT_RUN_44551121356.png",
     "proofs/typography-v0.3-server/T3_V0_3_ACCROCHE_FRAME_551_40_PERCENT_RUN_44551121356.png",
-    "proofs/typography-v0.3-server/T3_V0_3_FINAL_FRAME_899_40_PERCENT_RUN_44551121356.png"
+    "proofs/typography-v0.3-server/T3_V0_3_FINAL_FRAME_899_40_PERCENT_RUN_44551121356.png",
+    "config/T3_TEXT_MOTION_V0_4_0.json",
+    "demo/render_job_silent_demo_v0_4.json",
+    "docs/T3_TRANSITION_VISIBILITY_CONTRACT.md",
+    "proofs/owner-feedback/T3_V0_3_TRAITS_BLEUS_HORIZONTAUX.png",
+    "proofs/owner-feedback/T3_V0_3_TRAITS_BLEUS_VERTICAUX.png"
   ],
   "owner_decisions": [
     {
@@ -151,12 +156,19 @@
       "decision": "Rendu silencieux v0.2 refusé pour illisibilité typographique",
       "positive_feedback": "Transitions hyper fluides et travail félicité.",
       "feedback": "Le nom du commerce, le quartier et le CTA sont trop fins ou trop peu contrastés dans le lecteur. Corriger dans le JSON et la logique, puis rendre une nouvelle version sur GitHub."
+    },
+    {
+      "phase": "silent_candidate_v0_3_rejection",
+      "date": "2026-11-18",
+      "decision": "Rendu silencieux v0.3 refusé à cause de traits séparateurs bleus visibles",
+      "positive_feedback": "Très bon travail général; transitions, montage et lisibilité appréciés.",
+      "feedback": "Supprimer complètement les deux traits bleus horizontaux et les deux traits bleus verticaux, corriger le JSON et la logique, puis rendre une nouvelle version sur GitHub."
     }
   ],
-  "decision_expected": "Visionner le candidat silencieux lisible v0.3, puis l’approuver ou demander une correction créative précise.",
+  "decision_expected": "Aucune nouvelle décision avant le rendu v0.4 sur GitHub, sa revalidation après téléchargement et le contrôle des images 771 et 778.",
   "blockers": [
-    "Les candidats v0.1 et v0.2 sont rejetés et ne doivent pas être utilisés.",
-    "La v0.3 attend la validation visuelle explicite du propriétaire.",
+    "Les candidats v0.1, v0.2 et v0.3 sont rejetés et ne doivent pas être utilisés.",
+    "La v0.4 sans traits bleus doit être rendue et validée sur GitHub Actions.",
     "Aucune musique ni voix off avant validation du nouveau silencieux."
   ],
   "development_started": true,
@@ -182,7 +194,7 @@
     "ui_screens_manifest": "ui-screens/approved/manifest.json",
     "approval_record": "approvals/APPROBATION_QUESTIONS_CAPTURE_12_ECRANS_2026-11-18.json"
   },
-  "workflow_note": "La v0.3 a été rendue sur GitHub Actions, revalidée après téléchargement et contrôlée sur trois images serveur à 40 %. Elle attend la validation visuelle du propriétaire.",
+  "workflow_note": "La v0.3 conserve un bon montage et une bonne lisibilité mais est rejetée pour deux séparateurs horizontaux puis verticaux. La v0.4 met le profil à zéro dans le JSON et le moteur applique désormais ce profil.",
   "development_phase": {
     "engine": "engine/render_silent.py",
     "source_manifest": "rushes/manifest.json",
@@ -361,7 +373,7 @@
     }
   },
   "correction_v0_3": {
-    "status": "github_server_pass_pending_owner_validation",
+    "status": "rejected_by_owner_visible_blue_separator_lines",
     "render_job": "demo/render_job_silent_demo_v0_3.json",
     "text_motion_contract": "config/T3_TEXT_MOTION_V0_3_0.json",
     "typography_contract": "docs/T3_TYPOGRAPHY_LEGIBILITY_CONTRACT.md",
@@ -457,6 +469,61 @@
     "release_sha256_manifest_verified": true,
     "all_17_events_applied": true,
     "all_4_graphics_applied": true,
-    "cta_whatsapp_visible_at_last_frame": true
+    "cta_whatsapp_visible_at_last_frame": true,
+    "owner_rejection": {
+      "date": "2026-11-18",
+      "reason": "Deux traits bleus horizontaux puis deux traits bleus verticaux sont visibles pendant R4_MULTI_PANEL_MATCH_CUT.",
+      "root_cause": "Le moteur ignorait border_px=0 et dessinait des lignes cyan de 4 px en dur.",
+      "evidence": [
+        "proofs/owner-feedback/T3_V0_3_TRAITS_BLEUS_HORIZONTAUX.png",
+        "proofs/owner-feedback/T3_V0_3_TRAITS_BLEUS_VERTICAUX.png"
+      ]
+    }
+  },
+  "correction_v0_4": {
+    "status": "local_preflight_pass_pending_github_render",
+    "render_job": "demo/render_job_silent_demo_v0_4.json",
+    "text_motion_contract": "config/T3_TEXT_MOTION_V0_4_0.json",
+    "transition_contract": "reverse-engineering/T3_TRANSITIONS_30S.json",
+    "transition_visibility_contract": "docs/T3_TRANSITION_VISIBILITY_CONTRACT.md",
+    "engine": "engine/render_silent.py",
+    "local_video_sha256": "e75e71fa24811b5e8eb5384b8c5676fa42211e84c5f8899fb59e99d5b1e5ba13",
+    "tests": {
+      "status": "PASS",
+      "passed": 16,
+      "failed": 0
+    },
+    "local_validation": {
+      "status": "PASS",
+      "passed": 32,
+      "failed": 0
+    },
+    "panel_match": {
+      "gap_px": 0,
+      "border_px": 0,
+      "separator_lines": false,
+      "separator_color": null,
+      "separator_policy": "forbidden_by_owner",
+      "motion_preserved": true,
+      "proof_frames": [
+        771,
+        778
+      ]
+    },
+    "typography_contract_preserved": true,
+    "technical_labels_rendered": false,
+    "visible_fields": [
+      "nom",
+      "produit",
+      "prix",
+      "whatsapp",
+      "quartier",
+      "accroche"
+    ],
+    "fixed_texts": [
+      "COMMANDER MAINTENANT"
+    ],
+    "github_render_started": false,
+    "owner_approved": false
   }
 }

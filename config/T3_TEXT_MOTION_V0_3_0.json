@@ -1,17 +1,45 @@
 {
   "schema_version": "0.3.0",
   "id": "T3_TEXT_MOTION_V0_3_0",
-  "status": "legibility_correction_after_owner_feedback",
-  "canvas": {"width": 720, "height": 1280, "fps": 30, "frames": 900},
+  "status": "typography_valid_but_candidate_rejected_for_transition_guides",
+  "canvas": {
+    "width": 720,
+    "height": 1280,
+    "fps": 30,
+    "frames": 900
+  },
   "output": {
     "directory_name": "t3-silent-v0.3.0",
     "video_filename": "VIDEO_T3_SILENCIEUSE_MOTION_TEXT_LISIBLE_V0_3_A_VALIDER.mp4",
     "contact_sheet_filename": "T3_TRANSITION_TEXT_PROOF_V0_3.jpg"
   },
   "binding_rule": "Tout texte commercial variable provient exclusivement de merchant_payload. Aucun titre de scène, durée, mot démo, mot rush ou provenance média n'est visible dans la publicité.",
-  "allowed_merchant_fields": ["nom", "produit", "prix", "whatsapp", "quartier", "accroche"],
-  "allowed_fixed_texts": ["COMMANDER MAINTENANT"],
-  "forbidden_visible_strings": ["SCÈNE", "6 S", "7 S", "8 S", "9 S", "DÉMO", "RUSHS", "PEXELS", "T3", "INGRÉDIENTS", "GESTE SIGNATURE", "DRESSAGE", "PRÊT À SERVIR"],
+  "allowed_merchant_fields": [
+    "nom",
+    "produit",
+    "prix",
+    "whatsapp",
+    "quartier",
+    "accroche"
+  ],
+  "allowed_fixed_texts": [
+    "COMMANDER MAINTENANT"
+  ],
+  "forbidden_visible_strings": [
+    "SCÈNE",
+    "6 S",
+    "7 S",
+    "8 S",
+    "9 S",
+    "DÉMO",
+    "RUSHS",
+    "PEXELS",
+    "T3",
+    "INGRÉDIENTS",
+    "GESTE SIGNATURE",
+    "DRESSAGE",
+    "PRÊT À SERVIR"
+  ],
   "text_layer_affected_by_transitions": false,
   "hard_cards": false,
   "fonts": {
@@ -48,7 +76,7 @@
       "proofs/owner-feedback/T3_V0_2_POLICE_ILLISIBLE_FINAL.png",
       "proofs/owner-feedback/T3_V0_2_POLICE_ILLISIBLE_IDENTITE.png"
     ],
-    "preview_scale_floor": 0.40,
+    "preview_scale_floor": 0.4,
     "minimum_effective_font_px": 11.0,
     "contrast_test_background": "#17100B",
     "minimum_contrast_ratio": 7.0,
@@ -68,26 +96,114 @@
       "stroke_opacity": 230
     },
     "roles": {
-      "merchant_name": {"font": "light_sans", "weight": 700, "max_size_px": 34, "min_size_px": 30, "max_width_px": 590, "tracking_px": 2, "color": "accent"},
-      "hero_product": {"font": "display_serif", "weight": null, "max_size_px": 78, "min_size_px": 48, "max_width_px": 610, "color": "primary"},
-      "offer_product": {"font": "display_serif", "weight": null, "max_size_px": 64, "min_size_px": 42, "max_width_px": 610, "color": "primary"},
-      "hook": {"font": "display_serif", "weight": null, "max_size_px": 62, "min_size_px": 42, "max_width_px": 610, "color": "primary"},
-      "price": {"font": "utility", "weight": 700, "max_size_px": 58, "min_size_px": 44, "max_width_px": 580, "color": "primary"},
-      "location": {"font": "utility", "weight": 650, "max_size_px": 30, "min_size_px": 28, "max_width_px": 590, "color": "primary"},
-      "cta": {"font": "light_sans", "weight": 750, "max_size_px": 29, "min_size_px": 28, "max_width_px": 610, "tracking_px": 1, "color": "accent"},
-      "phone": {"font": "utility", "weight": 700, "max_size_px": 36, "min_size_px": 30, "max_width_px": 520, "color": "primary"}
+      "merchant_name": {
+        "font": "light_sans",
+        "weight": 700,
+        "max_size_px": 34,
+        "min_size_px": 30,
+        "max_width_px": 590,
+        "tracking_px": 2,
+        "color": "accent"
+      },
+      "hero_product": {
+        "font": "display_serif",
+        "weight": null,
+        "max_size_px": 78,
+        "min_size_px": 48,
+        "max_width_px": 610,
+        "color": "primary"
+      },
+      "offer_product": {
+        "font": "display_serif",
+        "weight": null,
+        "max_size_px": 64,
+        "min_size_px": 42,
+        "max_width_px": 610,
+        "color": "primary"
+      },
+      "hook": {
+        "font": "display_serif",
+        "weight": null,
+        "max_size_px": 62,
+        "min_size_px": 42,
+        "max_width_px": 610,
+        "color": "primary"
+      },
+      "price": {
+        "font": "utility",
+        "weight": 700,
+        "max_size_px": 58,
+        "min_size_px": 44,
+        "max_width_px": 580,
+        "color": "primary"
+      },
+      "location": {
+        "font": "utility",
+        "weight": 650,
+        "max_size_px": 30,
+        "min_size_px": 28,
+        "max_width_px": 590,
+        "color": "primary"
+      },
+      "cta": {
+        "font": "light_sans",
+        "weight": 750,
+        "max_size_px": 29,
+        "min_size_px": 28,
+        "max_width_px": 610,
+        "tracking_px": 1,
+        "color": "accent"
+      },
+      "phone": {
+        "font": "utility",
+        "weight": 700,
+        "max_size_px": 36,
+        "min_size_px": 30,
+        "max_width_px": 520,
+        "color": "primary"
+      }
     },
     "layouts": {
-      "identity": {"brand_y_px": 112, "product_y_px": 184, "rule_y_px": 356},
-      "offer": {"product_y_px": 126, "price_y_px": 870, "price_rise_px": 18},
-      "hook": {"hook_y_px": 156, "brand_y_px": 346},
-      "final": {"brand_y_px": 66, "product_y_px": 124, "price_y_px": 848, "location_y_px": 925, "cta_y_px": 983, "phone_y_px": 1045}
+      "identity": {
+        "brand_y_px": 112,
+        "product_y_px": 184,
+        "rule_y_px": 356
+      },
+      "offer": {
+        "product_y_px": 126,
+        "price_y_px": 870,
+        "price_rise_px": 18
+      },
+      "hook": {
+        "hook_y_px": 156,
+        "brand_y_px": 346
+      },
+      "final": {
+        "brand_y_px": 66,
+        "product_y_px": 124,
+        "price_y_px": 848,
+        "location_y_px": 925,
+        "cta_y_px": 983,
+        "phone_y_px": 1045
+      }
     },
     "scrims": {
-      "T3_G01_IDENTITY": {"top": 0.66, "bottom": 0.08},
-      "T3_G02_OFFER": {"top": 0.54, "bottom": 0.70},
-      "T3_G03_HOOK": {"top": 0.66, "bottom": 0.10},
-      "T3_G04_FINAL": {"top": 0.66, "bottom": 0.80}
+      "T3_G01_IDENTITY": {
+        "top": 0.66,
+        "bottom": 0.08
+      },
+      "T3_G02_OFFER": {
+        "top": 0.54,
+        "bottom": 0.7
+      },
+      "T3_G03_HOOK": {
+        "top": 0.66,
+        "bottom": 0.1
+      },
+      "T3_G04_FINAL": {
+        "top": 0.66,
+        "bottom": 0.8
+      }
     }
   },
   "graphics": [
@@ -97,9 +213,17 @@
       "start_f": 18,
       "reveal_end_f": 48,
       "end_f_exclusive": 156,
-      "fields": ["nom", "produit"],
+      "fields": [
+        "nom",
+        "produit"
+      ],
       "motion": "left_to_right_mask_plus_soft_rise",
-      "safe_region": {"x_min": 0.08, "x_max": 0.92, "y_min": 0.08, "y_max": 0.43}
+      "safe_region": {
+        "x_min": 0.08,
+        "x_max": 0.92,
+        "y_min": 0.08,
+        "y_max": 0.43
+      }
     },
     {
       "id": "T3_G02_OFFER",
@@ -107,9 +231,17 @@
       "start_f": 210,
       "reveal_end_f": 234,
       "end_f_exclusive": 378,
-      "fields": ["produit", "prix"],
+      "fields": [
+        "produit",
+        "prix"
+      ],
       "motion": "split_reveal_with_price_settle",
-      "safe_region": {"x_min": 0.08, "x_max": 0.92, "y_min": 0.08, "y_max": 0.88}
+      "safe_region": {
+        "x_min": 0.08,
+        "x_max": 0.92,
+        "y_min": 0.08,
+        "y_max": 0.88
+      }
     },
     {
       "id": "T3_G03_HOOK",
@@ -117,11 +249,19 @@
       "start_f": 450,
       "reveal_end_f": 480,
       "end_f_exclusive": 606,
-      "fields": ["accroche", "nom"],
+      "fields": [
+        "accroche",
+        "nom"
+      ],
       "optional_field": "accroche",
       "empty_behavior": "show nom only; never invent a hook",
       "motion": "center_bloom_and_signature",
-      "safe_region": {"x_min": 0.08, "x_max": 0.92, "y_min": 0.10, "y_max": 0.45}
+      "safe_region": {
+        "x_min": 0.08,
+        "x_max": 0.92,
+        "y_min": 0.1,
+        "y_max": 0.45
+      }
     },
     {
       "id": "T3_G04_FINAL",
@@ -129,12 +269,25 @@
       "start_f": 660,
       "reveal_end_f": 708,
       "end_f_exclusive": 900,
-      "fields": ["nom", "produit", "prix", "whatsapp", "quartier"],
+      "fields": [
+        "nom",
+        "produit",
+        "prix",
+        "whatsapp",
+        "quartier"
+      ],
       "fixed_text": "COMMANDER MAINTENANT",
       "motion": "sequential_identity_contact_lockup",
-      "safe_region": {"x_min": 0.06, "x_max": 0.94, "y_min": 0.04, "y_max": 0.91},
+      "safe_region": {
+        "x_min": 0.06,
+        "x_max": 0.94,
+        "y_min": 0.04,
+        "y_max": 0.91
+      },
       "hold_through_frame": 899,
       "graphics_opacity_at_frame_899": 1.0
     }
-  ]
+  ],
+  "owner_approved": false,
+  "superseded_by": "T3_TEXT_MOTION_V0_4_0"
 }

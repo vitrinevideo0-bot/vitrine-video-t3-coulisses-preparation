@@ -1,14 +1,15 @@
 {
-  "schema_version": "1.0.0-candidate",
+  "schema_version": "1.1.0-owner-corrected",
   "template_id": "RESTAURATION-T3",
-  "title": "Contrat candidat des transitions 2 + 4 sur 30 secondes",
-  "status": "pending_owner_validation_not_implemented",
+  "title": "Contrat transitions 2 + 4 sur 30 secondes — sans traits séparateurs visibles",
+  "status": "implemented_owner_corrected_no_visible_transition_guides",
   "approval_state": {
     "references_selected": true,
     "questions_capture_and_12_screens_approved": true,
     "transition_timeline_approved": false,
-    "engine_implemented": false,
-    "questions_capture_approval": "approvals/APPROBATION_QUESTIONS_CAPTURE_12_ECRANS_2026-11-18.json"
+    "engine_implemented": true,
+    "questions_capture_approval": "approvals/APPROBATION_QUESTIONS_CAPTURE_12_ECRANS_2026-11-18.json",
+    "visible_separator_lines_rejected": true
   },
   "source_proposal": {
     "path": "reverse-engineering/T3_TRANSITIONS_30S_PROPOSITION.json",
@@ -28,7 +29,8 @@
     "include_every_transition_family_from_reference_2": true,
     "include_every_transition_family_from_reference_4": true,
     "duration_seconds": 30,
-    "capture_count": 4
+    "capture_count": 4,
+    "visible_transition_guides_allowed": false
   },
   "format_contract_candidate": {
     "orientation": "portrait",
@@ -1058,7 +1060,7 @@
       "classification": "ADAPTED_ENGINE_DECISION_FROM_OBSERVED_FAMILY",
       "match_anchor": "plate_or_glass_center",
       "duplicate_audio": "muted",
-      "gap_px": 4,
+      "gap_px": 0,
       "border_px": 0,
       "subphases": [
         {
@@ -1114,7 +1116,10 @@
           "value": 1.0
         }
       ],
-      "easing": "cubic_in_out"
+      "easing": "cubic_in_out",
+      "separator_lines": false,
+      "separator_color": null,
+      "separator_policy": "forbidden_by_owner"
     },
     "R2_DIAGONAL_ROTATING_WIPE": {
       "classification": "ADAPTED_ENGINE_DECISION_FROM_OBSERVED_FAMILY",
@@ -1544,14 +1549,14 @@
         768,
         781
       ],
-      "purpose": "Combiner rangées répétées puis colonnes verticales avant le hero shot.",
+      "purpose": "Combiner rangées répétées puis colonnes verticales sans aucun trait séparateur visible.",
       "start_seconds_exact": 25.6,
       "end_seconds_exclusive_exact": 26.066667,
       "duration_frames": 14,
       "duration_seconds_exact": 0.466667,
       "frame_interval": "inclusive",
       "parameter_profile": "R4_MULTI_PANEL_MATCH_CUT",
-      "variant": "horizontal_repeater_rows+vertical_split_columns+panel_match_cut",
+      "variant": "horizontal_repeater_rows+vertical_split_columns+borderless_panel_match_cut",
       "visual_source_layers": [
         "S4.base_visual",
         "S4.duplicate_panels"
@@ -1878,9 +1883,33 @@
     "exact_seconds_derived_from_frames": true
   },
   "implementation_state": {
-    "engine_code_created": false,
-    "mp4_render_created": false,
-    "automated_visual_qc_run": false,
+    "engine_code_created": true,
+    "local_preflight_mp4_created": true,
+    "authoritative_github_render_created": false,
+    "automated_visual_qc_run": true,
+    "panel_separator_proof_frames": [
+      771,
+      778
+    ],
     "human_transition_timeline_approval_required": true
-  }
+  },
+  "owner_corrections": [
+    {
+      "date": "2026-11-18",
+      "candidate_rejected": "0.3.0",
+      "scope": "R4_MULTI_PANEL_MATCH_CUT only",
+      "instruction": "Supprimer complètement les deux traits bleus horizontaux et les deux traits bleus verticaux tout en conservant le mouvement des panneaux.",
+      "evidence": [
+        {
+          "file": "proofs/owner-feedback/T3_V0_3_TRAITS_BLEUS_HORIZONTAUX.png",
+          "sha256": "cbab665a44b98ca0736cea812a6f76e6e757f85a2c7023b6dc60f10cb6124113"
+        },
+        {
+          "file": "proofs/owner-feedback/T3_V0_3_TRAITS_BLEUS_VERTICAUX.png",
+          "sha256": "c8dd68afe03e825bbc7a2c9b745dac2f4a52bf751f59c27966eda5f89d478eb9"
+        }
+      ],
+      "resolution": "Le profil impose gap_px=0, border_px=0 et separator_lines=false; le moteur lit ces valeurs et ne dessine aucune ligne."
+    }
+  ]
 }

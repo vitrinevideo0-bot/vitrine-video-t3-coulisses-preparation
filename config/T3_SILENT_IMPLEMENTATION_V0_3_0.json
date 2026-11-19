@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "template_id": "RESTAURATION-T3",
   "candidate_version": "0.3.0",
-  "status": "github_server_pass_pending_owner_validation",
+  "status": "rejected_by_owner_visible_blue_separator_lines",
   "owner_approved": false,
   "source_commit": "cfbc1f82de20a3faf48fbad09efa831d323ce470",
   "ci": {
@@ -35,9 +35,21 @@
     "audio_streams": 0
   },
   "validation": {
-    "tests": {"status": "PASS", "passed": 14, "failed": 0},
-    "server": {"status": "PASS", "passed": 27, "failed": 0},
-    "downloaded_release": {"status": "PASS", "passed": 27, "failed": 0},
+    "tests": {
+      "status": "PASS",
+      "passed": 14,
+      "failed": 0
+    },
+    "server": {
+      "status": "PASS",
+      "passed": 27,
+      "failed": 0
+    },
+    "downloaded_release": {
+      "status": "PASS",
+      "passed": 27,
+      "failed": 0
+    },
     "release_sha256_manifest_verified": true,
     "all_17_events_applied": true,
     "all_4_graphics_applied": true,
@@ -59,5 +71,22 @@
       "proofs/typography-v0.3-server/T3_V0_3_ACCROCHE_FRAME_551_40_PERCENT_RUN_44551121356.png",
       "proofs/typography-v0.3-server/T3_V0_3_FINAL_FRAME_899_40_PERCENT_RUN_44551121356.png"
     ]
-  }
+  },
+  "owner_rejection": {
+    "date": "2026-11-18",
+    "positive_feedback": "Très bon travail général; lisibilité corrigée.",
+    "reason": "Deux traits bleus horizontaux puis deux traits bleus verticaux deviennent visibles pendant R4_MULTI_PANEL_MATCH_CUT.",
+    "root_cause": "Le moteur dessinait des séparateurs cyan de 4 px en dur et ignorait border_px=0 du JSON.",
+    "evidence": [
+      {
+        "file": "proofs/owner-feedback/T3_V0_3_TRAITS_BLEUS_HORIZONTAUX.png",
+        "sha256": "cbab665a44b98ca0736cea812a6f76e6e757f85a2c7023b6dc60f10cb6124113"
+      },
+      {
+        "file": "proofs/owner-feedback/T3_V0_3_TRAITS_BLEUS_VERTICAUX.png",
+        "sha256": "c8dd68afe03e825bbc7a2c9b745dac2f4a52bf751f59c27966eda5f89d478eb9"
+      }
+    ]
+  },
+  "superseded_by": "0.4.0-silent-candidate-no-visible-guides"
 }

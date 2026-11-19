@@ -54,36 +54,37 @@ jobs:
           python engine/render_silent.py \
             --manifest rushes/manifest.json \
             --contract reverse-engineering/T3_TRANSITIONS_30S.json \
-            --render-job demo/render_job_silent_demo_v0_3.json \
-            --text-config config/T3_TEXT_MOTION_V0_3_0.json \
+            --render-job demo/render_job_silent_demo_v0_4.json \
+            --text-config config/T3_TEXT_MOTION_V0_4_0.json \
             --cache rushes/cache \
             --work .tmp/t3-silent \
-            --output-dir output/t3-silent-v0.3.0
+            --output-dir output/t3-silent-v0.4.0
 
       - name: Valider indépendamment format, durée, images, audio et couverture
         run: |
           python tools/validate_silent.py \
-            --output-dir output/t3-silent-v0.3.0 \
-            --proof output/t3-silent-v0.3.0/T3_GITHUB_SERVER_VALIDATION.json
+            --output-dir output/t3-silent-v0.4.0 \
+            --proof output/t3-silent-v0.4.0/T3_GITHUB_SERVER_VALIDATION.json
 
       - name: Assembler la livraison sans rush brut
         run: |
           set -euo pipefail
           rm -rf release
           mkdir release
-          cp output/t3-silent-v0.3.0/VIDEO_T3_SILENCIEUSE_MOTION_TEXT_LISIBLE_V0_3_A_VALIDER.mp4 release/
-          cp output/t3-silent-v0.3.0/T3_SILENT_RENDER_REPORT.json release/
-          cp output/t3-silent-v0.3.0/T3_GITHUB_SERVER_VALIDATION.json release/
-          cp output/t3-silent-v0.3.0/RAPPORT_RENDU_SILENCIEUX.md release/
-          cp output/t3-silent-v0.3.0/T3_TRANSITION_TEXT_PROOF_V0_3.jpg release/
+          cp output/t3-silent-v0.4.0/VIDEO_T3_SILENCIEUSE_SANS_TRAITS_BLEUS_V0_4_A_VALIDER.mp4 release/
+          cp output/t3-silent-v0.4.0/T3_SILENT_RENDER_REPORT.json release/
+          cp output/t3-silent-v0.4.0/T3_GITHUB_SERVER_VALIDATION.json release/
+          cp output/t3-silent-v0.4.0/RAPPORT_RENDU_SILENCIEUX.md release/
+          cp output/t3-silent-v0.4.0/T3_TRANSITION_TEXT_PROOF_V0_4.jpg release/
           cp reverse-engineering/T3_TRANSITIONS_30S.json release/
-          cp config/T3_TEXT_MOTION_V0_3_0.json release/
-          cp demo/render_job_silent_demo_v0_3.json release/T3_RENDER_JOB_DEMO.json
+          cp config/T3_TEXT_MOTION_V0_4_0.json release/
+          cp demo/render_job_silent_demo_v0_4.json release/T3_RENDER_JOB_DEMO.json
           cp rushes/manifest.json release/T3_RUSHES_MANIFEST.json
           cp docs/LICENCES_RUSHS.md release/
           cp docs/LICENCES_POLICES.md release/
           cp docs/T3_VISIBLE_TEXT_CONTRACT.md release/
           cp docs/T3_TYPOGRAPHY_LEGIBILITY_CONTRACT.md release/
+          cp docs/T3_TRANSITION_VISIBILITY_CONTRACT.md release/
           if find release -maxdepth 1 -type f \( -name 'S1_*.mp4' -o -name 'S2_*.mp4' -o -name 'S3_*.mp4' -o -name 'S4_*.mp4' \) | grep -q .; then
             echo 'Rush brut interdit dans la livraison' >&2
             exit 1
@@ -103,7 +104,7 @@ jobs:
         if: inputs.publish_prerelease
         run: |
           cat > /tmp/t3-release-notes.md <<'EOF'
-          # RESTAURATION-T3 — candidat silencieux lisible v0.3
+          # RESTAURATION-T3 — candidat silencieux sans traits bleus v0.4
 
           Candidat produit exclusivement sur GitHub Actions à partir du commit indiqué par la Release.
 
@@ -116,6 +117,7 @@ jobs:
           - quatre blocs de motion design liés exclusivement aux six champs commerçant ;
           - poids des polices variables explicites, petits textes en graisse 600 minimum ;
           - taille effective minimale de 11 px dans une prévisualisation à 40 %, contraste contractuel 7:1 ;
+          - transition multi-panneaux conservée sans aucune ligne séparatrice horizontale ou verticale ;
           - aucun titre de scène, durée, badge de démonstration ou provenance des rushes dans les pixels ;
           - rushes réels Pexels vérifiés par SHA-256, non redistribués bruts ;
           - rapport de rendu, validation serveur, planche de preuve, contrat et manifeste inclus.
@@ -128,13 +130,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          TAG="t3-coulisses-v0.3.0-silent-candidate-${GITHUB_RUN_NUMBER}"
+          TAG="t3-coulisses-v0.4.0-silent-candidate-${GITHUB_RUN_NUMBER}"
           if gh release view "$TAG" >/dev/null 2>&1; then
             echo "La Release $TAG existe déjà : refus de l’écraser." >&2
             exit 1
           fi
           gh release create "$TAG" release/* \
             --target "$GITHUB_SHA" \
-            --title "T3 Coulisses — candidat silencieux lisible v0.3 #${GITHUB_RUN_NUMBER}" \
+            --title "T3 Coulisses — candidat silencieux sans traits bleus v0.4 #${GITHUB_RUN_NUMBER}" \
             --notes-file /tmp/t3-release-notes.md \
             --prerelease

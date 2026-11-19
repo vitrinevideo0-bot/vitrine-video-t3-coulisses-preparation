@@ -22,8 +22,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class TextMotionContractTest(unittest.TestCase):
     def setUp(self) -> None:
-        self.config = json.loads((ROOT / "config/T3_TEXT_MOTION_V0_3_0.json").read_text())
-        self.job = json.loads((ROOT / "demo/render_job_silent_demo_v0_3.json").read_text())
+        self.config = json.loads((ROOT / "config/T3_TEXT_MOTION_V0_4_0.json").read_text())
+        self.job = json.loads((ROOT / "demo/render_job_silent_demo_v0_4.json").read_text())
         validate_text_config(self.config)
         self.fields = normalize_payload(self.job["merchant_payload"])
 

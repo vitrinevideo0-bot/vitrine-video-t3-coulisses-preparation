@@ -28,7 +28,7 @@ except ModuleNotFoundError:  # exécution directe: python engine/render_silent.p
     from text_motion import normalize_payload, render_text_motion, typography_audit, validate_text_config, visible_text_contract
 
 W, H, FPS, TOTAL = 720, 1280, 30, 900
-ENGINE_VERSION = "1.1.0-readable-type"
+ENGINE_VERSION = "1.2.0-borderless-panels"
 ORANGE = (37, 82, 236)  # BGR #EC5225
 AMBER = (59, 181, 247)
 CREAM = (236, 247, 255)
@@ -352,8 +352,26 @@ def whip_zoom(frame: np.ndarray, p: float) -> np.ndarray:
     return horizontal_blur(out, int(31 * (1 - ease_out(q))) | 1)
 
 
-def panel_match(frame: np.ndarray, p: float) -> np.ndarray:
+def panel_match(frame: np.ndarray, p: float, profile: dict[str, Any]) -> np.ndarray:
+    """Animate rows/columns without leaking editing guides into the ad.
+
+    The owner rejected the former cyan separators. Their visibility is now
+    controlled by the canonical transition JSON; the active T3 contract sets
+    ``separator_lines=false`` and ``border_px=0``.
+    """
     canvas = np.zeros_like(frame)
+    border_px = int(profile.get("border_px", 0))
+    draw_separators = bool(profile.get("separator_lines", False)) and border_px > 0
+    separator_color = profile.get("separator_color")
+    if draw_separators and not separator_color:
+        raise ValueError("separator_color requis lorsque separator_lines=true")
+    color_bgr = (0, 0, 0)
+    if separator_color:
+        clean = str(separator_color).lstrip("#")
+        if len(clean) != 6:
+            raise ValueError("separator_color invalide")
+        color_bgr = (int(clean[4:6], 16), int(clean[2:4], 16), int(clean[0:2], 16))
+
     if p < 0.5:
         q = smooth(p / 0.5)
         for row in range(3):
@@ -361,8 +379,8 @@ def panel_match(frame: np.ndarray, p: float) -> np.ndarray:
             shift = int((row - 1) * 64 * (1 - q))
             segment = np.roll(frame[y0:y1], shift, axis=1)
             canvas[y0:y1] = segment
-            if row:
-                cv2.line(canvas, (0, y0), (W, y0), (244, 206, 103), 4)
+            if row and draw_separators:
+                cv2.line(canvas, (0, y0), (W, y0), color_bgr, border_px, cv2.LINE_AA)
     else:
         q = smooth((p - 0.5) / 0.5)
         for col in range(3):
@@ -370,8 +388,8 @@ def panel_match(frame: np.ndarray, p: float) -> np.ndarray:
             shift = int((1 - col) * 72 * (1 - q))
             segment = np.roll(frame[:, x0:x1], shift, axis=0)
             canvas[:, x0:x1] = segment
-            if col:
-                cv2.line(canvas, (x0, 0), (x0, H), (244, 206, 103), 4)
+            if col and draw_separators:
+                cv2.line(canvas, (x0, 0), (x0, H), color_bgr, border_px, cv2.LINE_AA)
     return transform(canvas, scale=1.08 - 0.08 * p)
 
 
@@ -469,11 +487,11 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--manifest", type=Path, default=Path("rushes/manifest.json"))
     parser.add_argument("--contract", type=Path, default=Path("reverse-engineering/T3_TRANSITIONS_30S.json"))
-    parser.add_argument("--render-job", type=Path, default=Path("demo/render_job_silent_demo_v0_3.json"))
-    parser.add_argument("--text-config", type=Path, default=Path("config/T3_TEXT_MOTION_V0_3_0.json"))
+    parser.add_argument("--render-job", type=Path, default=Path("demo/render_job_silent_demo_v0_4.json"))
+    parser.add_argument("--text-config", type=Path, default=Path("config/T3_TEXT_MOTION_V0_4_0.json"))
     parser.add_argument("--cache", type=Path, default=Path("rushes/cache"))
     parser.add_argument("--work", type=Path, default=Path(".tmp/t3-silent"))
-    parser.add_argument("--output-dir", type=Path, default=Path("output/t3-silent-v0.3.0"))
+    parser.add_argument("--output-dir", type=Path, default=Path("output/t3-silent-v0.4.0"))
     args = parser.parse_args()
 
     manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
@@ -484,6 +502,11 @@ def main() -> int:
     fields = normalize_payload(render_job["merchant_payload"])
     resolved_visible_texts = visible_text_contract(fields, text_config)
     resolved_typography_audit = typography_audit(text_config)
+    transition_profiles = contract["transition_parameter_profiles"]
+    panel_profile = transition_profiles["R4_MULTI_PANEL_MATCH_CUT"]
+    panel_separators_enabled = bool(panel_profile.get("separator_lines", False)) and int(panel_profile.get("border_px", 0)) > 0
+    if contract.get("owner_constraints", {}).get("visible_transition_guides_allowed") is False and panel_separators_enabled:
+        raise ValueError("Le JSON interdit les traits séparateurs visibles")
     scenes = manifest["scenes"]
     if [int(scene["duration_seconds"]) for scene in scenes] != [6, 8, 7, 9]:
         raise SystemExit("Durées de scènes non conformes")
@@ -587,7 +610,7 @@ def main() -> int:
                 elif transition == "R4_WHIP_ZOOM":
                     frame = whip_zoom(base, p)
                 elif transition == "R4_MULTI_PANEL_MATCH_CUT":
-                    frame = panel_match(base, p)
+                    frame = panel_match(base, p, transition_profiles[event["parameter_profile"]])
                 elif transition == "R2_DIAGONAL_ROTATING_WIPE":
                     frame = diagonal_rotating_wipe(base, p)
                 elif transition == "R4_BACKGROUND_FADE_TO_BLACK":
@@ -628,7 +651,7 @@ def main() -> int:
         "schema_version": "1.0.0",
         "template_id": "RESTAURATION-T3",
         "engine_version": ENGINE_VERSION,
-        "status": "silent_candidate_v0_3_legibility_corrected_pending_owner_validation",
+        "status": "silent_candidate_v0_4_no_blue_guides_pending_owner_validation",
         "rendered_on": os.environ.get("GITHUB_ACTIONS") == "true" and "github_actions" or "local_preflight",
         "output": {
             "file": output.name,
@@ -648,6 +671,18 @@ def main() -> int:
         "text_motion_config_sha256": sha256(args.text_config),
         "typography_audit": resolved_typography_audit,
         "owner_feedback_legibility_corrected": True,
+        "owner_feedback_blue_lines_corrected": True,
+        "transition_visibility_audit": {
+            "visible_transition_guides_rendered": panel_separators_enabled,
+            "R4_MULTI_PANEL_MATCH_CUT": {
+                "gap_px": int(panel_profile.get("gap_px", 0)),
+                "border_px": int(panel_profile.get("border_px", 0)),
+                "separator_lines": bool(panel_profile.get("separator_lines", False)),
+                "separator_color": panel_profile.get("separator_color"),
+                "separator_policy": panel_profile.get("separator_policy"),
+                "proof_frames": [771, 778],
+            },
+        },
         "contact_sheet_file": text_config["output"]["contact_sheet_filename"],
         "merchant_payload_fields": list(fields.keys()),
         "visible_text_contract": resolved_visible_texts,
@@ -678,7 +713,7 @@ def main() -> int:
     report_path = args.output_dir / "T3_SILENT_RENDER_REPORT.json"
     report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     contact = args.output_dir / text_config["output"]["contact_sheet_filename"]
-    samples = [0, 17, 35, 86, 179, 225, 263, 312, 383, 419, 466, 551, 629, 710, 781, 840, 899]
+    samples = [0, 17, 35, 86, 179, 225, 263, 312, 383, 419, 466, 551, 629, 710, 771, 778, 781, 840, 899]
     make_contact_sheet(output, contact, samples)
     sums = args.output_dir / "SHA256SUMS.txt"
     files = [output, report_path, contact]

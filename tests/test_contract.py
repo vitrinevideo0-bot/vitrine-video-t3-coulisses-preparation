@@ -43,6 +43,16 @@ class T3ContractTest(unittest.TestCase):
             self.assertAlmostEqual(event["start_seconds_exact"], start / 30, places=6)
             self.assertAlmostEqual(event["end_seconds_exclusive_exact"], (end + 1) / 30, places=6)
 
+    def test_panel_match_separator_lines_are_forbidden(self) -> None:
+        profile = self.contract["transition_parameter_profiles"]["R4_MULTI_PANEL_MATCH_CUT"]
+        self.assertFalse(self.contract["owner_constraints"]["visible_transition_guides_allowed"])
+        self.assertEqual(profile["gap_px"], 0)
+        self.assertEqual(profile["border_px"], 0)
+        self.assertFalse(profile["separator_lines"])
+        self.assertIsNone(profile["separator_color"])
+        event = next(item for item in self.contract["timeline_events"] if item["transition_id"] == "R4_MULTI_PANEL_MATCH_CUT")
+        self.assertIn("borderless", event["variant"])
+
     def test_questions_and_languages_are_approved(self) -> None:
         self.assertEqual(self.questions["status"], "owner_approved")
         self.assertEqual([field["id"] for field in self.questions["fields"]], ["nom", "produit", "prix", "whatsapp", "quartier", "accroche"])

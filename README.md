@@ -15,31 +15,24 @@ Gabarit vertical Vitrine Vidéo pour montrer les coulisses d’un plat : ingréd
 
 ## État réel
 
-Les questions, les quatre prises et les 12 écrans ont été approuvés par le propriétaire le 18 novembre 2026. Deux candidats sont conservés uniquement pour l’audit :
+Les questions, les quatre prises et les 12 écrans ont été approuvés par le propriétaire le 18 novembre 2026. Trois candidats sont conservés uniquement pour l’audit :
 
 - **v0.1 rejetée** : titres de scènes, durées et provenance visibles dans la publicité ;
-- **v0.2 rejetée** : logique commerçant corrigée et transitions appréciées, mais nom, quartier et CTA trop fins pour rester lisibles dans le lecteur.
+- **v0.2 rejetée** : nom, quartier et CTA trop fins dans le lecteur ;
+- **v0.3 rejetée** : lisibilité corrigée, mais deux traits bleus horizontaux puis deux traits bleus verticaux étaient visibles pendant la transition multi-panneaux.
 
-La cause de la v0.2 est corrigée à la source : Montserrat Variable ouvrait sur son poids par défaut 100 (Thin), car aucun axe n’était fixé. La v0.3 applique maintenant la logique T1/T2 avec un contrat de lisibilité exécutable :
+La v0.4 conserve la fluidité, le montage et la lisibilité de la v0.3, mais supprime complètement ces traits :
 
-- les textes visibles proviennent de `merchant_payload` dans le RenderJob ;
-- les seuls champs sont `nom`, `produit`, `prix`, `whatsapp`, `quartier` et `accroche` ;
-- l’accroche vide est omise ;
-- `FCFA` est ajouté une seule fois ;
-- le seul texte fixe est `COMMANDER MAINTENANT` ;
-- aucun titre de scène, durée, mot démo, mot rush ou provenance média n’est composité ;
-- les textes sont ajoutés après les transitions afin de rester nets ;
-- les poids 650 à 750 des petits textes sont imposés dans le JSON ;
-- leur taille effective reste au moins 11 px dans une prévisualisation à 40 % ;
-- le contraste contractuel est au moins 7:1, avec ombre et contour de 2 px.
+- le profil JSON impose `gap_px: 0`, `border_px: 0`, `separator_lines: false` et `separator_color: null` ;
+- la contrainte globale interdit tout guide de transition visible ;
+- le moteur lit ce profil au lieu de dessiner des lignes de 4 px en dur ;
+- les rangées et colonnes continuent de bouger, sans bordure colorée ;
+- les images 771 et 778 sont réservées au contrôle des phases horizontale et verticale ;
+- les textes restent liés aux six champs `merchant_payload`, avec le contrat typographique v0.3 conservé.
 
-La v0.3 a été produite sur GitHub Actions au commit `cfbc1f82de20a3faf48fbad09efa831d323ce470`, puis téléchargée et revalidée : **27/27 contrôles PASS**. Trois images issues du MP4 serveur ont aussi été contrôlées à 40 % de leur taille. Elle reste un **candidat silencieux à valider**, pas un master créatif déjà approuvé. Musique, voix off, OTA et intégration mobile restent hors de ce jalon.
+Le préflight local v0.4 passe **32/32 contrôles** et les phases horizontale/verticale ont été inspectées à 40 %. Le master autoritatif doit encore être produit puis revalidé sur GitHub Actions avant présentation. Musique, voix off, OTA et intégration mobile restent hors de ce jalon.
 
-- [Run de rendu GitHub Actions v0.3](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44551121356)
-- [Pré-Release lisible v0.3](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.3.0-silent-candidate-3)
-- [Téléchargement direct du MP4](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/download/t3-coulisses-v0.3.0-silent-candidate-3/VIDEO_T3_SILENCIEUSE_MOTION_TEXT_LISIBLE_V0_3_A_VALIDER.mp4)
-
-Historique v0.2 rejeté : [run](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44548349489) · [pré-Release](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.2.0-silent-candidate-2).
+Historique v0.3 rejeté : [run](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44551121356) · [pré-Release](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.3.0-silent-candidate-3).
 
 ## Reproduire localement
 
@@ -70,11 +63,12 @@ Lancer manuellement **Rendu silencieux T3 sur GitHub**. Le runner :
 - `capture-guide/consignes_T3.json` — quatre prises et machine A/B/C ;
 - `ui-screens/approved/` — 12 écrans approuvés ;
 - `reverse-engineering/T3_TRANSITIONS_30S.json` — 17 événements ;
-- `config/T3_TEXT_MOTION_V0_3_0.json` — quatre blocs graphiques et contrat de lisibilité liés aux champs commerçant ;
-- `demo/render_job_silent_demo_v0_3.json` — fixture du même contrat `merchant_payload` que le runtime ;
+- `config/T3_TEXT_MOTION_V0_4_0.json` — quatre blocs graphiques, lisibilité et interdiction des guides visibles ;
+- `demo/render_job_silent_demo_v0_4.json` — fixture du même contrat `merchant_payload` que le runtime ;
 - `docs/T3_VISIBLE_TEXT_CONTRACT.md` — chaînes autorisées et interdites ;
 - `docs/T3_TYPOGRAPHY_LEGIBILITY_CONTRACT.md` — poids, tailles, contraste et contrôles bloquants ;
-- `proofs/typography-v0.3-server/` — images 86, 551 et 899 du MP4 serveur réduites à 40 % ;
+- `docs/T3_TRANSITION_VISIBILITY_CONTRACT.md` — interdiction des traits séparateurs et logique JSON/moteur ;
+- `proofs/typography-v0.3-server/` — preuves historiques de lisibilité ;
 - `docs/LICENCES_POLICES.md` — familles et empreintes du motion design ;
 - `rushes/manifest.json` — sources Pexels verrouillées ;
 - `engine/render_silent.py` — moteur reproductible ;
