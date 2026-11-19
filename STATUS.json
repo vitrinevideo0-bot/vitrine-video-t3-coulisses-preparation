@@ -3,8 +3,8 @@
   "sector": "RESTAURATION",
   "catalog_name": "Coulisses de préparation",
   "catalog_status": "À DÉVELOPPER",
-  "workflow_status_number": 8,
-  "workflow_status": "Suppression des traits bleus v0.4 en cours",
+  "workflow_status_number": 9,
+  "workflow_status": "Candidat silencieux v0.4 sans traits bleus à valider",
   "reference_batch_current": "LOT-03",
   "selected_reference": "R3-B03-REF-02 + R3-B03-REF-04",
   "branch_planned": "main",
@@ -93,7 +93,22 @@
     "demo/render_job_silent_demo_v0_4.json",
     "docs/T3_TRANSITION_VISIBILITY_CONTRACT.md",
     "proofs/owner-feedback/T3_V0_3_TRAITS_BLEUS_HORIZONTAUX.png",
-    "proofs/owner-feedback/T3_V0_3_TRAITS_BLEUS_VERTICAUX.png"
+    "proofs/owner-feedback/T3_V0_3_TRAITS_BLEUS_VERTICAUX.png",
+    "proofs/T3_GITHUB_RELEASE_AUDIT_RUN_44555498879.json",
+    "proofs/T3_GITHUB_SERVER_VALIDATION_RUN_44555498879.json",
+    "proofs/T3_DOWNLOADED_RELEASE_VALIDATION_RUN_44555498879.json",
+    "proofs/T3_SILENT_RENDER_REPORT_RUN_44555498879.json",
+    "proofs/T3_TRANSITION_TEXT_PROOF_RUN_44555498879.jpg",
+    "proofs/SHA256SUMS_RELEASE_RUN_44555498879.txt",
+    "proofs/separators-v0.4-server/T3_V0_4_SEPARATOR_PIXEL_AUDIT_RUN_44555498879.json",
+    "proofs/separators-v0.4-server/T3_V0_4_FRAME_769_40_PERCENT_RUN_44555498879.png",
+    "proofs/separators-v0.4-server/T3_V0_4_FRAME_771_40_PERCENT_RUN_44555498879.png",
+    "proofs/separators-v0.4-server/T3_V0_4_FRAME_774_40_PERCENT_RUN_44555498879.png",
+    "proofs/separators-v0.4-server/T3_V0_4_FRAME_775_40_PERCENT_RUN_44555498879.png",
+    "proofs/separators-v0.4-server/T3_V0_4_FRAME_778_40_PERCENT_RUN_44555498879.png",
+    "proofs/separators-v0.4-server/T3_V0_4_FRAME_780_40_PERCENT_RUN_44555498879.png",
+    "proofs/separators-v0.4-server/T3_V0_4_FRAME_781_40_PERCENT_RUN_44555498879.png",
+    "reports/RAPPORT_RENDU_SILENCIEUX_GITHUB_RUN_44555498879.md"
   ],
   "owner_decisions": [
     {
@@ -165,10 +180,10 @@
       "feedback": "Supprimer complètement les deux traits bleus horizontaux et les deux traits bleus verticaux, corriger le JSON et la logique, puis rendre une nouvelle version sur GitHub."
     }
   ],
-  "decision_expected": "Aucune nouvelle décision avant le rendu v0.4 sur GitHub, sa revalidation après téléchargement et le contrôle des images 771 et 778.",
+  "decision_expected": "Visionner le master GitHub v0.4 sans traits bleus, puis l’approuver ou demander une correction créative précise.",
   "blockers": [
     "Les candidats v0.1, v0.2 et v0.3 sont rejetés et ne doivent pas être utilisés.",
-    "La v0.4 sans traits bleus doit être rendue et validée sur GitHub Actions.",
+    "La v0.4 a passé tous les contrôles objectifs mais attend la validation visuelle explicite du propriétaire.",
     "Aucune musique ni voix off avant validation du nouveau silencieux."
   ],
   "development_started": true,
@@ -194,7 +209,7 @@
     "ui_screens_manifest": "ui-screens/approved/manifest.json",
     "approval_record": "approvals/APPROBATION_QUESTIONS_CAPTURE_12_ECRANS_2026-11-18.json"
   },
-  "workflow_note": "La v0.3 conserve un bon montage et une bonne lisibilité mais est rejetée pour deux séparateurs horizontaux puis verticaux. La v0.4 met le profil à zéro dans le JSON et le moteur applique désormais ce profil.",
+  "workflow_note": "La v0.4 a été rendue sur GitHub Actions au commit f87d1ef, revalidée 32/32 après téléchargement, et les images serveur 771/778 ne montrent aucun trait cyan; le mouvement des panneaux et la lisibilité sont conservés.",
   "development_phase": {
     "engine": "engine/render_silent.py",
     "source_manifest": "rushes/manifest.json",
@@ -267,27 +282,49 @@
   },
   "last_server_evidence": {
     "date": "2026-11-18",
-    "run_id": 44551121356,
+    "run_id": 44555498879,
+    "run_number": 4,
     "conclusion": "success",
-    "commit": "cfbc1f82de20a3faf48fbad09efa831d323ce470",
-    "video_sha256": "757ba579bb6d1168fedd5e74c098c228d631d316449309eecc23ff21c6c1543b",
+    "commit": "f87d1ef913fe331b12cf10275f6c2e0392f16007",
+    "release_tag": "t3-coulisses-v0.4.0-silent-candidate-4",
+    "video_sha256": "cd61d3cf793874a8b7d2eb8fe694861048368ba64b01216395c6bba0eb879774",
     "server_validation": {
       "status": "PASS",
-      "passed": 27,
+      "passed": 32,
       "failed": 0
     },
     "downloaded_release_validation": {
       "status": "PASS",
-      "passed": 27,
+      "passed": 32,
       "failed": 0
     },
-    "typography_frames_40_percent": {
+    "release_assets": {
+      "downloaded": 15,
+      "sha256_manifest_entries": 14,
+      "verified": true,
+      "artifact_byte_identical": true
+    },
+    "separator_frames_40_percent": {
       "status": "PASS",
       "frames": [
-        86,
-        551,
-        899
-      ]
+        771,
+        778
+      ],
+      "horizontal_blue_lines_visible": false,
+      "vertical_blue_lines_visible": false
+    },
+    "separator_pixel_audit": {
+      "status": "PASS",
+      "frames": [
+        769,
+        771,
+        774,
+        775,
+        778,
+        780,
+        781
+      ],
+      "cyan_like_pixels": 0
     }
   },
   "correction_v0_2": {
@@ -481,7 +518,7 @@
     }
   },
   "correction_v0_4": {
-    "status": "local_preflight_pass_pending_github_render",
+    "status": "github_server_pass_pending_owner_validation",
     "render_job": "demo/render_job_silent_demo_v0_4.json",
     "text_motion_contract": "config/T3_TEXT_MOTION_V0_4_0.json",
     "transition_contract": "reverse-engineering/T3_TRANSITIONS_30S.json",
@@ -523,7 +560,78 @@
     "fixed_texts": [
       "COMMANDER MAINTENANT"
     ],
-    "github_render_started": false,
-    "owner_approved": false
+    "github_render_started": true,
+    "owner_approved": false,
+    "authoritative_master_source": "github_actions",
+    "render_commit": "f87d1ef913fe331b12cf10275f6c2e0392f16007",
+    "github_actions": {
+      "run_id": 44555498879,
+      "run_number": 4,
+      "conclusion": "success",
+      "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44555498879"
+    },
+    "artifact": {
+      "id": 14545531125,
+      "name": "T3-silent-candidate-44555498879",
+      "asset_count": 15,
+      "release_assets_byte_identical": true
+    },
+    "release": {
+      "tag": "t3-coulisses-v0.4.0-silent-candidate-4",
+      "prerelease": true,
+      "target_commit": "f87d1ef913fe331b12cf10275f6c2e0392f16007",
+      "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.4.0-silent-candidate-4"
+    },
+    "video": {
+      "filename": "VIDEO_T3_SILENCIEUSE_SANS_TRAITS_BLEUS_V0_4_A_VALIDER.mp4",
+      "download_url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/download/t3-coulisses-v0.4.0-silent-candidate-4/VIDEO_T3_SILENCIEUSE_SANS_TRAITS_BLEUS_V0_4_A_VALIDER.mp4",
+      "sha256": "cd61d3cf793874a8b7d2eb8fe694861048368ba64b01216395c6bba0eb879774",
+      "bytes": 10601443,
+      "duration_seconds": 30.0,
+      "width": 720,
+      "height": 1280,
+      "fps": 30,
+      "frames": 900,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "audio_streams": 0
+    },
+    "server_validation": {
+      "status": "PASS",
+      "passed": 32,
+      "failed": 0,
+      "proof": "proofs/T3_GITHUB_SERVER_VALIDATION_RUN_44555498879.json"
+    },
+    "downloaded_release_validation": {
+      "status": "PASS",
+      "passed": 32,
+      "failed": 0,
+      "proof": "proofs/T3_DOWNLOADED_RELEASE_VALIDATION_RUN_44555498879.json"
+    },
+    "release_sha256_manifest_verified": true,
+    "release_assets_downloaded": 15,
+    "release_sha256_entries_verified": 14,
+    "github_artifact_and_release_byte_identical": true,
+    "server_separator_proof": {
+      "status": "PASS",
+      "frames_inspected_at_40_percent": [
+        771,
+        778
+      ],
+      "pixel_audit_frames": [
+        769,
+        771,
+        774,
+        775,
+        778,
+        780,
+        781
+      ],
+      "cyan_like_pixels": 0,
+      "horizontal_blue_lines_visible": false,
+      "vertical_blue_lines_visible": false,
+      "motion_preserved": true
+    },
+    "github_render_completed": true
   }
 }

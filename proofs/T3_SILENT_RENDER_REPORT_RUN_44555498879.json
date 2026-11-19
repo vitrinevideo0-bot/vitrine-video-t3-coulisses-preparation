@@ -1,0 +1,505 @@
+{
+  "schema_version": "1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "engine_version": "1.2.0-borderless-panels",
+  "status": "silent_candidate_v0_4_no_blue_guides_pending_owner_validation",
+  "rendered_on": "github_actions",
+  "output": {
+    "file": "VIDEO_T3_SILENCIEUSE_SANS_TRAITS_BLEUS_V0_4_A_VALIDER.mp4",
+    "bytes": 10601443,
+    "sha256": "cd61d3cf793874a8b7d2eb8fe694861048368ba64b01216395c6bba0eb879774",
+    "width": 720,
+    "height": 1280,
+    "fps": 30,
+    "total_frames": 900,
+    "duration_seconds": 30,
+    "audio_streams_expected": 0
+  },
+  "source_manifest_sha256": "dd52c83c927ef77ba02f677619c1188b0bb5783b4824886d73d0fb1d1a0999ea",
+  "transition_contract_sha256": "94d0cd6a58fb001298b003c7bc7ae4637e9ece289e3169cc210cb5cdff807f60",
+  "render_job_sha256": "cff8ecc21938ef6b463438df63921e995fc02aac78a97d031a32411b25779aa0",
+  "text_motion_config_id": "T3_TEXT_MOTION_V0_4_0",
+  "text_motion_config_sha256": "c8d0cc22881bf7705df128737ff43b6702ca7eb22fd5a362b534705b71e968d9",
+  "typography_audit": {
+    "config_id": "T3_TEXT_MOTION_V0_4_0",
+    "preview_scale_floor": 0.4,
+    "required_effective_font_px": 11.0,
+    "required_contrast_ratio": 7.0,
+    "variable_font_weights_explicit": true,
+    "shadow": {
+      "offset_x_px": 3,
+      "offset_y_px": 4,
+      "opacity": 230,
+      "stroke_width_px": 2,
+      "stroke_opacity": 230
+    },
+    "roles": {
+      "merchant_name": {
+        "font": "Montserrat",
+        "weight": 700,
+        "minimum_font_size_px": 30,
+        "effective_minimum_at_preview_scale_px": 12.0,
+        "contrast_ratio": 13.06
+      },
+      "hero_product": {
+        "font": "DM Serif Display",
+        "weight": null,
+        "minimum_font_size_px": 48,
+        "effective_minimum_at_preview_scale_px": 19.2,
+        "contrast_ratio": 17.97
+      },
+      "offer_product": {
+        "font": "DM Serif Display",
+        "weight": null,
+        "minimum_font_size_px": 42,
+        "effective_minimum_at_preview_scale_px": 16.8,
+        "contrast_ratio": 17.97
+      },
+      "hook": {
+        "font": "DM Serif Display",
+        "weight": null,
+        "minimum_font_size_px": 42,
+        "effective_minimum_at_preview_scale_px": 16.8,
+        "contrast_ratio": 17.97
+      },
+      "price": {
+        "font": "Plus Jakarta Sans",
+        "weight": 700,
+        "minimum_font_size_px": 44,
+        "effective_minimum_at_preview_scale_px": 17.6,
+        "contrast_ratio": 17.97
+      },
+      "location": {
+        "font": "Plus Jakarta Sans",
+        "weight": 650,
+        "minimum_font_size_px": 28,
+        "effective_minimum_at_preview_scale_px": 11.2,
+        "contrast_ratio": 17.97
+      },
+      "cta": {
+        "font": "Montserrat",
+        "weight": 750,
+        "minimum_font_size_px": 28,
+        "effective_minimum_at_preview_scale_px": 11.2,
+        "contrast_ratio": 13.06
+      },
+      "phone": {
+        "font": "Plus Jakarta Sans",
+        "weight": 700,
+        "minimum_font_size_px": 30,
+        "effective_minimum_at_preview_scale_px": 12.0,
+        "contrast_ratio": 17.97
+      }
+    }
+  },
+  "owner_feedback_legibility_corrected": true,
+  "owner_feedback_blue_lines_corrected": true,
+  "transition_visibility_audit": {
+    "visible_transition_guides_rendered": false,
+    "R4_MULTI_PANEL_MATCH_CUT": {
+      "gap_px": 0,
+      "border_px": 0,
+      "separator_lines": false,
+      "separator_color": null,
+      "separator_policy": "forbidden_by_owner",
+      "proof_frames": [
+        771,
+        778
+      ]
+    }
+  },
+  "contact_sheet_file": "T3_TRANSITION_TEXT_PROOF_V0_4.jpg",
+  "merchant_payload_fields": [
+    "nom",
+    "produit",
+    "prix",
+    "whatsapp",
+    "quartier",
+    "accroche"
+  ],
+  "visible_text_contract": {
+    "T3_G01_IDENTITY": [
+      "Casa Tacos",
+      "Tacos maison"
+    ],
+    "T3_G02_OFFER": [
+      "Tacos maison",
+      "2 500 FCFA"
+    ],
+    "T3_G03_HOOK": [
+      "Préparé à la commande",
+      "Casa Tacos"
+    ],
+    "T3_G04_FINAL": [
+      "Casa Tacos",
+      "Tacos maison",
+      "2 500 FCFA",
+      "Kandi · près du marché central",
+      "COMMANDER MAINTENANT",
+      "+229 01 97 00 00 00"
+    ]
+  },
+  "forbidden_visible_strings": [
+    "SCÈNE",
+    "6 S",
+    "7 S",
+    "8 S",
+    "9 S",
+    "DÉMO",
+    "RUSHS",
+    "PEXELS",
+    "T3",
+    "INGRÉDIENTS",
+    "GESTE SIGNATURE",
+    "DRESSAGE",
+    "PRÊT À SERVIR"
+  ],
+  "technical_labels_rendered": false,
+  "graphics": [
+    {
+      "id": "T3_G01_IDENTITY",
+      "frames": [
+        18,
+        155
+      ],
+      "expected_frame_count": 138,
+      "applied_frame_count": 138,
+      "fields": [
+        "nom",
+        "produit"
+      ]
+    },
+    {
+      "id": "T3_G02_OFFER",
+      "frames": [
+        210,
+        377
+      ],
+      "expected_frame_count": 168,
+      "applied_frame_count": 168,
+      "fields": [
+        "produit",
+        "prix"
+      ]
+    },
+    {
+      "id": "T3_G03_HOOK",
+      "frames": [
+        450,
+        605
+      ],
+      "expected_frame_count": 156,
+      "applied_frame_count": 156,
+      "fields": [
+        "accroche",
+        "nom"
+      ]
+    },
+    {
+      "id": "T3_G04_FINAL",
+      "frames": [
+        660,
+        899
+      ],
+      "expected_frame_count": 240,
+      "applied_frame_count": 240,
+      "fields": [
+        "nom",
+        "produit",
+        "prix",
+        "whatsapp",
+        "quartier"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "scene": "S1",
+      "pexels_id": 7613417,
+      "sha256": "31cca446e309e78b29b4aa23b5046e235e40f668959c48b6b8ef6a2fe62bccab",
+      "raw_published": false
+    },
+    {
+      "scene": "S2",
+      "pexels_id": 7613578,
+      "sha256": "db9d0132b370603431c2a9e5b73aafa2c5371d6900ff4357917fdd2cdeb6b755",
+      "raw_published": false
+    },
+    {
+      "scene": "S3",
+      "pexels_id": 8448200,
+      "sha256": "c6a79259f745d07f30797de7c8f3159b217aa1c497b1fc4b8d7f62cce796572c",
+      "raw_published": false
+    },
+    {
+      "scene": "S4",
+      "pexels_id": 7613415,
+      "sha256": "19c4fe53e7e3d074a8bfe84e7c52d720f3fc6a157324d454486c980115f42365",
+      "raw_published": false
+    }
+  ],
+  "events": [
+    {
+      "event": 1,
+      "transition_id": "R4_TILED_GRID_INTRO",
+      "frames": [
+        0,
+        17
+      ],
+      "expected_frame_count": 18,
+      "applied_frame_count": 18,
+      "sample_frame_sha256": {
+        "start": "0c41f1fef284094398082ada9a00dc8b42bbb52aa568a116f3dac64bee393b22",
+        "middle": "e845e9737c933b3c8f813be5d188f0e2bde352d7e6c8e9c6d2f93bd1956727a5",
+        "end": "43d100a42af6357efa1e4a8c548c817ccea85b8e2fb446911854f9182d07b1f0"
+      }
+    },
+    {
+      "event": 2,
+      "transition_id": "R2_GEOMETRIC_ARROW_MASK",
+      "frames": [
+        18,
+        35
+      ],
+      "expected_frame_count": 18,
+      "applied_frame_count": 18,
+      "sample_frame_sha256": {
+        "start": "522ff301292fabbd9a411fb1a70dc71ed7a013100d813910c56a7c2b8cfd3438",
+        "middle": "1169c0959fa49490ba14f590e471c224a4f0aecdfcc33990679638fd085d3541",
+        "end": "acd6ebbc630be7d790b35d6f7b1e0a1292b23c6af45ab5a818ccd5847a95a975"
+      }
+    },
+    {
+      "event": 3,
+      "transition_id": "R2_RADIAL_ZOOM",
+      "frames": [
+        78,
+        86
+      ],
+      "expected_frame_count": 9,
+      "applied_frame_count": 9,
+      "sample_frame_sha256": {
+        "start": "b6f1e80d0e2422d24009fbc9b8c5cf275631910a13f77e929556f46e873bbe91",
+        "middle": "5d0bd45c5b76afd1aeea888641a20edc6625ab033b27ed22de4e16bd9365c446",
+        "end": "488b5a6f49694edd1567efa47ff1cf5def5df1b07c10282a2feb19207e67cc98"
+      }
+    },
+    {
+      "event": 4,
+      "transition_id": "R4_ORANGE_FLASH",
+      "frames": [
+        171,
+        179
+      ],
+      "expected_frame_count": 9,
+      "applied_frame_count": 9,
+      "sample_frame_sha256": {
+        "start": "44df7a14f235fb205a92903c097429efcb0c6f770fdb1cf5aded9bd4b0c90039",
+        "middle": "d4038e4ed8fe8861e6cdba4e1b990e5aef3056495c07b2f3738d0cad2e48e289",
+        "end": "ab780d777f0b9c5b0c3a782d105fda26d1bfab2e709037f5661cf18f6bcaf49c"
+      }
+    },
+    {
+      "event": 5,
+      "transition_id": "R2_HARD_ACTION_MATCH_CUT",
+      "frames": [
+        224,
+        225
+      ],
+      "expected_frame_count": 2,
+      "applied_frame_count": 2,
+      "sample_frame_sha256": {
+        "middle": "b477b48f15e2fdbcb444e004f933fe5faf8f4ff945b233afd44f9ba653100814",
+        "end": "e664b0d28d819f772c11ed7ad78a1598e9e4257b2c8dd59f57c065a45db1d37f"
+      }
+    },
+    {
+      "event": 6,
+      "transition_id": "R2_SELECTIVE_COLOR_REVEAL",
+      "frames": [
+        252,
+        263
+      ],
+      "expected_frame_count": 12,
+      "applied_frame_count": 12,
+      "sample_frame_sha256": {
+        "start": "b0d648b06a56805ff25396c2c35b29e0bf4a67f7d094edb45f5a1b8efdb6ad2f",
+        "middle": "1d712e7d950181a4476358a754388d21a3d6751516df8dbd1ec970fbfdf2704b",
+        "end": "e0af152dfadb2e3d59a42f403483c3835bbb33a7d07b85b79785f8d028169aa5"
+      }
+    },
+    {
+      "event": 7,
+      "transition_id": "R2_FLASH_TRANSITION",
+      "frames": [
+        303,
+        312
+      ],
+      "expected_frame_count": 10,
+      "applied_frame_count": 10,
+      "sample_frame_sha256": {
+        "start": "c977d62c042d5d7ba50dd8b7b31c3eccbb8345e58d32d571c112fb9adaef274d",
+        "middle": "1e44cade356da15bf58bb6efd5391d15c1551e6f11efae8eda572a325bdd5f71",
+        "end": "40a249b82f8cb686be4d0a3e0d54ad4bd4a84f8ac03bf036e50c9e910420c54b"
+      }
+    },
+    {
+      "event": 8,
+      "transition_id": "R4_SOFT_OVERLAY_BLEND",
+      "frames": [
+        344,
+        353
+      ],
+      "expected_frame_count": 10,
+      "applied_frame_count": 10,
+      "sample_frame_sha256": {
+        "start": "cdd7ae6643622bd0e2a7fbd8e1dfdb3945416be433ba0c3a005fd9c716d5afce",
+        "middle": "c2fdcfa11750a3b4b91c70a0c026067048d2d74f11224e12cb5a4466ebf2e2d6",
+        "end": "76c6267f4c9d0fc25e5dce47dc80e4225a6dbb774d514077dac3b0c5124717e8"
+      }
+    },
+    {
+      "event": 9,
+      "transition_id": "R2_FLASH_TRANSITION",
+      "frames": [
+        374,
+        383
+      ],
+      "expected_frame_count": 10,
+      "applied_frame_count": 10,
+      "sample_frame_sha256": {
+        "start": "f82a63cd2b77f7aaf6bbb5c8ebd8539edaacae37144612067c8ce0905cedb787",
+        "middle": "271429abf191809f7703d431e7835296225c5166718ea1da916732727d8fd332",
+        "end": "d9a0772b961c201ef2bce7854d1ccfe978b06870566cbc3dc8ada2dce8434e5c"
+      }
+    },
+    {
+      "event": 10,
+      "transition_id": "R4_KALEIDOSCOPE_MOSAIC",
+      "frames": [
+        408,
+        419
+      ],
+      "expected_frame_count": 12,
+      "applied_frame_count": 12,
+      "sample_frame_sha256": {
+        "start": "c24125a02e6ae1d9e5718f6a7cc63cb68522b52948daa8e61d3b3e2f97cce62e",
+        "middle": "3ca3056ff92c7e46d5ba056024b8b1de9718ee969bf5ca9111e6a9a7f3cb5fdc",
+        "end": "b8cf43db0e46f30bfd7e44b73cfa9d4967861f3f7c7df42b91e38621e16fa40b"
+      }
+    },
+    {
+      "event": 11,
+      "transition_id": "R2_MULTI_PANEL_SPLIT",
+      "frames": [
+        453,
+        466
+      ],
+      "expected_frame_count": 14,
+      "applied_frame_count": 14,
+      "sample_frame_sha256": {
+        "start": "76322468a02e479c4cbc50625f5182ee662be7b6816eed4d531816d99a812fbb",
+        "middle": "c57e559394532c97e690151802126fbc0f96a47856ea40165ed1b699406f1190",
+        "end": "ae843add16137b2b5f9671ba4735e6c9916afa1910994a3fee30abc513533a10"
+      }
+    },
+    {
+      "event": 12,
+      "transition_id": "R4_ROTATING_MASK",
+      "frames": [
+        540,
+        551
+      ],
+      "expected_frame_count": 12,
+      "applied_frame_count": 12,
+      "sample_frame_sha256": {
+        "start": "4e05c3547875e9715b6caa6f9316e2f91957a2948dfc6f09a746c3b0c4a7c84d",
+        "middle": "68a0bbbe601ee53f2d138ad368c5e47972aa5b2724a691388573c532585b1811",
+        "end": "2bd4a3428ed5ef3415d9812ded88479afce3d629623c9685fcb70b0cbba538d3"
+      }
+    },
+    {
+      "event": 13,
+      "transition_id": "R4_RADIAL_BLUR",
+      "frames": [
+        617,
+        629
+      ],
+      "expected_frame_count": 13,
+      "applied_frame_count": 13,
+      "sample_frame_sha256": {
+        "start": "e068488f0a6bae99df817b97bf13139b091e9634ce9b476c54d192969b487863",
+        "middle": "98128f73e4e3c7a83ce36016d1568787115d9bf7abaa715ef1291262dcc87b9b",
+        "end": "eaa2ed63bda6721ca2de97e9da449f5c5a0fccf4e0e309061c5e70f6e37d5799"
+      }
+    },
+    {
+      "event": 14,
+      "transition_id": "R4_WHIP_ZOOM",
+      "frames": [
+        699,
+        710
+      ],
+      "expected_frame_count": 12,
+      "applied_frame_count": 12,
+      "sample_frame_sha256": {
+        "start": "a5ec01a8e0ed13dd0c5d2724b7be62cf386b644ce97ff699e0826ac2b88b542d",
+        "middle": "ce729625c2bd2d3eba47c898b6679d1d132cbb5b8d4662a4568d205349b34b04",
+        "end": "3b58c8355828e52edcebed83ece08aecb04831f5ba62d0f57541c3c26455fece"
+      }
+    },
+    {
+      "event": 15,
+      "transition_id": "R4_MULTI_PANEL_MATCH_CUT",
+      "frames": [
+        768,
+        781
+      ],
+      "expected_frame_count": 14,
+      "applied_frame_count": 14,
+      "sample_frame_sha256": {
+        "start": "619b97de4fa196f5a669ad6f35ada0853410785bf80b492eb6aabdbef4f2dac9",
+        "middle": "0f2000b8d3c5cad60af175e3b8f86e009968ff1e23a84c17c6a4988a755c8492",
+        "end": "07751a0f5ac44ef0a9c169fb61b58e62ac242511dd1d76bc81d2cc46197275cb"
+      }
+    },
+    {
+      "event": 16,
+      "transition_id": "R2_DIAGONAL_ROTATING_WIPE",
+      "frames": [
+        824,
+        840
+      ],
+      "expected_frame_count": 17,
+      "applied_frame_count": 17,
+      "sample_frame_sha256": {
+        "start": "8cebd84ae13fabd76759e8b07cd1a9dffe2ec017471f678e69e0ac60dcd390ed",
+        "middle": "57150fb90cb6586b76721535202ac7bbc54769a10cb0629125f8549d01473486",
+        "end": "471fc2a5205f6a403846d4e5d9cde65309166f942777584ae91aebf4a4ba30e1"
+      }
+    },
+    {
+      "event": 17,
+      "transition_id": "R4_BACKGROUND_FADE_TO_BLACK",
+      "frames": [
+        885,
+        899
+      ],
+      "expected_frame_count": 15,
+      "applied_frame_count": 15,
+      "sample_frame_sha256": {
+        "start": "238f399659a3f4dc71fa2b6db781594e308c98de97d38f906a8dce1b37565559",
+        "middle": "9e2df8afefbe2608cdb6406f6a07687c7d443bdd5703a8d57d859853567b00cc",
+        "end": "6427c6d976121ee0e8cfba56d4b7aa6a177907ff9f77f1c5e88d3e92986b7cff"
+      }
+    }
+  ],
+  "all_17_events_applied": true,
+  "all_4_graphics_applied": true,
+  "references_covered": [
+    "R3-B03-REF-02",
+    "R3-B03-REF-04"
+  ],
+  "raw_rushes_embedded_as_standalone_assets": false,
+  "owner_approval_required": true
+}

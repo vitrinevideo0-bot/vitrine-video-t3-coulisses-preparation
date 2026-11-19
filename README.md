@@ -30,7 +30,11 @@ La v0.4 conserve la fluidité, le montage et la lisibilité de la v0.3, mais sup
 - les images 771 et 778 sont réservées au contrôle des phases horizontale et verticale ;
 - les textes restent liés aux six champs `merchant_payload`, avec le contrat typographique v0.3 conservé.
 
-Le préflight local v0.4 passe **32/32 contrôles** et les phases horizontale/verticale ont été inspectées à 40 %. Le master autoritatif doit encore être produit puis revalidé sur GitHub Actions avant présentation. Musique, voix off, OTA et intégration mobile restent hors de ce jalon.
+Le master v0.4 a été produit sur GitHub Actions puis téléchargé et revalidé : **32/32 contrôles PASS** côté serveur et **32/32 PASS** après téléchargement. Les 15 assets de la pré-Release correspondent à l’artefact Actions octet par octet; les images serveur 771 et 778 ne montrent aucun trait cyan à 40 %. La v0.4 reste un candidat silencieux à valider par le propriétaire. Musique, voix off, OTA et intégration mobile restent hors de ce jalon.
+
+- [Run de rendu GitHub Actions v0.4](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44555498879)
+- [Pré-Release sans traits bleus v0.4](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.4.0-silent-candidate-4)
+- [Téléchargement direct du MP4](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/download/t3-coulisses-v0.4.0-silent-candidate-4/VIDEO_T3_SILENCIEUSE_SANS_TRAITS_BLEUS_V0_4_A_VALIDER.mp4)
 
 Historique v0.3 rejeté : [run](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44551121356) · [pré-Release](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.3.0-silent-candidate-3).
 
@@ -68,6 +72,8 @@ Lancer manuellement **Rendu silencieux T3 sur GitHub**. Le runner :
 - `docs/T3_VISIBLE_TEXT_CONTRACT.md` — chaînes autorisées et interdites ;
 - `docs/T3_TYPOGRAPHY_LEGIBILITY_CONTRACT.md` — poids, tailles, contraste et contrôles bloquants ;
 - `docs/T3_TRANSITION_VISIBILITY_CONTRACT.md` — interdiction des traits séparateurs et logique JSON/moteur ;
+- `proofs/separators-v0.4-server/` — images 771/778 et audit pixel du MP4 GitHub sans traits cyan ;
+- `proofs/T3_GITHUB_RELEASE_AUDIT_RUN_44555498879.json` — intégrité de l’artefact, de la pré-Release et du master ;
 - `proofs/typography-v0.3-server/` — preuves historiques de lisibilité ;
 - `docs/LICENCES_POLICES.md` — familles et empreintes du motion design ;
 - `rushes/manifest.json` — sources Pexels verrouillées ;

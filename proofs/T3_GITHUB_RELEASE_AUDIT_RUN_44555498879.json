@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "status": "PASS",
+  "run": {
+    "id": 44555498879,
+    "run_number": 4,
+    "conclusion": "success",
+    "head_sha": "f87d1ef913fe331b12cf10275f6c2e0392f16007",
+    "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44555498879"
+  },
+  "artifact": {
+    "id": 14545531125,
+    "name": "T3-silent-candidate-44555498879",
+    "asset_count": 15,
+    "release_files_byte_identical": true
+  },
+  "release": {
+    "id": 451542127,
+    "tag": "t3-coulisses-v0.4.0-silent-candidate-4",
+    "prerelease": true,
+    "target_commitish": "f87d1ef913fe331b12cf10275f6c2e0392f16007",
+    "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.4.0-silent-candidate-4",
+    "asset_count": 15,
+    "sha256_manifest_entries": 14,
+    "sha256_manifest_verified": true,
+    "raw_rushes_absent": true
+  },
+  "video": {
+    "file": "VIDEO_T3_SILENCIEUSE_SANS_TRAITS_BLEUS_V0_4_A_VALIDER.mp4",
+    "download_url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/download/t3-coulisses-v0.4.0-silent-candidate-4/VIDEO_T3_SILENCIEUSE_SANS_TRAITS_BLEUS_V0_4_A_VALIDER.mp4",
+    "sha256": "cd61d3cf793874a8b7d2eb8fe694861048368ba64b01216395c6bba0eb879774",
+    "bytes": 10601443,
+    "duration_seconds": 30.0,
+    "width": 720,
+    "height": 1280,
+    "fps": 30,
+    "decoded_frames": 900,
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "audio_streams": 0
+  },
+  "validation": {
+    "github_server": {
+      "status": "PASS",
+      "passed": 32,
+      "failed": 0
+    },
+    "downloaded_release": {
+      "status": "PASS",
+      "passed": 32,
+      "failed": 0,
+      "same_video_metadata_as_server": true,
+      "same_check_results_as_server": true
+    },
+    "separator_pixel_audit": {
+      "status": "PASS",
+      "frames": [769, 771, 774, 775, 778, 780, 781],
+      "cyan_like_pixels": 0,
+      "full_width_lines_detected": 0,
+      "full_height_lines_detected": 0
+    },
+    "human_frame_inspection": {
+      "status": "PASS",
+      "frames": [771, 778],
+      "scale_percent": 40,
+      "horizontal_blue_lines_visible": false,
+      "vertical_blue_lines_visible": false,
+      "panel_motion_preserved": true
+    }
+  },
+  "owner_approval_required": true
+}

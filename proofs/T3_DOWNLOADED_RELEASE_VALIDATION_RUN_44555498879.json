@@ -1,0 +1,229 @@
+{
+  "schema_version": "1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "status": "PASS",
+  "scope": "Master silencieux candidat produit sur GitHub Actions",
+  "video": {
+    "file": "VIDEO_T3_SILENCIEUSE_SANS_TRAITS_BLEUS_V0_4_A_VALIDER.mp4",
+    "sha256": "cd61d3cf793874a8b7d2eb8fe694861048368ba64b01216395c6bba0eb879774",
+    "bytes": 10601443,
+    "duration_seconds": 30.0,
+    "video_streams": 1,
+    "audio_streams": 0,
+    "decoded_frames": 900
+  },
+  "checks": [
+    {
+      "check": "video_exists",
+      "status": "PASS",
+      "detail": "github-release/t3-v0.4-run-44555498879/VIDEO_T3_SILENCIEUSE_SANS_TRAITS_BLEUS_V0_4_A_VALIDER.mp4"
+    },
+    {
+      "check": "one_video_stream",
+      "status": "PASS",
+      "detail": 1
+    },
+    {
+      "check": "zero_audio_stream",
+      "status": "PASS",
+      "detail": 0
+    },
+    {
+      "check": "h264_codec",
+      "status": "PASS",
+      "detail": "h264"
+    },
+    {
+      "check": "dimensions_720x1280",
+      "status": "PASS",
+      "detail": [
+        720,
+        1280
+      ]
+    },
+    {
+      "check": "pixel_format_yuv420p",
+      "status": "PASS",
+      "detail": "yuv420p"
+    },
+    {
+      "check": "fps_30",
+      "status": "PASS",
+      "detail": [
+        "30/1",
+        "30/1"
+      ]
+    },
+    {
+      "check": "duration_30_seconds",
+      "status": "PASS",
+      "detail": "30.000000"
+    },
+    {
+      "check": "900_frames_probe",
+      "status": "PASS",
+      "detail": [
+        "900",
+        "900"
+      ]
+    },
+    {
+      "check": "900_frames_decoded",
+      "status": "PASS",
+      "detail": 900
+    },
+    {
+      "check": "scene_boundaries_nonblack",
+      "status": "PASS",
+      "detail": 5
+    },
+    {
+      "check": "sha256_matches_render_report",
+      "status": "PASS",
+      "detail": "cd61d3cf793874a8b7d2eb8fe694861048368ba64b01216395c6bba0eb879774"
+    },
+    {
+      "check": "all_17_events_applied",
+      "status": "PASS",
+      "detail": 17
+    },
+    {
+      "check": "each_event_frame_count",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "all_4_merchant_graphics_applied",
+      "status": "PASS",
+      "detail": 4
+    },
+    {
+      "check": "each_graphic_frame_count",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "canonical_merchant_fields_only",
+      "status": "PASS",
+      "detail": [
+        "nom",
+        "produit",
+        "prix",
+        "whatsapp",
+        "quartier",
+        "accroche"
+      ]
+    },
+    {
+      "check": "technical_labels_not_rendered",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "visible_texts_do_not_contain_forbidden_labels",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "owner_feedback_legibility_corrected",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "owner_feedback_blue_lines_corrected",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_visible_transition_guides",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "panel_match_has_zero_gap_and_border",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "panel_match_separators_disabled",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "panel_match_separator_proof_frames",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "variable_font_weights_explicit",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "small_text_effective_size",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "text_contrast_ratio",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "small_text_weight_at_least_600",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "references_2_and_4",
+      "status": "PASS",
+      "detail": [
+        "R3-B03-REF-02",
+        "R3-B03-REF-04"
+      ]
+    },
+    {
+      "check": "raw_rushes_not_published",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "transition_contact_sheet",
+      "status": "PASS",
+      "detail": 345088
+    }
+  ],
+  "summary": {
+    "passed": 32,
+    "failed": 0
+  },
+  "limitations": [
+    "La validation objective ne remplace pas le visionnage créatif du propriétaire.",
+    "Le master est un candidat silencieux; aucune musique ni voix off n’est incluse.",
+    "Les rushes Pexels servent à la démonstration et ne sont pas les captations d’un commerçant réel."
+  ],
+  "owner_approval_required": true,
+  "ffprobe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 720,
+        "height": 1280,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "900",
+        "nb_read_frames": "900"
+      }
+    ],
+    "format": {
+      "duration": "30.000000",
+      "size": "10601443",
+      "bit_rate": "2827051"
+    }
+  }
+}

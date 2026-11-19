@@ -1,0 +1,62 @@
+{
+  "video": "VIDEO_T3_SILENCIEUSE_SANS_TRAITS_BLEUS_V0_4_A_VALIDER.mp4",
+  "decoded_frames": 900,
+  "old_separator_bgr": [
+    244,
+    206,
+    103
+  ],
+  "mask_note": "Broad cyan envelope; full-line thresholds are 90% of width/height.",
+  "frames": {
+    "769": {
+      "cyan_like_pixels": 0,
+      "max_cyan_like_pixels_in_any_row": 0,
+      "max_cyan_like_pixels_in_any_column": 0,
+      "full_width_line_detected": false,
+      "full_height_line_detected": false
+    },
+    "771": {
+      "cyan_like_pixels": 0,
+      "max_cyan_like_pixels_in_any_row": 0,
+      "max_cyan_like_pixels_in_any_column": 0,
+      "full_width_line_detected": false,
+      "full_height_line_detected": false
+    },
+    "774": {
+      "cyan_like_pixels": 0,
+      "max_cyan_like_pixels_in_any_row": 0,
+      "max_cyan_like_pixels_in_any_column": 0,
+      "full_width_line_detected": false,
+      "full_height_line_detected": false
+    },
+    "775": {
+      "cyan_like_pixels": 0,
+      "max_cyan_like_pixels_in_any_row": 0,
+      "max_cyan_like_pixels_in_any_column": 0,
+      "full_width_line_detected": false,
+      "full_height_line_detected": false
+    },
+    "778": {
+      "cyan_like_pixels": 0,
+      "max_cyan_like_pixels_in_any_row": 0,
+      "max_cyan_like_pixels_in_any_column": 0,
+      "full_width_line_detected": false,
+      "full_height_line_detected": false
+    },
+    "780": {
+      "cyan_like_pixels": 0,
+      "max_cyan_like_pixels_in_any_row": 0,
+      "max_cyan_like_pixels_in_any_column": 0,
+      "full_width_line_detected": false,
+      "full_height_line_detected": false
+    },
+    "781": {
+      "cyan_like_pixels": 0,
+      "max_cyan_like_pixels_in_any_row": 0,
+      "max_cyan_like_pixels_in_any_column": 0,
+      "full_width_line_detected": false,
+      "full_height_line_detected": false
+    }
+  },
+  "status": "PASS"
+}
