@@ -1,0 +1,618 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "restauration_T3_coulisses_capture_flow_v1_0_0",
+  "template_id": "RESTAURATION-T3",
+  "template_version": "1.0.0",
+  "status": "owner_approved_executable_contract",
+  "source_guide": "capture-guide/consignes_T3.json",
+  "counts": {
+    "scenes": 4,
+    "states_per_scene": 3,
+    "stable_capture_screens": 12
+  },
+  "scene_durations_ms": [
+    6000,
+    8000,
+    7000,
+    9000
+  ],
+  "transient_states": [
+    {
+      "id": "COUNTDOWN_3_2_1",
+      "counted_in_12_stable_screens": false,
+      "sequence": [
+        3,
+        2,
+        1
+      ],
+      "must_not_be_written_into_capture": true
+    }
+  ],
+  "runtime_rules": {
+    "camera_required": true,
+    "microphone_requested": true,
+    "speech_optional": true,
+    "playback_audio_enabled": true,
+    "source_speed": 1.0,
+    "automatic_subtitles": false,
+    "retake_deletes_previous_capture": true
+  },
+  "screens": [
+    {
+      "scene_id": "S1",
+      "scene_index": 1,
+      "scene_total": 4,
+      "capture_duration_ms": 6000,
+      "capture_slot": "captures.S1",
+      "ordinal": 1,
+      "screen_id": "T3_CAPTURE_S1_A_GUIDE",
+      "state": "A_GUIDE",
+      "purpose": "Prouver la fraîcheur et montrer ce qui entre réellement dans le plat.",
+      "bindings": {
+        "title": "capture-guide/consignes_T3.json#/scenes/0/titre",
+        "instruction": "capture-guide/consignes_T3.json#/scenes/0/consigne",
+        "film_list": "capture-guide/consignes_T3.json#/scenes/0/a_filmer",
+        "avoid_list": "capture-guide/consignes_T3.json#/scenes/0/a_eviter",
+        "example": "capture-guide/consignes_T3.json#/scenes/0/exemple_facultatif"
+      },
+      "visible_components": [
+        "camera_preview_dimmed",
+        "scene_progress",
+        "instruction_sheet",
+        "film_list",
+        "avoid_list",
+        "voice_note",
+        "optional_example",
+        "start_recording_button"
+      ],
+      "forbidden_components": [
+        "recording_timer",
+        "review_actions",
+        "subtitles"
+      ],
+      "actions": [
+        {
+          "event": "START_RECORDING",
+          "effects": [
+            "request_camera_permission",
+            "request_microphone_permission",
+            "run_COUNTDOWN_3_2_1"
+          ],
+          "next_screen_id": "T3_CAPTURE_S1_B_RECORDING"
+        }
+      ],
+      "proof_png": "ui-screens/approved/T3_CAPTURE_S1_A_GUIDE.png"
+    },
+    {
+      "scene_id": "S1",
+      "scene_index": 1,
+      "scene_total": 4,
+      "capture_duration_ms": 6000,
+      "capture_slot": "captures.S1",
+      "ordinal": 2,
+      "screen_id": "T3_CAPTURE_S1_B_RECORDING",
+      "state": "B_RECORDING",
+      "purpose": "capturer la vidéo et le microphone à vitesse naturelle pendant la durée exacte",
+      "visible_components": [
+        "camera_preview",
+        "microphone_active",
+        "recording_timer",
+        "recording_progress"
+      ],
+      "forbidden_components": [
+        "instruction_sheet",
+        "merchant_fields",
+        "example_text",
+        "manual_stop_button",
+        "review_actions",
+        "subtitles"
+      ],
+      "capture": {
+        "video": true,
+        "microphone_audio": true,
+        "source_speed": 1.0,
+        "source_time_map": "identity",
+        "audio_time_map": "identity",
+        "duration_ms": 6000,
+        "auto_stop": true,
+        "manual_stop": false,
+        "write_to": "runtime.captures.S1.uri"
+      },
+      "actions": [
+        {
+          "event": "CAPTURE_DURATION_REACHED",
+          "effects": [
+            "stop_recorder",
+            "finalize_capture_file",
+            "probe_capture_metadata",
+            "open_audio_review"
+          ],
+          "next_screen_id": "T3_CAPTURE_S1_C_REVIEW"
+        }
+      ],
+      "proof_png": "ui-screens/approved/T3_CAPTURE_S1_B_RECORDING.png"
+    },
+    {
+      "scene_id": "S1",
+      "scene_index": 1,
+      "scene_total": 4,
+      "capture_duration_ms": 6000,
+      "capture_slot": "captures.S1",
+      "ordinal": 3,
+      "screen_id": "T3_CAPTURE_S1_C_REVIEW",
+      "state": "C_REVIEW",
+      "purpose": "relire avec le son et accepter ou refaire la prise",
+      "visible_components": [
+        "captured_video_preview",
+        "captured_audio_playback",
+        "review_question",
+        "redo_button",
+        "accept_button"
+      ],
+      "forbidden_components": [
+        "instruction_sheet",
+        "recording_timer",
+        "recording_progress",
+        "subtitles"
+      ],
+      "playback": {
+        "audio": true,
+        "loop": true,
+        "source_speed": 1.0
+      },
+      "actions": [
+        {
+          "event": "RETAKE",
+          "label": "REFAIRE",
+          "effects": [
+            "delete:runtime.captures.S1",
+            "reset_scene_capture_state"
+          ],
+          "next_screen_id": "T3_CAPTURE_S1_A_GUIDE"
+        },
+        {
+          "event": "ACCEPT_CAPTURE",
+          "label": "SCÈNE SUIVANTE",
+          "effects": [
+            "persist:runtime.captures.S1",
+            "mark_capture_accepted"
+          ],
+          "next_screen_id": "T3_CAPTURE_S2_A_GUIDE"
+        }
+      ],
+      "proof_png": "ui-screens/approved/T3_CAPTURE_S1_C_REVIEW.png"
+    },
+    {
+      "scene_id": "S2",
+      "scene_index": 2,
+      "scene_total": 4,
+      "capture_duration_ms": 8000,
+      "capture_slot": "captures.S2",
+      "ordinal": 4,
+      "screen_id": "T3_CAPTURE_S2_A_GUIDE",
+      "state": "A_GUIDE",
+      "purpose": "Montrer le savoir-faire avec une action de préparation réelle et complète.",
+      "bindings": {
+        "title": "capture-guide/consignes_T3.json#/scenes/1/titre",
+        "instruction": "capture-guide/consignes_T3.json#/scenes/1/consigne",
+        "film_list": "capture-guide/consignes_T3.json#/scenes/1/a_filmer",
+        "avoid_list": "capture-guide/consignes_T3.json#/scenes/1/a_eviter",
+        "example": "capture-guide/consignes_T3.json#/scenes/1/exemple_facultatif"
+      },
+      "visible_components": [
+        "camera_preview_dimmed",
+        "scene_progress",
+        "instruction_sheet",
+        "film_list",
+        "avoid_list",
+        "voice_note",
+        "optional_example",
+        "start_recording_button"
+      ],
+      "forbidden_components": [
+        "recording_timer",
+        "review_actions",
+        "subtitles"
+      ],
+      "actions": [
+        {
+          "event": "START_RECORDING",
+          "effects": [
+            "request_camera_permission",
+            "request_microphone_permission",
+            "run_COUNTDOWN_3_2_1"
+          ],
+          "next_screen_id": "T3_CAPTURE_S2_B_RECORDING"
+        }
+      ],
+      "proof_png": "ui-screens/approved/T3_CAPTURE_S2_A_GUIDE.png"
+    },
+    {
+      "scene_id": "S2",
+      "scene_index": 2,
+      "scene_total": 4,
+      "capture_duration_ms": 8000,
+      "capture_slot": "captures.S2",
+      "ordinal": 5,
+      "screen_id": "T3_CAPTURE_S2_B_RECORDING",
+      "state": "B_RECORDING",
+      "purpose": "capturer la vidéo et le microphone à vitesse naturelle pendant la durée exacte",
+      "visible_components": [
+        "camera_preview",
+        "microphone_active",
+        "recording_timer",
+        "recording_progress"
+      ],
+      "forbidden_components": [
+        "instruction_sheet",
+        "merchant_fields",
+        "example_text",
+        "manual_stop_button",
+        "review_actions",
+        "subtitles"
+      ],
+      "capture": {
+        "video": true,
+        "microphone_audio": true,
+        "source_speed": 1.0,
+        "source_time_map": "identity",
+        "audio_time_map": "identity",
+        "duration_ms": 8000,
+        "auto_stop": true,
+        "manual_stop": false,
+        "write_to": "runtime.captures.S2.uri"
+      },
+      "actions": [
+        {
+          "event": "CAPTURE_DURATION_REACHED",
+          "effects": [
+            "stop_recorder",
+            "finalize_capture_file",
+            "probe_capture_metadata",
+            "open_audio_review"
+          ],
+          "next_screen_id": "T3_CAPTURE_S2_C_REVIEW"
+        }
+      ],
+      "proof_png": "ui-screens/approved/T3_CAPTURE_S2_B_RECORDING.png"
+    },
+    {
+      "scene_id": "S2",
+      "scene_index": 2,
+      "scene_total": 4,
+      "capture_duration_ms": 8000,
+      "capture_slot": "captures.S2",
+      "ordinal": 6,
+      "screen_id": "T3_CAPTURE_S2_C_REVIEW",
+      "state": "C_REVIEW",
+      "purpose": "relire avec le son et accepter ou refaire la prise",
+      "visible_components": [
+        "captured_video_preview",
+        "captured_audio_playback",
+        "review_question",
+        "redo_button",
+        "accept_button"
+      ],
+      "forbidden_components": [
+        "instruction_sheet",
+        "recording_timer",
+        "recording_progress",
+        "subtitles"
+      ],
+      "playback": {
+        "audio": true,
+        "loop": true,
+        "source_speed": 1.0
+      },
+      "actions": [
+        {
+          "event": "RETAKE",
+          "label": "REFAIRE",
+          "effects": [
+            "delete:runtime.captures.S2",
+            "reset_scene_capture_state"
+          ],
+          "next_screen_id": "T3_CAPTURE_S2_A_GUIDE"
+        },
+        {
+          "event": "ACCEPT_CAPTURE",
+          "label": "SCÈNE SUIVANTE",
+          "effects": [
+            "persist:runtime.captures.S2",
+            "mark_capture_accepted"
+          ],
+          "next_screen_id": "T3_CAPTURE_S3_A_GUIDE"
+        }
+      ],
+      "proof_png": "ui-screens/approved/T3_CAPTURE_S2_C_REVIEW.png"
+    },
+    {
+      "scene_id": "S3",
+      "scene_index": 3,
+      "scene_total": 4,
+      "capture_duration_ms": 7000,
+      "capture_slot": "captures.S3",
+      "ordinal": 7,
+      "screen_id": "T3_CAPTURE_S3_A_GUIDE",
+      "state": "A_GUIDE",
+      "purpose": "Montrer le soin, la précision et la touche finale avant le service.",
+      "bindings": {
+        "title": "capture-guide/consignes_T3.json#/scenes/2/titre",
+        "instruction": "capture-guide/consignes_T3.json#/scenes/2/consigne",
+        "film_list": "capture-guide/consignes_T3.json#/scenes/2/a_filmer",
+        "avoid_list": "capture-guide/consignes_T3.json#/scenes/2/a_eviter",
+        "example": "capture-guide/consignes_T3.json#/scenes/2/exemple_facultatif"
+      },
+      "visible_components": [
+        "camera_preview_dimmed",
+        "scene_progress",
+        "instruction_sheet",
+        "film_list",
+        "avoid_list",
+        "voice_note",
+        "optional_example",
+        "start_recording_button"
+      ],
+      "forbidden_components": [
+        "recording_timer",
+        "review_actions",
+        "subtitles"
+      ],
+      "actions": [
+        {
+          "event": "START_RECORDING",
+          "effects": [
+            "request_camera_permission",
+            "request_microphone_permission",
+            "run_COUNTDOWN_3_2_1"
+          ],
+          "next_screen_id": "T3_CAPTURE_S3_B_RECORDING"
+        }
+      ],
+      "proof_png": "ui-screens/approved/T3_CAPTURE_S3_A_GUIDE.png"
+    },
+    {
+      "scene_id": "S3",
+      "scene_index": 3,
+      "scene_total": 4,
+      "capture_duration_ms": 7000,
+      "capture_slot": "captures.S3",
+      "ordinal": 8,
+      "screen_id": "T3_CAPTURE_S3_B_RECORDING",
+      "state": "B_RECORDING",
+      "purpose": "capturer la vidéo et le microphone à vitesse naturelle pendant la durée exacte",
+      "visible_components": [
+        "camera_preview",
+        "microphone_active",
+        "recording_timer",
+        "recording_progress"
+      ],
+      "forbidden_components": [
+        "instruction_sheet",
+        "merchant_fields",
+        "example_text",
+        "manual_stop_button",
+        "review_actions",
+        "subtitles"
+      ],
+      "capture": {
+        "video": true,
+        "microphone_audio": true,
+        "source_speed": 1.0,
+        "source_time_map": "identity",
+        "audio_time_map": "identity",
+        "duration_ms": 7000,
+        "auto_stop": true,
+        "manual_stop": false,
+        "write_to": "runtime.captures.S3.uri"
+      },
+      "actions": [
+        {
+          "event": "CAPTURE_DURATION_REACHED",
+          "effects": [
+            "stop_recorder",
+            "finalize_capture_file",
+            "probe_capture_metadata",
+            "open_audio_review"
+          ],
+          "next_screen_id": "T3_CAPTURE_S3_C_REVIEW"
+        }
+      ],
+      "proof_png": "ui-screens/approved/T3_CAPTURE_S3_B_RECORDING.png"
+    },
+    {
+      "scene_id": "S3",
+      "scene_index": 3,
+      "scene_total": 4,
+      "capture_duration_ms": 7000,
+      "capture_slot": "captures.S3",
+      "ordinal": 9,
+      "screen_id": "T3_CAPTURE_S3_C_REVIEW",
+      "state": "C_REVIEW",
+      "purpose": "relire avec le son et accepter ou refaire la prise",
+      "visible_components": [
+        "captured_video_preview",
+        "captured_audio_playback",
+        "review_question",
+        "redo_button",
+        "accept_button"
+      ],
+      "forbidden_components": [
+        "instruction_sheet",
+        "recording_timer",
+        "recording_progress",
+        "subtitles"
+      ],
+      "playback": {
+        "audio": true,
+        "loop": true,
+        "source_speed": 1.0
+      },
+      "actions": [
+        {
+          "event": "RETAKE",
+          "label": "REFAIRE",
+          "effects": [
+            "delete:runtime.captures.S3",
+            "reset_scene_capture_state"
+          ],
+          "next_screen_id": "T3_CAPTURE_S3_A_GUIDE"
+        },
+        {
+          "event": "ACCEPT_CAPTURE",
+          "label": "SCÈNE SUIVANTE",
+          "effects": [
+            "persist:runtime.captures.S3",
+            "mark_capture_accepted"
+          ],
+          "next_screen_id": "T3_CAPTURE_S4_A_GUIDE"
+        }
+      ],
+      "proof_png": "ui-screens/approved/T3_CAPTURE_S3_C_REVIEW.png"
+    },
+    {
+      "scene_id": "S4",
+      "scene_index": 4,
+      "scene_total": 4,
+      "capture_duration_ms": 9000,
+      "capture_slot": "captures.S4",
+      "ordinal": 10,
+      "screen_id": "T3_CAPTURE_S4_A_GUIDE",
+      "state": "A_GUIDE",
+      "purpose": "Révéler le plat fini, installer le désir et laisser le CTA lisible.",
+      "bindings": {
+        "title": "capture-guide/consignes_T3.json#/scenes/3/titre",
+        "instruction": "capture-guide/consignes_T3.json#/scenes/3/consigne",
+        "film_list": "capture-guide/consignes_T3.json#/scenes/3/a_filmer",
+        "avoid_list": "capture-guide/consignes_T3.json#/scenes/3/a_eviter",
+        "example": "capture-guide/consignes_T3.json#/scenes/3/exemple_facultatif"
+      },
+      "visible_components": [
+        "camera_preview_dimmed",
+        "scene_progress",
+        "instruction_sheet",
+        "film_list",
+        "avoid_list",
+        "voice_note",
+        "optional_example",
+        "start_recording_button"
+      ],
+      "forbidden_components": [
+        "recording_timer",
+        "review_actions",
+        "subtitles"
+      ],
+      "actions": [
+        {
+          "event": "START_RECORDING",
+          "effects": [
+            "request_camera_permission",
+            "request_microphone_permission",
+            "run_COUNTDOWN_3_2_1"
+          ],
+          "next_screen_id": "T3_CAPTURE_S4_B_RECORDING"
+        }
+      ],
+      "proof_png": "ui-screens/approved/T3_CAPTURE_S4_A_GUIDE.png"
+    },
+    {
+      "scene_id": "S4",
+      "scene_index": 4,
+      "scene_total": 4,
+      "capture_duration_ms": 9000,
+      "capture_slot": "captures.S4",
+      "ordinal": 11,
+      "screen_id": "T3_CAPTURE_S4_B_RECORDING",
+      "state": "B_RECORDING",
+      "purpose": "capturer la vidéo et le microphone à vitesse naturelle pendant la durée exacte",
+      "visible_components": [
+        "camera_preview",
+        "microphone_active",
+        "recording_timer",
+        "recording_progress"
+      ],
+      "forbidden_components": [
+        "instruction_sheet",
+        "merchant_fields",
+        "example_text",
+        "manual_stop_button",
+        "review_actions",
+        "subtitles"
+      ],
+      "capture": {
+        "video": true,
+        "microphone_audio": true,
+        "source_speed": 1.0,
+        "source_time_map": "identity",
+        "audio_time_map": "identity",
+        "duration_ms": 9000,
+        "auto_stop": true,
+        "manual_stop": false,
+        "write_to": "runtime.captures.S4.uri"
+      },
+      "actions": [
+        {
+          "event": "CAPTURE_DURATION_REACHED",
+          "effects": [
+            "stop_recorder",
+            "finalize_capture_file",
+            "probe_capture_metadata",
+            "open_audio_review"
+          ],
+          "next_screen_id": "T3_CAPTURE_S4_C_REVIEW"
+        }
+      ],
+      "proof_png": "ui-screens/approved/T3_CAPTURE_S4_B_RECORDING.png"
+    },
+    {
+      "scene_id": "S4",
+      "scene_index": 4,
+      "scene_total": 4,
+      "capture_duration_ms": 9000,
+      "capture_slot": "captures.S4",
+      "ordinal": 12,
+      "screen_id": "T3_CAPTURE_S4_C_REVIEW",
+      "state": "C_REVIEW",
+      "purpose": "relire avec le son et accepter ou refaire la prise",
+      "visible_components": [
+        "captured_video_preview",
+        "captured_audio_playback",
+        "review_question",
+        "redo_button",
+        "accept_button"
+      ],
+      "forbidden_components": [
+        "instruction_sheet",
+        "recording_timer",
+        "recording_progress",
+        "subtitles"
+      ],
+      "playback": {
+        "audio": true,
+        "loop": true,
+        "source_speed": 1.0
+      },
+      "actions": [
+        {
+          "event": "RETAKE",
+          "label": "REFAIRE",
+          "effects": [
+            "delete:runtime.captures.S4",
+            "reset_scene_capture_state"
+          ],
+          "next_screen_id": "T3_CAPTURE_S4_A_GUIDE"
+        },
+        {
+          "event": "ACCEPT_CAPTURE",
+          "label": "VOIR MON MONTAGE",
+          "effects": [
+            "persist:runtime.captures.S4",
+            "mark_capture_accepted"
+          ],
+          "next_screen_id": "T3_RENDER_CONFIRMATION"
+        }
+      ],
+      "proof_png": "ui-screens/approved/T3_CAPTURE_S4_C_REVIEW.png"
+    }
+  ]
+}

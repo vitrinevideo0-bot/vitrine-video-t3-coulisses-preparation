@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "render_job.schema.json",
+  "title": "RESTAURATION-T3 RenderJob",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "job_id", "template_id", "template_version", "audio_profile", "merchant_payload", "captures", "music", "voice", "render", "control_plane"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "job_id": {"type": "string", "pattern": "^t3-[a-z0-9][a-z0-9._-]{7,127}$"},
+    "template_id": {"const": "RESTAURATION-T3"},
+    "template_version": {"const": "1.0.0"},
+    "audio_profile": {"const": "afrobeat_amapiano"},
+    "merchant_payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nom", "produit", "prix", "whatsapp", "quartier", "accroche"],
+      "properties": {
+        "nom": {"type": "string", "minLength": 1, "maxLength": 80},
+        "produit": {"type": "string", "minLength": 1, "maxLength": 100},
+        "prix": {"type": "string", "minLength": 1, "maxLength": 40},
+        "whatsapp": {"type": "string", "minLength": 5, "maxLength": 40},
+        "quartier": {"type": "string", "minLength": 1, "maxLength": 120},
+        "accroche": {"type": "string", "maxLength": 160}
+      }
+    },
+    "captures": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["S1", "S2", "S3", "S4"],
+      "properties": {
+        "S1": {"$ref": "#/$defs/capture6"},
+        "S2": {"$ref": "#/$defs/capture8"},
+        "S3": {"$ref": "#/$defs/capture7"},
+        "S4": {"$ref": "#/$defs/capture9"}
+      }
+    },
+    "music": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["selection_mode", "selected_variant_id", "last_successful_variant_id", "state_update_policy"],
+      "properties": {
+        "selection_mode": {"enum": ["explicit", "deterministic_excluding_last_successful"]},
+        "selected_variant_id": {"enum": ["t3_music_481806", "t3_music_360659", "t3_music_485507", "t3_music_245452"]},
+        "last_successful_variant_id": {"type": ["string", "null"], "enum": [null, "t3_music_481806", "t3_music_360659", "t3_music_485507", "t3_music_245452"]},
+        "state_update_policy": {"const": "after_success_only"}
+      }
+    },
+    "voice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "registered_voice_id", "source_speed", "audio_time_map", "fallback_contract"],
+      "properties": {
+        "mode": {"enum": ["registered_voice_clips", "captured_scene_audio", "captured_or_registered_fallback"]},
+        "registered_voice_id": {"const": "voice-02"},
+        "source_speed": {"const": 1.0},
+        "audio_time_map": {"const": "identity"},
+        "fallback_contract": {"const": "config/T3_VOICE_MIX_V1_0_0.json"}
+      }
+    },
+    "render": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["visual_contract", "transition_contract", "capture_flow_contract", "width", "height", "fps", "frames", "duration_s", "output_count", "production_render_plane"],
+      "properties": {
+        "visual_contract": {"const": "config/T3_TEXT_MOTION_V0_4_0.json"},
+        "transition_contract": {"const": "reverse-engineering/T3_TRANSITIONS_30S.json"},
+        "capture_flow_contract": {"const": "config/T3_CAPTURE_FLOW_V1_0_0.json"},
+        "width": {"const": 720}, "height": {"const": 1280}, "fps": {"const": 30}, "frames": {"const": 900},
+        "duration_s": {"const": 30.0}, "output_count": {"const": 1}, "production_render_plane": {"const": "github_actions"}
+      }
+    },
+    "control_plane": {"enum": ["github_actions_manual", "common_cloudflare_control_plane"]}
+  },
+  "$defs": {
+    "captureBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["uri", "sha256", "bytes", "content_type", "duration_s", "has_audio", "source_speed"],
+      "properties": {
+        "uri": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "content_type": {"enum": ["video/mp4", "video/webm", "video/quicktime"]},
+        "duration_s": {"type": "number"},
+        "has_audio": {"type": "boolean"},
+        "source_speed": {"const": 1.0}
+      }
+    },
+    "capture6": {"allOf": [{"$ref": "#/$defs/captureBase"}, {"properties": {"duration_s": {"const": 6.0}}}]},
+    "capture8": {"allOf": [{"$ref": "#/$defs/captureBase"}, {"properties": {"duration_s": {"const": 8.0}}}]},
+    "capture7": {"allOf": [{"$ref": "#/$defs/captureBase"}, {"properties": {"duration_s": {"const": 7.0}}}]},
+    "capture9": {"allOf": [{"$ref": "#/$defs/captureBase"}, {"properties": {"duration_s": {"const": 9.0}}}]}
+  }
+}

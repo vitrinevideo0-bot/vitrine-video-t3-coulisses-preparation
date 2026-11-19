@@ -19,5 +19,9 @@ jobs:
           python-version: '3.12'
           cache: pip
       - run: python -m pip install -r requirements.txt
-      - run: python -m compileall -q engine tools tests
+      - run: python -m compileall -q adapter engine tools tests
       - run: python -m unittest discover -s tests -v
+      - name: Prouver que le contrat des 12 écrans est reproductible
+        run: |
+          python tools/build_t3_capture_flow.py --output /tmp/T3_CAPTURE_FLOW_V1_0_0.json
+          cmp config/T3_CAPTURE_FLOW_V1_0_0.json /tmp/T3_CAPTURE_FLOW_V1_0_0.json

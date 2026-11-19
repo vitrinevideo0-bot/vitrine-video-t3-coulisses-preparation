@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "template_version": "1.0.0",
+  "status": "owner_approved_complete_reference",
+  "render_commit": "073888f7498385e576d42eed3a3c0f7dd71bb9d5",
+  "github_run_id": 44564485698,
+  "release_tag": "t3-coulisses-v0.7.0-complete-D-1",
+  "silent_master": {
+    "filename": "VIDEO_T3_SILENCIEUSE_SANS_TRAITS_BLEUS_V0_4_A_VALIDER.mp4",
+    "sha256": "cd61d3cf793874a8b7d2eb8fe694861048368ba64b01216395c6bba0eb879774",
+    "video_bitstream_sha256": "8e415063add70f5807e009b2306c6b1154b0ec19bf35d5b9350012a5f4abe666"
+  },
+  "complete_master": {
+    "filename": "VIDEO_T3_COMPLETE_VOIX_MUSIQUE_D_V0_7_A_VALIDER.mp4",
+    "sha256": "4208d58f52804b2440845c9ce5b249695e9072d8b707ae134386d4bc494740de",
+    "bytes": 11363724,
+    "video_bitstream_sha256": "8e415063add70f5807e009b2306c6b1154b0ec19bf35d5b9350012a5f4abe666",
+    "duration_s": 30.0,
+    "frames": 900,
+    "width": 720,
+    "height": 1280,
+    "fps": 30,
+    "video_codec": "h264",
+    "pixel_format": "yuv420p",
+    "audio_codec": "aac",
+    "audio_sample_rate_hz": 48000,
+    "audio_channels": 2,
+    "integrated_lufs": -16.23,
+    "true_peak_dbtp": -1.99,
+    "clipped_samples": 0
+  },
+  "server_validation": {
+    "status": "PASS",
+    "passed": 45,
+    "failed": 0
+  },
+  "downloaded_release_validation": {
+    "status": "PASS",
+    "passed": 45,
+    "failed": 0
+  }
+}

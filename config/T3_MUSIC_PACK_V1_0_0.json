@@ -1,6 +1,8 @@
 {
   "$schema": "../schemas/T3_music_pack.schema.json",
   "schema_version": "1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "pack_version": "1.0.0",
   "id": "restauration_T3_afrobeat_music_v1_0_0",
   "display_name": "T3 — quatre variantes Afrobeat Pixabay approuvées",
   "status": "all_four_owner_approved_final_render_D",
@@ -26,8 +28,22 @@
     "final_render_variant_id": "t3_music_245452",
     "final_render_pixabay_id": 245452,
     "final_render_title": "Dlozi Lam",
-    "runtime_mode": "explicit approved variant; D selected for current validation master",
-    "network_required": false
+    "runtime_mode": "automatic deterministic selection excluding the last successful variant; explicit choice allowed only when it does not repeat the last success",
+    "network_required": false,
+    "automatic_selection": {
+      "algorithm": "sha256(render_job_id) modulo eligible variants",
+      "first_render_pool": "all_four_owner_approved_variants",
+      "subsequent_pool": "exclude_last_successful_variant",
+      "explicit_repeat_policy": "reject",
+      "state_update_policy": "after_success_only",
+      "offline": true,
+      "implementation": "adapter/t3_adapter.py"
+    },
+    "reference_render": {
+      "choice": "D",
+      "variant_id": "t3_music_245452",
+      "purpose": "owner-approved canonical exemplar only"
+    }
   },
   "timeline": {
     "duration_s": 30.0,

@@ -1,0 +1,75 @@
+{
+  "$schema": "../schemas/T3_template_package.schema.json",
+  "schema_version": "1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "version": "1.0.0",
+  "display_name": "Coulisses de préparation",
+  "sector": "RESTAURATION",
+  "catalog_status": "owner_approved_reference_ready_for_integration",
+  "audio_profile": "afrobeat_amapiano",
+  "purpose": "Prouver le savoir-faire, la fraîcheur et la préparation réelle.",
+  "format": {
+    "width": 720,
+    "height": 1280,
+    "orientation": "portrait",
+    "fps": 30,
+    "frames": 900,
+    "duration_s": 30.0,
+    "scene_durations_s": [6, 8, 7, 9],
+    "video_codec": "h264",
+    "pixel_format": "yuv420p",
+    "delivery_audio": "aac_stereo_48000_hz"
+  },
+  "merchant_payload": {
+    "ordered_fields": ["nom", "produit", "prix", "whatsapp", "quartier", "accroche"],
+    "required_fields": ["nom", "produit", "prix", "whatsapp", "quartier"],
+    "optional_fields": ["accroche"],
+    "source": "form/questions_T3.json"
+  },
+  "capture": {
+    "guide": "capture-guide/consignes_T3.json",
+    "flow_contract": "config/T3_CAPTURE_FLOW_V1_0_0.json",
+    "stable_screens": 12,
+    "camera_captures": 4,
+    "microphone_requested": true,
+    "speech_optional": true,
+    "source_speed": 1.0,
+    "automatic_subtitles": false
+  },
+  "creative_contracts": {
+    "transitions": "reverse-engineering/T3_TRANSITIONS_30S.json",
+    "text_motion": "config/T3_TEXT_MOTION_V0_4_0.json",
+    "music_pack": "config/T3_MUSIC_PACK_V1_0_0.json",
+    "voice_mix": "config/T3_VOICE_MIX_V1_0_0.json"
+  },
+  "runtime_contracts": {
+    "render_job_schema": "schemas/render_job.schema.json",
+    "render_result_schema": "schemas/render_result.schema.json",
+    "render_error_schema": "schemas/render_error.schema.json",
+    "adapter": "adapter/t3_adapter.py",
+    "production_render_plane": "github_actions",
+    "cloudflare_rendering_forbidden": true
+  },
+  "approved_reference": {
+    "silent_file_sha256": "cd61d3cf793874a8b7d2eb8fe694861048368ba64b01216395c6bba0eb879774",
+    "video_bitstream_sha256": "8e415063add70f5807e009b2306c6b1154b0ec19bf35d5b9350012a5f4abe666",
+    "complete_file_sha256": "4208d58f52804b2440845c9ce5b249695e9072d8b707ae134386d4bc494740de",
+    "complete_filename": "VIDEO_T3_COMPLETE_VOIX_MUSIQUE_D_V0_7_A_VALIDER.mp4",
+    "validation": "proofs/complete-v0.7-server/T3_COMPLETE_SERVER_VALIDATION_RUN_44564485698.json"
+  },
+  "catalogue_preparation": {
+    "package_manifest": "packages/t3-coulisses-v1/package_spec.json",
+    "music_catalogue_linked": true,
+    "offline_reconstruction_required": true,
+    "ota_implemented": false,
+    "network_or_cloudflare_code_added": false,
+    "android_integration_implemented": false
+  },
+  "known_protocol_deviations": [
+    {
+      "id": "VOICE_CANDIDATE_EVIDENCE_COUNT",
+      "status": "owner_accepted_final_voice_but_not_four_archived_candidate_files",
+      "detail": "The owner selected voice-02 through the platform audition and approved the final rate and mix; the repository does not archive four comparable candidate voice demonstration files."
+    }
+  ]
+}

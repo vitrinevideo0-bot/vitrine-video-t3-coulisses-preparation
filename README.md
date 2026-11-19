@@ -54,6 +54,23 @@ Le rendu complet a été produit au commit `073888f` par le run GitHub Actions `
 - [Pré-Release du rendu complet](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.7.0-complete-D-1)
 - [Téléchargement direct du MP4 complet](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/download/t3-coulisses-v0.7.0-complete-D-1/VIDEO_T3_COMPLETE_VOIX_MUSIQUE_D_V0_7_A_VALIDER.mp4)
 
+## Architecture d’intégration et préparation OTA
+
+Après l’approbation finale, l’audit croisé T1/T2/T3 a ajouté sans modifier le master :
+
+- le JSON canonique `RESTAURATION-T3` v1.0.0 et son schéma ;
+- le contrat exécutable des douze écrans et une simulation navigateur ;
+- les schémas RenderJob, RenderResult et RenderError ;
+- un adaptateur avec rotation déterministe des quatre musiques, sans répétition du dernier rendu réussi ;
+- un stress test de 10 000 sélections sans répétition adjacente ;
+- un golden conformance lock ;
+- un ZIP intégrateur déterministe, son manifest et sa validation après extraction propre ;
+- une passation explicite vers le futur plan de contrôle Cloudflare commun.
+
+`ota_implemented=false`, `android_integration_implemented=false` et `cloudflare_deployed=false` restent explicites. Aucun Worker, secret, compte, bucket ou endpoint de production n’est dupliqué dans le JSON du gabarit. Le workflow du paquet peut publier une Release uniquement sur demande, avec l’option désactivée par défaut.
+
+**Limite déclarée :** `voice-02` et le mix final sont approuvés, mais le dépôt ne conserve pas quatre fichiers comparables de démonstrations vocales candidates. T3 n’est donc pas présenté comme strictement conforme à 100 % au protocole universel actuel; T4 et T5 devront archiver ces quatre candidates.
+
 - [Run de rendu GitHub Actions v0.4](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44555498879)
 - [Pré-Release sans traits bleus v0.4](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.4.0-silent-candidate-4)
 - [Téléchargement direct du MP4](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/download/t3-coulisses-v0.4.0-silent-candidate-4/VIDEO_T3_SILENCIEUSE_SANS_TRAITS_BLEUS_V0_4_A_VALIDER.mp4)
@@ -112,8 +129,16 @@ Le workflow historique **Rendu silencieux T3 sur GitHub** :
 - `audio/scripts/build_t3_complete_voice.py` — constructeur reproductible du master complet ;
 - `tools/validate_complete.py` — validation indépendante voix, musique, loudness et invariance visuelle ;
 - `.github/workflows/render-complete-voice-music-D.yml` — rendu serveur, artefact et pré-Release ;
+- `config/T3_COULISSES_TEMPLATE_V1_0_0.json` — identité canonique et métadonnées OTA honnêtes ;
+- `config/T3_CAPTURE_FLOW_V1_0_0.json` — machine exécutable des douze écrans ;
+- `adapter/t3_adapter.py` — RenderJob et rotation musicale anti-répétition ;
+- `schemas/render_job.schema.json`, `render_result.schema.json`, `render_error.schema.json` — frontière runtime stricte ;
+- `packages/t3-coulisses-v1/package_spec.json` — source du ZIP intégrateur déterministe ;
+- `integration-handoff/` — limites Android, serveur, Cloudflare et OTA ;
+- `.github/workflows/build-integrator-package.yml` — build et validation du paquet, publication désactivée par défaut ;
 - `proofs/complete-v0.7-server/` — rapports serveur, audit Release et revalidation après téléchargement ;
 - `reports/RAPPORT_RENDU_COMPLET_GITHUB_RUN_44564485698.md` — synthèse du master complet ;
+- `reports/AUDIT_ARCHITECTURE_T1_T2_T3_2026-11-18.md` — audit comparatif et écarts déclarés ;
 - `docs/LICENCES_RUSHS.md` — provenance et limites de licence.
 
 ## Références créatives

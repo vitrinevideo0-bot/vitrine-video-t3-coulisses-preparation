@@ -2,9 +2,9 @@
   "template_id": "RESTAURATION-T3",
   "sector": "RESTAURATION",
   "catalog_name": "Coulisses de préparation",
-  "catalog_status": "CANDIDAT COMPLET GITHUB À VALIDER",
-  "workflow_status_number": 13,
-  "workflow_status": "Rendu complet GitHub voix + musique D produit et revalidé 45/45",
+  "catalog_status": "EXISTANT",
+  "workflow_status_number": 16,
+  "workflow_status": "Préparation OTA hors ligne effectuée — paquet GitHub intégrateur à contrôler",
   "reference_batch_current": "LOT-03",
   "selected_reference": "R3-B03-REF-02 + R3-B03-REF-04",
   "branch_planned": "main",
@@ -127,7 +127,24 @@
     "proofs/complete-v0.7-server/T3_COMPLETE_DOWNLOADED_RELEASE_VALIDATION_RUN_44564485698.json",
     "proofs/complete-v0.7-server/T3_COMPLETE_GITHUB_RELEASE_AUDIT_RUN_44564485698.json",
     "proofs/complete-v0.7-server/SHA256SUMS_COMPLETE_RELEASE_RUN_44564485698.txt",
-    "reports/RAPPORT_RENDU_COMPLET_GITHUB_RUN_44564485698.md"
+    "reports/RAPPORT_RENDU_COMPLET_GITHUB_RUN_44564485698.md",
+    "config/T3_COULISSES_TEMPLATE_V1_0_0.json",
+    "config/T3_CAPTURE_FLOW_V1_0_0.json",
+    "schemas/T3_template_package.schema.json",
+    "schemas/render_job.schema.json",
+    "schemas/render_result.schema.json",
+    "schemas/render_error.schema.json",
+    "fixtures/t3-coulisses/render_job.valid.json",
+    "fixtures/t3-coulisses/render_result.valid.json",
+    "fixtures/t3-coulisses/render_error.unsupported_media.json",
+    "adapter/t3_adapter.py",
+    "conformance/T3_GOLDEN_V1.json",
+    "packages/t3-coulisses-v1/package_spec.json",
+    "integration-handoff/T3_CLOUDFLARE_BOUNDARY_V1.json",
+    "integration-handoff/T3_INTEGRATOR_HANDOFF_V1.md",
+    "reports/AUDIT_ARCHITECTURE_T1_T2_T3_2026-11-18.md",
+    "reports/AUDIT_ARCHITECTURE_T1_T2_T3_2026-11-18.json",
+    ".github/workflows/build-integrator-package.yml"
   ],
   "owner_decisions": [
     {
@@ -236,14 +253,29 @@
       "pixabay_id": 245452,
       "title": "Dlozi Lam",
       "artist": "PremiumMusicOdyssey"
+    },
+    {
+      "phase": "complete_template_final_approval",
+      "date": "2026-11-18",
+      "decision": "Le propriétaire félicite le résultat et confirme que le troisième gabarit est terminé.",
+      "evidence": "Message propriétaire après présentation du MP4 complet GitHub.",
+      "scope": [
+        "master complet T3",
+        "voix voice-02",
+        "musique D — Dlozi Lam",
+        "gabarit RESTAURATION-T3"
+      ]
     }
   ],
-  "decision_expected": "Visionner le MP4 complet produit sur GitHub avec la musique D, puis confirmer la validation finale ou demander une correction précise.",
-  "blockers": [],
+  "decision_expected": "Exécuter le workflow du paquet intégrateur sur le commit exact, télécharger l’artefact, vérifier l’extraction et archiver les preuves.",
+  "blockers": [
+    "Écart déclaré : quatre démonstrations vocales candidates comparables ne sont pas archivées; voice-02 et le rendu final sont néanmoins approuvés.",
+    "Cloudflare/Android/OTA de production relèvent d’une mission d’intégration distincte et ne sont pas autorisés ni déployés."
+  ],
   "development_started": true,
   "music_started": true,
   "voice_started": true,
-  "ota_started": false,
+  "ota_started": true,
   "cloudflare_deployed": false,
   "selected_references": [
     "R3-B03-REF-02",
@@ -251,12 +283,12 @@
   ],
   "selection_mode": "combined",
   "last_owner_approval": {
-    "phase": "voice_rate_ducking_and_final_music_selection",
+    "phase": "complete_template_final_approval",
     "date": "2026-11-18",
-    "object": "Voix voice-02, quatre placements, ducking T1 et musique finale D — Dlozi Lam",
-    "decision": "Approuvé; push et rendu complet GitHub Actions autorisés.",
-    "music_choice": "D",
-    "pixabay_id": 245452
+    "object": "RESTAURATION-T3 — Coulisses de préparation, master complet GitHub",
+    "decision": "Approuvé comme troisième gabarit terminé.",
+    "render_run_id": 44564485698,
+    "release_tag": "t3-coulisses-v0.7.0-complete-D-1"
   },
   "approved_contracts": {
     "questions": "form/questions_T3.json",
@@ -265,9 +297,17 @@
     "approval_record": "approvals/APPROBATION_QUESTIONS_CAPTURE_12_ECRANS_2026-11-18.json",
     "music_pack": "config/T3_MUSIC_PACK_V1_0_0.json",
     "voice_mix": "config/T3_VOICE_MIX_V1_0_0.json",
-    "complete_render_workflow": ".github/workflows/render-complete-voice-music-D.yml"
+    "complete_render_workflow": ".github/workflows/render-complete-voice-music-D.yml",
+    "canonical_template": "config/T3_COULISSES_TEMPLATE_V1_0_0.json",
+    "capture_flow": "config/T3_CAPTURE_FLOW_V1_0_0.json",
+    "render_job_schema": "schemas/render_job.schema.json",
+    "render_result_schema": "schemas/render_result.schema.json",
+    "render_error_schema": "schemas/render_error.schema.json",
+    "golden_conformance": "conformance/T3_GOLDEN_V1.json",
+    "integrator_package_spec": "packages/t3-coulisses-v1/package_spec.json",
+    "cloudflare_boundary": "integration-handoff/T3_CLOUDFLARE_BOUNDARY_V1.json"
   },
-  "workflow_note": "Rendu complet produit exclusivement sur GitHub Actions avec D — Dlozi Lam et voice-02. Constructeur 22/22 PASS, validation serveur 45/45 PASS, revalidation après téléchargement 45/45 PASS; flux vidéo v0.4 inchangé.",
+  "workflow_note": "T3 créatif approuvé. Audit T1/T2/T3 exécuté : T1 104/104, T2 59/59 + Cloudflare dry-run/intégration PASS, T3 36/36. Préparation OTA hors ligne et paquet intégrateur T3 ajoutés sans modifier le master. Cloudflare production reste volontairement non déployé.",
   "development_phase": {
     "engine": "engine/render_silent.py",
     "source_manifest": "rushes/manifest.json",
@@ -951,8 +991,10 @@
     "github_run_started": true,
     "release_created": true,
     "authoritative_master_source": "github_actions",
-    "owner_final_viewing_pending": true,
-    "local_outputs_are_not_final": true
+    "owner_final_viewing_pending": false,
+    "local_outputs_are_not_final": true,
+    "owner_final_approved": true,
+    "owner_final_approval_date": "2026-11-18"
   },
   "last_complete_server_evidence": {
     "date_local": "2026-11-18",
@@ -980,5 +1022,54 @@
     "visual_stream_unchanged": true,
     "music_choice": "D",
     "voice_id": "voice-02"
+  },
+  "catalog_status_note": "Master T3 approuvé et paquet intégrateur préparé; conformité universelle stricte limitée par l’absence de quatre fichiers archivés de voix candidates.",
+  "architecture_audit": {
+    "status": "PASS_WITH_DECLARED_GAPS",
+    "report": "reports/AUDIT_ARCHITECTURE_T1_T2_T3_2026-11-18.md",
+    "machine_report": "reports/AUDIT_ARCHITECTURE_T1_T2_T3_2026-11-18.json",
+    "t1_tests": "104/104 PASS after golden materialization",
+    "t2_tests": "59/59 PASS plus Cloudflare dry-build and integration PASS",
+    "t3_tests": "36/36 PASS",
+    "strict_universal_architecture_100_percent": false,
+    "remaining_t3_deviation": "four comparable candidate voice demo files not archived"
+  },
+  "catalogue_ota_preparation": {
+    "status": "prepared_offline_not_operational",
+    "template_id": "RESTAURATION-T3",
+    "version": "1.0.0",
+    "audio_profile": "afrobeat_amapiano",
+    "canonical_template": "config/T3_COULISSES_TEMPLATE_V1_0_0.json",
+    "package_spec": "packages/t3-coulisses-v1/package_spec.json",
+    "rotation": {
+      "variants": 4,
+      "algorithm": "deterministic excluding last successful",
+      "stress_test_renders": 10000,
+      "adjacent_repeats": 0
+    },
+    "local_package_preflight": {
+      "status": "PASS",
+      "checks": "29/29",
+      "deterministic_two_builds": true
+    },
+    "ota_implemented": false,
+    "android_integrated": false,
+    "cloudflare_deployed": false
+  },
+  "cloudflare": {
+    "status": "not_deployed_by_design",
+    "common_repository_proposed": "vitrinevideo0-bot/vitrine-video-gabarits",
+    "common_repository_exists": false,
+    "t1_worker_present": false,
+    "t2_control_plane_dry_run_and_integration_pass": true,
+    "t2_deployed": false,
+    "t3_worker_present": false,
+    "t3_boundary_contract": "integration-handoff/T3_CLOUDFLARE_BOUNDARY_V1.json",
+    "github_repo_secrets_found": 0,
+    "github_repo_variables_found": 0,
+    "github_environments_found": 0,
+    "github_deployments_found": 0,
+    "deployment_authorized": false,
+    "reason": "Universal protocol forbids production deployment without a separate explicit owner order."
   }
 }

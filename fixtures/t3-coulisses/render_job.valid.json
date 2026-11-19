@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "job_id": "t3-casa-tacos-reference-v1",
+  "template_id": "RESTAURATION-T3",
+  "template_version": "1.0.0",
+  "audio_profile": "afrobeat_amapiano",
+  "merchant_payload": {
+    "nom": "Casa Tacos",
+    "produit": "Tacos maison",
+    "prix": "2500",
+    "whatsapp": "+229 01 97 00 00 00",
+    "quartier": "Kandi · près du marché central",
+    "accroche": "Préparé à la commande"
+  },
+  "captures": {
+    "S1": {
+      "uri": "capture://s1",
+      "sha256": "3696ad59777e09d5f2daacb544022d435e7cd053d87c5781241fabd8fdf2a90d",
+      "bytes": 1000001,
+      "content_type": "video/mp4",
+      "duration_s": 6.0,
+      "has_audio": true,
+      "source_speed": 1.0
+    },
+    "S2": {
+      "uri": "capture://s2",
+      "sha256": "adfa2b24c2d924fe6383d8804be55afb98ea3eb0e14c3470ac3a0f651b9a422e",
+      "bytes": 1000002,
+      "content_type": "video/mp4",
+      "duration_s": 8.0,
+      "has_audio": true,
+      "source_speed": 1.0
+    },
+    "S3": {
+      "uri": "capture://s3",
+      "sha256": "44d6a8a73eddb284d49799fdbfa2919a004ece6d2df3546eaa4e246048bcdf81",
+      "bytes": 1000003,
+      "content_type": "video/mp4",
+      "duration_s": 7.0,
+      "has_audio": true,
+      "source_speed": 1.0
+    },
+    "S4": {
+      "uri": "capture://s4",
+      "sha256": "b1d3eb8f32936fa9cf89d2240bd10734270fd55ff4644ad254b3b237468bad88",
+      "bytes": 1000004,
+      "content_type": "video/mp4",
+      "duration_s": 9.0,
+      "has_audio": true,
+      "source_speed": 1.0
+    }
+  },
+  "music": {
+    "selection_mode": "explicit",
+    "selected_variant_id": "t3_music_245452",
+    "last_successful_variant_id": null,
+    "state_update_policy": "after_success_only"
+  },
+  "voice": {
+    "mode": "registered_voice_clips",
+    "registered_voice_id": "voice-02",
+    "source_speed": 1.0,
+    "audio_time_map": "identity",
+    "fallback_contract": "config/T3_VOICE_MIX_V1_0_0.json"
+  },
+  "render": {
+    "visual_contract": "config/T3_TEXT_MOTION_V0_4_0.json",
+    "transition_contract": "reverse-engineering/T3_TRANSITIONS_30S.json",
+    "capture_flow_contract": "config/T3_CAPTURE_FLOW_V1_0_0.json",
+    "width": 720,
+    "height": 1280,
+    "fps": 30,
+    "frames": 900,
+    "duration_s": 30.0,
+    "output_count": 1,
+    "production_render_plane": "github_actions"
+  },
+  "control_plane": "github_actions_manual"
+}

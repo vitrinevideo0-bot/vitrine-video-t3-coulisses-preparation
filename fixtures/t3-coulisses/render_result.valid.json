@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "job_id": "t3-casa-tacos-reference-v1",
+  "template_id": "RESTAURATION-T3",
+  "template_version": "1.0.0",
+  "status": "COMPLETED",
+  "output": {
+    "uri": "release://t3-coulisses-v0.7.0-complete-D-1/VIDEO_T3_COMPLETE_VOIX_MUSIQUE_D_V0_7_A_VALIDER.mp4",
+    "sha256": "4208d58f52804b2440845c9ce5b249695e9072d8b707ae134386d4bc494740de",
+    "bytes": 11363724,
+    "duration_s": 30.0,
+    "frames": 900,
+    "width": 720,
+    "height": 1280,
+    "fps": 30,
+    "audio_sample_rate_hz": 48000,
+    "audio_channels": 2
+  },
+  "music_variant_id": "t3_music_245452",
+  "input_capture_sha256": {
+    "S1": "3696ad59777e09d5f2daacb544022d435e7cd053d87c5781241fabd8fdf2a90d",
+    "S2": "adfa2b24c2d924fe6383d8804be55afb98ea3eb0e14c3470ac3a0f651b9a422e",
+    "S3": "44d6a8a73eddb284d49799fdbfa2919a004ece6d2df3546eaa4e246048bcdf81",
+    "S4": "b1d3eb8f32936fa9cf89d2240bd10734270fd55ff4644ad254b3b237468bad88"
+  },
+  "qc": {
+    "status": "PASS",
+    "checks_passed": 45,
+    "checks_failed": 0,
+    "visual_stream_sha256": "8e415063add70f5807e009b2306c6b1154b0ec19bf35d5b9350012a5f4abe666",
+    "clipped_samples": 0
+  }
+}

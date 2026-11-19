@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0.0",
+  "audit_date_local": "2026-11-18",
+  "protocol": "/home/user/INSTRUCTION_UNIVERSELLE_VITRINE_VIDEO_V1.md",
+  "status": "PASS_WITH_DECLARED_GAPS",
+  "strict_universal_architecture_100_percent": false,
+  "templates": {
+    "RESTAURATION-T1": {
+      "repository": "https://github.com/j9028379-hue/vitrine-video-t1-pilot",
+      "audited_commit": "c656510ab81d31d413dc4dfd74b42671532cd978",
+      "test_result": {
+        "status": "PASS",
+        "passed": 104,
+        "failed": 0,
+        "precondition": "golden master materialized from release t1-special-menu-reference-v3-preview and verified by SHA-256"
+      },
+      "complete_release": "t1-complete-voice-video-v1.0.0",
+      "strengths": [
+        "canonical template package and strict schemas",
+        "RenderJob, RenderResult and RenderError contracts",
+        "four-track music pack and deterministic non-repeating rotation",
+        "offline OTA metadata preparation",
+        "complete GitHub-rendered voice master and releases"
+      ],
+      "gaps_against_current_universal_protocol": [
+        "four comparable candidate voice demonstration files are not archived; T1 predates that rule",
+        "voice human-approval evidence is documentarily ambiguous",
+        "historical complete workflow deletes and recreates an existing release tag",
+        "final engineering work is split between default branch, engineering branch and releases",
+        "no common Cloudflare control plane or production deployment"
+      ],
+      "cloudflare": {
+        "worker_code_present": false,
+        "deployed": false,
+        "ota_operational": false,
+        "assessment": "correctly described as offline preparation only"
+      },
+      "strict_100_percent": false
+    },
+    "RESTAURATION-T2": {
+      "repository": "https://github.com/vitrinevideo0-bot/vitrine-video-t2-avant-apres",
+      "audited_commit": "4fad4f0983b6a2fa223b4874bd40ff62f8a7c9fd",
+      "test_result": {
+        "status": "PASS",
+        "passed": 59,
+        "failed": 0,
+        "additional_checks": [
+          "RenderJobs rebuilt without drift",
+          "strict schemas and fixtures pass",
+          "visual pipeline lock pass",
+          "Cloudflare TypeScript type-check pass under Node 24",
+          "Wrangler dry-build pass",
+          "local Worker/R2/GitHub integration pass"
+        ]
+      },
+      "reference_render_run": 44515210635,
+      "strengths": [
+        "unified runtime from form and twelve screens to GitHub rendering",
+        "strict RenderJob, RenderResult and RenderError contracts",
+        "Cloudflare control-plane code typed, dry-built and integration-tested",
+        "exact visual master rematerialization and hash locks",
+        "server-only production rendering"
+      ],
+      "gaps_against_current_universal_protocol": [
+        "current reference uses one approved music D but no delivered four-track automatic non-repeating runtime pack",
+        "four comparable candidate voice demonstration files are not archived",
+        "public v0.7 release is absent by explicit owner publication gate",
+        "offline OTA integrator ZIP and handoff are not delivered",
+        "canonical historical status is not fully consolidated with v0.7 runtime status",
+        "not consolidated in the proposed common catalogue repository"
+      ],
+      "cloudflare": {
+        "worker_code_present": true,
+        "dry_build_pass": true,
+        "local_integration_pass": true,
+        "github_validation_runs_pass": [
+          44502934937,
+          44503055474,
+          44510311311,
+          44510418089
+        ],
+        "repository_secret_count": 0,
+        "repository_variable_count": 0,
+        "environment_count": 0,
+        "github_deployment_count": 0,
+        "deployed": false,
+        "assessment": "validated deployable plan, not production"
+      },
+      "strict_100_percent": false
+    },
+    "RESTAURATION-T3": {
+      "repository": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation",
+      "master_render_commit": "073888f7498385e576d42eed3a3c0f7dd71bb9d5",
+      "audit_start_commit": "3f8bd3438c1704bf5e3b6279bb860d0d80cd6a16",
+      "test_result_before_remediation": {
+        "status": "PASS",
+        "passed": 23,
+        "failed": 0
+      },
+      "test_result_after_local_remediation": {
+        "status": "PASS",
+        "passed": 36,
+        "failed": 0
+      },
+      "complete_render": {
+        "run_id": 44564485698,
+        "server_builder_checks": "22/22 PASS",
+        "server_independent_checks": "45/45 PASS",
+        "downloaded_release_checks": "45/45 PASS",
+        "release": "t3-coulisses-v0.7.0-complete-D-1",
+        "video_sha256": "4208d58f52804b2440845c9ce5b249695e9072d8b707ae134386d4bc494740de",
+        "video_stream_sha256": "8e415063add70f5807e009b2306c6b1154b0ec19bf35d5b9350012a5f4abe666"
+      },
+      "architecture_remediation_added": [
+        "canonical template metadata template_id/version/audio_profile",
+        "executable twelve-screen capture-flow contract and browser simulation",
+        "strict RenderJob, RenderResult and RenderError schemas and fixtures",
+        "offline deterministic four-track rotation excluding the last successful track",
+        "10000-render zero-adjacent-repeat stress test",
+        "golden conformance lock",
+        "deterministic integrator ZIP builder and clean-extraction validator",
+        "Cloudflare/common-control-plane handoff boundary with no secrets or deployment claims",
+        "release publication disabled by default"
+      ],
+      "local_integrator_package": {
+        "status": "PASS",
+        "checks": "29/29 PASS",
+        "deterministic_two_builds_identical": true,
+        "zip_hash_authority": "GitHub package workflow artifact; local hash intentionally not canonical because the audit/status files are part of the ZIP payload."
+      },
+      "remaining_gap_against_current_universal_protocol": [
+        "the repository does not archive exactly four comparable candidate voice demo files; voice-02 selection and final human approval are proven"
+      ],
+      "cloudflare": {
+        "worker_code_present": false,
+        "boundary_contract_present": true,
+        "repository_secret_count": 0,
+        "repository_variable_count": 0,
+        "environment_count": 0,
+        "github_deployment_count": 0,
+        "deployed": false,
+        "assessment": "correctly separated; common production deployment not authorized"
+      },
+      "strict_100_percent": false
+    }
+  },
+  "shared_cloudflare": {
+    "proposed_repository": "vitrinevideo0-bot/vitrine-video-gabarits",
+    "repository_exists": false,
+    "common_control_plane_implemented": false,
+    "production_deployed": false,
+    "deployment_should_have_been_performed_without_explicit_order": false,
+    "conclusion": "Cloudflare was not applied in production. This is compliant with the no-deploy-without-explicit-authorization rule, but the common catalogue/control-plane architecture remains future integration work."
+  },
+  "overall_conclusion": {
+    "creative_and_media_masters": "PASS for the validated T1, T2 and T3 reference outputs within their documented scopes",
+    "current_universal_architecture": "NOT 100 percent for any of the three legacy/current repositories",
+    "cloudflare_production": "NOT DEPLOYED",
+    "safe_next_step": "Use the remediated T3 package pattern and enforce four archived voice candidates, automatic music rotation, package/OTA metadata and Cloudflare separation from the beginning of T4 and T5."
+  }
+}

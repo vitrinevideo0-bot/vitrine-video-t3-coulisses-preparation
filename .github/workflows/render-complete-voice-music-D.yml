@@ -7,7 +7,7 @@ on:
         description: Publier le rendu complet dans une pré-Release immuable
         required: true
         type: boolean
-        default: true
+        default: false
 
 permissions:
   contents: write
