@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "approval_id": "T3-APPROVAL-2026-11-18-QUESTIONS-CAPTURE-12-SCREENS",
+  "date": "2026-11-18",
+  "status": "approved",
+  "decision_channel": "arena_ask_user",
+  "question_id": "validation_t3_questions_12_ecrans",
+  "selected_option_id": "approve_all",
+  "human_decision": "Tout valider",
+  "approved_scope": {
+    "questionnaire": "six questions, cinq requises et accroche facultative",
+    "capture_scenes": [
+      "S1 Les ingrédients — 6 s",
+      "S2 Le geste signature — 8 s",
+      "S3 Le dressage — 7 s",
+      "S4 Prêt à servir — 9 s"
+    ],
+    "duration_total_seconds": 30,
+    "screen_count": 12,
+    "states_per_scene": [
+      "A_GUIDE",
+      "B_RECORDING",
+      "C_REVIEW"
+    ],
+    "language_footer": [
+      "français",
+      "fon",
+      "anglais"
+    ],
+    "speech_optional": true,
+    "actions": [
+      "COMMENCER À FILMER",
+      "REFAIRE",
+      "SCÈNE SUIVANTE",
+      "VOIR MON MONTAGE"
+    ]
+  },
+  "not_approved_by_this_decision": [
+    "paramètres détaillés du moteur de transitions",
+    "rendu silencieux MP4",
+    "polices packagées et licences",
+    "musique",
+    "voix off",
+    "OTA"
+  ],
+  "locked_artifacts": [
+    {
+      "path": "form/questions_T3.json",
+      "sha256": "3a726446e3594a15964bf3722021fb2148975d72c7eb993def8bdc5c08c9ac01",
+      "source": "form/questions_T3_PROPOSITION.json",
+      "source_sha256": "469209a286b368bee6f558249fb6bc9677af367b2bdea3e24fee91ef89b1871a"
+    },
+    {
+      "path": "capture-guide/consignes_T3.json",
+      "sha256": "cfed4d23606af022199f3abb41fea509c8c47d478302dc27d402a7b3ff82ad06",
+      "source": "capture-guide/consignes_T3_PROPOSITION.json",
+      "source_sha256": "baf39bce08d670ab14c9646b67d0c5ec354638634e828b85d969dd83ab6e72d1"
+    },
+    {
+      "path": "ui-screens/approved/manifest.json",
+      "sha256": "834466baa08ef7fcb49f285179938133fbb3b9b49734a7e13b43b7529df3f51b",
+      "board": "ui-screens/approved/T3_PLANCHE_12_ECRANS_APPROUVEE.png",
+      "board_sha256": "ec4a5c1b46be170728e37779d5445f2a4542523f40a50ccadfb8ada92d39d413"
+    }
+  ]
+}

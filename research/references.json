@@ -1,0 +1,177 @@
+{
+  "template_id": "RESTAURATION-T3",
+  "batch_id": "LOT-03",
+  "observed_at": "2026-11-18",
+  "status": "owner_selected_combination",
+  "selection_criterion": "Choisir un véritable template CapCut de transitions, visuellement spectaculaire et transposable aux coulisses de préparation en restauration",
+  "analysis_depth": "full_preview_video_verified_preselection_only",
+  "third_party_media_committed": false,
+  "reuses_rejected_batch_01": false,
+  "reuses_rejected_batch_02": false,
+  "references": [
+    {
+      "reference_id": "R3-B03-REF-01",
+      "platform": "CapCut",
+      "title": "Food jutsu trend",
+      "creator": "val(BCR)",
+      "capcut_template_id": "7652767330853932296",
+      "url": "https://www.capcut.com/template-detail/Food-jutsu-trend/7652767330853932296",
+      "published_at": "2026-06-18",
+      "official_page_observation": {
+        "duration_seconds_rounded": 13,
+        "aspect_ratio": "9:16",
+        "required_clips": 12,
+        "uses_observed": 78951
+      },
+      "analysis_copy": {
+        "storage": "temporary_cache_only",
+        "committed": false,
+        "duration_seconds": 12.8,
+        "width": 720,
+        "height": 1280,
+        "fps": 30.0,
+        "frames": 384,
+        "sha256": "1de4c52a1db613f30fd5871c5571268242d2d81f8faece5d1dfa3e7aebbf6395"
+      },
+      "transition_grammar": [
+        "gesture_match_cut",
+        "position_locked_swap",
+        "hand_action_transition",
+        "instant_dish_reveal",
+        "beat_sync"
+      ],
+      "observed_transition_summary": "Chaque geste des mains déclenche le remplacement instantané d'une personne, d'un verre ou d'un plat, avec cadrage verrouillé et raccord sur l'action.",
+      "fit_for_t3": "Très fort pour transformer un geste du cuisinier en apparition d'un ingrédient, d'une étape de préparation puis du plat terminé.",
+      "owner_selection_status": "not_selected"
+    },
+    {
+      "reference_id": "R3-B03-REF-02",
+      "platform": "CapCut",
+      "title": "Food edit burger",
+      "creator": "SoftFilmClubᵐ³",
+      "capcut_template_id": "7601636981705133365",
+      "url": "https://www.capcut.com/template-detail/Food-edit-burger/7601636981705133365",
+      "published_at": "2026-01-31",
+      "official_page_observation": {
+        "duration_seconds_rounded": 13,
+        "aspect_ratio": "9:16",
+        "required_clips": 5,
+        "uses_observed": 71081
+      },
+      "analysis_copy": {
+        "storage": "temporary_cache_only",
+        "committed": false,
+        "duration_seconds": 12.4333333333,
+        "width": 720,
+        "height": 1280,
+        "fps": 30.0,
+        "frames": 373,
+        "sha256": "f034551598842101a1345ab7b77ff31de2a8f17034af60b124de69b6555faaf7"
+      },
+      "transition_grammar": [
+        "geometric_arrow_mask",
+        "radial_zoom",
+        "selective_color_reveal",
+        "multi_panel_split",
+        "flash_transition",
+        "diagonal_rotating_wipe"
+      ],
+      "observed_transition_summary": "Le burger passe par des flèches et masques géométriques, un reveal noir-et-blanc vers couleur, des panneaux multiples, des flashes et une sortie diagonale rotative.",
+      "fit_for_t3": "C'est l'option la plus dense pour montrer plusieurs gestes d'assemblage et faire culminer les coulisses dans un hero shot très énergique.",
+      "owner_selection_status": "selected"
+    },
+    {
+      "reference_id": "R3-B03-REF-03",
+      "platform": "CapCut",
+      "title": "CAKES TRANSITION",
+      "creator": "CAPCUT FOODSᵐʲ",
+      "capcut_template_id": "7508847672783146301",
+      "url": "https://www.capcut.com/template-detail/CAKES-TRANSITION/7508847672783146301",
+      "published_at": "2025-05-26",
+      "official_page_observation": {
+        "duration_seconds_rounded": 13,
+        "aspect_ratio": "9:16",
+        "required_clips": 3,
+        "uses_observed": 26529
+      },
+      "analysis_copy": {
+        "storage": "temporary_cache_only",
+        "committed": false,
+        "duration_seconds": 12.8333333333,
+        "width": 720,
+        "height": 1280,
+        "fps": 30.0,
+        "frames": 385,
+        "sha256": "12a08d7acc3f78fe810d0c4134341129e31903354ece1f5647239fcd8acae88d"
+      },
+      "transition_grammar": [
+        "zoom_blur",
+        "white_flash",
+        "vertical_smear",
+        "segmented_shutter",
+        "fan_strip_wipe",
+        "scale_to_black"
+      ],
+      "observed_transition_summary": "Les gâteaux changent au rythme de zoom-blurs et flashes, puis l'image se découpe en lamelles qui pivotent comme un obturateur avant le reveal suivant.",
+      "fit_for_t3": "Très pertinent pour une pâtisserie ou un dressage : préparation brute, décoration, finition et produit final peuvent devenir quatre reveals fortement stylisés.",
+      "owner_selection_status": "not_selected"
+    },
+    {
+      "reference_id": "R3-B03-REF-04",
+      "platform": "CapCut",
+      "title": "Comida • restaurante",
+      "creator": "avi capuchina",
+      "capcut_template_id": "7532579586337508669",
+      "url": "https://www.capcut.com/template-detail/protemplatetrends-pro-food-creadorestrella/7532579586337508669",
+      "published_at": "2025-07-29",
+      "official_page_observation": {
+        "duration_seconds_rounded": 24,
+        "aspect_ratio": "9:16",
+        "required_clips": 11,
+        "uses_observed": 44982
+      },
+      "analysis_copy": {
+        "storage": "temporary_cache_only",
+        "committed": false,
+        "duration_seconds": 23.1666666667,
+        "width": 720,
+        "height": 1280,
+        "fps": 30.0,
+        "frames": 695,
+        "sha256": "bbfe585968d83bda49133cd52df8b9dc9af636df6a902f72d9bd11891cbf2410"
+      },
+      "transition_grammar": [
+        "tiled_grid_intro",
+        "orange_flash",
+        "kaleidoscope_mosaic",
+        "radial_blur",
+        "rotating_mask",
+        "whip_zoom",
+        "multi_panel_match_cut"
+      ],
+      "observed_transition_summary": "Le montage enchaîne grille répétée, flash orange, mosaïque kaléidoscopique, rotation du cadre, flou radial et zoom fouetté entre les plats.",
+      "fit_for_t3": "C'est l'option la plus ample : les quatre prises de cuisine peuvent être recadrées en panneaux et mosaïques sans exiger de filmer une cinquième scène.",
+      "owner_selection_status": "selected"
+    }
+  ],
+  "owner_decision_required": {
+    "resolved": true,
+    "decision": "R3-B03-REF-02 et R3-B03-REF-04 retenues ensemble",
+    "next_decision_required": "Valider ou corriger le reverse engineering adapté et le parcours proposé."
+  },
+  "selected_references": [
+    "R3-B03-REF-02",
+    "R3-B03-REF-04"
+  ],
+  "selection_mode": "combined",
+  "owner_selection": {
+    "date": "2026-11-18",
+    "decision": "Références 2 et 4 retenues ensemble",
+    "coverage_requirement": "Toutes les familles de transitions observées dans les deux références sont obligatoires dans la spécification T3.",
+    "next_gate": "Validation du reverse engineering adapté, des questions et du parcours des douze écrans."
+  },
+  "analysis_evidence": [
+    "research/evidence/selected_refs_02_04/REF_02_food_edit_burger_transition_strips.jpg",
+    "research/evidence/selected_refs_02_04/REF_04_comida_restaurante_transition_strips.jpg"
+  ]
+}

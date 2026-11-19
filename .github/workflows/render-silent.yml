@@ -1,0 +1,129 @@
+name: Rendu silencieux T3 sur GitHub
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish_prerelease:
+        description: Publier le candidat silencieux dans une pré-Release immuable
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: t3-silent-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  render-validate-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout T3
+        uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Installer FFmpeg et les dépendances verrouillées
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg fonts-dejavu-core
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          ffmpeg -version | head -n 1
+          ffprobe -version | head -n 1
+
+      - name: Compiler et tester les contrats avant rendu
+        run: |
+          python -m compileall -q engine tools tests
+          python -m unittest discover -s tests -v
+
+      - name: Télécharger et vérifier les quatre rushes réels
+        run: |
+          python tools/fetch_rushes.py \
+            --manifest rushes/manifest.json \
+            --cache rushes/cache
+
+      - name: Produire le master silencieux sur le runner GitHub
+        run: |
+          python engine/render_silent.py \
+            --manifest rushes/manifest.json \
+            --contract reverse-engineering/T3_TRANSITIONS_30S.json \
+            --cache rushes/cache \
+            --work .tmp/t3-silent \
+            --output-dir output/t3-silent-v0.1.0
+
+      - name: Valider indépendamment format, durée, images, audio et couverture
+        run: |
+          python tools/validate_silent.py \
+            --output-dir output/t3-silent-v0.1.0 \
+            --proof output/t3-silent-v0.1.0/T3_GITHUB_SERVER_VALIDATION.json
+
+      - name: Assembler la livraison sans rush brut
+        run: |
+          set -euo pipefail
+          rm -rf release
+          mkdir release
+          cp output/t3-silent-v0.1.0/VIDEO_T3_SILENCIEUSE_TRANSITIONS_2_4_A_VALIDER.mp4 release/
+          cp output/t3-silent-v0.1.0/T3_SILENT_RENDER_REPORT.json release/
+          cp output/t3-silent-v0.1.0/T3_GITHUB_SERVER_VALIDATION.json release/
+          cp output/t3-silent-v0.1.0/RAPPORT_RENDU_SILENCIEUX.md release/
+          cp output/t3-silent-v0.1.0/T3_TRANSITION_PROOF.jpg release/
+          cp reverse-engineering/T3_TRANSITIONS_30S.json release/
+          cp rushes/manifest.json release/T3_RUSHES_MANIFEST.json
+          cp docs/LICENCES_RUSHS.md release/
+          if find release -maxdepth 1 -type f \( -name 'S1_*.mp4' -o -name 'S2_*.mp4' -o -name 'S3_*.mp4' -o -name 'S4_*.mp4' \) | grep -q .; then
+            echo 'Rush brut interdit dans la livraison' >&2
+            exit 1
+          fi
+          (cd release && find . -maxdepth 1 -type f ! -name SHA256SUMS.txt -printf '%f\n' | sort | xargs sha256sum > SHA256SUMS.txt)
+          cat release/SHA256SUMS.txt
+
+      - name: Publier l’artefact GitHub Actions
+        uses: actions/upload-artifact@v4
+        with:
+          name: T3-silent-candidate-${{ github.run_id }}
+          path: release/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Préparer les notes de pré-Release
+        if: inputs.publish_prerelease
+        run: |
+          cat > /tmp/t3-release-notes.md <<'EOF'
+          # RESTAURATION-T3 — candidat silencieux transitions 2 + 4
+
+          Candidat produit exclusivement sur GitHub Actions à partir du commit indiqué par la Release.
+
+          - 30,000 secondes ;
+          - 720 × 1280, 30 i/s, 900 images ;
+          - H.264 / yuv420p ;
+          - zéro piste audio ;
+          - quatre scènes 6/8/7/9 s ;
+          - 16 profils et 17 événements couvrant les familles observées dans les références 2 et 4 ;
+          - rushes réels Pexels vérifiés par SHA-256, non redistribués bruts ;
+          - rapport de rendu, validation serveur, planche de preuve, contrat et manifeste inclus.
+
+          **Statut humain : à valider.** Cette pré-Release ne signifie pas que le propriétaire a approuvé le rendu créatif, et aucune musique ou voix off n’est incluse.
+          EOF
+
+      - name: Publier une pré-Release additive et immuable
+        if: inputs.publish_prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="t3-coulisses-v0.1.0-silent-candidate-${GITHUB_RUN_NUMBER}"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "La Release $TAG existe déjà : refus de l’écraser." >&2
+            exit 1
+          fi
+          gh release create "$TAG" release/* \
+            --target "$GITHUB_SHA" \
+            --title "T3 Coulisses — candidat silencieux #${GITHUB_RUN_NUMBER}" \
+            --notes-file /tmp/t3-release-notes.md \
+            --prerelease

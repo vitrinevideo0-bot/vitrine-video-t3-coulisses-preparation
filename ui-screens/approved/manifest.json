@@ -1,0 +1,191 @@
+{
+  "schema_version": "1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "status": "owner_approved",
+  "approval": {
+    "date": "2026-11-18",
+    "decision_channel": "arena_ask_user",
+    "question_id": "validation_t3_questions_12_ecrans",
+    "selected_option_id": "approve_all",
+    "decision": "Tout valider",
+    "scope": [
+      "12 écrans 4 × 3",
+      "contenus GUIDE/ENREGISTREMENT/VÉRIFICATION",
+      "rôles et actions",
+      "mention français/fon/anglais"
+    ],
+    "proposal_manifest_sha256": "8b663c3fb70d88f4d006739a670c7692ca5129478ebe5404cae4562f3cff7721"
+  },
+  "stable_screen_count": 12,
+  "states": [
+    "A_GUIDE",
+    "B_RECORDING",
+    "C_REVIEW"
+  ],
+  "screens": [
+    {
+      "screen_number": 1,
+      "scene": 1,
+      "state": "A_GUIDE",
+      "screen_id": "T3_CAPTURE_S1_A_GUIDE",
+      "file": "T3_CAPTURE_S1_A_GUIDE.png",
+      "size": [
+        720,
+        1280
+      ],
+      "sha256": "05f9f5084af6419630cfde5d23702eaf3abd386d6c9539fd745fbd9d2c0163d3",
+      "approved_byte_identical_to_proposal": true
+    },
+    {
+      "screen_number": 2,
+      "scene": 1,
+      "state": "B_RECORDING",
+      "screen_id": "T3_CAPTURE_S1_B_RECORDING",
+      "file": "T3_CAPTURE_S1_B_RECORDING.png",
+      "size": [
+        720,
+        1280
+      ],
+      "sha256": "de97bfd0e879a82ec8fdb474927aacfbbf08731d8990fee1f558c99a8de73a33",
+      "approved_byte_identical_to_proposal": true
+    },
+    {
+      "screen_number": 3,
+      "scene": 1,
+      "state": "C_REVIEW",
+      "screen_id": "T3_CAPTURE_S1_C_REVIEW",
+      "file": "T3_CAPTURE_S1_C_REVIEW.png",
+      "size": [
+        720,
+        1280
+      ],
+      "sha256": "2f9a94ccb8694eecd444832f9f6ca8a7ba7b27c8c01ca3e54162e51792136e07",
+      "approved_byte_identical_to_proposal": true
+    },
+    {
+      "screen_number": 4,
+      "scene": 2,
+      "state": "A_GUIDE",
+      "screen_id": "T3_CAPTURE_S2_A_GUIDE",
+      "file": "T3_CAPTURE_S2_A_GUIDE.png",
+      "size": [
+        720,
+        1280
+      ],
+      "sha256": "0ee84c34713776f0a003a9d3ffe1ee0f4801756424e2d3b0f6a317ea539383f8",
+      "approved_byte_identical_to_proposal": true
+    },
+    {
+      "screen_number": 5,
+      "scene": 2,
+      "state": "B_RECORDING",
+      "screen_id": "T3_CAPTURE_S2_B_RECORDING",
+      "file": "T3_CAPTURE_S2_B_RECORDING.png",
+      "size": [
+        720,
+        1280
+      ],
+      "sha256": "e8bcebec31f343a73e08ce15471c90b99ce2d455295cd1a5908825f6fd510d72",
+      "approved_byte_identical_to_proposal": true
+    },
+    {
+      "screen_number": 6,
+      "scene": 2,
+      "state": "C_REVIEW",
+      "screen_id": "T3_CAPTURE_S2_C_REVIEW",
+      "file": "T3_CAPTURE_S2_C_REVIEW.png",
+      "size": [
+        720,
+        1280
+      ],
+      "sha256": "8cfbce6839b01a9b705d27abafbadf14c420335aa9d384badeaf4761a49810f2",
+      "approved_byte_identical_to_proposal": true
+    },
+    {
+      "screen_number": 7,
+      "scene": 3,
+      "state": "A_GUIDE",
+      "screen_id": "T3_CAPTURE_S3_A_GUIDE",
+      "file": "T3_CAPTURE_S3_A_GUIDE.png",
+      "size": [
+        720,
+        1280
+      ],
+      "sha256": "696f26cb05701bd5c249e7596447bca462c37004790fd45ab167b2fff3647d89",
+      "approved_byte_identical_to_proposal": true
+    },
+    {
+      "screen_number": 8,
+      "scene": 3,
+      "state": "B_RECORDING",
+      "screen_id": "T3_CAPTURE_S3_B_RECORDING",
+      "file": "T3_CAPTURE_S3_B_RECORDING.png",
+      "size": [
+        720,
+        1280
+      ],
+      "sha256": "00858197b6f06fe9421b526faa6dc3fc642c749b6e184294ad22bdc3a8aa764b",
+      "approved_byte_identical_to_proposal": true
+    },
+    {
+      "screen_number": 9,
+      "scene": 3,
+      "state": "C_REVIEW",
+      "screen_id": "T3_CAPTURE_S3_C_REVIEW",
+      "file": "T3_CAPTURE_S3_C_REVIEW.png",
+      "size": [
+        720,
+        1280
+      ],
+      "sha256": "484c0ded5e5d03483edd07da49ab02d54d00daade26b1cfc4ab6987694b96a41",
+      "approved_byte_identical_to_proposal": true
+    },
+    {
+      "screen_number": 10,
+      "scene": 4,
+      "state": "A_GUIDE",
+      "screen_id": "T3_CAPTURE_S4_A_GUIDE",
+      "file": "T3_CAPTURE_S4_A_GUIDE.png",
+      "size": [
+        720,
+        1280
+      ],
+      "sha256": "7c444ece93ba091eacd9c9d493bf1f1ccf63e887e8a74fc9e13e721b85c64f69",
+      "approved_byte_identical_to_proposal": true
+    },
+    {
+      "screen_number": 11,
+      "scene": 4,
+      "state": "B_RECORDING",
+      "screen_id": "T3_CAPTURE_S4_B_RECORDING",
+      "file": "T3_CAPTURE_S4_B_RECORDING.png",
+      "size": [
+        720,
+        1280
+      ],
+      "sha256": "568fa0d042abfd4857bfb7c511de3030ac6af6adbbfb040af5f50250b94fb121",
+      "approved_byte_identical_to_proposal": true
+    },
+    {
+      "screen_number": 12,
+      "scene": 4,
+      "state": "C_REVIEW",
+      "screen_id": "T3_CAPTURE_S4_C_REVIEW",
+      "file": "T3_CAPTURE_S4_C_REVIEW.png",
+      "size": [
+        720,
+        1280
+      ],
+      "sha256": "d829bead444847d1f4b318d4a3f8bc0e1f1247e0d5fd0f06e7a806e5533d8819",
+      "approved_byte_identical_to_proposal": true
+    }
+  ],
+  "board": "T3_PLANCHE_12_ECRANS_APPROUVEE.png",
+  "external_media_used": false,
+  "font_note": "Les maquettes approuvées utilisent les polices système DejaVu pour la prévisualisation. Le paquet de polices final et ses licences restent une porte documentaire distincte avant le moteur.",
+  "board_size": [
+    898,
+    2142
+  ],
+  "board_sha256": "ec4a5c1b46be170728e37779d5445f2a4542523f40a50ccadfb8ada92d39d413"
+}

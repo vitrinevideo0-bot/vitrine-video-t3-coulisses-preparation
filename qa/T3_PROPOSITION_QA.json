@@ -1,0 +1,157 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-11-18",
+  "scope": "Proposition propriétaire avant développement",
+  "overall_status": "PASS",
+  "checks": [
+    {
+      "check": "questionnaire_six_cles_canoniques",
+      "status": "PASS",
+      "detail": "['nom', 'produit', 'prix', 'whatsapp', 'quartier', 'accroche']"
+    },
+    {
+      "check": "questionnaire_required_contract",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "accroche_facultative",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "quatre_scenes",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "durees_6_8_7_9",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "somme_30",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "langues_fr_fon_en",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "exactement_12_ecrans",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "trois_etats_par_scene",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "ordre_etats",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "12_fichiers_presents",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "12_dimensions_720x1280",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "12_hashes_manifest",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "planche_presente",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "planche_hash",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "format_720x1280_30fps",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "900_images_30s",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "frontieres_scenes",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "toutes_familles_planifiees",
+      "status": "PASS",
+      "detail": "missing=[]"
+    },
+    {
+      "check": "couverture_ref_2",
+      "status": "PASS",
+      "detail": "missing=[]"
+    },
+    {
+      "check": "couverture_ref_4",
+      "status": "PASS",
+      "detail": "missing=[]"
+    },
+    {
+      "check": "17_evenements",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "frames_dans_0_899",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "cta_derniere_image",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "aucune_cinquieme_capture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "selection_status_2_4",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "selection_references_json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "moteur_non_commence",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "summary": {
+    "passed": 28,
+    "failed": 0
+  },
+  "limitations": [
+    "Contrôle structurel uniquement.",
+    "Aucun moteur ni rendu vidéo MP4 testé.",
+    "Lisibilité visuelle soumise à validation humaine sur la planche."
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-11-18",
+  "scope": "Contrats questionnaire/capture/12 écrans verrouillés après approbation humaine",
+  "overall_status": "PASS",
+  "checks": [
+    {
+      "check": "approval_record",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "questionnaire_owner_approved",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "capture_guide_owner_approved",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "six_keys",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "durations",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "screen_count",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "file_T3_CAPTURE_S1_A_GUIDE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "file_T3_CAPTURE_S1_B_RECORDING",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "file_T3_CAPTURE_S1_C_REVIEW",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "file_T3_CAPTURE_S2_A_GUIDE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "file_T3_CAPTURE_S2_B_RECORDING",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "file_T3_CAPTURE_S2_C_REVIEW",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "file_T3_CAPTURE_S3_A_GUIDE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "file_T3_CAPTURE_S3_B_RECORDING",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "file_T3_CAPTURE_S3_C_REVIEW",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "file_T3_CAPTURE_S4_A_GUIDE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "file_T3_CAPTURE_S4_B_RECORDING",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "file_T3_CAPTURE_S4_C_REVIEW",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "byte_identical_to_approved_proposal",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "approved_board",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "language_footer",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "summary": {
+    "passed": 21,
+    "failed": 0
+  },
+  "limitations": [
+    "Aucun test moteur vidéo.",
+    "Le paquet final de polices et licences reste distinct."
+  ]
+}

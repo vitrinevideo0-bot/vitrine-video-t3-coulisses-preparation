@@ -1,0 +1,316 @@
+{
+  "schema_version": "1.0.0-proposal",
+  "template_id": "RESTAURATION-T3",
+  "status": "pending_owner_validation_not_implemented",
+  "owner_constraints": {
+    "selected_references": ["R3-B03-REF-02", "R3-B03-REF-04"],
+    "include_every_transition_family_from_reference_2": true,
+    "include_every_transition_family_from_reference_4": true,
+    "duration_seconds": 30,
+    "capture_count": 4
+  },
+  "format_proposal": {
+    "orientation": "portrait",
+    "aspect_ratio": "9:16",
+    "width": 720,
+    "height": 1280,
+    "fps": 30,
+    "total_frames": 900,
+    "scene_boundaries_frames": [0, 180, 420, 630, 900],
+    "scene_durations_seconds": [6, 8, 7, 9]
+  },
+  "source_references": {
+    "R3-B03-REF-02": {
+      "title": "Food edit burger",
+      "creator": "SoftFilmClubᵐ³",
+      "url": "https://www.capcut.com/template-detail/Food-edit-burger/7601636981705133365",
+      "preview_sha256": "f034551598842101a1345ab7b77ff31de2a8f17034af60b124de69b6555faaf7"
+    },
+    "R3-B03-REF-04": {
+      "title": "Comida • restaurante",
+      "creator": "avi capuchina",
+      "url": "https://www.capcut.com/template-detail/protemplatetrends-pro-food-creadorestrella/7532579586337508669",
+      "preview_sha256": "bbfe585968d83bda49133cd52df8b9dc9af636df6a902f72d9bd11891cbf2410"
+    }
+  },
+  "mandatory_transition_families": [
+    {
+      "id": "R2_GEOMETRIC_ARROW_MASK",
+      "source_reference": "R3-B03-REF-02",
+      "required": true,
+      "observed_window_seconds": [0.0, 2.4],
+      "observed_variants": ["x_grid_background", "diagonal_ribbon_reveal", "arrow_mask_expand"]
+    },
+    {
+      "id": "R2_RADIAL_ZOOM",
+      "source_reference": "R3-B03-REF-02",
+      "required": true,
+      "observed_window_seconds": [0.4, 2.7],
+      "observed_variants": ["zoom_pulse", "center_push"]
+    },
+    {
+      "id": "R2_SELECTIVE_COLOR_REVEAL",
+      "source_reference": "R3-B03-REF-02",
+      "required": true,
+      "observed_window_seconds": [4.1, 5.4],
+      "observed_variants": ["desaturate_background", "orange_slanted_color_panel"]
+    },
+    {
+      "id": "R2_MULTI_PANEL_SPLIT",
+      "source_reference": "R3-B03-REF-02",
+      "required": true,
+      "observed_window_seconds": [6.8, 7.8],
+      "observed_variants": ["picture_in_picture_tiles", "sliding_mosaic"]
+    },
+    {
+      "id": "R2_FLASH_TRANSITION",
+      "source_reference": "R3-B03-REF-02",
+      "required": true,
+      "observed_window_seconds": [8.8, 10.1],
+      "observed_variants": ["electric_light_streak", "white_flash", "red_blue_strobe_film_burn"]
+    },
+    {
+      "id": "R2_DIAGONAL_ROTATING_WIPE",
+      "source_reference": "R3-B03-REF-02",
+      "required": true,
+      "observed_window_seconds": [11.7, 12.43],
+      "observed_variants": ["rotating_diagonal_band", "strip_collapse"]
+    },
+    {
+      "id": "R4_TILED_GRID_INTRO",
+      "source_reference": "R3-B03-REF-04",
+      "required": true,
+      "observed_window_seconds": [0.0, 2.1],
+      "observed_variants": ["repeated_tile_grid", "grid_scale_in"]
+    },
+    {
+      "id": "R4_ORANGE_FLASH",
+      "source_reference": "R3-B03-REF-04",
+      "required": true,
+      "observed_window_seconds": [2.1, 2.6],
+      "observed_variants": ["warm_orange_burn", "white_bloom_peak", "soft_overlay_blend"]
+    },
+    {
+      "id": "R4_KALEIDOSCOPE_MOSAIC",
+      "source_reference": "R3-B03-REF-04",
+      "required": true,
+      "observed_window_seconds": [6.4, 7.2],
+      "observed_variants": ["vertical_mirror_mosaic", "folded_tile_repeat"]
+    },
+    {
+      "id": "R4_RADIAL_BLUR",
+      "source_reference": "R3-B03-REF-04",
+      "required": true,
+      "observed_window_seconds": [18.1, 18.8],
+      "observed_variants": ["center_radial_blur", "spin_blur"]
+    },
+    {
+      "id": "R4_ROTATING_MASK",
+      "source_reference": "R3-B03-REF-04",
+      "required": true,
+      "observed_window_seconds": [10.2, 12.7],
+      "observed_variants": ["rotating_plate_mask", "circular_spin_wipe"]
+    },
+    {
+      "id": "R4_WHIP_ZOOM",
+      "source_reference": "R3-B03-REF-04",
+      "required": true,
+      "observed_window_seconds": [18.1, 18.8],
+      "observed_variants": ["whip_spin", "zoom_blur_landing"]
+    },
+    {
+      "id": "R4_MULTI_PANEL_MATCH_CUT",
+      "source_reference": "R3-B03-REF-04",
+      "required": true,
+      "observed_window_seconds": [15.4, 16.2],
+      "observed_variants": ["horizontal_repeater_rows", "vertical_split_columns", "panel_match_cut"]
+    },
+    {
+      "id": "R4_BACKGROUND_FADE_TO_BLACK",
+      "source_reference": "R3-B03-REF-04",
+      "required": true,
+      "observed_window_seconds": [22.6, 23.17],
+      "observed_variants": ["background_fade_only"],
+      "adaptation_constraint": "Le fond peut s'assombrir, mais le CTA et le numéro WhatsApp restent à 100 % jusqu'à la dernière image."
+    }
+  ],
+  "additional_observed_editing_events": [
+    {
+      "id": "R2_HARD_ACTION_MATCH_CUT",
+      "source_reference": "R3-B03-REF-02",
+      "observed_at_seconds": 2.75,
+      "required": true
+    },
+    {
+      "id": "R4_SOFT_OVERLAY_BLEND",
+      "source_reference": "R3-B03-REF-04",
+      "observed_window_seconds": [4.4, 5.1],
+      "required": true
+    }
+  ],
+  "timeline_events": [
+    {
+      "event": 1,
+      "transition_id": "R4_TILED_GRID_INTRO",
+      "scene": "S1",
+      "start_seconds": 0.0,
+      "end_seconds": 0.6,
+      "frames": [0, 17],
+      "purpose": "Ouvrir immédiatement sur une grille d'ingrédients répétée."
+    },
+    {
+      "event": 2,
+      "transition_id": "R2_GEOMETRIC_ARROW_MASK",
+      "scene": "S1",
+      "start_seconds": 0.6,
+      "end_seconds": 1.2,
+      "frames": [18, 35],
+      "purpose": "Faire entrer l'ingrédient principal par masque géométrique et ruban diagonal."
+    },
+    {
+      "event": 3,
+      "transition_id": "R2_RADIAL_ZOOM",
+      "scene": "S1",
+      "start_seconds": 2.6,
+      "end_seconds": 2.9,
+      "frames": [78, 86],
+      "purpose": "Accentuer un détail frais sans changer de captation."
+    },
+    {
+      "event": 4,
+      "transition_id": "R4_ORANGE_FLASH",
+      "scene": "S1_TO_S2",
+      "start_seconds": 5.7,
+      "end_seconds": 6.0,
+      "frames": [171, 179],
+      "purpose": "Masquer la frontière ingrédients vers cuisson avec burn orange et bloom blanc."
+    },
+    {
+      "event": 5,
+      "transition_id": "R2_HARD_ACTION_MATCH_CUT",
+      "scene": "S2",
+      "start_seconds": 7.45,
+      "end_seconds": 7.52,
+      "frames": [224, 225],
+      "purpose": "Couper exactement au sommet du geste de préparation."
+    },
+    {
+      "event": 6,
+      "transition_id": "R2_SELECTIVE_COLOR_REVEAL",
+      "scene": "S2",
+      "start_seconds": 8.4,
+      "end_seconds": 8.8,
+      "frames": [252, 263],
+      "purpose": "Passer d'une préparation désaturée à la couleur chaude par panneau oblique."
+    },
+    {
+      "event": 7,
+      "transition_id": "R2_FLASH_TRANSITION",
+      "scene": "S2",
+      "start_seconds": 10.1,
+      "end_seconds": 10.43,
+      "frames": [303, 312],
+      "purpose": "Ajouter l'éclair électrique et le flash blanc sur un changement de détail."
+    },
+    {
+      "event": 8,
+      "transition_id": "R4_SOFT_OVERLAY_BLEND",
+      "scene": "S2",
+      "start_seconds": 11.45,
+      "end_seconds": 11.8,
+      "frames": [344, 353],
+      "purpose": "Superposer brièvement deux cadrages vivants du même geste."
+    },
+    {
+      "event": 9,
+      "transition_id": "R2_FLASH_TRANSITION",
+      "variant": "red_blue_strobe_film_burn",
+      "scene": "S2",
+      "start_seconds": 12.45,
+      "end_seconds": 12.8,
+      "frames": [374, 383],
+      "purpose": "Deuxième variante réellement observée du flash de la référence 2."
+    },
+    {
+      "event": 10,
+      "transition_id": "R4_KALEIDOSCOPE_MOSAIC",
+      "scene": "S2_TO_S3",
+      "start_seconds": 13.6,
+      "end_seconds": 14.0,
+      "frames": [408, 419],
+      "purpose": "Transformer le geste de cuisson en entrée du dressage par mosaïque verticale."
+    },
+    {
+      "event": 11,
+      "transition_id": "R2_MULTI_PANEL_SPLIT",
+      "scene": "S3",
+      "start_seconds": 15.1,
+      "end_seconds": 15.55,
+      "frames": [453, 466],
+      "purpose": "Montrer simultanément assiette, sauce et main à partir de la même prise."
+    },
+    {
+      "event": 12,
+      "transition_id": "R4_ROTATING_MASK",
+      "scene": "S3",
+      "start_seconds": 18.0,
+      "end_seconds": 18.4,
+      "frames": [540, 551],
+      "purpose": "Faire tourner l'assiette comme masque vers la finition."
+    },
+    {
+      "event": 13,
+      "transition_id": "R4_RADIAL_BLUR",
+      "scene": "S3_TO_S4",
+      "start_seconds": 20.55,
+      "end_seconds": 21.0,
+      "frames": [617, 629],
+      "purpose": "Propulser le dressage vers le plat prêt à servir."
+    },
+    {
+      "event": 14,
+      "transition_id": "R4_WHIP_ZOOM",
+      "scene": "S4",
+      "start_seconds": 23.3,
+      "end_seconds": 23.7,
+      "frames": [699, 710],
+      "purpose": "Passer du service au meilleur angle du plat avec atterrissage net."
+    },
+    {
+      "event": 15,
+      "transition_id": "R4_MULTI_PANEL_MATCH_CUT",
+      "scene": "S4",
+      "start_seconds": 25.6,
+      "end_seconds": 26.05,
+      "frames": [768, 781],
+      "purpose": "Combiner rangées répétées puis colonnes verticales avant le hero shot."
+    },
+    {
+      "event": 16,
+      "transition_id": "R2_DIAGONAL_ROTATING_WIPE",
+      "scene": "S4",
+      "start_seconds": 27.45,
+      "end_seconds": 28.05,
+      "frames": [824, 840],
+      "purpose": "Les bandes diagonales se referment puis révèlent le hero final et le CTA."
+    },
+    {
+      "event": 17,
+      "transition_id": "R4_BACKGROUND_FADE_TO_BLACK",
+      "scene": "S4",
+      "start_seconds": 29.5,
+      "end_seconds": 30.0,
+      "frames": [885, 899],
+      "purpose": "Assombrir uniquement l'arrière-plan; le CTA reste entièrement visible."
+    }
+  ],
+  "coverage_assertions": {
+    "all_reference_2_families_scheduled": true,
+    "all_reference_4_families_scheduled": true,
+    "all_observed_variants_accounted_for": true,
+    "fifth_capture_required": false,
+    "cta_visible_on_last_frame": true,
+    "final_frame_black": false,
+    "merchant_performs_software_transitions_during_capture": false
+  }
+}

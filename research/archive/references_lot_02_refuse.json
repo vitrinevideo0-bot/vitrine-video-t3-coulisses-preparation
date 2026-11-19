@@ -1,0 +1,136 @@
+{
+  "template_id": "RESTAURATION-T3",
+  "batch_id": "LOT-02",
+  "observed_at": "2026-11-18",
+  "status": "owner_rejected",
+  "selection_criterion": "Motion design, transitions spectaculaires de type CapCut et écran visuellement impressionnant",
+  "analysis_depth": "preselection_only",
+  "third_party_media_committed": false,
+  "reuses_rejected_batch_01": false,
+  "references": [
+    {
+      "reference_id": "R3-B02-REF-01",
+      "platform": "TikTok",
+      "creator": "Anton Digital",
+      "account": "@antondigital",
+      "video_id": "7122181175099051269",
+      "url": "https://www.tiktok.com/@antondigital/video/7122181175099051269",
+      "published_at": "2022-07-19",
+      "page_duration_seconds": 26,
+      "analysis_copy": {
+        "duration_seconds": 26.19286,
+        "width": 576,
+        "height": 1024,
+        "fps": 23.976,
+        "frames": 628,
+        "sha256": "34371f545e3de29a51587cf14f15dd78a34be6adfbae783daebcc297bc51b486",
+        "committed": false
+      },
+      "transition_grammar": [
+        "cut_on_action",
+        "macro_match_cut",
+        "smoke_mask",
+        "focus_pull",
+        "micro_speed_ramp",
+        "visual_loop"
+      ],
+      "fit": "Préparation réelle filmée comme une publicité cinématographique"
+    },
+    {
+      "reference_id": "R3-B02-REF-02",
+      "platform": "TikTok",
+      "creator": "Bayounug",
+      "account": "@bayounug",
+      "video_id": "7259347027505515781",
+      "url": "https://www.tiktok.com/@bayounug/video/7259347027505515781",
+      "published_at": "2023-07-24",
+      "page_duration_seconds": 12,
+      "analysis_copy": {
+        "duration_seconds": 12.13333,
+        "width": 576,
+        "height": 1024,
+        "fps": 30.0,
+        "frames": 364,
+        "sha256": "26fea04a0ae622702ec9d2e8eaf0884b0177c8c221057337c947f4044147efa9",
+        "committed": false
+      },
+      "transition_grammar": [
+        "object_occlusion",
+        "menu_portal",
+        "push_in",
+        "whip_blur",
+        "perspective_change",
+        "dish_reveal"
+      ],
+      "fit": "Transition CapCut/phone simple et spectaculaire par objet-masque"
+    },
+    {
+      "reference_id": "R3-B02-REF-03",
+      "platform": "TikTok",
+      "creator": "Reel Life Mastery",
+      "account": "@reellifemastery",
+      "video_id": "7460126692330212641",
+      "url": "https://www.tiktok.com/@reellifemastery/video/7460126692330212641",
+      "published_at": "2025-01-15",
+      "page_duration_seconds": 15,
+      "analysis_copy": {
+        "duration_seconds": 15.86667,
+        "width": 576,
+        "height": 1024,
+        "fps": 30.0,
+        "frames": 476,
+        "sha256": "72700a870bde71faa70f8aa35af355cd3879362dbbe29942c10e59317f1d9394",
+        "committed": false
+      },
+      "transition_grammar": [
+        "beat_sync",
+        "whip_pan",
+        "zoom",
+        "speed_ramp",
+        "smoke_wipe",
+        "shape_match",
+        "sauce_pour_finale"
+      ],
+      "fit": "Template CapCut restaurant premium, dynamique et impressionnant"
+    },
+    {
+      "reference_id": "R3-B02-REF-04",
+      "platform": "TikTok",
+      "creator": "Cinmiroll",
+      "account": "@cinmiroll",
+      "video_id": "7192725619749162282",
+      "url": "https://www.tiktok.com/@cinmiroll/video/7192725619749162282",
+      "published_at": "2023-01-25",
+      "page_duration_seconds": 33,
+      "analysis_copy": {
+        "duration_seconds": 33.33333,
+        "width": 576,
+        "height": 1038,
+        "fps": 30.0,
+        "frames": 1000,
+        "sha256": "3c80506df978e16d06393301657169d225c2ade28fb0a34d71de38267bc03cc5",
+        "committed": false
+      },
+      "nature": "spec_fan_ad_not_official_campaign",
+      "transition_grammar": [
+        "kinetic_type",
+        "geometric_wipe",
+        "elastic_scale",
+        "ingredient_stack",
+        "multi_panel",
+        "beat_transform"
+      ],
+      "fit": "Référence forte de motion design, typographie cinétique et construction graphique du produit"
+    }
+  ],
+  "owner_decision_required": {
+    "accept": "lock_batch_02_and_start_reverse_engineering",
+    "reject": "archive_batch_02_and_research_four_entirely_new_references"
+  },
+  "rejected_at": "2026-11-18",
+  "owner_decision": {
+    "decision": "reject_entire_batch",
+    "feedback": "Le propriétaire indique ne pas être satisfait. Le prochain lot doit contenir de vrais templates CapCut centrés sur des transitions réellement spectaculaires, et non de simples publicités culinaires, vidéos cinématiques ou motion design générique.",
+    "reuse_forbidden": true
+  }
+}

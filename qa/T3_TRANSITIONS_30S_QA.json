@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-11-18",
+  "artifact": "reverse-engineering/T3_TRANSITIONS_30S.json",
+  "artifact_sha256": "ac2a5ac1bdb0b324b7b8c937fe71839092cb63cfacfaa5a6303e735128ac43e0",
+  "overall_status": "PASS",
+  "checks": [
+    {
+      "check": "exactement_17_evenements",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "toutes_familles_obligatoires_planifiees",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "profil_pour_chaque_evenement",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "tous_profils_utilises",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "frames_valides",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "evenements_sans_chevauchement",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "secondes_exactes_depuis_frames",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "durees_scenes",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "exactement_900_frames",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "selection_refs_2_4",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "tous_parametres_classes",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "variants_couvertes",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "timeline_couverte_0_899",
+      "status": "PASS",
+      "detail": "missing=[] extra=[]"
+    },
+    {
+      "check": "dernier_frame_non_noir_et_cta_opaque",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "aucune_cinquieme_capture",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "moteur_non_implemente",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "summary": {
+    "passed": 16,
+    "failed": 0
+  },
+  "limitations": [
+    "Validation structurelle; aucun moteur vidéo exécuté.",
+    "Les valeurs numériques sont des décisions moteur candidates clairement distinguées des observations CapCut.",
+    "La fidélité perceptuelle reste à valider sur le futur rendu silencieux."
+  ]
+}

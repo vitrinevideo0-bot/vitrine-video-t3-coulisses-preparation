@@ -1,0 +1,151 @@
+{
+  "template_id": "RESTAURATION-T3",
+  "sector": "RESTAURATION",
+  "catalog_name": "Coulisses de préparation",
+  "catalog_status": "À DÉVELOPPER",
+  "workflow_status_number": 8,
+  "workflow_status": "Développement silencieux en cours",
+  "reference_batch_current": "LOT-03",
+  "selected_reference": "R3-B03-REF-02 + R3-B03-REF-04",
+  "branch_planned": "main",
+  "repository": {
+    "name": "vitrine-video-t3-coulisses-preparation",
+    "owner": "vitrinevideo0-bot",
+    "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation",
+    "visibility": "PUBLIC",
+    "repository_created": true,
+    "push_performed": false
+  },
+  "proofs": [
+    "FICHE_DEMARRAGE.md",
+    "research/references.json",
+    "research/LOT_03_A_CHOISIR.md",
+    "research/archive/LOT_01_REFUSE.md",
+    "research/archive/references_lot_01_refuse.json",
+    "research/archive/LOT_02_REFUSE.md",
+    "research/archive/references_lot_02_refuse.json",
+    "GITHUB_AUDIT_INITIAL.md",
+    "research/evidence/selected_refs_02_04/REF_02_food_edit_burger_transition_strips.jpg",
+    "research/evidence/selected_refs_02_04/REF_04_comida_restaurante_transition_strips.jpg",
+    "reverse-engineering/REPORT_REFS_02_04.md",
+    "reverse-engineering/T3_TRANSITIONS_30S_PROPOSITION.json",
+    "form/questions_T3_PROPOSITION.json",
+    "capture-guide/consignes_T3_PROPOSITION.json",
+    "PROPOSITION_QUESTIONS_ET_12_ECRANS.md",
+    "ui-screens/proposal/manifest.json",
+    "ui-screens/proposal/T3_PLANCHE_12_ECRANS_PROPOSITION.png",
+    "qa/T3_PROPOSITION_QA.json",
+    "approvals/APPROBATION_QUESTIONS_CAPTURE_12_ECRANS_2026-11-18.json",
+    "form/questions_T3.json",
+    "capture-guide/consignes_T3.json",
+    "ui-screens/approved/manifest.json",
+    "ui-screens/approved/T3_PLANCHE_12_ECRANS_APPROUVEE.png",
+    "QUESTIONS_ET_12_ECRANS_APPROUVES.md",
+    "reverse-engineering/T3_TRANSITIONS_30S.json",
+    "reverse-engineering/MATRICE_TRANSITIONS_2_4_30S.md",
+    "qa/T3_TRANSITIONS_30S_QA.json",
+    "qa/T3_APPROVED_CAPTURE_QA.json",
+    "rushes/manifest.json",
+    "docs/LICENCES_RUSHS.md",
+    "engine/render_silent.py",
+    "tools/fetch_rushes.py",
+    "tools/validate_silent.py",
+    "tests/test_contract.py",
+    "tests/test_effects.py",
+    ".github/workflows/render-silent.yml",
+    ".github/workflows/ci.yml",
+    "research/stock-selection/README.md"
+  ],
+  "owner_decisions": [
+    {
+      "phase": "template_selection",
+      "date": "2026-11-18",
+      "decision": "RESTAURATION-T3 — Coulisses de préparation confirmé"
+    },
+    {
+      "phase": "references_batch_01",
+      "date": "2026-11-18",
+      "decision": "Lot complet refusé",
+      "feedback": "Motion design, transitions spectaculaires de type CapCut et écran visuellement impressionnant demandés"
+    },
+    {
+      "phase": "references_batch_02",
+      "date": "2026-11-18",
+      "decision": "Lot complet refusé",
+      "feedback": "Le propriétaire n'est pas satisfait. Les prochaines références doivent être de véritables templates CapCut centrés sur des transitions réellement spectaculaires, et non de simples publicités culinaires ou vidéos cinématiques."
+    },
+    {
+      "phase": "references_batch_03",
+      "date": "2026-11-18",
+      "decision": "Références 2 et 4 retenues ensemble",
+      "selected_references": [
+        "R3-B03-REF-02",
+        "R3-B03-REF-04"
+      ],
+      "instruction": "Reprendre toutes les transitions observées dans les deux références sans supprimer de famille."
+    },
+    {
+      "phase": "questions_capture_12_screens",
+      "date": "2026-11-18",
+      "decision": "Tout valider",
+      "decision_channel": "arena_ask_user",
+      "question_id": "validation_t3_questions_12_ecrans",
+      "selected_option_id": "approve_all",
+      "approved_scope": [
+        "six questions",
+        "quatre prises 6/8/7/9 s",
+        "douze écrans A/B/C",
+        "rôles et actions",
+        "mention français/fon/anglais et parole facultative"
+      ]
+    },
+    {
+      "phase": "silent_engine_authorization",
+      "date": "2026-11-18",
+      "decision": "Produire maintenant la vidéo sans son avec toutes les transitions, à partir de rushes réels, directement sur GitHub Actions, puis pousser le travail dans un dépôt public.",
+      "github_device_authorization": true
+    }
+  ],
+  "decision_expected": "Aucune décision pendant le rendu serveur. Après PASS GitHub : visionner le MP4 silencieux et l’approuver ou demander des corrections.",
+  "blockers": [
+    "Le rendu GitHub Actions doit réussir avant de passer au statut nº 9.",
+    "Le rendu silencieux restera non approuvé jusqu’au visionnage explicite du propriétaire.",
+    "Aucune musique ni voix off avant validation du silencieux."
+  ],
+  "development_started": true,
+  "music_started": false,
+  "voice_started": false,
+  "ota_started": false,
+  "cloudflare_deployed": false,
+  "selected_references": [
+    "R3-B03-REF-02",
+    "R3-B03-REF-04"
+  ],
+  "selection_mode": "combined",
+  "last_owner_approval": {
+    "phase": "questions_capture_12_screens",
+    "date": "2026-11-18",
+    "object": "Six questions, quatre prises 6/8/7/9 s et douze écrans A/B/C",
+    "decision": "Tout valider",
+    "approval_record": "approvals/APPROBATION_QUESTIONS_CAPTURE_12_ECRANS_2026-11-18.json"
+  },
+  "approved_contracts": {
+    "questions": "form/questions_T3.json",
+    "capture_guide": "capture-guide/consignes_T3.json",
+    "ui_screens_manifest": "ui-screens/approved/manifest.json",
+    "approval_record": "approvals/APPROBATION_QUESTIONS_CAPTURE_12_ECRANS_2026-11-18.json"
+  },
+  "workflow_note": "Les questions, les quatre prises et les douze écrans ont été approuvés avant la porte formelle du reverse engineering, conformément à la demande du propriétaire. Le statut officiel reste nº 4 jusqu’à validation de la timeline 2+4.",
+  "development_phase": {
+    "engine": "engine/render_silent.py",
+    "source_manifest": "rushes/manifest.json",
+    "source_license": "docs/LICENCES_RUSHS.md",
+    "github_workflow": ".github/workflows/render-silent.yml",
+    "local_preflight": {
+      "status": "PASS",
+      "video_sha256": "355a27cf6f20df7079fb9e3637edbc0b788efeba2716852c90ac50f883e07c3a",
+      "validation": "output/t3-silent-v0.1.0/T3_LOCAL_PREFLIGHT_VALIDATION.json",
+      "note": "Le dossier output est ignoré par Git; le master autoritatif doit être produit par GitHub Actions."
+    }
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "schema_version": "1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "status": "owner_approved",
+  "total_duration_seconds": 30,
+  "scene_durations_seconds": [
+    6,
+    8,
+    7,
+    9
+  ],
+  "stable_screen_count": 12,
+  "states_per_scene": [
+    "A_GUIDE",
+    "B_RECORDING",
+    "C_REVIEW"
+  ],
+  "mention_langues_commune": "Tu peux parler pendant que tu filmes, en français, en fon ou en anglais.",
+  "mention_silence_facultatif": "Tu peux aussi ne pas parler si tu préfères.",
+  "libelle_exemple": "EXEMPLE DE PHRASE (FACULTATIF)",
+  "bouton_principal": "COMMENCER À FILMER",
+  "audio": {
+    "parole_obligatoire": false,
+    "conserver_voix_capturee": true,
+    "vitesse_parole": 1.0,
+    "sous_titres_automatiques": false
+  },
+  "capture_rule": "Le commerçant filme seulement quatre prises simples. Toutes les transitions des références 2 et 4 sont ajoutées ensuite par le moteur; aucune cinquième captation n'est demandée.",
+  "scenes": [
+    {
+      "n": 1,
+      "total": 4,
+      "secondes": 6,
+      "titre": "LES INGRÉDIENTS",
+      "fonction_commerciale": "Prouver la fraîcheur et montrer ce qui entre réellement dans le plat.",
+      "consigne": "Filme les ingrédients du plat sur un plan de travail propre. Commence par montrer l'ensemble, puis rapproche doucement ton téléphone de l'ingrédient principal.",
+      "a_filmer": [
+        "Les vrais ingrédients du même plat.",
+        "Le plan de travail et les ustensiles propres.",
+        "Un mouvement lent vers l'ingrédient principal."
+      ],
+      "a_eviter": [
+        "Montrer déjà le plat terminé.",
+        "Mélanger des ingrédients de plusieurs plats.",
+        "Filmer dans l'ombre ou bouger trop vite."
+      ],
+      "ce_que_tu_dois_faire": "Garde les ingrédients au centre et reste immobile une seconde au début et à la fin.",
+      "exemple_facultatif": "Voici les ingrédients frais que nous utilisons pour préparer notre plat.",
+      "review_question": "VOIT-ON BIEN LES INGRÉDIENTS ET LE PLAN DE TRAVAIL ?",
+      "positive_action": "SCÈNE SUIVANTE"
+    },
+    {
+      "n": 2,
+      "total": 4,
+      "secondes": 8,
+      "titre": "LE GESTE SIGNATURE",
+      "fonction_commerciale": "Montrer le savoir-faire avec une action de préparation réelle et complète.",
+      "consigne": "Filme un seul geste important de la préparation, du début jusqu'à la fin. Tu peux verser, mélanger, retourner, découper, pétrir ou griller.",
+      "a_filmer": [
+        "Les mains et l'ustensile entièrement visibles.",
+        "Un seul geste complet au milieu de l'image.",
+        "La cuisson, la sauce ou la vapeur sans te mettre en danger."
+      ],
+      "a_eviter": [
+        "Changer de geste ou de plat pendant la prise.",
+        "Mettre les doigts devant l'objectif.",
+        "Approcher le téléphone de l'huile ou du feu."
+      ],
+      "ce_que_tu_dois_faire": "Garde le téléphone stable et laisse une seconde avant et après le geste.",
+      "exemple_facultatif": "Ici, nous préparons le plat à la commande avec notre geste maison.",
+      "review_question": "VOIT-ON LE GESTE DU DÉBUT JUSQU'À LA FIN ?",
+      "positive_action": "SCÈNE SUIVANTE"
+    },
+    {
+      "n": 3,
+      "total": 4,
+      "secondes": 7,
+      "titre": "LE DRESSAGE",
+      "fonction_commerciale": "Montrer le soin, la précision et la touche finale avant le service.",
+      "consigne": "Filme le dressage de près. Montre la sauce, la garniture ou la touche finale qui transforme la préparation en plat prêt à servir.",
+      "a_filmer": [
+        "L'assiette entière au début.",
+        "La main qui ajoute la finition.",
+        "Le résultat propre et visible à la fin."
+      ],
+      "a_eviter": [
+        "Cacher l'assiette avec ton bras.",
+        "Couper le geste avant qu'il soit terminé.",
+        "Continuer à bouger après la finition."
+      ],
+      "ce_que_tu_dois_faire": "Termine le dressage, retire ta main, puis garde le plat immobile pendant deux secondes.",
+      "exemple_facultatif": "Nous terminons avec notre sauce et une garniture préparée sur place.",
+      "review_question": "VOIT-ON LE DRESSAGE ET LA TOUCHE FINALE ?",
+      "positive_action": "SCÈNE SUIVANTE"
+    },
+    {
+      "n": 4,
+      "total": 4,
+      "secondes": 9,
+      "titre": "PRÊT À SERVIR",
+      "fonction_commerciale": "Révéler le plat fini, installer le désir et laisser le CTA lisible.",
+      "consigne": "Présente le plat terminé à la caméra. Pose-le ou avance-le doucement, montre-le sous son meilleur angle, puis laisse-le bien visible sans bouger.",
+      "a_filmer": [
+        "Le plat terminé en entier.",
+        "Une main ou la personne qui sert, avec son accord.",
+        "Un arrière-plan propre.",
+        "Le plat immobile pendant les trois dernières secondes."
+      ],
+      "a_eviter": [
+        "Cacher le plat avec la main ou un objet.",
+        "Filmer avec une forte lumière derrière.",
+        "Quitter le cadre avant la fin."
+      ],
+      "ce_que_tu_dois_faire": "Avance le plat, retire ta main, puis garde le téléphone et le plat parfaitement stables.",
+      "exemple_facultatif": "Le plat est prêt. Vous pouvez commander dès maintenant.",
+      "review_question": "LE PLAT RESTE-T-IL NET ET VISIBLE À LA FIN ?",
+      "positive_action": "VOIR MON MONTAGE"
+    }
+  ],
+  "approval": {
+    "date": "2026-11-18",
+    "decision_channel": "arena_ask_user",
+    "question_id": "validation_t3_questions_12_ecrans",
+    "selected_option_id": "approve_all",
+    "decision": "Tout valider",
+    "scope": [
+      "quatre prises",
+      "durées 6/8/7/9 secondes",
+      "contenus A/B/C",
+      "rôles et actions des douze écrans",
+      "français/fon/anglais et silence facultatif"
+    ],
+    "source_proposal": "capture-guide/consignes_T3_PROPOSITION.json",
+    "source_proposal_sha256": "baf39bce08d670ab14c9646b67d0c5ec354638634e828b85d969dd83ab6e72d1"
+  }
+}

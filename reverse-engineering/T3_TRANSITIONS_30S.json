@@ -1,0 +1,1886 @@
+{
+  "schema_version": "1.0.0-candidate",
+  "template_id": "RESTAURATION-T3",
+  "title": "Contrat candidat des transitions 2 + 4 sur 30 secondes",
+  "status": "pending_owner_validation_not_implemented",
+  "approval_state": {
+    "references_selected": true,
+    "questions_capture_and_12_screens_approved": true,
+    "transition_timeline_approved": false,
+    "engine_implemented": false,
+    "questions_capture_approval": "approvals/APPROBATION_QUESTIONS_CAPTURE_12_ECRANS_2026-11-18.json"
+  },
+  "source_proposal": {
+    "path": "reverse-engineering/T3_TRANSITIONS_30S_PROPOSITION.json",
+    "sha256": "107cd3d5cbfb0a126d5bae22266897749c74bd902a2b1e4cc8bd16e1bfc23525"
+  },
+  "truth_model": {
+    "OBSERVED": "Famille, variante et fenêtre visibles dans les aperçus des références.",
+    "ADAPTED": "Placement narratif retenu pour les quatre prises T3.",
+    "ENGINE_DECISION": "Valeur numérique candidate à implémenter; elle n’est pas présentée comme une mesure exacte de CapCut.",
+    "rule": "Chaque paramètre numérique de transition ci-dessous est une décision moteur candidate dérivée de l’observation, sauf indication contraire."
+  },
+  "owner_constraints": {
+    "selected_references": [
+      "R3-B03-REF-02",
+      "R3-B03-REF-04"
+    ],
+    "include_every_transition_family_from_reference_2": true,
+    "include_every_transition_family_from_reference_4": true,
+    "duration_seconds": 30,
+    "capture_count": 4
+  },
+  "format_contract_candidate": {
+    "orientation": "portrait",
+    "aspect_ratio": "9:16",
+    "width": 720,
+    "height": 1280,
+    "fps": 30,
+    "total_frames": 900,
+    "scene_boundaries_frames": [
+      0,
+      180,
+      420,
+      630,
+      900
+    ],
+    "scene_durations_seconds": [
+      6,
+      8,
+      7,
+      9
+    ],
+    "frame_interval_semantics": "inclusive_start_and_end; seconds use [start,end_exclusive)",
+    "scene_frame_ranges": {
+      "S1": [
+        0,
+        179
+      ],
+      "S2": [
+        180,
+        419
+      ],
+      "S3": [
+        420,
+        629
+      ],
+      "S4": [
+        630,
+        899
+      ]
+    }
+  },
+  "capture_mapping": {
+    "S1": {
+      "title": "Les ingrédients",
+      "capture_seconds": 6,
+      "output_frames": [
+        0,
+        179
+      ]
+    },
+    "S2": {
+      "title": "Le geste signature",
+      "capture_seconds": 8,
+      "output_frames": [
+        180,
+        419
+      ]
+    },
+    "S3": {
+      "title": "Le dressage",
+      "capture_seconds": 7,
+      "output_frames": [
+        420,
+        629
+      ]
+    },
+    "S4": {
+      "title": "Prêt à servir",
+      "capture_seconds": 9,
+      "output_frames": [
+        630,
+        899
+      ]
+    },
+    "extra_capture_required": false,
+    "duplicate_visual_layers_policy": "Les panneaux, grilles et mosaïques réemploient visuellement une des quatre prises. Toutes les copies audio sont muettes."
+  },
+  "source_references": {
+    "R3-B03-REF-02": {
+      "title": "Food edit burger",
+      "creator": "SoftFilmClubᵐ³",
+      "url": "https://www.capcut.com/template-detail/Food-edit-burger/7601636981705133365",
+      "preview_sha256": "f034551598842101a1345ab7b77ff31de2a8f17034af60b124de69b6555faaf7"
+    },
+    "R3-B03-REF-04": {
+      "title": "Comida • restaurante",
+      "creator": "avi capuchina",
+      "url": "https://www.capcut.com/template-detail/protemplatetrends-pro-food-creadorestrella/7532579586337508669",
+      "preview_sha256": "bbfe585968d83bda49133cd52df8b9dc9af636df6a902f72d9bd11891cbf2410"
+    }
+  },
+  "mandatory_transition_families": [
+    {
+      "id": "R2_GEOMETRIC_ARROW_MASK",
+      "source_reference": "R3-B03-REF-02",
+      "required": true,
+      "observed_window_seconds": [
+        0.0,
+        2.4
+      ],
+      "observed_variants": [
+        "x_grid_background",
+        "diagonal_ribbon_reveal",
+        "arrow_mask_expand"
+      ]
+    },
+    {
+      "id": "R2_RADIAL_ZOOM",
+      "source_reference": "R3-B03-REF-02",
+      "required": true,
+      "observed_window_seconds": [
+        0.4,
+        2.7
+      ],
+      "observed_variants": [
+        "zoom_pulse",
+        "center_push"
+      ]
+    },
+    {
+      "id": "R2_SELECTIVE_COLOR_REVEAL",
+      "source_reference": "R3-B03-REF-02",
+      "required": true,
+      "observed_window_seconds": [
+        4.1,
+        5.4
+      ],
+      "observed_variants": [
+        "desaturate_background",
+        "orange_slanted_color_panel"
+      ]
+    },
+    {
+      "id": "R2_MULTI_PANEL_SPLIT",
+      "source_reference": "R3-B03-REF-02",
+      "required": true,
+      "observed_window_seconds": [
+        6.8,
+        7.8
+      ],
+      "observed_variants": [
+        "picture_in_picture_tiles",
+        "sliding_mosaic"
+      ]
+    },
+    {
+      "id": "R2_FLASH_TRANSITION",
+      "source_reference": "R3-B03-REF-02",
+      "required": true,
+      "observed_window_seconds": [
+        8.8,
+        10.1
+      ],
+      "observed_variants": [
+        "electric_light_streak",
+        "white_flash",
+        "red_blue_strobe_film_burn"
+      ]
+    },
+    {
+      "id": "R2_DIAGONAL_ROTATING_WIPE",
+      "source_reference": "R3-B03-REF-02",
+      "required": true,
+      "observed_window_seconds": [
+        11.7,
+        12.43
+      ],
+      "observed_variants": [
+        "rotating_diagonal_band",
+        "strip_collapse"
+      ]
+    },
+    {
+      "id": "R4_TILED_GRID_INTRO",
+      "source_reference": "R3-B03-REF-04",
+      "required": true,
+      "observed_window_seconds": [
+        0.0,
+        2.1
+      ],
+      "observed_variants": [
+        "repeated_tile_grid",
+        "grid_scale_in"
+      ]
+    },
+    {
+      "id": "R4_ORANGE_FLASH",
+      "source_reference": "R3-B03-REF-04",
+      "required": true,
+      "observed_window_seconds": [
+        2.1,
+        2.6
+      ],
+      "observed_variants": [
+        "warm_orange_burn",
+        "white_bloom_peak",
+        "soft_overlay_blend"
+      ]
+    },
+    {
+      "id": "R4_KALEIDOSCOPE_MOSAIC",
+      "source_reference": "R3-B03-REF-04",
+      "required": true,
+      "observed_window_seconds": [
+        6.4,
+        7.2
+      ],
+      "observed_variants": [
+        "vertical_mirror_mosaic",
+        "folded_tile_repeat"
+      ]
+    },
+    {
+      "id": "R4_RADIAL_BLUR",
+      "source_reference": "R3-B03-REF-04",
+      "required": true,
+      "observed_window_seconds": [
+        18.1,
+        18.8
+      ],
+      "observed_variants": [
+        "center_radial_blur",
+        "spin_blur"
+      ]
+    },
+    {
+      "id": "R4_ROTATING_MASK",
+      "source_reference": "R3-B03-REF-04",
+      "required": true,
+      "observed_window_seconds": [
+        10.2,
+        12.7
+      ],
+      "observed_variants": [
+        "rotating_plate_mask",
+        "circular_spin_wipe"
+      ]
+    },
+    {
+      "id": "R4_WHIP_ZOOM",
+      "source_reference": "R3-B03-REF-04",
+      "required": true,
+      "observed_window_seconds": [
+        18.1,
+        18.8
+      ],
+      "observed_variants": [
+        "whip_spin",
+        "zoom_blur_landing"
+      ]
+    },
+    {
+      "id": "R4_MULTI_PANEL_MATCH_CUT",
+      "source_reference": "R3-B03-REF-04",
+      "required": true,
+      "observed_window_seconds": [
+        15.4,
+        16.2
+      ],
+      "observed_variants": [
+        "horizontal_repeater_rows",
+        "vertical_split_columns",
+        "panel_match_cut"
+      ]
+    },
+    {
+      "id": "R4_BACKGROUND_FADE_TO_BLACK",
+      "source_reference": "R3-B03-REF-04",
+      "required": true,
+      "observed_window_seconds": [
+        22.6,
+        23.17
+      ],
+      "observed_variants": [
+        "background_fade_only"
+      ],
+      "adaptation_constraint": "Le fond peut s'assombrir, mais le CTA et le numéro WhatsApp restent à 100 % jusqu'à la dernière image."
+    }
+  ],
+  "additional_observed_editing_events": [
+    {
+      "id": "R2_HARD_ACTION_MATCH_CUT",
+      "source_reference": "R3-B03-REF-02",
+      "observed_at_seconds": 2.75,
+      "required": true
+    },
+    {
+      "id": "R4_SOFT_OVERLAY_BLEND",
+      "source_reference": "R3-B03-REF-04",
+      "observed_window_seconds": [
+        4.4,
+        5.1
+      ],
+      "required": true
+    }
+  ],
+  "global_engine_parameters": {
+    "canvas_px": [
+      720,
+      1280
+    ],
+    "fps": 30,
+    "pixel_format_candidate": "yuv420p",
+    "working_color_space": "sRGB",
+    "alpha_compositing": "premultiplied",
+    "spatial_interpolation": "bicubic_or_better",
+    "temporal_interpolation": "none_unless_explicit",
+    "motion_blur_shutter_angle_degrees": 180,
+    "coordinate_origin": "top_left",
+    "normalized_coordinates": [
+      0.0,
+      1.0
+    ],
+    "safe_area_px": {
+      "left": 36,
+      "right": 36,
+      "top": 48,
+      "bottom": 60
+    },
+    "text_and_cta_rule": "Aucun effet ne doit rendre le CTA ou WhatsApp illisible; sur la dernière image, leur opacité vaut 1.0.",
+    "audio_rule": {
+      "captured_voice_speed": 1.0,
+      "captured_voice_pitch_shift": 0,
+      "duplicate_visual_layers_muted": true,
+      "automatic_subtitles": false,
+      "scene_boundary_declick_fade_frames": 3
+    }
+  },
+  "transition_parameter_profiles": {
+    "R4_TILED_GRID_INTRO": {
+      "classification": "ADAPTED_ENGINE_DECISION_FROM_OBSERVED_FAMILY",
+      "coordinate_space": "normalized_0_1",
+      "grid": {
+        "columns": 3,
+        "rows": 4,
+        "gap_px": 4,
+        "tile_crop": "cover",
+        "tile_time_offsets_frames": [
+          0,
+          3,
+          6,
+          9,
+          12,
+          15,
+          18,
+          21,
+          24,
+          27,
+          30,
+          33
+        ],
+        "duplicate_audio": "muted"
+      },
+      "entry": {
+        "tile_stagger_frames": 1,
+        "grid_scale": [
+          {
+            "frame": 0,
+            "value": 1.22
+          },
+          {
+            "frame": 8,
+            "value": 1.08
+          },
+          {
+            "frame": 17,
+            "value": 1.0
+          }
+        ],
+        "tile_opacity": [
+          {
+            "frame": 0,
+            "value": 0.15
+          },
+          {
+            "frame": 5,
+            "value": 0.72
+          },
+          {
+            "frame": 17,
+            "value": 1.0
+          }
+        ],
+        "luma_multiplier": [
+          {
+            "frame": 0,
+            "value": 0.55
+          },
+          {
+            "frame": 8,
+            "value": 0.86
+          },
+          {
+            "frame": 17,
+            "value": 1.0
+          }
+        ],
+        "easing": "cubic_out"
+      },
+      "exit": "covered_by_next_geometric_mask"
+    },
+    "R2_GEOMETRIC_ARROW_MASK": {
+      "classification": "ADAPTED_ENGINE_DECISION_FROM_OBSERVED_FAMILY",
+      "coordinate_space": "normalized_0_1",
+      "background_x_grid": {
+        "columns": 3,
+        "rows": 5,
+        "opacity": 0.34,
+        "scale": 1.06,
+        "blend_mode": "normal"
+      },
+      "mask": {
+        "shape": "arrow_with_diagonal_ribbon",
+        "angle_degrees": -28,
+        "arrow_tip_ratio": 0.18,
+        "feather_px": 2,
+        "progress": [
+          {
+            "frame": 0,
+            "value": 0.0
+          },
+          {
+            "frame": 8,
+            "value": 0.48
+          },
+          {
+            "frame": 17,
+            "value": 1.25
+          }
+        ],
+        "easing": "cubic_in_out"
+      },
+      "incoming_transform": {
+        "scale": [
+          {
+            "frame": 0,
+            "value": 1.14
+          },
+          {
+            "frame": 8,
+            "value": 1.06
+          },
+          {
+            "frame": 17,
+            "value": 1.02
+          }
+        ],
+        "rotation_degrees": [
+          {
+            "frame": 0,
+            "value": -2.0
+          },
+          {
+            "frame": 8,
+            "value": 0.0
+          },
+          {
+            "frame": 17,
+            "value": 0.0
+          }
+        ]
+      },
+      "ribbon": {
+        "color": "#F3D77B",
+        "opacity": 0.92,
+        "width_normalized": 0.14
+      }
+    },
+    "R2_RADIAL_ZOOM": {
+      "classification": "ADAPTED_ENGINE_DECISION_FROM_OBSERVED_FAMILY",
+      "anchor": "detected_product_center_or_frame_center",
+      "scale": [
+        {
+          "frame": 0,
+          "value": 1.0
+        },
+        {
+          "frame": 4,
+          "value": 1.14
+        },
+        {
+          "frame": 8,
+          "value": 1.03
+        }
+      ],
+      "radial_blur_px": [
+        {
+          "frame": 0,
+          "value": 0
+        },
+        {
+          "frame": 4,
+          "value": 16
+        },
+        {
+          "frame": 8,
+          "value": 0
+        }
+      ],
+      "exposure_ev": [
+        {
+          "frame": 0,
+          "value": 0.0
+        },
+        {
+          "frame": 4,
+          "value": 0.18
+        },
+        {
+          "frame": 8,
+          "value": 0.0
+        }
+      ],
+      "easing": "cubic_out_then_in"
+    },
+    "R4_ORANGE_FLASH": {
+      "classification": "ADAPTED_ENGINE_DECISION_FROM_OBSERVED_FAMILY",
+      "blend_mode": "screen",
+      "orange_overlay": {
+        "color": "#F06B2D",
+        "opacity": [
+          {
+            "frame": 0,
+            "value": 0.0
+          },
+          {
+            "frame": 3,
+            "value": 0.86
+          },
+          {
+            "frame": 5,
+            "value": 0.34
+          },
+          {
+            "frame": 8,
+            "value": 0.0
+          }
+        ]
+      },
+      "white_bloom": {
+        "color": "#FFF5DB",
+        "opacity": [
+          {
+            "frame": 0,
+            "value": 0.0
+          },
+          {
+            "frame": 4,
+            "value": 1.0
+          },
+          {
+            "frame": 6,
+            "value": 0.28
+          },
+          {
+            "frame": 8,
+            "value": 0.0
+          }
+        ],
+        "blur_px": 22
+      },
+      "exposure_ev": [
+        {
+          "frame": 0,
+          "value": 0.0
+        },
+        {
+          "frame": 4,
+          "value": 1.1
+        },
+        {
+          "frame": 8,
+          "value": 0.0
+        }
+      ],
+      "incoming_layer_visible_from_local_frame": 4,
+      "easing": "cubic_in_out"
+    },
+    "R2_HARD_ACTION_MATCH_CUT": {
+      "classification": "ADAPTED_ENGINE_DECISION_FROM_OBSERVED_EVENT",
+      "crossfade_frames": 0,
+      "cut_on_local_frame": 1,
+      "alignment": {
+        "anchor": "hand_or_utensil_action_peak",
+        "max_position_error_px": 12,
+        "max_scale_ratio": 1.08,
+        "max_rotation_delta_degrees": 4
+      },
+      "outgoing_hold_frames": 1,
+      "incoming_hold_frames": 1
+    },
+    "R2_SELECTIVE_COLOR_REVEAL": {
+      "classification": "ADAPTED_ENGINE_DECISION_FROM_OBSERVED_FAMILY",
+      "base_saturation": 0.0,
+      "final_saturation": 1.0,
+      "color_panel": {
+        "angle_degrees": -16,
+        "feather_px": 2,
+        "progress": [
+          {
+            "frame": 0,
+            "value": 0.0
+          },
+          {
+            "frame": 6,
+            "value": 0.58
+          },
+          {
+            "frame": 11,
+            "value": 1.25
+          }
+        ],
+        "tint": "#F47A24",
+        "tint_opacity": 0.38,
+        "easing": "cubic_in_out"
+      },
+      "incoming_scale": [
+        {
+          "frame": 0,
+          "value": 1.05
+        },
+        {
+          "frame": 11,
+          "value": 1.0
+        }
+      ],
+      "preserve_skin_tones": true
+    },
+    "R2_FLASH_TRANSITION": {
+      "classification": "ADAPTED_ENGINE_DECISION_FROM_OBSERVED_FAMILY",
+      "variant_profiles": {
+        "electric_white": {
+          "light_streak_count": 3,
+          "streak_angle_degrees": -18,
+          "streak_color": "#E9F7FF",
+          "streak_glow_px": 22,
+          "streak_opacity": [
+            {
+              "frame": 0,
+              "value": 0.0
+            },
+            {
+              "frame": 4,
+              "value": 1.0
+            },
+            {
+              "frame": 9,
+              "value": 0.0
+            }
+          ],
+          "white_flash_opacity": [
+            {
+              "frame": 0,
+              "value": 0.0
+            },
+            {
+              "frame": 5,
+              "value": 0.92
+            },
+            {
+              "frame": 9,
+              "value": 0.0
+            }
+          ],
+          "blend_mode": "screen"
+        },
+        "red_blue_strobe_film_burn": {
+          "pulse_count": 3,
+          "colors": [
+            "#E33B2F",
+            "#3569FF",
+            "#FFB23C"
+          ],
+          "opacity": [
+            {
+              "frame": 0,
+              "value": 0.0
+            },
+            {
+              "frame": 2,
+              "value": 0.78
+            },
+            {
+              "frame": 4,
+              "value": 0.22
+            },
+            {
+              "frame": 7,
+              "value": 0.82
+            },
+            {
+              "frame": 9,
+              "value": 0.0
+            }
+          ],
+          "edge_burn_blur_px": 28,
+          "blend_mode": "screen"
+        }
+      },
+      "clip_luma_after_peak": 1.0
+    },
+    "R4_SOFT_OVERLAY_BLEND": {
+      "classification": "ADAPTED_ENGINE_DECISION_FROM_OBSERVED_EVENT",
+      "layers": 2,
+      "base_blend_mode": "normal",
+      "overlay_blend_mode": "screen",
+      "outgoing_opacity": [
+        {
+          "frame": 0,
+          "value": 1.0
+        },
+        {
+          "frame": 5,
+          "value": 0.55
+        },
+        {
+          "frame": 9,
+          "value": 0.0
+        }
+      ],
+      "incoming_opacity": [
+        {
+          "frame": 0,
+          "value": 0.0
+        },
+        {
+          "frame": 5,
+          "value": 0.62
+        },
+        {
+          "frame": 9,
+          "value": 1.0
+        }
+      ],
+      "gaussian_blur_px": [
+        {
+          "frame": 0,
+          "value": 0
+        },
+        {
+          "frame": 5,
+          "value": 4
+        },
+        {
+          "frame": 9,
+          "value": 0
+        }
+      ],
+      "scale": [
+        {
+          "frame": 0,
+          "value": 1.02
+        },
+        {
+          "frame": 9,
+          "value": 1.0
+        }
+      ],
+      "easing": "sine_in_out"
+    },
+    "R4_KALEIDOSCOPE_MOSAIC": {
+      "classification": "ADAPTED_ENGINE_DECISION_FROM_OBSERVED_FAMILY",
+      "strip_count": 5,
+      "orientation": "vertical",
+      "alternate_horizontal_mirror": true,
+      "strip_widths_normalized": [
+        0.16,
+        0.18,
+        0.32,
+        0.18,
+        0.16
+      ],
+      "gap_px": 0,
+      "source_scale": 1.08,
+      "strip_rotation_degrees": [
+        -6,
+        -3,
+        0,
+        3,
+        6
+      ],
+      "fold_shading_opacity": 0.22,
+      "entry_progress": [
+        {
+          "frame": 0,
+          "value": 0.0
+        },
+        {
+          "frame": 7,
+          "value": 1.0
+        }
+      ],
+      "merge_to_incoming": [
+        {
+          "frame": 7,
+          "value": 0.0
+        },
+        {
+          "frame": 11,
+          "value": 1.0
+        }
+      ],
+      "easing": "cubic_in_out"
+    },
+    "R2_MULTI_PANEL_SPLIT": {
+      "classification": "ADAPTED_ENGINE_DECISION_FROM_OBSERVED_FAMILY",
+      "panel_count": 5,
+      "layout": "one_center_plus_four_corner_tiles",
+      "gap_px": 6,
+      "border_px": 3,
+      "border_color": "#F7E9CF",
+      "panel_time_offsets_frames": [
+        -12,
+        -6,
+        0,
+        6,
+        12
+      ],
+      "duplicate_audio": "muted",
+      "panel_stagger_frames": 1,
+      "panel_scale": [
+        {
+          "frame": 0,
+          "value": 0.72
+        },
+        {
+          "frame": 8,
+          "value": 1.0
+        }
+      ],
+      "panel_opacity": [
+        {
+          "frame": 0,
+          "value": 0.0
+        },
+        {
+          "frame": 6,
+          "value": 1.0
+        }
+      ],
+      "merge_progress": [
+        {
+          "frame": 8,
+          "value": 0.0
+        },
+        {
+          "frame": 13,
+          "value": 1.0
+        }
+      ],
+      "easing": "cubic_out"
+    },
+    "R4_ROTATING_MASK": {
+      "classification": "ADAPTED_ENGINE_DECISION_FROM_OBSERVED_FAMILY",
+      "mask_shape": "circle_plate",
+      "anchor": "detected_plate_center_or_frame_center",
+      "feather_px": 2,
+      "radius_normalized": [
+        {
+          "frame": 0,
+          "value": 0.18
+        },
+        {
+          "frame": 6,
+          "value": 0.48
+        },
+        {
+          "frame": 11,
+          "value": 0.78
+        }
+      ],
+      "rotation_degrees": [
+        {
+          "frame": 0,
+          "value": 0
+        },
+        {
+          "frame": 6,
+          "value": 58
+        },
+        {
+          "frame": 11,
+          "value": 110
+        }
+      ],
+      "incoming_scale": [
+        {
+          "frame": 0,
+          "value": 0.88
+        },
+        {
+          "frame": 11,
+          "value": 1.0
+        }
+      ],
+      "outgoing_scale": [
+        {
+          "frame": 0,
+          "value": 1.0
+        },
+        {
+          "frame": 11,
+          "value": 1.08
+        }
+      ],
+      "easing": "cubic_in_out"
+    },
+    "R4_RADIAL_BLUR": {
+      "classification": "ADAPTED_ENGINE_DECISION_FROM_OBSERVED_FAMILY",
+      "anchor": "detected_plate_center_or_frame_center",
+      "radial_samples": 24,
+      "radial_amount_normalized": [
+        {
+          "frame": 0,
+          "value": 0.0
+        },
+        {
+          "frame": 6,
+          "value": 0.055
+        },
+        {
+          "frame": 12,
+          "value": 0.0
+        }
+      ],
+      "spin_degrees": [
+        {
+          "frame": 0,
+          "value": 0
+        },
+        {
+          "frame": 6,
+          "value": 12
+        },
+        {
+          "frame": 12,
+          "value": 0
+        }
+      ],
+      "outgoing_scale": [
+        {
+          "frame": 0,
+          "value": 1.0
+        },
+        {
+          "frame": 6,
+          "value": 1.24
+        }
+      ],
+      "incoming_scale": [
+        {
+          "frame": 6,
+          "value": 0.84
+        },
+        {
+          "frame": 12,
+          "value": 1.0
+        }
+      ],
+      "incoming_visible_from_local_frame": 5,
+      "easing": "cubic_in_out"
+    },
+    "R4_WHIP_ZOOM": {
+      "classification": "ADAPTED_ENGINE_DECISION_FROM_OBSERVED_FAMILY",
+      "anchor": "detected_plate_center_or_frame_center",
+      "outgoing_scale": [
+        {
+          "frame": 0,
+          "value": 1.0
+        },
+        {
+          "frame": 5,
+          "value": 1.48
+        }
+      ],
+      "incoming_scale": [
+        {
+          "frame": 4,
+          "value": 0.72
+        },
+        {
+          "frame": 7,
+          "value": 0.9
+        },
+        {
+          "frame": 11,
+          "value": 1.0
+        }
+      ],
+      "directional_blur_px": [
+        {
+          "frame": 0,
+          "value": 0
+        },
+        {
+          "frame": 5,
+          "value": 30
+        },
+        {
+          "frame": 7,
+          "value": 12
+        },
+        {
+          "frame": 11,
+          "value": 0
+        }
+      ],
+      "spin_degrees": [
+        {
+          "frame": 0,
+          "value": 0
+        },
+        {
+          "frame": 5,
+          "value": -6
+        },
+        {
+          "frame": 11,
+          "value": 0
+        }
+      ],
+      "incoming_visible_from_local_frame": 4,
+      "sharp_landing_frames": 4,
+      "easing": "quintic_out"
+    },
+    "R4_MULTI_PANEL_MATCH_CUT": {
+      "classification": "ADAPTED_ENGINE_DECISION_FROM_OBSERVED_FAMILY",
+      "match_anchor": "plate_or_glass_center",
+      "duplicate_audio": "muted",
+      "gap_px": 4,
+      "border_px": 0,
+      "subphases": [
+        {
+          "local_frames": [
+            0,
+            6
+          ],
+          "layout": "three_horizontal_rows",
+          "row_count": 3,
+          "row_x_offsets_normalized": [
+            -0.08,
+            0.0,
+            0.08
+          ],
+          "entry_stagger_frames": 1
+        },
+        {
+          "local_frames": [
+            7,
+            13
+          ],
+          "layout": "three_vertical_columns",
+          "column_count": 3,
+          "column_y_offsets_normalized": [
+            0.05,
+            0.0,
+            -0.05
+          ],
+          "entry_stagger_frames": 1
+        }
+      ],
+      "panel_opacity": [
+        {
+          "frame": 0,
+          "value": 0.0
+        },
+        {
+          "frame": 4,
+          "value": 1.0
+        },
+        {
+          "frame": 13,
+          "value": 1.0
+        }
+      ],
+      "panel_scale": [
+        {
+          "frame": 0,
+          "value": 1.08
+        },
+        {
+          "frame": 13,
+          "value": 1.0
+        }
+      ],
+      "easing": "cubic_in_out"
+    },
+    "R2_DIAGONAL_ROTATING_WIPE": {
+      "classification": "ADAPTED_ENGINE_DECISION_FROM_OBSERVED_FAMILY",
+      "strip_count": 6,
+      "strip_angle_degrees": -24,
+      "strip_width_normalized": 0.24,
+      "strip_feather_px": 1,
+      "strip_stagger_frames": 1,
+      "rotation_degrees": [
+        {
+          "frame": 0,
+          "value": 0
+        },
+        {
+          "frame": 9,
+          "value": 18
+        },
+        {
+          "frame": 16,
+          "value": 24
+        }
+      ],
+      "closure_progress": [
+        {
+          "frame": 0,
+          "value": 0.0
+        },
+        {
+          "frame": 9,
+          "value": 1.0
+        }
+      ],
+      "reveal_progress": [
+        {
+          "frame": 9,
+          "value": 0.0
+        },
+        {
+          "frame": 16,
+          "value": 1.0
+        }
+      ],
+      "destination": "S4_hero_frame_not_black",
+      "background_color": "#0B0807",
+      "easing": "cubic_in_out"
+    },
+    "R4_BACKGROUND_FADE_TO_BLACK": {
+      "classification": "ADAPTED_ENGINE_DECISION_FROM_OBSERVED_FAMILY",
+      "masking": "subject_and_cta_protected_from_background_matte",
+      "background_luma_multiplier": [
+        {
+          "frame": 0,
+          "value": 1.0
+        },
+        {
+          "frame": 7,
+          "value": 0.55
+        },
+        {
+          "frame": 14,
+          "value": 0.18
+        }
+      ],
+      "background_saturation_multiplier": [
+        {
+          "frame": 0,
+          "value": 1.0
+        },
+        {
+          "frame": 7,
+          "value": 0.85
+        },
+        {
+          "frame": 14,
+          "value": 0.72
+        }
+      ],
+      "background_blur_px": [
+        {
+          "frame": 0,
+          "value": 0
+        },
+        {
+          "frame": 7,
+          "value": 4
+        },
+        {
+          "frame": 14,
+          "value": 7
+        }
+      ],
+      "hero_subject_opacity": 1.0,
+      "cta_group_opacity": 1.0,
+      "whatsapp_opacity": 1.0,
+      "minimum_final_background_rgb": 12,
+      "final_frame_black": false,
+      "easing": "sine_in"
+    }
+  },
+  "timeline_events": [
+    {
+      "event": 1,
+      "transition_id": "R4_TILED_GRID_INTRO",
+      "scene": "S1",
+      "frames": [
+        0,
+        17
+      ],
+      "purpose": "Ouvrir immédiatement sur une grille d'ingrédients répétée.",
+      "start_seconds_exact": 0.0,
+      "end_seconds_exclusive_exact": 0.6,
+      "duration_frames": 18,
+      "duration_seconds_exact": 0.6,
+      "frame_interval": "inclusive",
+      "parameter_profile": "R4_TILED_GRID_INTRO",
+      "variant": "repeated_tile_grid+grid_scale_in",
+      "visual_source_layers": [
+        "S1.base_visual",
+        "S1.duplicate_tiles"
+      ],
+      "duplicate_layer_audio": "muted",
+      "base_capture_audio": "continuous_at_1.0x"
+    },
+    {
+      "event": 2,
+      "transition_id": "R2_GEOMETRIC_ARROW_MASK",
+      "scene": "S1",
+      "frames": [
+        18,
+        35
+      ],
+      "purpose": "Faire entrer l'ingrédient principal par masque géométrique et ruban diagonal.",
+      "start_seconds_exact": 0.6,
+      "end_seconds_exclusive_exact": 1.2,
+      "duration_frames": 18,
+      "duration_seconds_exact": 0.6,
+      "frame_interval": "inclusive",
+      "parameter_profile": "R2_GEOMETRIC_ARROW_MASK",
+      "variant": "x_grid_background+diagonal_ribbon_reveal+arrow_mask_expand",
+      "visual_source_layers": [
+        "S1.base_visual",
+        "S1.geometric_reveal_layer"
+      ],
+      "duplicate_layer_audio": "muted",
+      "base_capture_audio": "continuous_at_1.0x"
+    },
+    {
+      "event": 3,
+      "transition_id": "R2_RADIAL_ZOOM",
+      "scene": "S1",
+      "frames": [
+        78,
+        86
+      ],
+      "purpose": "Accentuer un détail frais sans changer de captation.",
+      "start_seconds_exact": 2.6,
+      "end_seconds_exclusive_exact": 2.9,
+      "duration_frames": 9,
+      "duration_seconds_exact": 0.3,
+      "frame_interval": "inclusive",
+      "parameter_profile": "R2_RADIAL_ZOOM",
+      "variant": "zoom_pulse+center_push",
+      "visual_source_layers": [
+        "S1.base_visual"
+      ],
+      "duplicate_layer_audio": "muted",
+      "base_capture_audio": "continuous_at_1.0x"
+    },
+    {
+      "event": 4,
+      "transition_id": "R4_ORANGE_FLASH",
+      "scene": "S1_TO_S2",
+      "frames": [
+        171,
+        179
+      ],
+      "purpose": "Masquer la frontière ingrédients vers cuisson avec burn orange et bloom blanc.",
+      "start_seconds_exact": 5.7,
+      "end_seconds_exclusive_exact": 6.0,
+      "duration_frames": 9,
+      "duration_seconds_exact": 0.3,
+      "frame_interval": "inclusive",
+      "parameter_profile": "R4_ORANGE_FLASH",
+      "variant": "warm_orange_burn+white_bloom_peak",
+      "visual_source_layers": [
+        "S1.tail_visual",
+        "S2.head_visual"
+      ],
+      "duplicate_layer_audio": "muted",
+      "base_capture_audio": "continuous_at_1.0x"
+    },
+    {
+      "event": 5,
+      "transition_id": "R2_HARD_ACTION_MATCH_CUT",
+      "scene": "S2",
+      "frames": [
+        224,
+        225
+      ],
+      "purpose": "Couper exactement au sommet du geste de préparation.",
+      "start_seconds_exact": 7.466667,
+      "end_seconds_exclusive_exact": 7.533333,
+      "duration_frames": 2,
+      "duration_seconds_exact": 0.066667,
+      "frame_interval": "inclusive",
+      "parameter_profile": "R2_HARD_ACTION_MATCH_CUT",
+      "variant": "hard_action_match_cut",
+      "visual_source_layers": [
+        "S2.pre_action_crop",
+        "S2.post_action_crop"
+      ],
+      "duplicate_layer_audio": "muted",
+      "base_capture_audio": "continuous_at_1.0x"
+    },
+    {
+      "event": 6,
+      "transition_id": "R2_SELECTIVE_COLOR_REVEAL",
+      "scene": "S2",
+      "frames": [
+        252,
+        263
+      ],
+      "purpose": "Passer d'une préparation désaturée à la couleur chaude par panneau oblique.",
+      "start_seconds_exact": 8.4,
+      "end_seconds_exclusive_exact": 8.8,
+      "duration_frames": 12,
+      "duration_seconds_exact": 0.4,
+      "frame_interval": "inclusive",
+      "parameter_profile": "R2_SELECTIVE_COLOR_REVEAL",
+      "variant": "desaturate_background+orange_slanted_color_panel",
+      "visual_source_layers": [
+        "S2.grayscale_layer",
+        "S2.color_layer"
+      ],
+      "duplicate_layer_audio": "muted",
+      "base_capture_audio": "continuous_at_1.0x"
+    },
+    {
+      "event": 7,
+      "transition_id": "R2_FLASH_TRANSITION",
+      "scene": "S2",
+      "frames": [
+        303,
+        312
+      ],
+      "purpose": "Ajouter l'éclair électrique et le flash blanc sur un changement de détail.",
+      "start_seconds_exact": 10.1,
+      "end_seconds_exclusive_exact": 10.433333,
+      "duration_frames": 10,
+      "duration_seconds_exact": 0.333333,
+      "frame_interval": "inclusive",
+      "parameter_profile": "R2_FLASH_TRANSITION",
+      "variant": "electric_light_streak+white_flash",
+      "visual_source_layers": [
+        "S2.base_visual"
+      ],
+      "duplicate_layer_audio": "muted",
+      "base_capture_audio": "continuous_at_1.0x",
+      "profile_variant": "electric_white"
+    },
+    {
+      "event": 8,
+      "transition_id": "R4_SOFT_OVERLAY_BLEND",
+      "scene": "S2",
+      "frames": [
+        344,
+        353
+      ],
+      "purpose": "Superposer brièvement deux cadrages vivants du même geste.",
+      "start_seconds_exact": 11.466667,
+      "end_seconds_exclusive_exact": 11.8,
+      "duration_frames": 10,
+      "duration_seconds_exact": 0.333333,
+      "frame_interval": "inclusive",
+      "parameter_profile": "R4_SOFT_OVERLAY_BLEND",
+      "variant": "soft_overlay_blend",
+      "visual_source_layers": [
+        "S2.base_crop",
+        "S2.overlay_crop"
+      ],
+      "duplicate_layer_audio": "muted",
+      "base_capture_audio": "continuous_at_1.0x"
+    },
+    {
+      "event": 9,
+      "transition_id": "R2_FLASH_TRANSITION",
+      "variant": "red_blue_strobe_film_burn",
+      "scene": "S2",
+      "frames": [
+        374,
+        383
+      ],
+      "purpose": "Deuxième variante réellement observée du flash de la référence 2.",
+      "start_seconds_exact": 12.466667,
+      "end_seconds_exclusive_exact": 12.8,
+      "duration_frames": 10,
+      "duration_seconds_exact": 0.333333,
+      "frame_interval": "inclusive",
+      "parameter_profile": "R2_FLASH_TRANSITION",
+      "visual_source_layers": [
+        "S2.base_visual"
+      ],
+      "duplicate_layer_audio": "muted",
+      "base_capture_audio": "continuous_at_1.0x",
+      "profile_variant": "red_blue_strobe_film_burn"
+    },
+    {
+      "event": 10,
+      "transition_id": "R4_KALEIDOSCOPE_MOSAIC",
+      "scene": "S2_TO_S3",
+      "frames": [
+        408,
+        419
+      ],
+      "purpose": "Transformer le geste de cuisson en entrée du dressage par mosaïque verticale.",
+      "start_seconds_exact": 13.6,
+      "end_seconds_exclusive_exact": 14.0,
+      "duration_frames": 12,
+      "duration_seconds_exact": 0.4,
+      "frame_interval": "inclusive",
+      "parameter_profile": "R4_KALEIDOSCOPE_MOSAIC",
+      "variant": "vertical_mirror_mosaic+folded_tile_repeat",
+      "visual_source_layers": [
+        "S2.tail_visual",
+        "S3.head_visual"
+      ],
+      "duplicate_layer_audio": "muted",
+      "base_capture_audio": "continuous_at_1.0x"
+    },
+    {
+      "event": 11,
+      "transition_id": "R2_MULTI_PANEL_SPLIT",
+      "scene": "S3",
+      "frames": [
+        453,
+        466
+      ],
+      "purpose": "Montrer simultanément assiette, sauce et main à partir de la même prise.",
+      "start_seconds_exact": 15.1,
+      "end_seconds_exclusive_exact": 15.566667,
+      "duration_frames": 14,
+      "duration_seconds_exact": 0.466667,
+      "frame_interval": "inclusive",
+      "parameter_profile": "R2_MULTI_PANEL_SPLIT",
+      "variant": "picture_in_picture_tiles+sliding_mosaic",
+      "visual_source_layers": [
+        "S3.base_visual",
+        "S3.duplicate_panels"
+      ],
+      "duplicate_layer_audio": "muted",
+      "base_capture_audio": "continuous_at_1.0x"
+    },
+    {
+      "event": 12,
+      "transition_id": "R4_ROTATING_MASK",
+      "scene": "S3",
+      "frames": [
+        540,
+        551
+      ],
+      "purpose": "Faire tourner l'assiette comme masque vers la finition.",
+      "start_seconds_exact": 18.0,
+      "end_seconds_exclusive_exact": 18.4,
+      "duration_frames": 12,
+      "duration_seconds_exact": 0.4,
+      "frame_interval": "inclusive",
+      "parameter_profile": "R4_ROTATING_MASK",
+      "variant": "rotating_plate_mask+circular_spin_wipe",
+      "visual_source_layers": [
+        "S3.base_visual",
+        "S3.masked_detail_layer"
+      ],
+      "duplicate_layer_audio": "muted",
+      "base_capture_audio": "continuous_at_1.0x"
+    },
+    {
+      "event": 13,
+      "transition_id": "R4_RADIAL_BLUR",
+      "scene": "S3_TO_S4",
+      "frames": [
+        617,
+        629
+      ],
+      "purpose": "Propulser le dressage vers le plat prêt à servir.",
+      "start_seconds_exact": 20.566667,
+      "end_seconds_exclusive_exact": 21.0,
+      "duration_frames": 13,
+      "duration_seconds_exact": 0.433333,
+      "frame_interval": "inclusive",
+      "parameter_profile": "R4_RADIAL_BLUR",
+      "variant": "center_radial_blur+spin_blur",
+      "visual_source_layers": [
+        "S3.tail_visual",
+        "S4.head_visual"
+      ],
+      "duplicate_layer_audio": "muted",
+      "base_capture_audio": "continuous_at_1.0x"
+    },
+    {
+      "event": 14,
+      "transition_id": "R4_WHIP_ZOOM",
+      "scene": "S4",
+      "frames": [
+        699,
+        710
+      ],
+      "purpose": "Passer du service au meilleur angle du plat avec atterrissage net.",
+      "start_seconds_exact": 23.3,
+      "end_seconds_exclusive_exact": 23.7,
+      "duration_frames": 12,
+      "duration_seconds_exact": 0.4,
+      "frame_interval": "inclusive",
+      "parameter_profile": "R4_WHIP_ZOOM",
+      "variant": "whip_spin+zoom_blur_landing",
+      "visual_source_layers": [
+        "S4.service_crop",
+        "S4.hero_crop"
+      ],
+      "duplicate_layer_audio": "muted",
+      "base_capture_audio": "continuous_at_1.0x"
+    },
+    {
+      "event": 15,
+      "transition_id": "R4_MULTI_PANEL_MATCH_CUT",
+      "scene": "S4",
+      "frames": [
+        768,
+        781
+      ],
+      "purpose": "Combiner rangées répétées puis colonnes verticales avant le hero shot.",
+      "start_seconds_exact": 25.6,
+      "end_seconds_exclusive_exact": 26.066667,
+      "duration_frames": 14,
+      "duration_seconds_exact": 0.466667,
+      "frame_interval": "inclusive",
+      "parameter_profile": "R4_MULTI_PANEL_MATCH_CUT",
+      "variant": "horizontal_repeater_rows+vertical_split_columns+panel_match_cut",
+      "visual_source_layers": [
+        "S4.base_visual",
+        "S4.duplicate_panels"
+      ],
+      "duplicate_layer_audio": "muted",
+      "base_capture_audio": "continuous_at_1.0x"
+    },
+    {
+      "event": 16,
+      "transition_id": "R2_DIAGONAL_ROTATING_WIPE",
+      "scene": "S4",
+      "frames": [
+        824,
+        840
+      ],
+      "purpose": "Les bandes diagonales se referment puis révèlent le hero final et le CTA.",
+      "start_seconds_exact": 27.466667,
+      "end_seconds_exclusive_exact": 28.033333,
+      "duration_frames": 17,
+      "duration_seconds_exact": 0.566667,
+      "frame_interval": "inclusive",
+      "parameter_profile": "R2_DIAGONAL_ROTATING_WIPE",
+      "variant": "rotating_diagonal_band+strip_collapse",
+      "visual_source_layers": [
+        "S4.prehero_visual",
+        "S4.hero_visual"
+      ],
+      "duplicate_layer_audio": "muted",
+      "base_capture_audio": "continuous_at_1.0x"
+    },
+    {
+      "event": 17,
+      "transition_id": "R4_BACKGROUND_FADE_TO_BLACK",
+      "scene": "S4",
+      "frames": [
+        885,
+        899
+      ],
+      "purpose": "Assombrir uniquement l'arrière-plan; le CTA reste entièrement visible.",
+      "start_seconds_exact": 29.5,
+      "end_seconds_exclusive_exact": 30.0,
+      "duration_frames": 15,
+      "duration_seconds_exact": 0.5,
+      "frame_interval": "inclusive",
+      "parameter_profile": "R4_BACKGROUND_FADE_TO_BLACK",
+      "variant": "background_fade_only",
+      "visual_source_layers": [
+        "S4.hero_visual",
+        "CTA.overlay"
+      ],
+      "duplicate_layer_audio": "muted",
+      "base_capture_audio": "continuous_at_1.0x"
+    }
+  ],
+  "variant_coverage_matrix": {
+    "R2_GEOMETRIC_ARROW_MASK": {
+      "x_grid_background": [
+        2
+      ],
+      "diagonal_ribbon_reveal": [
+        2
+      ],
+      "arrow_mask_expand": [
+        2
+      ]
+    },
+    "R2_RADIAL_ZOOM": {
+      "zoom_pulse": [
+        3
+      ],
+      "center_push": [
+        3
+      ]
+    },
+    "R2_SELECTIVE_COLOR_REVEAL": {
+      "desaturate_background": [
+        6
+      ],
+      "orange_slanted_color_panel": [
+        6
+      ]
+    },
+    "R2_MULTI_PANEL_SPLIT": {
+      "picture_in_picture_tiles": [
+        11
+      ],
+      "sliding_mosaic": [
+        11
+      ]
+    },
+    "R2_FLASH_TRANSITION": {
+      "electric_light_streak": [
+        7
+      ],
+      "white_flash": [
+        7
+      ],
+      "red_blue_strobe_film_burn": [
+        9
+      ]
+    },
+    "R2_DIAGONAL_ROTATING_WIPE": {
+      "rotating_diagonal_band": [
+        16
+      ],
+      "strip_collapse": [
+        16
+      ]
+    },
+    "R2_HARD_ACTION_MATCH_CUT": {
+      "hard_action_match_cut": [
+        5
+      ]
+    },
+    "R4_TILED_GRID_INTRO": {
+      "repeated_tile_grid": [
+        1
+      ],
+      "grid_scale_in": [
+        1
+      ]
+    },
+    "R4_ORANGE_FLASH": {
+      "warm_orange_burn": [
+        4
+      ],
+      "white_bloom_peak": [
+        4
+      ],
+      "soft_overlay_blend": [
+        8
+      ]
+    },
+    "R4_SOFT_OVERLAY_BLEND": {
+      "soft_overlay_blend": [
+        8
+      ]
+    },
+    "R4_KALEIDOSCOPE_MOSAIC": {
+      "vertical_mirror_mosaic": [
+        10
+      ],
+      "folded_tile_repeat": [
+        10
+      ]
+    },
+    "R4_RADIAL_BLUR": {
+      "center_radial_blur": [
+        13
+      ],
+      "spin_blur": [
+        13
+      ]
+    },
+    "R4_ROTATING_MASK": {
+      "rotating_plate_mask": [
+        12
+      ],
+      "circular_spin_wipe": [
+        12
+      ]
+    },
+    "R4_WHIP_ZOOM": {
+      "whip_spin": [
+        14
+      ],
+      "zoom_blur_landing": [
+        14
+      ]
+    },
+    "R4_MULTI_PANEL_MATCH_CUT": {
+      "horizontal_repeater_rows": [
+        15
+      ],
+      "vertical_split_columns": [
+        15
+      ],
+      "panel_match_cut": [
+        15
+      ]
+    },
+    "R4_BACKGROUND_FADE_TO_BLACK": {
+      "background_fade_only": [
+        17
+      ]
+    }
+  },
+  "stable_footage_intervals": [
+    {
+      "frames": [
+        36,
+        77
+      ],
+      "scene": "S1"
+    },
+    {
+      "frames": [
+        87,
+        170
+      ],
+      "scene": "S1"
+    },
+    {
+      "frames": [
+        180,
+        223
+      ],
+      "scene": "S2"
+    },
+    {
+      "frames": [
+        226,
+        251
+      ],
+      "scene": "S2"
+    },
+    {
+      "frames": [
+        264,
+        302
+      ],
+      "scene": "S2"
+    },
+    {
+      "frames": [
+        313,
+        343
+      ],
+      "scene": "S2"
+    },
+    {
+      "frames": [
+        354,
+        373
+      ],
+      "scene": "S2"
+    },
+    {
+      "frames": [
+        384,
+        407
+      ],
+      "scene": "S2"
+    },
+    {
+      "frames": [
+        420,
+        452
+      ],
+      "scene": "S3"
+    },
+    {
+      "frames": [
+        467,
+        539
+      ],
+      "scene": "S3"
+    },
+    {
+      "frames": [
+        552,
+        616
+      ],
+      "scene": "S3"
+    },
+    {
+      "frames": [
+        630,
+        698
+      ],
+      "scene": "S4"
+    },
+    {
+      "frames": [
+        711,
+        767
+      ],
+      "scene": "S4"
+    },
+    {
+      "frames": [
+        782,
+        823
+      ],
+      "scene": "S4"
+    },
+    {
+      "frames": [
+        841,
+        884
+      ],
+      "scene": "S4"
+    }
+  ],
+  "final_frame_contract": {
+    "frame": 899,
+    "time_seconds": 29.966667,
+    "background_may_dim": true,
+    "background_may_be_full_black": false,
+    "hero_subject_opacity": 1.0,
+    "cta_opacity": 1.0,
+    "whatsapp_opacity": 1.0,
+    "required_dynamic_fields": [
+      "nom",
+      "produit",
+      "prix",
+      "whatsapp",
+      "quartier"
+    ],
+    "optional_dynamic_field": "accroche"
+  },
+  "coverage_assertions": {
+    "all_reference_2_families_scheduled": true,
+    "all_reference_4_families_scheduled": true,
+    "all_observed_variants_accounted_for": true,
+    "fifth_capture_required": false,
+    "cta_visible_on_last_frame": true,
+    "final_frame_black": false,
+    "merchant_performs_software_transitions_during_capture": false,
+    "mandatory_family_count": 14,
+    "additional_required_event_count": 2,
+    "scheduled_event_count": 17,
+    "parameter_profile_for_every_scheduled_transition": true,
+    "exact_seconds_derived_from_frames": true
+  },
+  "implementation_state": {
+    "engine_code_created": false,
+    "mp4_render_created": false,
+    "automated_visual_qc_run": false,
+    "human_transition_timeline_approval_required": true
+  }
+}

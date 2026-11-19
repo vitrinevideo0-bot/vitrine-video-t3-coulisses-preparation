@@ -1,0 +1,136 @@
+{
+  "template_id": "RESTAURATION-T3",
+  "batch_id": "LOT-01",
+  "observed_at": "2026-11-18",
+  "status": "rejected_by_owner",
+  "analysis_depth": "preselection_only",
+  "third_party_media_committed": false,
+  "references": [
+    {
+      "reference_id": "R3-REF-01",
+      "platform": "TikTok",
+      "creator": "Babel Restaurants",
+      "account": "@babelrestaurants",
+      "video_id": "7461194430020652304",
+      "url": "https://www.tiktok.com/@babelrestaurants/video/7461194430020652304",
+      "published_at": "2025-01-18",
+      "page_duration_seconds": 11,
+      "analysis_copy": {
+        "duration_seconds": 11.32,
+        "width": 720,
+        "height": 1280,
+        "fps": 25.0,
+        "frames": 283,
+        "sha256": "9dde5245979fb512974e05a0217191151d06ce79d72034a2f4b02b61bbad2ddd",
+        "committed": false
+      },
+      "opening": "Équipe regroupée dans la cuisine et regard caméra",
+      "narrative": [
+        "équipe",
+        "travail réel",
+        "retour collectif",
+        "logo"
+      ],
+      "editing": "Plan quasi continu, flou final et logo",
+      "audio": "Son original, aucune parole transcrite",
+      "fit": "Confiance, équipe, propreté et environnement réel"
+    },
+    {
+      "reference_id": "R3-REF-02",
+      "platform": "TikTok",
+      "creator": "Tri County Mgmt",
+      "account": "@tricountymcd",
+      "video_id": "7239778674659069230",
+      "url": "https://www.tiktok.com/@tricountymcd/video/7239778674659069230",
+      "published_at": "2023-06-01",
+      "page_duration_seconds": 14,
+      "analysis_copy": {
+        "duration_seconds": 14.67,
+        "width": 720,
+        "height": 1280,
+        "fps": 30.0,
+        "frames": 440,
+        "sha256": "918b943e6f87d3a3f1e9122166f7103226b1ea37382c9d0308b34ea4e3a47018",
+        "committed": false
+      },
+      "opening": "Pain ouvert et ingrédients prêts",
+      "narrative": [
+        "base",
+        "assemblage",
+        "résultat",
+        "packaging"
+      ],
+      "editing": "Plongée stable et jump cuts au même angle",
+      "audio": "Son original/ASMR, aucune parole transcrite",
+      "fit": "Geste de préparation simple et immédiatement lisible"
+    },
+    {
+      "reference_id": "R3-REF-03",
+      "platform": "TikTok",
+      "creator": "Tommy Banks / Oldstead",
+      "account": "@oldstead",
+      "video_id": "7287932960072879393",
+      "url": "https://www.tiktok.com/@oldstead/video/7287932960072879393",
+      "published_at": "2023-10-09",
+      "page_duration_seconds": 30,
+      "analysis_copy": {
+        "duration_seconds": 30.48,
+        "width": 1080,
+        "height": 1920,
+        "average_fps_observed": 30.508,
+        "frames": 930,
+        "sha256": "31a6ae5086489beb68b334310e9a32cdb0b9e386fb97374004d81aebc58e378c",
+        "committed": false
+      },
+      "opening": "Assiettes alignées au passe et chefs en action",
+      "narrative": [
+        "service",
+        "gestes précis",
+        "finitions",
+        "assiettes terminées"
+      ],
+      "editing": "Nombreuses coupes franches et plans courts",
+      "audio": "The Passenger — Iggy Pop, aucune voix transcrite",
+      "fit": "Rythme, travail d’équipe et dressage"
+    },
+    {
+      "reference_id": "R3-REF-04",
+      "platform": "TikTok",
+      "creator": "Six by Nico",
+      "account": "@sixbynico",
+      "video_id": "7384856810777365792",
+      "url": "https://www.tiktok.com/@sixbynico/video/7384856810777365792",
+      "published_at": "2024-06-26",
+      "page_duration_seconds": 77,
+      "analysis_copy": {
+        "duration_seconds": 77.13,
+        "width": 720,
+        "height": 1280,
+        "fps": 30.0,
+        "frames": 2314,
+        "sha256": "38c75a881c8435ea1d85f60e1b3a93ece06a3919f8cb2c825db6f009d5165b81",
+        "committed": false
+      },
+      "opening": "Chef face caméra, plat et identification de l’épisode",
+      "narrative": [
+        "présentation",
+        "ingrédients",
+        "cuissons et préparations",
+        "assemblage",
+        "plat final"
+      ],
+      "editing": "Face caméra et gros plans alternés par coupes franches",
+      "audio": "Voix du chef et son original, transcript public",
+      "fit": "Récit complet et preuve de savoir-faire par la parole"
+    }
+  ],
+  "owner_decision_required": {
+    "accept": "lock_batch_and_start_reverse_engineering",
+    "reject": "archive_batch_and_research_four_entirely_new_references"
+  },
+  "owner_decision": {
+    "date": "2026-11-18",
+    "decision": "reject_complete_batch",
+    "feedback": "Rechercher quatre nouvelles références avec motion design, transitions spectaculaires de type CapCut et écran visuellement impressionnant."
+  }
+}
