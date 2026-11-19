@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "T3_music_pack.schema.json",
+  "title": "RESTAURATION-T3 music pack",
+  "type": "object",
+  "required": ["schema_version", "id", "status", "selection_contract", "license_contract", "tracks", "quality_gates"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "id": {"type": "string"},
+    "status": {"const": "all_four_owner_approved_final_render_D"},
+    "selection_contract": {
+      "type": "object",
+      "required": ["variant_count", "allowed_variant_ids", "final_render_choice", "final_render_variant_id"],
+      "properties": {
+        "variant_count": {"const": 4},
+        "allowed_variant_ids": {"type": "array", "minItems": 4, "maxItems": 4, "uniqueItems": true},
+        "final_render_choice": {"const": "D"},
+        "final_render_variant_id": {"const": "t3_music_245452"}
+      }
+    },
+    "tracks": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["id", "choice", "pixabay_id", "file", "sha256", "source_page", "source_evidence_file", "audition_approved_by_owner", "production_eligible"]
+      }
+    }
+  }
+}

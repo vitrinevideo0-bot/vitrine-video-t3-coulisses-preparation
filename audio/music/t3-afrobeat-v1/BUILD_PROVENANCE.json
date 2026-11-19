@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "build_date": "2026-11-18",
+  "scope": "Exactly four owner-approved T3 Afrobeat/Amapiano variants",
+  "approved_pixabay_ids": [
+    481806,
+    360659,
+    485507,
+    245452
+  ],
+  "selected_final_render_pixabay_id": 245452,
+  "transform": {
+    "source_window_start_s": 0.0,
+    "duration_s": 30.0,
+    "sample_rate_hz": 48000,
+    "channels": 2,
+    "fade_in_s": 0.25,
+    "fade_out_start_s": 29.2,
+    "fade_out_s": 0.8,
+    "loudness": "FFmpeg loudnorm two-pass target I=-18 LUFS, TP=-1.5 dBTP, LRA=7",
+    "encoder": "libmp3lame 192 kbit/s stereo",
+    "visual_audition_base_sha256": "cd61d3cf793874a8b7d2eb8fe694861048368ba64b01216395c6bba0eb879774"
+  },
+  "quality_limits": {
+    "duration_exact_s": 30.0,
+    "integrated_lufs": [
+      -18.8,
+      -17.7
+    ],
+    "true_peak_dbtp_max": -1.0,
+    "content_id_registered_track_count": 0
+  },
+  "owner_decision": "All four tracks approved 100%; choice D selected for the complete GitHub validation render."
+}

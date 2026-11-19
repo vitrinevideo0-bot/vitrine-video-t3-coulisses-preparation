@@ -1,0 +1,99 @@
+{
+  "candidate_id": "B",
+  "pixabay_id": 360659,
+  "key": "omalicha-nwa",
+  "official_page": "https://pixabay.com/music/afrobeat-omalicha-nwa-360659/",
+  "official_content_url": "https://cdn.pixabay.com/download/audio/2025/06/16/audio_c7bbda1c84.mp3?filename=artbybigvee-omalicha-nwa-360659.mp3",
+  "license": "https://pixabay.com/service/license-summary/",
+  "title": "Omalicha Nwa by artbybigvee | Royalty-free Music",
+  "headline": "Omalicha nwa afrobeats music",
+  "author": "artbybigvee",
+  "description": "This energetic afrobeats instrumental track features pulsating percussion, catchy brass hooks, and a grooving bassline. It is ideal as background music for travel vlogs, TikTok dance reels, and summer social media content.",
+  "duration": "PT2M17S",
+  "encoding_format": "audio/mpeg",
+  "date_published": "2025-06-17T06:20:55.321Z",
+  "keywords": "Afro, Afrobeat, Afrofusion, Freebeat, Sound, Melody, Niger, 9ja, Music, Free Instrumental, Free Stuff, Free Afrobeat, Rap, Afrorap",
+  "thumbnail_url": "https://cdn.pixabay.com/audio/2025/06/16/02-32-44-654_200x200.jpg",
+  "content_id_status": "not_displayed_on_source_page",
+  "ai_generated_badge": "not_displayed",
+  "original_filename": "artbybigvee-omalicha-nwa-360659.mp3",
+  "original_sha256": "af09aee8fb5f0566b917686e39e10e0175d6d98c03e29e0ffdeb166027af5087",
+  "original_bytes": 4383555,
+  "json_ld": {
+    "@context": "https://schema.org",
+    "@type": [
+      "MusicRecording",
+      "AudioObject"
+    ],
+    "acquireLicensePage": "https://pixabay.com/music/afrobeat-omalicha-nwa-360659/",
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Mood",
+        "value": "Restless, Bright, Uplifting, Laid Back"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Movement",
+        "value": "Running, Medium Fast"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Theme",
+        "value": "Music For Videos, Music For Youtube Videos"
+      }
+    ],
+    "author": {
+      "@type": "Person",
+      "description": "|| Music Producer || Artist || Graphic Designer - WhatsApp : +2348135184066",
+      "image": "https://cdn.pixabay.com/user/2022/10/15/12-11-39-537_96x96.jpg",
+      "interactionStatistic": {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/FollowAction",
+        "userInteractionCount": 611
+      },
+      "name": "artbybigvee",
+      "url": "https://pixabay.com/users/artbybigvee-7284076/"
+    },
+    "commentCount": 0,
+    "contentUrl": "https://cdn.pixabay.com/download/audio/2025/06/16/audio_c7bbda1c84.mp3?filename=artbybigvee-omalicha-nwa-360659.mp3",
+    "datePublished": "2025-06-17T06:20:55.321Z",
+    "description": "This energetic afrobeats instrumental track features pulsating percussion, catchy brass hooks, and a grooving bassline. It is ideal as background music for travel vlogs, TikTok dance reels, and summer social media content.",
+    "duration": "PT2M17S",
+    "encodingFormat": "audio/mpeg",
+    "genre": [
+      "Afrobeat",
+      "Upbeat"
+    ],
+    "headline": "Omalicha nwa afrobeats music",
+    "interactionStatistic": [
+      {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/ViewAction",
+        "userInteractionCount": 34000
+      },
+      {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/DownloadAction",
+        "userInteractionCount": 2871
+      },
+      {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/LikeAction",
+        "userInteractionCount": 45
+      },
+      {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/BookmarkAction",
+        "userInteractionCount": 34
+      }
+    ],
+    "isAccessibleForFree": true,
+    "isFamilyFriendly": true,
+    "keywords": "Afro, Afrobeat, Afrofusion, Freebeat, Sound, Melody, Niger, 9ja, Music, Free Instrumental, Free Stuff, Free Afrobeat, Rap, Afrorap",
+    "license": "https://pixabay.com/service/license-summary/",
+    "name": "Omalicha Nwa by artbybigvee | Royalty-free Music",
+    "thumbnailUrl": "https://cdn.pixabay.com/audio/2025/06/16/02-32-44-654_200x200.jpg",
+    "uploadDate": "2025-06-17T06:20:55.321Z"
+  }
+}

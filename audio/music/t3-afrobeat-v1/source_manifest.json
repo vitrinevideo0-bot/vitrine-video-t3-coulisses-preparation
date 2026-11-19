@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0.0",
+  "retrieved_on": "2026-11-18",
+  "provider": "Pixabay",
+  "license": "https://pixabay.com/service/license-summary/",
+  "owner_approved_choices": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "final_render_choice": "D",
+  "tracks": [
+    {
+      "choice": "A",
+      "pixabay_id": 481806,
+      "title": "LASER",
+      "artist": "DMSOUNDWORKS",
+      "official_page": "https://pixabay.com/music/afrobeat-afrobeat-instrumental-2026-laser-joe-boy-x-rema-type-beat-481806/",
+      "official_content_url": "https://cdn.pixabay.com/download/audio/2026/02/09/audio_b263d8bae6.mp3?filename=dmsoundworks-afrobeat-instrumental-2026-laser-joe-boy-x-rema-type-beat-481806.mp3",
+      "official_original_filename": "dmsoundworks-afrobeat-instrumental-2026-laser-joe-boy-x-rema-type-beat-481806.mp3",
+      "original_sha256": "473b5f0159bda501653271dffbce601cd93beed630218a2a406a44a034b0267f",
+      "original_bytes": 5234520,
+      "license": "https://pixabay.com/service/license-summary/",
+      "content_id_status": "not_displayed_on_source_page",
+      "evidence_file": "audio/music/t3-afrobeat-v1/evidence/A_481806.json"
+    },
+    {
+      "choice": "B",
+      "pixabay_id": 360659,
+      "title": "Omalicha Nwa",
+      "artist": "artbybigvee",
+      "official_page": "https://pixabay.com/music/afrobeat-omalicha-nwa-360659/",
+      "official_content_url": "https://cdn.pixabay.com/download/audio/2025/06/16/audio_c7bbda1c84.mp3?filename=artbybigvee-omalicha-nwa-360659.mp3",
+      "official_original_filename": "artbybigvee-omalicha-nwa-360659.mp3",
+      "original_sha256": "af09aee8fb5f0566b917686e39e10e0175d6d98c03e29e0ffdeb166027af5087",
+      "original_bytes": 4383555,
+      "license": "https://pixabay.com/service/license-summary/",
+      "content_id_status": "not_displayed_on_source_page",
+      "evidence_file": "audio/music/t3-afrobeat-v1/evidence/B_360659.json"
+    },
+    {
+      "choice": "C",
+      "pixabay_id": 485507,
+      "title": "Safe",
+      "artist": "AEXBEATS",
+      "official_page": "https://pixabay.com/music/electronic-safe-free-afro-beat-485507/",
+      "official_content_url": "https://cdn.pixabay.com/download/audio/2026/02/15/audio_53226fb0b9.mp3?filename=aexbeats-safe_free-afro-beat-485507.mp3",
+      "official_original_filename": "aexbeats-safe_free-afro-beat-485507.mp3",
+      "original_sha256": "bce93d8b45afb14ff4a6879c2ec4f540d556d3cfa5f85acc9a9322fd39d4a20e",
+      "original_bytes": 5997714,
+      "license": "https://pixabay.com/service/license-summary/",
+      "content_id_status": "not_displayed_on_source_page",
+      "evidence_file": "audio/music/t3-afrobeat-v1/evidence/C_485507.json"
+    },
+    {
+      "choice": "D",
+      "pixabay_id": 245452,
+      "title": "Dlozi Lam",
+      "artist": "PremiumMusicOdyssey",
+      "official_page": "https://pixabay.com/music/afrobeat-dlozi-lam-amapiano-245452/",
+      "official_content_url": "https://cdn.pixabay.com/download/audio/2024/09/28/audio_334d8306c6.mp3?filename=premiummusicodyssey-dlozi-lam-amapiano-245452.mp3",
+      "official_original_filename": "premiummusicodyssey-dlozi-lam-amapiano-245452.mp3",
+      "original_sha256": "4e91e5f19632b9ca1f312e89a16b388e81ae2373a024a1f2ee8c51afe3c482e4",
+      "original_bytes": 7649280,
+      "license": "https://pixabay.com/service/license-summary/",
+      "content_id_status": "not_displayed_on_source_page",
+      "evidence_file": "audio/music/t3-afrobeat-v1/evidence/D_245452.json"
+    }
+  ]
+}

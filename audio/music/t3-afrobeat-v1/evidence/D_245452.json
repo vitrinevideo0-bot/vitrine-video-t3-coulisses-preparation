@@ -1,0 +1,99 @@
+{
+  "candidate_id": "D",
+  "pixabay_id": 245452,
+  "key": "dlozi-lam",
+  "official_page": "https://pixabay.com/music/afrobeat-dlozi-lam-amapiano-245452/",
+  "official_content_url": "https://cdn.pixabay.com/download/audio/2024/09/28/audio_334d8306c6.mp3?filename=premiummusicodyssey-dlozi-lam-amapiano-245452.mp3",
+  "license": "https://pixabay.com/service/license-summary/",
+  "title": "Dlozi lam (amapiano) by PremiumMusicOdyssey | Royalty-free Music",
+  "headline": "Dlozi lam amapiano music",
+  "author": "PremiumMusicOdyssey",
+  "description": "Featuring deep log drums, soulful keys, and rhythmic vocal chops, this energetic amapiano track delivers authentic South African dance vibes. Ideal for TikTok dance challenges, Instagram reels, travel vlogs, and lively party playlists.",
+  "duration": "PT3M59S",
+  "encoding_format": "audio/mpeg",
+  "date_published": "2024-09-30T10:33:33.852Z",
+  "keywords": "Amapiano, Piano, House, Music, South Africa, Log Drum, Private School Amapiano, Melodic, Jazz, Instrumental, Youtube, Advertising, Vlog, Video, People, Mood, Happy, Peaceful, Chilled",
+  "thumbnail_url": null,
+  "content_id_status": "not_displayed_on_source_page",
+  "ai_generated_badge": "displayed",
+  "original_filename": "premiummusicodyssey-dlozi-lam-amapiano-245452.mp3",
+  "original_sha256": "4e91e5f19632b9ca1f312e89a16b388e81ae2373a024a1f2ee8c51afe3c482e4",
+  "original_bytes": 7649280,
+  "json_ld": {
+    "@context": "https://schema.org",
+    "@type": [
+      "MusicRecording",
+      "AudioObject"
+    ],
+    "acquireLicensePage": "https://pixabay.com/music/afrobeat-dlozi-lam-amapiano-245452/",
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Mood",
+        "value": "Dreamy, Restless, Bright, Laid Back, Uplifting"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Movement",
+        "value": "Running, Smooth, Fast"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Theme",
+        "value": "Music For Videos, Music For Youtube Videos, Vlog Music"
+      }
+    ],
+    "author": {
+      "@type": "Person",
+      "description": "Welcome to Premium Music Odyssey — a catalog of 500+ beats built for content creators, filmmakers, and brands.\r\n\r\nAll tracks here are free to use under Pixabay's license. But if you need a exclusive license, commercial sync rights, or a custom beat for your project, I offer direct licensing at competitive rates.\r\n\r\n📩 License a track directly: peahmohwasa@gmail.com\r\n🎵 Full catalog & premium options: pheahamohwasa.com\r\n\r\nDonations are genuinely appreciated, they keep this catalog growing.",
+      "image": "https://cdn.pixabay.com/user/2024/10/16/08-19-06-3_96x96.png",
+      "interactionStatistic": {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/FollowAction",
+        "userInteractionCount": 364
+      },
+      "name": "PremiumMusicOdyssey",
+      "url": "https://pixabay.com/users/premiummusicodyssey-26991664/"
+    },
+    "commentCount": 0,
+    "contentUrl": "https://cdn.pixabay.com/download/audio/2024/09/28/audio_334d8306c6.mp3?filename=premiummusicodyssey-dlozi-lam-amapiano-245452.mp3",
+    "datePublished": "2024-09-30T10:33:33.852Z",
+    "description": "Featuring deep log drums, soulful keys, and rhythmic vocal chops, this energetic amapiano track delivers authentic South African dance vibes. Ideal for TikTok dance challenges, Instagram reels, travel vlogs, and lively party playlists.",
+    "duration": "PT3M59S",
+    "encodingFormat": "audio/mpeg",
+    "genre": [
+      "Afrobeat",
+      "Upbeat",
+      "Electronic"
+    ],
+    "headline": "Dlozi lam amapiano music",
+    "interactionStatistic": [
+      {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/ViewAction",
+        "userInteractionCount": 28277
+      },
+      {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/DownloadAction",
+        "userInteractionCount": 8323
+      },
+      {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/LikeAction",
+        "userInteractionCount": 45
+      },
+      {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/BookmarkAction",
+        "userInteractionCount": 21
+      }
+    ],
+    "isAccessibleForFree": true,
+    "isFamilyFriendly": true,
+    "keywords": "Amapiano, Piano, House, Music, South Africa, Log Drum, Private School Amapiano, Melodic, Jazz, Instrumental, Youtube, Advertising, Vlog, Video, People, Mood, Happy, Peaceful, Chilled",
+    "license": "https://pixabay.com/service/license-summary/",
+    "name": "Dlozi lam (amapiano) by PremiumMusicOdyssey | Royalty-free Music",
+    "uploadDate": "2024-09-30T10:33:33.852Z"
+  }
+}

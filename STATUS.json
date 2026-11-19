@@ -3,8 +3,8 @@
   "sector": "RESTAURATION",
   "catalog_name": "Coulisses de préparation",
   "catalog_status": "À DÉVELOPPER",
-  "workflow_status_number": 9,
-  "workflow_status": "Candidat silencieux v0.4 sans traits bleus à valider",
+  "workflow_status_number": 12,
+  "workflow_status": "Voix et musique D approuvées — paquet GitHub prêt, rendu serveur à lancer",
   "reference_batch_current": "LOT-03",
   "selected_reference": "R3-B03-REF-02 + R3-B03-REF-04",
   "branch_planned": "main",
@@ -108,7 +108,20 @@
     "proofs/separators-v0.4-server/T3_V0_4_FRAME_778_40_PERCENT_RUN_44555498879.png",
     "proofs/separators-v0.4-server/T3_V0_4_FRAME_780_40_PERCENT_RUN_44555498879.png",
     "proofs/separators-v0.4-server/T3_V0_4_FRAME_781_40_PERCENT_RUN_44555498879.png",
-    "reports/RAPPORT_RENDU_SILENCIEUX_GITHUB_RUN_44555498879.md"
+    "reports/RAPPORT_RENDU_SILENCIEUX_GITHUB_RUN_44555498879.md",
+    "config/T3_MUSIC_PACK_V1_0_0.json",
+    "config/T3_VOICE_MIX_V1_0_0.json",
+    "audio/music/t3-afrobeat-v1/README.md",
+    "audio/music/t3-afrobeat-v1/source_manifest.json",
+    "audio/music/t3-afrobeat-v1/BUILD_PROVENANCE.json",
+    "audio/music/t3-afrobeat-v1/SHA256SUMS.txt",
+    "audio/voice/t3-voice-v1/README.md",
+    "audio/voice/t3-voice-v1/manifest.json",
+    "audio/voice/t3-voice-v1/SHA256SUMS.txt",
+    "audio/scripts/build_t3_complete_voice.py",
+    "tools/validate_complete.py",
+    "tests/test_audio_contract.py",
+    ".github/workflows/render-complete-voice-music-D.yml"
   ],
   "owner_decisions": [
     {
@@ -178,17 +191,52 @@
       "decision": "Rendu silencieux v0.3 refusé à cause de traits séparateurs bleus visibles",
       "positive_feedback": "Très bon travail général; transitions, montage et lisibilité appréciés.",
       "feedback": "Supprimer complètement les deux traits bleus horizontaux et les deux traits bleus verticaux, corriger le JSON et la logique, puis rendre une nouvelle version sur GitHub."
+    },
+    {
+      "phase": "silent_candidate_v0_4_approval",
+      "date": "2026-11-18",
+      "decision": "Rendu silencieux v0.4 approuvé; démarrage autorisé de la phase musicale.",
+      "positive_feedback": "Le propriétaire juge le travail super et confirme avoir beaucoup aimé le résultat.",
+      "next_instruction": "Présenter quatre musiques Afrobeat différentes provenant de Pixabay, suivre la structure T1, attendre le choix, puis intégrer et rendre la version musicale directement sur GitHub."
+    },
+    {
+      "phase": "music_shortlist_v0_5_approval",
+      "date": "2026-11-18",
+      "decision": "Les quatre musiques Afrobeat Pixabay A, B, C et D sont validées à 100 %.",
+      "next_instruction": "Générer les quatre voix off, les intégrer aux quatre musiques, faire valider le débit, puis seulement publier et lancer la vidéo finale sur GitHub."
+    },
+    {
+      "phase": "voice_rate_ducking_approval",
+      "date": "2026-11-18",
+      "decision": "Débit, prononciation, respirations et ducking de la voix voice-02 approuvés; publication GitHub autorisée.",
+      "validated_placements_seconds": [
+        1.2,
+        6.8,
+        14.7,
+        21.8
+      ],
+      "ducking": {
+        "music_open_gain_db": -3.0,
+        "music_under_voice_gain_db": -10.0,
+        "attack_ms": 120,
+        "release_ms": 450
+      }
+    },
+    {
+      "phase": "final_music_selection",
+      "date": "2026-11-18",
+      "decision": "Produire un seul rendu complet final avec la musique numéro 4.",
+      "choice": "D",
+      "pixabay_id": 245452,
+      "title": "Dlozi Lam",
+      "artist": "PremiumMusicOdyssey"
     }
   ],
-  "decision_expected": "Visionner le master GitHub v0.4 sans traits bleus, puis l’approuver ou demander une correction créative précise.",
-  "blockers": [
-    "Les candidats v0.1, v0.2 et v0.3 sont rejetés et ne doivent pas être utilisés.",
-    "La v0.4 a passé tous les contrôles objectifs mais attend la validation visuelle explicite du propriétaire.",
-    "Aucune musique ni voix off avant validation du nouveau silencieux."
-  ],
+  "decision_expected": "Aucune validation vocale supplémentaire. Pousser les quatre dérivés et la voix, puis lancer un seul rendu GitHub Actions avec D — Dlozi Lam.",
+  "blockers": [],
   "development_started": true,
-  "music_started": false,
-  "voice_started": false,
+  "music_started": true,
+  "voice_started": true,
   "ota_started": false,
   "cloudflare_deployed": false,
   "selected_references": [
@@ -197,19 +245,23 @@
   ],
   "selection_mode": "combined",
   "last_owner_approval": {
-    "phase": "questions_capture_12_screens",
+    "phase": "voice_rate_ducking_and_final_music_selection",
     "date": "2026-11-18",
-    "object": "Six questions, quatre prises 6/8/7/9 s et douze écrans A/B/C",
-    "decision": "Tout valider",
-    "approval_record": "approvals/APPROBATION_QUESTIONS_CAPTURE_12_ECRANS_2026-11-18.json"
+    "object": "Voix voice-02, quatre placements, ducking T1 et musique finale D — Dlozi Lam",
+    "decision": "Approuvé; push et rendu complet GitHub Actions autorisés.",
+    "music_choice": "D",
+    "pixabay_id": 245452
   },
   "approved_contracts": {
     "questions": "form/questions_T3.json",
     "capture_guide": "capture-guide/consignes_T3.json",
     "ui_screens_manifest": "ui-screens/approved/manifest.json",
-    "approval_record": "approvals/APPROBATION_QUESTIONS_CAPTURE_12_ECRANS_2026-11-18.json"
+    "approval_record": "approvals/APPROBATION_QUESTIONS_CAPTURE_12_ECRANS_2026-11-18.json",
+    "music_pack": "config/T3_MUSIC_PACK_V1_0_0.json",
+    "voice_mix": "config/T3_VOICE_MIX_V1_0_0.json",
+    "complete_render_workflow": ".github/workflows/render-complete-voice-music-D.yml"
   },
-  "workflow_note": "La v0.4 a été rendue sur GitHub Actions au commit f87d1ef, revalidée 32/32 après téléchargement, et les images serveur 771/778 ne montrent aucun trait cyan; le mouvement des panneaux et la lisibilité sont conservés.",
+  "workflow_note": "Les quatre dérivés musicaux A–D et la voix voice-02 sont approuvés. Le rendu complet est verrouillé sur D — Dlozi Lam; la vidéo v0.4 reste immuable et sera copiée bit pour bit. Paquet et workflow prêts avant push.",
   "development_phase": {
     "engine": "engine/render_silent.py",
     "source_manifest": "rushes/manifest.json",
@@ -518,7 +570,7 @@
     }
   },
   "correction_v0_4": {
-    "status": "github_server_pass_pending_owner_validation",
+    "status": "approved_by_owner_music_phase_unblocked",
     "render_job": "demo/render_job_silent_demo_v0_4.json",
     "text_motion_contract": "config/T3_TEXT_MOTION_V0_4_0.json",
     "transition_contract": "reverse-engineering/T3_TRANSITIONS_30S.json",
@@ -561,7 +613,7 @@
       "COMMANDER MAINTENANT"
     ],
     "github_render_started": true,
-    "owner_approved": false,
+    "owner_approved": true,
     "authoritative_master_source": "github_actions",
     "render_commit": "f87d1ef913fe331b12cf10275f6c2e0392f16007",
     "github_actions": {
@@ -633,5 +685,184 @@
       "motion_preserved": true
     },
     "github_render_completed": true
+  },
+  "music_audition_v0_5": {
+    "status": "all_four_tracks_approved_by_owner",
+    "provider": "Pixabay",
+    "license": "Pixabay Content License",
+    "folder": "/home/user/T3_AUDITION_4_MUSIQUES_AFROBEAT",
+    "listening_board": "/home/user/T3_AUDITION_4_MUSIQUES_AFROBEAT/T3_ECOUTE_4_MUSIQUES_AFROBEAT.html",
+    "candidate_count": 4,
+    "candidates": [
+      {
+        "id": "A",
+        "pixabay_id": 481806,
+        "title": "LASER",
+        "artist": "DMSOUNDWORKS",
+        "style": "moderne et fluide",
+        "content_id_status": "not_displayed_on_source_page",
+        "owner_approved": true
+      },
+      {
+        "id": "B",
+        "pixabay_id": 360659,
+        "title": "Omalicha Nwa",
+        "artist": "artbybigvee",
+        "style": "festif et gourmand",
+        "content_id_status": "not_displayed_on_source_page",
+        "owner_approved": true
+      },
+      {
+        "id": "C",
+        "pixabay_id": 485507,
+        "title": "Safe",
+        "artist": "AEXBEATS",
+        "style": "chaleureux et posé",
+        "content_id_status": "not_displayed_on_source_page",
+        "owner_approved": true
+      },
+      {
+        "id": "D",
+        "pixabay_id": 245452,
+        "title": "Dlozi Lam",
+        "artist": "PremiumMusicOdyssey",
+        "style": "Amapiano profond",
+        "content_id_status": "not_displayed_on_source_page",
+        "owner_approved": true
+      }
+    ],
+    "audition_contract": {
+      "duration_seconds": 30.0,
+      "target_lufs": -18.0,
+      "same_start_seconds": 0.0,
+      "visual_stream_unchanged": true,
+      "github_master_sha256": "cd61d3cf793874a8b7d2eb8fe694861048368ba64b01216395c6bba0eb879774"
+    },
+    "validation": {
+      "status": "PASS",
+      "passed": 67,
+      "failed": 0,
+      "proof": "/home/user/T3_AUDITION_4_MUSIQUES_AFROBEAT/T3_MUSIC_AUDITION_VALIDATION.json"
+    },
+    "final_selection": "D",
+    "github_publication_performed": false,
+    "source_mp3_publication_allowed": false,
+    "next_step": "Publish the four approved derivatives and voice assets, then render one complete GitHub master with D.",
+    "owner_approval": "100_percent",
+    "final_selection_details": {
+      "pixabay_id": 245452,
+      "title": "Dlozi Lam",
+      "artist": "PremiumMusicOdyssey"
+    }
+  },
+  "voice_music_audition_v0_6": {
+    "status": "owner_approved",
+    "folder": "/home/user/T3_AUDITION_4_MUSIQUES_AFROBEAT/T3_VOIX_MUSIQUES_4_VARIANTES",
+    "listening_board": "/home/user/T3_AUDITION_4_MUSIQUES_AFROBEAT/T3_VOIX_MUSIQUES_4_VARIANTES/T3_ECOUTE_VOIX_OFF_4_MUSIQUES.html",
+    "voice": {
+      "provider": "Arena.ai Agent Mode",
+      "voice_id": "voice-02",
+      "language": "fr",
+      "identity": "masculine advertising",
+      "selected_by_owner_audition": true
+    },
+    "clips": [
+      {
+        "scene": 1,
+        "start_s": 1.2,
+        "end_s": 5.542,
+        "duration_s": 4.342,
+        "text": "Chez Casa Tacos, découvrez notre tacos maison."
+      },
+      {
+        "scene": 2,
+        "start_s": 6.8,
+        "end_s": 10.469,
+        "duration_s": 3.669,
+        "text": "Généreusement garni, et préparé à la commande."
+      },
+      {
+        "scene": 3,
+        "start_s": 14.7,
+        "end_s": 17.811,
+        "duration_s": 3.111,
+        "text": "Chaque geste révèle un tacos chaud et gourmand."
+      },
+      {
+        "scene": 4,
+        "start_s": 21.8,
+        "end_s": 26.618,
+        "duration_s": 4.818,
+        "text": "À Kandi, votre tacos est à deux mille cinq cents francs. Commandez sur WhatsApp."
+      }
+    ],
+    "mix_contract": {
+      "music_open_gain_db": -3.0,
+      "music_under_voice_gain_db": -10.0,
+      "duck_depth_db": -7.0,
+      "duck_attack_ms": 120,
+      "duck_release_ms": 450,
+      "voice_target_lufs": -20.0,
+      "master_target_lufs": -16.0,
+      "master_true_peak_dbtp_max": -2.0,
+      "sfx": "none"
+    },
+    "variants": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "objective_validation": {
+      "status": "PASS",
+      "passed": 82,
+      "failed": 0,
+      "proof": "/home/user/T3_AUDITION_4_MUSIQUES_AFROBEAT/T3_VOIX_MUSIQUES_4_VARIANTES/T3_VOICE_MUSIC_INDEPENDENT_VALIDATION.json"
+    },
+    "video_stream_unchanged": true,
+    "github_final_render_started": false,
+    "owner_voice_rate_approved": true,
+    "owner_approval_date": "2026-11-18",
+    "next_step": "Push and dispatch the complete GitHub render locked to music D."
+  },
+  "music_selection": {
+    "approved_choices": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "final_render_choice": "D",
+    "pixabay_id": 245452,
+    "title": "Dlozi Lam",
+    "artist": "PremiumMusicOdyssey",
+    "contract": "config/T3_MUSIC_PACK_V1_0_0.json"
+  },
+  "voice_mix": {
+    "status": "owner_approved",
+    "voice_id": "voice-02",
+    "placements_seconds": [
+      1.2,
+      6.8,
+      14.7,
+      21.8
+    ],
+    "ducking": {
+      "open_db": -3.0,
+      "under_voice_db": -10.0,
+      "attack_ms": 120,
+      "release_ms": 450
+    },
+    "validation": "82/82 PASS",
+    "contract": "config/T3_VOICE_MIX_V1_0_0.json"
+  },
+  "complete_render": {
+    "status": "ready_to_push_and_dispatch",
+    "workflow": ".github/workflows/render-complete-voice-music-D.yml",
+    "music_choice": "D",
+    "expected_output": "VIDEO_T3_COMPLETE_VOIX_MUSIQUE_D_V0_7_A_VALIDER.mp4",
+    "github_run_started": false,
+    "release_created": false,
+    "local_outputs_are_not_final": true
   }
 }

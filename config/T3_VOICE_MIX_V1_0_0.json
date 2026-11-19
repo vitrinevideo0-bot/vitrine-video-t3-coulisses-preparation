@@ -1,0 +1,137 @@
+{
+  "$schema": "../schemas/T3_voice_mix.schema.json",
+  "schema_version": "1.0.0",
+  "id": "restauration_T3_voice_music_v1_0_0",
+  "display_name": "T3 — voix française et ducking des quatre variantes Afrobeat",
+  "status": "owner_approved_final_render_D",
+  "approved_on": "2026-11-18",
+  "duration_s": 30.0,
+  "sample_rate_hz": 48000,
+  "visual_contract": "config/T3_TEXT_MOTION_V0_4_0.json",
+  "visual_approved": {
+    "source": "GitHub Release t3-coulisses-v0.4.0-silent-candidate-4",
+    "release_page": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.4.0-silent-candidate-4",
+    "download_url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/download/t3-coulisses-v0.4.0-silent-candidate-4/VIDEO_T3_SILENCIEUSE_SANS_TRAITS_BLEUS_V0_4_A_VALIDER.mp4",
+    "filename": "VIDEO_T3_SILENCIEUSE_SANS_TRAITS_BLEUS_V0_4_A_VALIDER.mp4",
+    "file_sha256": "cd61d3cf793874a8b7d2eb8fe694861048368ba64b01216395c6bba0eb879774",
+    "video_bitstream_sha256": "8e415063add70f5807e009b2306c6b1154b0ec19bf35d5b9350012a5f4abe666",
+    "owner_approved": true,
+    "immutable": true,
+    "mux_policy": "copy video bitstream without re-encoding"
+  },
+  "music_pack": "config/T3_MUSIC_PACK_V1_0_0.json",
+  "final_render": {
+    "music_choice": "D",
+    "music_variant_id": "t3_music_245452",
+    "output_filename": "VIDEO_T3_COMPLETE_VOIX_MUSIQUE_D_V0_7_A_VALIDER.mp4"
+  },
+  "voice": {
+    "provider": "Arena.ai Agent Mode",
+    "voice_id": "voice-02",
+    "language": "fr",
+    "identity": "masculine advertising",
+    "owner_selected_by_voice_audition": true,
+    "owner_rate_approved": true,
+    "stem_file": "audio/voice/t3-voice-v1/t3_voice_stem_30s.wav",
+    "stem_sha256": "588ac829f04aa88585ff17d5efa4f57dc886d4606e016a1b6a4be5cd5c85a82e",
+    "normalization_target_lufs": -20.0,
+    "normalization_true_peak_dbtp_max": -3.0,
+    "clips": [
+      {
+        "scene": 1,
+        "start_s": 1.2,
+        "end_s": 5.542,
+        "duration_s": 4.342,
+        "text": "Chez Casa Tacos, découvrez notre tacos maison.",
+        "source": "audio/voice/t3-voice-v1/source/voix_fr_scene1.wav",
+        "processed": "audio/voice/t3-voice-v1/processed/voix_fr_scene1_norm.wav",
+        "source_sha256": "c855e2e2f5d290c1d2ecd71291a18e3c1a8bb692f1ffcd2c35cb3e2269392855",
+        "processed_sha256": "ede2bab7eb0705eda2632ffad810059168737344f2849d1adcbd03b3a34df9d1",
+        "normalization": {
+          "gain_db": -1.01,
+          "integrated_lufs": -19.99,
+          "true_peak_dbtp": -3.45,
+          "loudness_range_lu": 1.4
+        }
+      },
+      {
+        "scene": 2,
+        "start_s": 6.8,
+        "end_s": 10.469,
+        "duration_s": 3.669,
+        "text": "Généreusement garni, et préparé à la commande.",
+        "source": "audio/voice/t3-voice-v1/source/voix_fr_scene2.wav",
+        "processed": "audio/voice/t3-voice-v1/processed/voix_fr_scene2_norm.wav",
+        "source_sha256": "95db059fb3ae550f989b318452581416bff2a935ae7261a57d6edf76c21a3688",
+        "processed_sha256": "831543049354d097f600785e6f455ef15bc9ff84b28f2e59fa149bd6c6f2cfa6",
+        "normalization": {
+          "gain_db": -0.99,
+          "integrated_lufs": -20.01,
+          "true_peak_dbtp": -4.29,
+          "loudness_range_lu": 1.7
+        }
+      },
+      {
+        "scene": 3,
+        "start_s": 14.7,
+        "end_s": 17.811,
+        "duration_s": 3.111,
+        "text": "Chaque geste révèle un tacos chaud et gourmand.",
+        "source": "audio/voice/t3-voice-v1/source/voix_fr_scene3.wav",
+        "processed": "audio/voice/t3-voice-v1/processed/voix_fr_scene3_norm.wav",
+        "source_sha256": "b156f92f07ba37b5ae5a90ba46d65f38658b464a713b5a2396dd405b2de9388e",
+        "processed_sha256": "f8f721ac40921d23521bd7e98355e3e61decae2004e419459f52f3a549cc11d3",
+        "normalization": {
+          "gain_db": -0.99,
+          "integrated_lufs": -20.0,
+          "true_peak_dbtp": -5.08,
+          "loudness_range_lu": 0.2
+        }
+      },
+      {
+        "scene": 4,
+        "start_s": 21.8,
+        "end_s": 26.618,
+        "duration_s": 4.818,
+        "text": "À Kandi, votre tacos est à deux mille cinq cents francs. Commandez sur WhatsApp.",
+        "source": "audio/voice/t3-voice-v1/source/voix_fr_scene4.wav",
+        "processed": "audio/voice/t3-voice-v1/processed/voix_fr_scene4_norm.wav",
+        "source_sha256": "26966cf8cb3bdba1a02945b05743c3903838ead447e80d2a759241e1e581fbef",
+        "processed_sha256": "d6a6c34d703c34eda3305a18d70bd19ae4d5658644202991b0192693de0a1fb1",
+        "normalization": {
+          "gain_db": -1.0,
+          "integrated_lufs": -20.0,
+          "true_peak_dbtp": -5.82,
+          "loudness_range_lu": 1.8
+        }
+      }
+    ]
+  },
+  "mix_contract": {
+    "music_open_gain_db": -3.0,
+    "music_under_voice_gain_db": -10.0,
+    "duck_depth_db": -7.0,
+    "duck_attack_ms": 120,
+    "duck_release_ms": 450,
+    "duck_attack_curve": "linear_db",
+    "duck_release_curve": "linear_db",
+    "voice_gain_db": 0.0,
+    "sfx": "none",
+    "master_target_lufs": -16.0,
+    "master_true_peak_dbtp_max": -2.0,
+    "delivery_audio": "AAC stereo 48 kHz"
+  },
+  "quality_gates": {
+    "exact_music_variant_count": 4,
+    "selected_variant_id": "t3_music_245452",
+    "duration_tolerance_s": 0.001,
+    "integrated_lufs_min": -16.5,
+    "integrated_lufs_max": -15.5,
+    "wav_true_peak_dbtp_max": -1.9,
+    "aac_true_peak_dbtp_max": -1.0,
+    "minimum_active_speech_to_music_db": 4.0,
+    "clipped_sample_count_max": 0,
+    "exact_frames": 900,
+    "visual_bitstream_copy_required": true
+  }
+}

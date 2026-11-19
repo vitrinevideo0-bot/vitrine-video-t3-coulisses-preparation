@@ -30,7 +30,23 @@ La v0.4 conserve la fluidité, le montage et la lisibilité de la v0.3, mais sup
 - les images 771 et 778 sont réservées au contrôle des phases horizontale et verticale ;
 - les textes restent liés aux six champs `merchant_payload`, avec le contrat typographique v0.3 conservé.
 
-Le master v0.4 a été produit sur GitHub Actions puis téléchargé et revalidé : **32/32 contrôles PASS** côté serveur et **32/32 PASS** après téléchargement. Les 15 assets de la pré-Release correspondent à l’artefact Actions octet par octet; les images serveur 771 et 778 ne montrent aucun trait cyan à 40 %. La v0.4 reste un candidat silencieux à valider par le propriétaire. Musique, voix off, OTA et intégration mobile restent hors de ce jalon.
+Le master v0.4 a été produit sur GitHub Actions puis téléchargé et revalidé : **32/32 contrôles PASS** côté serveur et **32/32 PASS** après téléchargement. Les 15 assets de la pré-Release correspondent à l’artefact Actions octet par octet; les images serveur 771 et 778 ne montrent aucun trait cyan à 40 %. **Le propriétaire a approuvé cette v0.4**, qui devient la base visuelle immuable du rendu complet.
+
+## Voix et musique approuvées
+
+Les quatre dérivés Afrobeat/Amapiano A–D ont été approuvés et sont versionnés dans `audio/music/t3-afrobeat-v1/`, sans les sources Pixabay intégrales. La voix française masculine `voice-02`, son débit et le ducking ont également été approuvés.
+
+Le rendu complet est verrouillé sur **D — Dlozi Lam / PremiumMusicOdyssey** :
+
+- placements voix : 1,2 / 6,8 / 14,7 / 21,8 s ;
+- musique à −3 dB hors parole et −10 dB sous parole ;
+- attaque 120 ms, relâchement 450 ms ;
+- master cible −16 LUFS / −2 dBTP ;
+- AAC stéréo 48 kHz ;
+- flux vidéo v0.4 copié bit pour bit, sans réencodage ;
+- un seul MP4 complet produit par GitHub Actions.
+
+Le workflow `.github/workflows/render-complete-voice-music-D.yml` télécharge le silencieux approuvé, vérifie ses deux hashes, construit le mix sur le runner, exécute une validation indépendante et publie l’artefact ainsi qu’une pré-Release immuable.
 
 - [Run de rendu GitHub Actions v0.4](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44555498879)
 - [Pré-Release sans traits bleus v0.4](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.4.0-silent-candidate-4)
@@ -49,9 +65,13 @@ python tools/validate_silent.py
 
 FFmpeg et FFprobe doivent être installés.
 
+Un préflight audio local est possible avec `audio/scripts/build_t3_complete_voice.py`, mais **il ne constitue jamais le rendu livré**. Le master complet autoritatif doit provenir du workflow GitHub Actions.
+
 ## Rendu GitHub Actions
 
-Lancer manuellement **Rendu silencieux T3 sur GitHub**. Le runner :
+Pour le master final, lancer manuellement **Rendu complet T3 — voix + musique D**. Ce workflow vérifie les quatre dérivés et la voix, verrouille le silencieux v0.4 par SHA-256, produit uniquement le choix D, exécute `tools/validate_complete.py`, puis publie l’artefact et la pré-Release.
+
+Le workflow historique **Rendu silencieux T3 sur GitHub** :
 
 1. compile et teste les contrats ;
 2. télécharge les quatre rushes Pexels ;
@@ -78,7 +98,14 @@ Lancer manuellement **Rendu silencieux T3 sur GitHub**. Le runner :
 - `docs/LICENCES_POLICES.md` — familles et empreintes du motion design ;
 - `rushes/manifest.json` — sources Pexels verrouillées ;
 - `engine/render_silent.py` — moteur reproductible ;
-- `tools/validate_silent.py` — validation indépendante ;
+- `tools/validate_silent.py` — validation indépendante du silencieux ;
+- `config/T3_MUSIC_PACK_V1_0_0.json` — quatre dérivés approuvés et sélection finale D ;
+- `config/T3_VOICE_MIX_V1_0_0.json` — voix `voice-02`, placements, ducking et hashes visuels ;
+- `audio/music/t3-afrobeat-v1/` — quatre dérivés de 30 s, preuves et provenance, sans sources intégrales ;
+- `audio/voice/t3-voice-v1/` — prises définitives, normalisations et tige voix 30 s ;
+- `audio/scripts/build_t3_complete_voice.py` — constructeur reproductible du master complet ;
+- `tools/validate_complete.py` — validation indépendante voix, musique, loudness et invariance visuelle ;
+- `.github/workflows/render-complete-voice-music-D.yml` — rendu serveur, artefact et pré-Release ;
 - `docs/LICENCES_RUSHS.md` — provenance et limites de licence.
 
 ## Références créatives

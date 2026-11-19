@@ -1,0 +1,205 @@
+{
+  "$schema": "../schemas/T3_music_pack.schema.json",
+  "schema_version": "1.0.0",
+  "id": "restauration_T3_afrobeat_music_v1_0_0",
+  "display_name": "T3 — quatre variantes Afrobeat Pixabay approuvées",
+  "status": "all_four_owner_approved_final_render_D",
+  "approved_on": "2026-11-18",
+  "provider": "Pixabay",
+  "audio_profile": "afrobeat_amapiano",
+  "selection_contract": {
+    "variant_count": 4,
+    "allowed_variant_ids": [
+      "t3_music_481806",
+      "t3_music_360659",
+      "t3_music_485507",
+      "t3_music_245452"
+    ],
+    "owner_approved_variant_ids": [
+      "t3_music_481806",
+      "t3_music_360659",
+      "t3_music_485507",
+      "t3_music_245452"
+    ],
+    "all_tracks_production_eligible": true,
+    "final_render_choice": "D",
+    "final_render_variant_id": "t3_music_245452",
+    "final_render_pixabay_id": 245452,
+    "final_render_title": "Dlozi Lam",
+    "runtime_mode": "explicit approved variant; D selected for current validation master",
+    "network_required": false
+  },
+  "timeline": {
+    "duration_s": 30.0,
+    "frames": 900,
+    "fps": 30,
+    "scene_markers_s": [
+      0,
+      6,
+      14,
+      21,
+      30
+    ],
+    "scene_markers_frames": [
+      0,
+      180,
+      420,
+      630,
+      900
+    ]
+  },
+  "format": {
+    "container": "MP3",
+    "codec": "MPEG Layer III",
+    "sample_rate_hz": 48000,
+    "channels": 2,
+    "bitrate_kbps": 192,
+    "duration_s": 30.0
+  },
+  "license_contract": {
+    "license": "Pixabay Content License",
+    "license_url": "https://pixabay.com/service/license-summary/",
+    "official_download_only": true,
+    "standalone_redistribution_forbidden": true,
+    "original_full_tracks_bundled": false,
+    "adapted_30s_project_assets_bundled": true,
+    "content_id_registered_track_count": 0,
+    "content_id_status_wording": "not displayed on official source page when verified",
+    "proof": "official page + official content URL + filename + original SHA-256 + license summary"
+  },
+  "tracks": [
+    {
+      "id": "t3_music_481806",
+      "choice": "A",
+      "pixabay_id": 481806,
+      "title": "LASER",
+      "artist": "DMSOUNDWORKS",
+      "style_label": "Moderne et fluide",
+      "file": "audio/music/t3-afrobeat-v1/t3_481806_laser_30s.mp3",
+      "duration_s": 30.0,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "bitrate_kbps": 192,
+      "sha256": "f84455f2611bdd54c3907d1f13f90b1561f0bbff04b4d8279f51364b14579e21",
+      "bytes": 721334,
+      "source_page": "https://pixabay.com/music/afrobeat-afrobeat-instrumental-2026-laser-joe-boy-x-rema-type-beat-481806/",
+      "source_evidence_file": "audio/music/t3-afrobeat-v1/evidence/A_481806.json",
+      "content_id_status": "not_displayed_on_source_page",
+      "ai_generated_badge": "not_displayed",
+      "audition_approved_by_owner": true,
+      "approval_date": "2026-11-18",
+      "production_eligible": true,
+      "qc": {
+        "integrated_lufs": -18.49,
+        "true_peak_dbtp": -5.53,
+        "loudness_range_lu": 4.6,
+        "duration_exact_30s": true,
+        "sha256_recomputed": "f84455f2611bdd54c3907d1f13f90b1561f0bbff04b4d8279f51364b14579e21"
+      }
+    },
+    {
+      "id": "t3_music_360659",
+      "choice": "B",
+      "pixabay_id": 360659,
+      "title": "Omalicha Nwa",
+      "artist": "artbybigvee",
+      "style_label": "Festif et gourmand",
+      "file": "audio/music/t3-afrobeat-v1/t3_360659_omalicha_nwa_30s.mp3",
+      "duration_s": 30.0,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "bitrate_kbps": 192,
+      "sha256": "6ae8005d99dd67001b47a8137b1be4224d262b2e6bce8cc6b5f776c53e2251fc",
+      "bytes": 721340,
+      "source_page": "https://pixabay.com/music/afrobeat-omalicha-nwa-360659/",
+      "source_evidence_file": "audio/music/t3-afrobeat-v1/evidence/B_360659.json",
+      "content_id_status": "not_displayed_on_source_page",
+      "ai_generated_badge": "not_displayed",
+      "audition_approved_by_owner": true,
+      "approval_date": "2026-11-18",
+      "production_eligible": true,
+      "qc": {
+        "integrated_lufs": -18.31,
+        "true_peak_dbtp": -7.36,
+        "loudness_range_lu": 3.1,
+        "duration_exact_30s": true,
+        "sha256_recomputed": "6ae8005d99dd67001b47a8137b1be4224d262b2e6bce8cc6b5f776c53e2251fc"
+      }
+    },
+    {
+      "id": "t3_music_485507",
+      "choice": "C",
+      "pixabay_id": 485507,
+      "title": "Safe",
+      "artist": "AEXBEATS",
+      "style_label": "Chaleureux et posé",
+      "file": "audio/music/t3-afrobeat-v1/t3_485507_safe_30s.mp3",
+      "duration_s": 30.0,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "bitrate_kbps": 192,
+      "sha256": "729e2c20058d005c432160297f8243b72026ed89cb26b85bc60f880b9bd8eedf",
+      "bytes": 721329,
+      "source_page": "https://pixabay.com/music/electronic-safe-free-afro-beat-485507/",
+      "source_evidence_file": "audio/music/t3-afrobeat-v1/evidence/C_485507.json",
+      "content_id_status": "not_displayed_on_source_page",
+      "ai_generated_badge": "displayed",
+      "audition_approved_by_owner": true,
+      "approval_date": "2026-11-18",
+      "production_eligible": true,
+      "qc": {
+        "integrated_lufs": -18.35,
+        "true_peak_dbtp": -3.31,
+        "loudness_range_lu": 5.6,
+        "duration_exact_30s": true,
+        "sha256_recomputed": "729e2c20058d005c432160297f8243b72026ed89cb26b85bc60f880b9bd8eedf"
+      }
+    },
+    {
+      "id": "t3_music_245452",
+      "choice": "D",
+      "pixabay_id": 245452,
+      "title": "Dlozi Lam",
+      "artist": "PremiumMusicOdyssey",
+      "style_label": "Amapiano profond",
+      "file": "audio/music/t3-afrobeat-v1/t3_245452_dlozi_lam_30s.mp3",
+      "duration_s": 30.0,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "bitrate_kbps": 192,
+      "sha256": "7128e7da92c1bf9b94b9973a8c190994bec2c227d55860f81e0db19a77e7ee87",
+      "bytes": 721345,
+      "source_page": "https://pixabay.com/music/afrobeat-dlozi-lam-amapiano-245452/",
+      "source_evidence_file": "audio/music/t3-afrobeat-v1/evidence/D_245452.json",
+      "content_id_status": "not_displayed_on_source_page",
+      "ai_generated_badge": "displayed",
+      "audition_approved_by_owner": true,
+      "approval_date": "2026-11-18",
+      "production_eligible": true,
+      "qc": {
+        "integrated_lufs": -18.43,
+        "true_peak_dbtp": -2.38,
+        "loudness_range_lu": 1.8,
+        "duration_exact_30s": true,
+        "sha256_recomputed": "7128e7da92c1bf9b94b9973a8c190994bec2c227d55860f81e0db19a77e7ee87"
+      }
+    }
+  ],
+  "quality_gates": {
+    "exactly_four_tracks": true,
+    "approved_pixabay_ids": [
+      481806,
+      360659,
+      485507,
+      245452
+    ],
+    "duration_exact_30s": true,
+    "integrated_lufs_range": [
+      -18.8,
+      -17.7
+    ],
+    "true_peak_dbtp_max": -1.0,
+    "all_qc_pass": true,
+    "final_render_variant": "t3_music_245452"
+  }
+}

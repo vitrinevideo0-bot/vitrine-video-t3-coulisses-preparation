@@ -1,0 +1,95 @@
+{
+  "candidate_id": "A",
+  "pixabay_id": 481806,
+  "key": "laser",
+  "official_page": "https://pixabay.com/music/afrobeat-afrobeat-instrumental-2026-laser-joe-boy-x-rema-type-beat-481806/",
+  "official_content_url": "https://cdn.pixabay.com/download/audio/2026/02/09/audio_b263d8bae6.mp3?filename=dmsoundworks-afrobeat-instrumental-2026-laser-joe-boy-x-rema-type-beat-481806.mp3",
+  "license": "https://pixabay.com/service/license-summary/",
+  "title": "Afrobeat Instrumental 2026 LASER Joe Boy x Rema Type Beat by DMSOUNDWORKS | Royalty-free Music",
+  "headline": "Afrobeat instrumental 2026 Laser - Joe Boy x Rema type beat music",
+  "author": "DMSOUNDWORKS",
+  "description": "A smooth and rhythmic afrobeat instrumental featuring infectious percussive grooves, ambient vocal chops, and melodic keys. Perfect for summer vlogs, dance videos, TikTok, Instagram reels, and chill background music.",
+  "duration": "PT2M44S",
+  "encoding_format": "audio/mpeg",
+  "date_published": "2026-02-10T17:34:41.216Z",
+  "keywords": "Afrobeat, Afrobeattypebeat, Instrumental, Rematypebeat, Joeboytypebeat, Afrobeatguitartypebeat, Burnaboytypebeat",
+  "thumbnail_url": "https://cdn.pixabay.com/audio/2026/02/10/05-23-42-893_200x200.png",
+  "content_id_status": "not_displayed_on_source_page",
+  "ai_generated_badge": "not_displayed",
+  "original_filename": "dmsoundworks-afrobeat-instrumental-2026-laser-joe-boy-x-rema-type-beat-481806.mp3",
+  "original_sha256": "473b5f0159bda501653271dffbce601cd93beed630218a2a406a44a034b0267f",
+  "original_bytes": 5234520,
+  "json_ld": {
+    "@context": "https://schema.org",
+    "@type": [
+      "MusicRecording",
+      "AudioObject"
+    ],
+    "acquireLicensePage": "https://pixabay.com/music/afrobeat-afrobeat-instrumental-2026-laser-joe-boy-x-rema-type-beat-481806/",
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Mood",
+        "value": "Energetic"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Movement",
+        "value": "Chasing"
+      }
+    ],
+    "author": {
+      "@type": "Person",
+      "description": "🎶 I’m Allan Matola, AfroBeat producer and creator. All my free beats here on Pixabay are yours to download and use—no leasing required. Feel free to release your songs on DSPs with them.\r\n\r\n❤️ If you’d like to support my work, you can make a donation directly on this page.\r\n\r\n👉 For leasing options with formal agreements, visit my store: DM Sound Works (Beats) on Beatsafi",
+      "image": "https://cdn.pixabay.com/user/2026/07/26/08-46-45-857_96x96.png",
+      "interactionStatistic": {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/FollowAction",
+        "userInteractionCount": 161
+      },
+      "name": "DMSOUNDWORKS",
+      "url": "https://pixabay.com/users/dmsoundworks-35274139/"
+    },
+    "commentCount": 0,
+    "contentUrl": "https://cdn.pixabay.com/download/audio/2026/02/09/audio_b263d8bae6.mp3?filename=dmsoundworks-afrobeat-instrumental-2026-laser-joe-boy-x-rema-type-beat-481806.mp3",
+    "datePublished": "2026-02-10T17:34:41.216Z",
+    "description": "A smooth and rhythmic afrobeat instrumental featuring infectious percussive grooves, ambient vocal chops, and melodic keys. Perfect for summer vlogs, dance videos, TikTok, Instagram reels, and chill background music.",
+    "duration": "PT2M44S",
+    "encodingFormat": "audio/mpeg",
+    "genre": [
+      "Afrobeat",
+      "Upbeat",
+      "Beats"
+    ],
+    "headline": "Afrobeat instrumental 2026 Laser - Joe Boy x Rema type beat music",
+    "interactionStatistic": [
+      {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/ViewAction",
+        "userInteractionCount": 17534
+      },
+      {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/DownloadAction",
+        "userInteractionCount": 3739
+      },
+      {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/LikeAction",
+        "userInteractionCount": 56
+      },
+      {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/BookmarkAction",
+        "userInteractionCount": 32
+      }
+    ],
+    "isAccessibleForFree": true,
+    "isFamilyFriendly": true,
+    "keywords": "Afrobeat, Afrobeattypebeat, Instrumental, Rematypebeat, Joeboytypebeat, Afrobeatguitartypebeat, Burnaboytypebeat",
+    "license": "https://pixabay.com/service/license-summary/",
+    "name": "Afrobeat Instrumental 2026 LASER Joe Boy x Rema Type Beat by DMSOUNDWORKS | Royalty-free Music",
+    "thumbnailUrl": "https://cdn.pixabay.com/audio/2026/02/10/05-23-42-893_200x200.png",
+    "uploadDate": "2026-02-10T17:34:41.216Z"
+  }
+}

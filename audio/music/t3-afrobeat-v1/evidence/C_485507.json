@@ -1,0 +1,95 @@
+{
+  "candidate_id": "C",
+  "pixabay_id": 485507,
+  "key": "safe",
+  "official_page": "https://pixabay.com/music/electronic-safe-free-afro-beat-485507/",
+  "official_content_url": "https://cdn.pixabay.com/download/audio/2026/02/15/audio_53226fb0b9.mp3?filename=aexbeats-safe_free-afro-beat-485507.mp3",
+  "license": "https://pixabay.com/service/license-summary/",
+  "title": "Safe_[[FREE]] afro beat by AEXBEATS | Royalty-free Music",
+  "headline": "Safe afrobeat music",
+  "author": "AEXBEATS",
+  "description": "This smooth afrobeat instrumental track features catchy vocal chops, warm melodies, and a laid-back groove, perfect for YouTube videos, Instagram reels, and lifestyle vlogs.",
+  "duration": "PT3M7S",
+  "encoding_format": "audio/mpeg",
+  "date_published": "2026-02-17T19:38:31.339Z",
+  "keywords": "Afro Beat, Afro Instrumental, Afro Amapiano, Afro Pop, African Music, Romantic Afro Beat, Love Afro Beat, Dance Afro Beat",
+  "thumbnail_url": "https://cdn.pixabay.com/audio/2026/02/15/20-42-50-984_200x200.jpg",
+  "content_id_status": "not_displayed_on_source_page",
+  "ai_generated_badge": "displayed",
+  "original_filename": "aexbeats-safe_free-afro-beat-485507.mp3",
+  "original_sha256": "bce93d8b45afb14ff4a6879c2ec4f540d556d3cfa5f85acc9a9322fd39d4a20e",
+  "original_bytes": 5997714,
+  "json_ld": {
+    "@context": "https://schema.org",
+    "@type": [
+      "MusicRecording",
+      "AudioObject"
+    ],
+    "acquireLicensePage": "https://pixabay.com/music/electronic-safe-free-afro-beat-485507/",
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Mood",
+        "value": "Bright"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Movement",
+        "value": "Medium"
+      }
+    ],
+    "author": {
+      "@type": "Person",
+      "description": "Am a producer, i make all kinds of beats available here on pixabay 💯\r\nFor more beats & instrumentals feel free to email me on aex3238@gmail.com",
+      "image": "https://cdn.pixabay.com/user/2026/08/07/11-34-42-667_96x96.jpg",
+      "interactionStatistic": {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/FollowAction",
+        "userInteractionCount": 386
+      },
+      "name": "AEXBEATS",
+      "url": "https://pixabay.com/users/aexbeats-51683966/"
+    },
+    "commentCount": 1,
+    "contentUrl": "https://cdn.pixabay.com/download/audio/2026/02/15/audio_53226fb0b9.mp3?filename=aexbeats-safe_free-afro-beat-485507.mp3",
+    "datePublished": "2026-02-17T19:38:31.339Z",
+    "description": "This smooth afrobeat instrumental track features catchy vocal chops, warm melodies, and a laid-back groove, perfect for YouTube videos, Instagram reels, and lifestyle vlogs.",
+    "duration": "PT3M7S",
+    "encodingFormat": "audio/mpeg",
+    "genre": [
+      "Electronic",
+      "Upbeat",
+      "Afrobeat"
+    ],
+    "headline": "Safe afrobeat music",
+    "interactionStatistic": [
+      {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/ViewAction",
+        "userInteractionCount": 48620
+      },
+      {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/DownloadAction",
+        "userInteractionCount": 6517
+      },
+      {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/LikeAction",
+        "userInteractionCount": 96
+      },
+      {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/BookmarkAction",
+        "userInteractionCount": 33
+      }
+    ],
+    "isAccessibleForFree": true,
+    "isFamilyFriendly": true,
+    "keywords": "Afro Beat, Afro Instrumental, Afro Amapiano, Afro Pop, African Music, Romantic Afro Beat, Love Afro Beat, Dance Afro Beat",
+    "license": "https://pixabay.com/service/license-summary/",
+    "name": "Safe_[[FREE]] afro beat by AEXBEATS | Royalty-free Music",
+    "thumbnailUrl": "https://cdn.pixabay.com/audio/2026/02/15/20-42-50-984_200x200.jpg",
+    "uploadDate": "2026-02-17T19:38:31.339Z"
+  }
+}

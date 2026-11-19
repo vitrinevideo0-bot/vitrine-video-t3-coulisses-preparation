@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "T3_voice_mix.schema.json",
+  "title": "RESTAURATION-T3 voice and music mix",
+  "type": "object",
+  "required": ["schema_version", "id", "status", "final_render", "voice", "mix_contract", "quality_gates"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "status": {"const": "owner_approved_final_render_D"},
+    "duration_s": {"const": 30.0},
+    "sample_rate_hz": {"const": 48000},
+    "final_render": {
+      "type": "object",
+      "required": ["music_choice", "music_variant_id", "output_filename"],
+      "properties": {
+        "music_choice": {"const": "D"},
+        "music_variant_id": {"const": "t3_music_245452"}
+      }
+    },
+    "voice": {
+      "type": "object",
+      "required": ["voice_id", "clips", "stem_file", "stem_sha256"],
+      "properties": {
+        "voice_id": {"const": "voice-02"},
+        "clips": {"type": "array", "minItems": 4, "maxItems": 4}
+      }
+    },
+    "mix_contract": {
+      "type": "object",
+      "required": ["music_open_gain_db", "music_under_voice_gain_db", "duck_attack_ms", "duck_release_ms", "master_target_lufs", "master_true_peak_dbtp_max"],
+      "properties": {
+        "music_open_gain_db": {"const": -3.0},
+        "music_under_voice_gain_db": {"const": -10.0},
+        "duck_attack_ms": {"const": 120},
+        "duck_release_ms": {"const": 450},
+        "master_target_lufs": {"const": -16.0},
+        "master_true_peak_dbtp_max": {"const": -2.0}
+      }
+    }
+  }
+}
