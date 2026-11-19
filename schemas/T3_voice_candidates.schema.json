@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "T3_voice_candidates.schema.json",
+  "title": "RESTAURATION-T3 comparable voice candidate archive",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "template_id",
+    "status",
+    "created_on",
+    "provider",
+    "language",
+    "requested_identity",
+    "audition_text",
+    "same_text_for_all",
+    "candidate_count",
+    "normalization",
+    "candidates",
+    "owner_gate",
+    "chronology"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "id": {"const": "t3_voice_candidates_v1_0_0"},
+    "template_id": {"const": "RESTAURATION-T3"},
+    "status": {"enum": ["pending_owner_selection", "owner_selected"]},
+    "created_on": {"type": "string", "format": "date"},
+    "provider": {"type": "string", "minLength": 1},
+    "language": {"const": "fr"},
+    "requested_identity": {"const": "masculine advertising"},
+    "audition_text": {"type": "string", "minLength": 80},
+    "same_text_for_all": {"const": true},
+    "candidate_count": {"const": 4},
+    "normalization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sample_rate_hz", "channels", "target_integrated_lufs", "true_peak_dbtp_max", "retiming_forbidden"],
+      "properties": {
+        "sample_rate_hz": {"const": 48000},
+        "channels": {"const": 1},
+        "target_integrated_lufs": {"const": -20.0},
+        "true_peak_dbtp_max": {"const": -3.0},
+        "retiming_forbidden": {"const": true}
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "candidate",
+          "internal_voice_id",
+          "origin_note",
+          "source_file",
+          "source_sha256",
+          "listening_file",
+          "listening_sha256",
+          "duration_seconds",
+          "sample_rate_hz",
+          "channels",
+          "integrated_lufs",
+          "true_peak_dbtp",
+          "retimed"
+        ],
+        "properties": {
+          "candidate": {"enum": ["VOIX-A", "VOIX-B", "VOIX-C", "VOIX-D"]},
+          "internal_voice_id": {"type": "string", "pattern": "^voice-[0-9]{2,}$"},
+          "origin_note": {"type": "string", "minLength": 1},
+          "source_file": {"type": "string", "pattern": "^source/[^/]+\\.wav$"},
+          "source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "listening_file": {"type": "string", "pattern": "^normalized/[^/]+\\.wav$"},
+          "listening_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "duration_seconds": {"type": "number", "exclusiveMinimum": 0},
+          "sample_rate_hz": {"const": 48000},
+          "channels": {"const": 1},
+          "integrated_lufs": {"type": "number", "minimum": -20.15, "maximum": -19.85},
+          "true_peak_dbtp": {"type": "number", "maximum": -3.0},
+          "retimed": {"const": false}
+        }
+      }
+    },
+    "owner_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision", "selected_candidate", "silence_is_approval"],
+      "properties": {
+        "decision": {"type": ["string", "null"]},
+        "selected_candidate": {"type": ["string", "null"], "enum": ["VOIX-A", "VOIX-B", "VOIX-C", "VOIX-D", null]},
+        "silence_is_approval": {"const": false}
+      }
+    },
+    "chronology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "historical_master_predates_this_four-candidate_archive", "master_visual_modified", "required_after_selection"],
+      "properties": {
+        "type": {"const": "retrospective_remediation"},
+        "historical_master_predates_this_four-candidate_archive": {"const": true},
+        "master_visual_modified": {"const": false},
+        "required_after_selection": {
+          "type": "array",
+          "minItems": 4,
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

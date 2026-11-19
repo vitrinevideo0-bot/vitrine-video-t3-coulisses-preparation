@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0.0",
+  "id": "t3_voice_candidates_v1_0_0",
+  "template_id": "RESTAURATION-T3",
+  "status": "pending_owner_selection",
+  "created_on": "2026-11-18",
+  "provider": "Arena.ai Agent Mode",
+  "language": "fr",
+  "requested_identity": "masculine advertising",
+  "audition_text": "Chez Casa Tacos, découvrez notre tacos maison, généreusement garni et préparé à la commande. Chaque geste révèle un tacos chaud et gourmand. À Kandi, votre tacos est à deux mille cinq cents francs. Commandez simplement sur WhatsApp.",
+  "same_text_for_all": true,
+  "candidate_count": 4,
+  "normalization": {
+    "sample_rate_hz": 48000,
+    "channels": 1,
+    "target_integrated_lufs": -20.0,
+    "true_peak_dbtp_max": -3.0,
+    "retiming_forbidden": true
+  },
+  "candidates": [
+    {
+      "candidate": "VOIX-A",
+      "internal_voice_id": "voice-02",
+      "origin_note": "previously owner-selected final T3 voice; regenerated on the common audition text",
+      "source_file": "source/T3_VOIX_CANDIDATE_A_VOICE_02.wav",
+      "source_sha256": "13863fbdb0236eadae19e6c56ee269071a21ad20e6692d6c8b24c7594c1ce591",
+      "listening_file": "normalized/T3_VOIX_CANDIDATE_A_VOICE_02.wav",
+      "listening_sha256": "5ddda04ab3e8150eb378d761b108684251c9c1580ff85af747c5428c5e36a799",
+      "duration_seconds": 16.799646,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "integrated_lufs": -20.0,
+      "true_peak_dbtp": -5.55,
+      "retimed": false
+    },
+    {
+      "candidate": "VOIX-B",
+      "internal_voice_id": "voice-03",
+      "origin_note": "candidate voice selected from audition battle 03 for inclusion in this comparison set; not the final owner choice",
+      "source_file": "source/T3_VOIX_CANDIDATE_B.wav",
+      "source_sha256": "bfe2a090e6be94cb085fa103096edde9faf9f8bd1e56e671a2eec58ca0954d49",
+      "listening_file": "normalized/T3_VOIX_CANDIDATE_B.wav",
+      "listening_sha256": "5c294dca3b0dfbcfaf3c890286a56ce028583a733dbe92e6e931263eedfdfddf",
+      "duration_seconds": 13.43275,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "integrated_lufs": -20.09,
+      "true_peak_dbtp": -3.0,
+      "retimed": false
+    },
+    {
+      "candidate": "VOIX-C",
+      "internal_voice_id": "voice-04",
+      "origin_note": "candidate voice automatically assigned after audition battle 04 was skipped; not represented as an owner pick",
+      "source_file": "source/T3_VOIX_CANDIDATE_C.wav",
+      "source_sha256": "f89c51bc8f3bfcd1c5dc4bea2c88ed4842fa0d55b5d1affc4bb136c4b4c5679d",
+      "listening_file": "normalized/T3_VOIX_CANDIDATE_C.wav",
+      "listening_sha256": "e6cd1dc1f0b32c73626a2b547e0c327323a7191b9360779b6cc88bd4e4f98c26",
+      "duration_seconds": 15.4,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "integrated_lufs": -20.01,
+      "true_peak_dbtp": -6.36,
+      "retimed": false
+    },
+    {
+      "candidate": "VOIX-D",
+      "internal_voice_id": "voice-05",
+      "origin_note": "candidate voice selected from audition battle 05 for inclusion in this comparison set; not the final owner choice",
+      "source_file": "source/T3_VOIX_CANDIDATE_D.wav",
+      "source_sha256": "fbafdcdba503bd5b6e5ef4180a7cb2bcfcd739b6afeafb1cbdb60600c2eeeb11",
+      "listening_file": "normalized/T3_VOIX_CANDIDATE_D.wav",
+      "listening_sha256": "4ace1eeb064bb69e1e3fd4db4f123bb46d955486222cfcd59cbe93c96fc2404c",
+      "duration_seconds": 16.033396,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "integrated_lufs": -20.0,
+      "true_peak_dbtp": -4.81,
+      "retimed": false
+    }
+  ],
+  "owner_gate": {
+    "decision": null,
+    "selected_candidate": null,
+    "silence_is_approval": false
+  },
+  "chronology": {
+    "type": "retrospective_remediation",
+    "historical_master_predates_this_four-candidate_archive": true,
+    "master_visual_modified": false,
+    "required_after_selection": [
+      "record owner decision",
+      "verify or regenerate four final scene clips for selected voice",
+      "rerun GitHub mix/render validation",
+      "rerun package build and clean extraction validation"
+    ]
+  }
+}

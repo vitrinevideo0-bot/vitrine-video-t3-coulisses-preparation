@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "status": "PASS",
+  "candidate_count": 4,
+  "same_text": true,
+  "language": "fr",
+  "target_integrated_lufs": -20.0,
+  "target_true_peak_dbtp": -3.0,
+  "target_lra_lu": 7.0,
+  "retiming_forbidden": true,
+  "candidates": [
+    {
+      "source": "source/T3_VOIX_CANDIDATE_A_VOICE_02.wav",
+      "source_sha256": "13863fbdb0236eadae19e6c56ee269071a21ad20e6692d6c8b24c7594c1ce591",
+      "normalized": "normalized/T3_VOIX_CANDIDATE_A_VOICE_02.wav",
+      "normalized_sha256": "5ddda04ab3e8150eb378d761b108684251c9c1580ff85af747c5428c5e36a799",
+      "duration_seconds": 16.799646,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "integrated_lufs": -20.0,
+      "true_peak_dbtp": -5.55,
+      "loudness_range_lu": 1.6,
+      "retimed": false
+    },
+    {
+      "source": "source/T3_VOIX_CANDIDATE_B.wav",
+      "source_sha256": "bfe2a090e6be94cb085fa103096edde9faf9f8bd1e56e671a2eec58ca0954d49",
+      "normalized": "normalized/T3_VOIX_CANDIDATE_B.wav",
+      "normalized_sha256": "5c294dca3b0dfbcfaf3c890286a56ce028583a733dbe92e6e931263eedfdfddf",
+      "duration_seconds": 13.43275,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "integrated_lufs": -20.09,
+      "true_peak_dbtp": -3.0,
+      "loudness_range_lu": 1.0,
+      "retimed": false
+    },
+    {
+      "source": "source/T3_VOIX_CANDIDATE_C.wav",
+      "source_sha256": "f89c51bc8f3bfcd1c5dc4bea2c88ed4842fa0d55b5d1affc4bb136c4b4c5679d",
+      "normalized": "normalized/T3_VOIX_CANDIDATE_C.wav",
+      "normalized_sha256": "e6cd1dc1f0b32c73626a2b547e0c327323a7191b9360779b6cc88bd4e4f98c26",
+      "duration_seconds": 15.4,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "integrated_lufs": -20.01,
+      "true_peak_dbtp": -6.36,
+      "loudness_range_lu": 2.1,
+      "retimed": false
+    },
+    {
+      "source": "source/T3_VOIX_CANDIDATE_D.wav",
+      "source_sha256": "fbafdcdba503bd5b6e5ef4180a7cb2bcfcd739b6afeafb1cbdb60600c2eeeb11",
+      "normalized": "normalized/T3_VOIX_CANDIDATE_D.wav",
+      "normalized_sha256": "4ace1eeb064bb69e1e3fd4db4f123bb46d955486222cfcd59cbe93c96fc2404c",
+      "duration_seconds": 16.033396,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "integrated_lufs": -20.0,
+      "true_peak_dbtp": -4.81,
+      "loudness_range_lu": 1.6,
+      "retimed": false
+    }
+  ]
+}

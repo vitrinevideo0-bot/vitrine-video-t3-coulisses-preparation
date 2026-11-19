@@ -3,11 +3,11 @@
   "sector": "RESTAURATION",
   "catalog_name": "Coulisses de préparation",
   "catalog_status": "EXISTANT",
-  "workflow_status_number": 16,
-  "workflow_status": "Préparation OTA hors ligne effectuée — paquet GitHub intégrateur à contrôler",
+  "workflow_status_number": 12,
+  "workflow_status": "Voix off en attente d’écoute",
   "reference_batch_current": "LOT-03",
   "selected_reference": "R3-B03-REF-02 + R3-B03-REF-04",
-  "branch_planned": "main",
+  "branch_planned": "fix/t3-four-voice-candidates",
   "repository": {
     "name": "vitrine-video-t3-coulisses-preparation",
     "owner": "vitrinevideo0-bot",
@@ -144,7 +144,14 @@
     "integration-handoff/T3_INTEGRATOR_HANDOFF_V1.md",
     "reports/AUDIT_ARCHITECTURE_T1_T2_T3_2026-11-18.md",
     "reports/AUDIT_ARCHITECTURE_T1_T2_T3_2026-11-18.json",
-    ".github/workflows/build-integrator-package.yml"
+    ".github/workflows/build-integrator-package.yml",
+    "audio/voice/t3-voice-candidates-v1/README.md",
+    "audio/voice/t3-voice-candidates-v1/manifest.json",
+    "audio/voice/t3-voice-candidates-v1/NORMALIZATION_REPORT.json",
+    "audio/voice/t3-voice-candidates-v1/SHA256SUMS.txt",
+    "audio/voice/t3-voice-candidates-v1/T3_ECOUTE_4_VOIX.html",
+    "schemas/T3_voice_candidates.schema.json",
+    "tests/test_voice_candidates.py"
   ],
   "owner_decisions": [
     {
@@ -265,11 +272,23 @@
         "musique D — Dlozi Lam",
         "gabarit RESTAURATION-T3"
       ]
+    },
+    {
+      "phase": "voice_candidate_evidence_remediation_authorization",
+      "date": "2026-11-18",
+      "decision": "Corriger avant T4 le manque de quatre démonstrations vocales candidates comparables.",
+      "scope": [
+        "archiver exactement quatre voix sur le même texte français",
+        "conserver honnêtement la chronologie rétrospective",
+        "faire choisir explicitement une voix",
+        "rejouer ensuite rendu, tests et paquet GitHub sans modifier le master visuel approuvé"
+      ]
     }
   ],
-  "decision_expected": "Exécuter le workflow du paquet intégrateur sur le commit exact, télécharger l’artefact, vérifier l’extraction et archiver les preuves.",
+  "decision_expected": "Le propriétaire écoute VOIX-A, VOIX-B, VOIX-C et VOIX-D puis choisit explicitement une voix, ou demande un nouveau lot.",
   "blockers": [
-    "Écart déclaré : quatre démonstrations vocales candidates comparables ne sont pas archivées; voice-02 et le rendu final sont néanmoins approuvés.",
+    "Les quatre démonstrations comparables sont maintenant archivées sur la branche de remédiation, mais la nouvelle décision propriétaire n’est pas encore enregistrée.",
+    "Après le choix vocal, le rendu/mixage, les tests et le paquet GitHub doivent être rejoués avant de refermer T3.",
     "Cloudflare/Android/OTA de production relèvent d’une mission d’intégration distincte et ne sont pas autorisés ni déployés."
   ],
   "development_started": true,
@@ -290,6 +309,15 @@
     "render_run_id": 44564485698,
     "release_tag": "t3-coulisses-v0.7.0-complete-D-1"
   },
+  "current_voice_gate": {
+    "status": "pending_owner_selection",
+    "candidate_count": 4,
+    "manifest": "audio/voice/t3-voice-candidates-v1/manifest.json",
+    "listening_board": "audio/voice/t3-voice-candidates-v1/T3_ECOUTE_4_VOIX.html",
+    "schema": "schemas/T3_voice_candidates.schema.json",
+    "master_visual_modified": false,
+    "historical_master_still_approved": true
+  },
   "approved_contracts": {
     "questions": "form/questions_T3.json",
     "capture_guide": "capture-guide/consignes_T3.json",
@@ -307,7 +335,7 @@
     "integrator_package_spec": "packages/t3-coulisses-v1/package_spec.json",
     "cloudflare_boundary": "integration-handoff/T3_CLOUDFLARE_BOUNDARY_V1.json"
   },
-  "workflow_note": "T3 créatif approuvé. Audit T1/T2/T3 exécuté : T1 104/104, T2 59/59 + Cloudflare dry-run/intégration PASS, T3 36/36. Préparation OTA hors ligne et paquet intégrateur T3 ajoutés sans modifier le master. Cloudflare production reste volontairement non déployé.",
+  "workflow_note": "T3 créatif et paquet intégrateur précédemment approuvés. La porte vocale est rouverte uniquement pour remédier à l’archive manquante des quatre candidates : 4 fichiers comparables sont présents et contrôlés, sélection propriétaire en attente. Le master visuel reste immuable; Cloudflare production reste volontairement non déployé.",
   "development_phase": {
     "engine": "engine/render_silent.py",
     "source_manifest": "rushes/manifest.json",
