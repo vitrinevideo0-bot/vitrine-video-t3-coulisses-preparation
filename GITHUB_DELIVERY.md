@@ -1,3 +1,7 @@
+> **CANDIDAT REJETÉ PAR LE PROPRIÉTAIRE — NE PAS UTILISER**
+>
+> Motif : des libellés techniques de captation et de provenance étaient visibles dans la publicité. Cette livraison v0.1 est conservée uniquement pour l’audit et sera remplacée par une v0.2 additive.
+
 # RESTAURATION-T3 — Livraison GitHub du candidat silencieux
 
 **Dépôt public :** https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation  

@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.2.0",
+  "id": "T3_TEXT_MOTION_V0_2_0",
+  "status": "corrected_after_owner_rejection_of_technical_labels",
+  "canvas": {"width": 720, "height": 1280, "fps": 30, "frames": 900},
+  "binding_rule": "Tout texte commercial variable provient exclusivement de merchant_payload. Aucun titre de scène, durée, mot démo, mot rush ou provenance média n'est visible dans la publicité.",
+  "allowed_merchant_fields": ["nom", "produit", "prix", "whatsapp", "quartier", "accroche"],
+  "allowed_fixed_texts": ["COMMANDER MAINTENANT"],
+  "forbidden_visible_strings": ["SCÈNE", "6 S", "7 S", "8 S", "9 S", "DÉMO", "RUSHS", "PEXELS", "T3", "INGRÉDIENTS", "GESTE SIGNATURE", "DRESSAGE", "PRÊT À SERVIR"],
+  "text_layer_affected_by_transitions": false,
+  "hard_cards": false,
+  "fonts": {
+    "display_serif": {
+      "family": "DM Serif Display",
+      "file": "assets/fonts/DMSerifDisplay-Regular.ttf",
+      "sha256": "8cc3643535edf039aa5d95440a8542735e9197e4f4b8d9303e980fefbf5ab616",
+      "license": "SIL OFL 1.1",
+      "role": "nom, produit, accroche et architecture principale"
+    },
+    "light_sans": {
+      "family": "Montserrat",
+      "file": "assets/fonts/Montserrat-Variable.ttf",
+      "sha256": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7",
+      "license": "SIL OFL 1.1",
+      "role": "sous-information et CTA"
+    },
+    "utility": {
+      "family": "Plus Jakarta Sans",
+      "file": "assets/fonts/PlusJakartaSans-Variable.ttf",
+      "sha256": "89b3fb38aa0d275d7a731d0d817a4f1622b316b4d7fbdedcf02ee9099ff68bc8",
+      "license": "SIL OFL 1.1",
+      "role": "prix, quartier et WhatsApp"
+    }
+  },
+  "graphics": [
+    {
+      "id": "T3_G01_IDENTITY",
+      "scene": "S1",
+      "start_f": 18,
+      "reveal_end_f": 48,
+      "end_f_exclusive": 156,
+      "fields": ["nom", "produit"],
+      "motion": "left_to_right_mask_plus_soft_rise",
+      "safe_region": {"x_min": 0.08, "x_max": 0.92, "y_min": 0.10, "y_max": 0.43}
+    },
+    {
+      "id": "T3_G02_OFFER",
+      "scene": "S2",
+      "start_f": 210,
+      "reveal_end_f": 234,
+      "end_f_exclusive": 378,
+      "fields": ["produit", "prix"],
+      "motion": "split_reveal_with_price_settle",
+      "safe_region": {"x_min": 0.08, "x_max": 0.92, "y_min": 0.10, "y_max": 0.88}
+    },
+    {
+      "id": "T3_G03_HOOK",
+      "scene": "S3",
+      "start_f": 450,
+      "reveal_end_f": 480,
+      "end_f_exclusive": 606,
+      "fields": ["accroche", "nom"],
+      "optional_field": "accroche",
+      "empty_behavior": "show nom only; never invent a hook",
+      "motion": "center_bloom_and_signature",
+      "safe_region": {"x_min": 0.08, "x_max": 0.92, "y_min": 0.12, "y_max": 0.45}
+    },
+    {
+      "id": "T3_G04_FINAL",
+      "scene": "S4",
+      "start_f": 660,
+      "reveal_end_f": 708,
+      "end_f_exclusive": 900,
+      "fields": ["nom", "produit", "prix", "whatsapp", "quartier"],
+      "fixed_text": "COMMANDER MAINTENANT",
+      "motion": "sequential_identity_contact_lockup",
+      "safe_region": {"x_min": 0.06, "x_max": 0.94, "y_min": 0.06, "y_max": 0.91},
+      "hold_through_frame": 899,
+      "graphics_opacity_at_frame_899": 1.0
+    }
+  ]
+}

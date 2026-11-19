@@ -54,29 +54,35 @@ jobs:
           python engine/render_silent.py \
             --manifest rushes/manifest.json \
             --contract reverse-engineering/T3_TRANSITIONS_30S.json \
+            --render-job demo/render_job_silent_demo.json \
+            --text-config config/T3_TEXT_MOTION_V0_2_0.json \
             --cache rushes/cache \
             --work .tmp/t3-silent \
-            --output-dir output/t3-silent-v0.1.0
+            --output-dir output/t3-silent-v0.2.0
 
       - name: Valider indépendamment format, durée, images, audio et couverture
         run: |
           python tools/validate_silent.py \
-            --output-dir output/t3-silent-v0.1.0 \
-            --proof output/t3-silent-v0.1.0/T3_GITHUB_SERVER_VALIDATION.json
+            --output-dir output/t3-silent-v0.2.0 \
+            --proof output/t3-silent-v0.2.0/T3_GITHUB_SERVER_VALIDATION.json
 
       - name: Assembler la livraison sans rush brut
         run: |
           set -euo pipefail
           rm -rf release
           mkdir release
-          cp output/t3-silent-v0.1.0/VIDEO_T3_SILENCIEUSE_TRANSITIONS_2_4_A_VALIDER.mp4 release/
-          cp output/t3-silent-v0.1.0/T3_SILENT_RENDER_REPORT.json release/
-          cp output/t3-silent-v0.1.0/T3_GITHUB_SERVER_VALIDATION.json release/
-          cp output/t3-silent-v0.1.0/RAPPORT_RENDU_SILENCIEUX.md release/
-          cp output/t3-silent-v0.1.0/T3_TRANSITION_PROOF.jpg release/
+          cp output/t3-silent-v0.2.0/VIDEO_T3_SILENCIEUSE_MOTION_TEXT_V0_2_A_VALIDER.mp4 release/
+          cp output/t3-silent-v0.2.0/T3_SILENT_RENDER_REPORT.json release/
+          cp output/t3-silent-v0.2.0/T3_GITHUB_SERVER_VALIDATION.json release/
+          cp output/t3-silent-v0.2.0/RAPPORT_RENDU_SILENCIEUX.md release/
+          cp output/t3-silent-v0.2.0/T3_TRANSITION_TEXT_PROOF_V0_2.jpg release/
           cp reverse-engineering/T3_TRANSITIONS_30S.json release/
+          cp config/T3_TEXT_MOTION_V0_2_0.json release/
+          cp demo/render_job_silent_demo.json release/T3_RENDER_JOB_DEMO.json
           cp rushes/manifest.json release/T3_RUSHES_MANIFEST.json
           cp docs/LICENCES_RUSHS.md release/
+          cp docs/LICENCES_POLICES.md release/
+          cp docs/T3_VISIBLE_TEXT_CONTRACT.md release/
           if find release -maxdepth 1 -type f \( -name 'S1_*.mp4' -o -name 'S2_*.mp4' -o -name 'S3_*.mp4' -o -name 'S4_*.mp4' \) | grep -q .; then
             echo 'Rush brut interdit dans la livraison' >&2
             exit 1
@@ -106,6 +112,8 @@ jobs:
           - zéro piste audio ;
           - quatre scènes 6/8/7/9 s ;
           - 16 profils et 17 événements couvrant les familles observées dans les références 2 et 4 ;
+          - quatre blocs de motion design liés exclusivement aux six champs commerçant ;
+          - aucun titre de scène, durée, badge de démonstration ou provenance des rushes dans les pixels ;
           - rushes réels Pexels vérifiés par SHA-256, non redistribués bruts ;
           - rapport de rendu, validation serveur, planche de preuve, contrat et manifeste inclus.
 
@@ -117,13 +125,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          TAG="t3-coulisses-v0.1.0-silent-candidate-${GITHUB_RUN_NUMBER}"
+          TAG="t3-coulisses-v0.2.0-silent-candidate-${GITHUB_RUN_NUMBER}"
           if gh release view "$TAG" >/dev/null 2>&1; then
             echo "La Release $TAG existe déjà : refus de l’écraser." >&2
             exit 1
           fi
           gh release create "$TAG" release/* \
             --target "$GITHUB_SHA" \
-            --title "T3 Coulisses — candidat silencieux #${GITHUB_RUN_NUMBER}" \
+            --title "T3 Coulisses — candidat silencieux corrigé v0.2 #${GITHUB_RUN_NUMBER}" \
             --notes-file /tmp/t3-release-notes.md \
             --prerelease

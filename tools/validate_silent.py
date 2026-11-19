@@ -26,13 +26,13 @@ def check(name: str, condition: bool, detail: object = "") -> dict[str, object]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--output-dir", type=Path, default=Path("output/t3-silent-v0.1.0"))
+    parser.add_argument("--output-dir", type=Path, default=Path("output/t3-silent-v0.2.0"))
     parser.add_argument("--proof", type=Path)
     args = parser.parse_args()
 
-    video = args.output_dir / "VIDEO_T3_SILENCIEUSE_TRANSITIONS_2_4_A_VALIDER.mp4"
+    video = args.output_dir / "VIDEO_T3_SILENCIEUSE_MOTION_TEXT_V0_2_A_VALIDER.mp4"
     render_report_path = args.output_dir / "T3_SILENT_RENDER_REPORT.json"
-    contact = args.output_dir / "T3_TRANSITION_PROOF.jpg"
+    contact = args.output_dir / "T3_TRANSITION_TEXT_PROOF_V0_2.jpg"
     if not video.exists() or not render_report_path.exists():
         raise SystemExit("Rendu ou rapport absent")
 
@@ -77,6 +77,11 @@ def main() -> int:
         check("sha256_matches_render_report", sha256(video) == report["output"]["sha256"], sha256(video)),
         check("all_17_events_applied", report.get("all_17_events_applied") is True and len(report.get("events", [])) == 17, len(report.get("events", []))),
         check("each_event_frame_count", all(event["expected_frame_count"] == event["applied_frame_count"] for event in report.get("events", []))),
+        check("all_4_merchant_graphics_applied", report.get("all_4_graphics_applied") is True and len(report.get("graphics", [])) == 4, len(report.get("graphics", []))),
+        check("each_graphic_frame_count", all(item["expected_frame_count"] == item["applied_frame_count"] for item in report.get("graphics", []))),
+        check("canonical_merchant_fields_only", report.get("merchant_payload_fields") == ["nom", "produit", "prix", "whatsapp", "quartier", "accroche"], report.get("merchant_payload_fields")),
+        check("technical_labels_not_rendered", report.get("technical_labels_rendered") is False),
+        check("visible_texts_do_not_contain_forbidden_labels", not ({text.upper() for values in report.get("visible_text_contract", {}).values() for text in values} & {text.upper() for text in report.get("forbidden_visible_strings", [])})),
         check("references_2_and_4", report.get("references_covered") == ["R3-B03-REF-02", "R3-B03-REF-04"], report.get("references_covered")),
         check("raw_rushes_not_published", report.get("raw_rushes_embedded_as_standalone_assets") is False),
         check("transition_contact_sheet", contact.exists() and contact.stat().st_size > 10000, contact.stat().st_size if contact.exists() else 0),
@@ -121,6 +126,8 @@ def main() -> int:
         "- H.264 / yuv420p ;\n"
         "- zéro piste audio ;\n"
         "- 17 événements appliqués, couvrant les références 2 et 4 ;\n"
+        "- quatre blocs de motion design alimentés uniquement par merchant_payload ;\n"
+        "- aucun titre de scène, durée, mot démo, mot rush ou provenance média visible ;\n"
         "- validation humaine encore requise.\n",
         encoding="utf-8",
     )

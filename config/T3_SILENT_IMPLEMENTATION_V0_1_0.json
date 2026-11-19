@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "template_id": "RESTAURATION-T3",
   "version": "0.1.0-silent-candidate",
-  "status": "github_rendered_pending_owner_validation",
+  "status": "rejected_by_owner",
   "generated_at": "2026-11-18",
   "source": {
     "repository": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation",
@@ -56,5 +56,16 @@
     "sha256s_manifest_verified": true
   },
   "owner_approved": false,
-  "next_gate": "Visionnage et validation explicite du master silencieux par le propriétaire."
+  "next_gate": "Visionnage et validation explicite du master silencieux par le propriétaire.",
+  "owner_rejection": {
+    "date": "2026-11-18",
+    "reason": "La vidéo affichait des libellés techniques de captation et de provenance au lieu d’utiliser la logique de motion design alimentée par merchant_payload.",
+    "forbidden_examples": [
+      "SCÈNE 1 · 6 S",
+      "LES INGRÉDIENTS",
+      "DÉMO T3 · RUSHS PEXELS"
+    ],
+    "action": "Conserver la v0.1 comme preuve rejetée; ne pas la réutiliser; produire une v0.2 additive."
+  },
+  "superseded_by": "0.2.0-silent-candidate-pending-github-render"
 }

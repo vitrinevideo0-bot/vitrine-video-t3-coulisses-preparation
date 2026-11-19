@@ -15,7 +15,19 @@ Gabarit vertical Vitrine Vidéo pour montrer les coulisses d’un plat : ingréd
 
 ## État réel
 
-Les questions, les quatre prises et les 12 écrans ont été approuvés par le propriétaire le 18 novembre 2026. Le workflow `Rendu silencieux T3 sur GitHub` construit un **candidat silencieux à valider**, pas un master créatif déjà approuvé. Musique, voix off, OTA et intégration mobile restent hors de ce jalon.
+Les questions, les quatre prises et les 12 écrans ont été approuvés par le propriétaire le 18 novembre 2026. Le premier candidat silencieux v0.1 a ensuite été **rejeté** : il affichait des titres de scènes, des durées et une mention de provenance qui appartiennent aux preuves techniques, pas à la publicité.
+
+La correction v0.2 applique maintenant la logique T1/T2 :
+
+- les textes visibles proviennent de `merchant_payload` dans le RenderJob ;
+- les seuls champs sont `nom`, `produit`, `prix`, `whatsapp`, `quartier` et `accroche` ;
+- l’accroche vide est omise ;
+- `FCFA` est ajouté une seule fois ;
+- le seul texte fixe est `COMMANDER MAINTENANT` ;
+- aucun titre de scène, durée, mot démo, mot rush ou provenance média n’est composité ;
+- les textes sont ajoutés après les transitions afin de rester nets.
+
+La v0.2 reste un **candidat silencieux à valider**, pas un master créatif déjà approuvé. Musique, voix off, OTA et intégration mobile restent hors de ce jalon.
 
 ## Reproduire localement
 
@@ -46,6 +58,10 @@ Lancer manuellement **Rendu silencieux T3 sur GitHub**. Le runner :
 - `capture-guide/consignes_T3.json` — quatre prises et machine A/B/C ;
 - `ui-screens/approved/` — 12 écrans approuvés ;
 - `reverse-engineering/T3_TRANSITIONS_30S.json` — 17 événements ;
+- `config/T3_TEXT_MOTION_V0_2_0.json` — quatre blocs graphiques liés aux champs commerçant ;
+- `demo/render_job_silent_demo.json` — fixture du même contrat `merchant_payload` que le runtime ;
+- `docs/T3_VISIBLE_TEXT_CONTRACT.md` — chaînes autorisées et interdites ;
+- `docs/LICENCES_POLICES.md` — familles et empreintes du motion design ;
 - `rushes/manifest.json` — sources Pexels verrouillées ;
 - `engine/render_silent.py` — moteur reproductible ;
 - `tools/validate_silent.py` — validation indépendante ;

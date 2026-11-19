@@ -22,6 +22,11 @@ import cv2
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
+try:
+    from engine.text_motion import normalize_payload, render_text_motion, validate_text_config, visible_text_contract
+except ModuleNotFoundError:  # exécution directe: python engine/render_silent.py
+    from text_motion import normalize_payload, render_text_motion, validate_text_config, visible_text_contract
+
 W, H, FPS, TOTAL = 720, 1280, 30, 900
 ENGINE_VERSION = "1.0.0-silent-candidate"
 ORANGE = (37, 82, 236)  # BGR #EC5225
@@ -427,56 +432,6 @@ def font_path(bold: bool = True) -> str:
     raise RuntimeError("Police DejaVu Sans introuvable")
 
 
-def text_overlay(title: str, kicker: str, accent: tuple[int, int, int, int] = (236, 82, 37, 255)) -> np.ndarray:
-    image = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    draw = ImageDraw.Draw(image)
-    f_k = ImageFont.truetype(font_path(True), 20)
-    f_t = ImageFont.truetype(font_path(True), 43)
-    box = (28, 934, 692, 1088)
-    draw.rounded_rectangle(box, radius=26, fill=(10, 8, 7, 190), outline=(255, 244, 225, 75), width=2)
-    draw.rounded_rectangle((45, 952, 263, 990), radius=19, fill=accent)
-    draw.text((62, 959), kicker, font=f_k, fill=(255, 255, 255, 255))
-    draw.text((48, 1012), title, font=f_t, fill=(255, 247, 235, 255), stroke_width=1, stroke_fill=(15, 10, 8, 255))
-    return cv2.cvtColor(np.array(image), cv2.COLOR_RGBA2BGRA)
-
-
-def watermark_overlay() -> np.ndarray:
-    image = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    draw = ImageDraw.Draw(image)
-    f = ImageFont.truetype(font_path(True), 15)
-    draw.rounded_rectangle((25, 24, 303, 58), radius=17, fill=(0, 0, 0, 135))
-    draw.text((40, 31), "DÉMO T3 · RUSHS PEXELS", font=f, fill=(255, 244, 225, 225))
-    return cv2.cvtColor(np.array(image), cv2.COLOR_RGBA2BGRA)
-
-
-def cta_overlay() -> np.ndarray:
-    image = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    draw = ImageDraw.Draw(image)
-    f_badge = ImageFont.truetype(font_path(True), 16)
-    f_brand = ImageFont.truetype(font_path(True), 48)
-    f_product = ImageFont.truetype(font_path(True), 27)
-    f_price = ImageFont.truetype(font_path(True), 42)
-    f_body = ImageFont.truetype(font_path(False), 21)
-    f_action = ImageFont.truetype(font_path(True), 22)
-    draw.rounded_rectangle((25, 760, 695, 1248), radius=34, fill=(11, 8, 7, 225), outline=(255, 241, 219, 85), width=2)
-    draw.rounded_rectangle((48, 784, 388, 822), radius=19, fill=(19, 104, 94, 255))
-    draw.text((64, 791), "DÉMO · DONNÉES D’EXEMPLE", font=f_badge, fill="white")
-    draw.text((48, 850), "CASA TACOS", font=f_brand, fill=(255, 247, 235, 255))
-    draw.text((50, 914), "TACOS MAISON", font=f_product, fill=(247, 181, 59, 255))
-    draw.text((48, 960), "2 500 FCFA", font=f_price, fill=(255, 255, 255, 255))
-    draw.text((50, 1027), "Kandi · près du marché central", font=f_body, fill=(236, 226, 214, 255))
-    draw.rounded_rectangle((48, 1080, 672, 1180), radius=24, fill=(236, 82, 37, 255))
-    draw.text((77, 1100), "WHATSAPP  +229 01 97 00 00 00", font=f_action, fill="white")
-    draw.text((50, 1205), "Préparé à la commande · exemple non commercial", font=f_body, fill=(205, 194, 181, 255))
-    return cv2.cvtColor(np.array(image), cv2.COLOR_RGBA2BGRA)
-
-
-def composite_bgra(frame: np.ndarray, overlay: np.ndarray, opacity: float = 1.0) -> np.ndarray:
-    alpha = (overlay[:, :, 3:4].astype(np.float32) / 255.0) * clamp01(opacity)
-    rgb = overlay[:, :, :3].astype(np.float32)
-    return np.clip(frame.astype(np.float32) * (1 - alpha) + rgb * alpha, 0, 255).astype(np.uint8)
-
-
 def event_progress(event: dict[str, Any], frame_number: int) -> tuple[int, float]:
     start, end = event["frames"]
     local = frame_number - start
@@ -514,13 +469,20 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--manifest", type=Path, default=Path("rushes/manifest.json"))
     parser.add_argument("--contract", type=Path, default=Path("reverse-engineering/T3_TRANSITIONS_30S.json"))
+    parser.add_argument("--render-job", type=Path, default=Path("demo/render_job_silent_demo.json"))
+    parser.add_argument("--text-config", type=Path, default=Path("config/T3_TEXT_MOTION_V0_2_0.json"))
     parser.add_argument("--cache", type=Path, default=Path("rushes/cache"))
     parser.add_argument("--work", type=Path, default=Path(".tmp/t3-silent"))
-    parser.add_argument("--output-dir", type=Path, default=Path("output/t3-silent-v0.1.0"))
+    parser.add_argument("--output-dir", type=Path, default=Path("output/t3-silent-v0.2.0"))
     args = parser.parse_args()
 
     manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
     contract = json.loads(args.contract.read_text(encoding="utf-8"))
+    render_job = json.loads(args.render_job.read_text(encoding="utf-8"))
+    text_config = json.loads(args.text_config.read_text(encoding="utf-8"))
+    validate_text_config(text_config)
+    fields = normalize_payload(render_job["merchant_payload"])
+    resolved_visible_texts = visible_text_contract(fields, text_config)
     scenes = manifest["scenes"]
     if [int(scene["duration_seconds"]) for scene in scenes] != [6, 8, 7, 9]:
         raise SystemExit("Durées de scènes non conformes")
@@ -542,7 +504,7 @@ def main() -> int:
         preprocess_scene(ffmpeg, source, destination, scene)
         intermediates[scene["scene"]] = destination
 
-    output = args.output_dir / "VIDEO_T3_SILENCIEUSE_TRANSITIONS_2_4_A_VALIDER.mp4"
+    output = args.output_dir / "VIDEO_T3_SILENCIEUSE_MOTION_TEXT_V0_2_A_VALIDER.mp4"
     command = [
         ffmpeg, "-hide_banner", "-loglevel", "error", "-y",
         "-f", "rawvideo", "-pix_fmt", "bgr24", "-s:v", f"{W}x{H}", "-r", str(FPS), "-i", "-",
@@ -567,15 +529,8 @@ def main() -> int:
             event_for_frame[index] = event
 
     scene_ranges = [(0, 179, "S1"), (180, 419, "S2"), (420, 629, "S3"), (630, 899, "S4")]
-    scene_overlays = {
-        "S1": text_overlay("LES INGRÉDIENTS", "SCÈNE 1 · 6 S", (29, 118, 88, 255)),
-        "S2": text_overlay("LE GESTE SIGNATURE", "SCÈNE 2 · 8 S"),
-        "S3": text_overlay("LE DRESSAGE", "SCÈNE 3 · 7 S", (19, 104, 94, 255)),
-        "S4": text_overlay("PRÊT À SERVIR", "SCÈNE 4 · 9 S", (226, 73, 37, 255)),
-    }
-    watermark = watermark_overlay()
-    cta = cta_overlay()
     vmask = vignette_mask()
+    graphic_counts = {item["id"]: 0 for item in text_config["graphics"]}
     applied_counts = {event["event"]: 0 for event in contract["timeline_events"]}
     sample_hashes: dict[int, dict[str, str]] = {event["event"]: {} for event in contract["timeline_events"]}
 
@@ -641,16 +596,10 @@ def main() -> int:
                 applied_counts[number] += 1
 
             frame = apply_vignette(frame, vmask)
-            frame = composite_bgra(frame, watermark, 0.86)
-            # Cartouche de scène, masqué pendant le CTA et atténué pendant les flashes.
-            if frame_number < 841:
-                local_scene = frame_number - next(start for start, end, scene in scene_ranges if scene == scene_id)
-                opacity = min(1.0, max(0.0, (local_scene - 8) / 10.0))
-                if event is not None and int(event["event"]) in {4, 7, 9, 10, 13, 16}:
-                    opacity *= 0.35
-                frame = composite_bgra(frame, scene_overlays[scene_id], opacity * 0.94)
-            if frame_number >= 841:
-                frame = composite_bgra(frame, cta, smooth((frame_number - 841) / 14.0))
+            # T1/T2 : les graphismes commerçant sont composités après les effets.
+            frame, active_graphic_ids = render_text_motion(frame, frame_number, fields, text_config)
+            for graphic_id in active_graphic_ids:
+                graphic_counts[graphic_id] += 1
 
             if event is not None:
                 start, end = event["frames"]
@@ -678,7 +627,7 @@ def main() -> int:
         "schema_version": "1.0.0",
         "template_id": "RESTAURATION-T3",
         "engine_version": ENGINE_VERSION,
-        "status": "silent_candidate_rendered_not_owner_approved",
+        "status": "silent_candidate_v0_2_corrected_pending_owner_validation",
         "rendered_on": os.environ.get("GITHUB_ACTIONS") == "true" and "github_actions" or "local_preflight",
         "output": {
             "file": output.name,
@@ -693,6 +642,19 @@ def main() -> int:
         },
         "source_manifest_sha256": sha256(args.manifest),
         "transition_contract_sha256": sha256(args.contract),
+        "render_job_sha256": sha256(args.render_job),
+        "text_motion_config_sha256": sha256(args.text_config),
+        "merchant_payload_fields": list(fields.keys()),
+        "visible_text_contract": resolved_visible_texts,
+        "forbidden_visible_strings": text_config["forbidden_visible_strings"],
+        "technical_labels_rendered": False,
+        "graphics": [{
+            "id": item["id"],
+            "frames": [item["start_f"], item["end_f_exclusive"] - 1],
+            "expected_frame_count": item["end_f_exclusive"] - item["start_f"],
+            "applied_frame_count": graphic_counts[item["id"]],
+            "fields": item["fields"],
+        } for item in text_config["graphics"]],
         "sources": [{"scene": scene["scene"], "pexels_id": scene["pexels_id"], "sha256": scene["sha256"], "raw_published": False} for scene in scenes],
         "events": [{
             "event": event["event"],
@@ -703,13 +665,14 @@ def main() -> int:
             "sample_frame_sha256": sample_hashes[event["event"]],
         } for event in contract["timeline_events"]],
         "all_17_events_applied": len(applied_counts) == 17 and applied_counts == expected_counts,
+        "all_4_graphics_applied": all(graphic_counts[item["id"]] == item["end_f_exclusive"] - item["start_f"] for item in text_config["graphics"]),
         "references_covered": ["R3-B03-REF-02", "R3-B03-REF-04"],
         "raw_rushes_embedded_as_standalone_assets": False,
         "owner_approval_required": True,
     }
     report_path = args.output_dir / "T3_SILENT_RENDER_REPORT.json"
     report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    contact = args.output_dir / "T3_TRANSITION_PROOF.jpg"
+    contact = args.output_dir / "T3_TRANSITION_TEXT_PROOF_V0_2.jpg"
     samples = [0, 17, 35, 86, 179, 225, 263, 312, 383, 419, 466, 551, 629, 710, 781, 840, 899]
     make_contact_sheet(output, contact, samples)
     sums = args.output_dir / "SHA256SUMS.txt"

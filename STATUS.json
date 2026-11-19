@@ -3,8 +3,8 @@
   "sector": "RESTAURATION",
   "catalog_name": "Coulisses de préparation",
   "catalog_status": "À DÉVELOPPER",
-  "workflow_status_number": 9,
-  "workflow_status": "Rendu silencieux en attente de validation",
+  "workflow_status_number": 8,
+  "workflow_status": "Développement silencieux en cours",
   "reference_batch_current": "LOT-03",
   "selected_reference": "R3-B03-REF-02 + R3-B03-REF-04",
   "branch_planned": "main",
@@ -62,7 +62,12 @@
     "proofs/T3_GITHUB_SERVER_VALIDATION_RUN_44540350371.json",
     "proofs/T3_SILENT_RENDER_REPORT_RUN_44540350371.json",
     "proofs/T3_TRANSITION_PROOF_RUN_44540350371.jpg",
-    "reports/RAPPORT_RENDU_SILENCIEUX_GITHUB_RUN_44540350371.md"
+    "reports/RAPPORT_RENDU_SILENCIEUX_GITHUB_RUN_44540350371.md",
+    "config/T3_TEXT_MOTION_V0_2_0.json",
+    "demo/render_job_silent_demo.json",
+    "docs/T3_VISIBLE_TEXT_CONTRACT.md",
+    "engine/text_motion.py",
+    "tests/test_text_motion.py"
   ],
   "owner_decisions": [
     {
@@ -112,13 +117,19 @@
       "date": "2026-11-18",
       "decision": "Produire maintenant la vidéo sans son avec toutes les transitions, à partir de rushes réels, directement sur GitHub Actions, puis pousser le travail dans un dépôt public.",
       "github_device_authorization": true
+    },
+    {
+      "phase": "silent_candidate_v0_1_rejection",
+      "date": "2026-11-18",
+      "decision": "Rendu silencieux v0.1 refusé",
+      "feedback": "Retirer les titres de scènes, durées, mentions démo/rushs/Pexels et reprendre la logique T1/T2 : les textes visibles viennent du JSON commerçant et apparaissent en motion design."
     }
   ],
-  "decision_expected": "Visionner le MP4 silencieux produit sur GitHub et répondre : approuver le rendu, ou demander des corrections précises.",
+  "decision_expected": "Aucune décision avant la correction serveur. Produire la v0.2 sur GitHub, la contrôler, puis présenter uniquement la vidéo corrigée.",
   "blockers": [
-    "Le propriétaire doit visionner et approuver explicitement le rendu silencieux.",
-    "Aucune musique ni voix off avant cette approbation.",
-    "Le statut de pré-Release ne vaut pas approbation créative."
+    "Le candidat v0.1 est rejeté et ne doit pas être présenté comme actif.",
+    "La v0.2 corrigée doit être rendue et validée sur GitHub Actions.",
+    "Aucune musique ni voix off avant validation du nouveau silencieux."
   ],
   "development_started": true,
   "music_started": false,
@@ -157,7 +168,7 @@
     }
   },
   "silent_render": {
-    "status": "github_rendered_pending_owner_validation",
+    "status": "rejected_by_owner",
     "implementation_lock": "config/T3_SILENT_IMPLEMENTATION_V0_1_0.json",
     "source_commit": "0e5f927f6fc155e3b602cef6b6f142e4e5d8ec4f",
     "ci": {
@@ -197,7 +208,20 @@
     },
     "release_sha256_manifest_verified": true,
     "downloaded_release_revalidated": true,
-    "owner_approved": false
+    "owner_approved": false,
+    "owner_rejection": {
+      "date": "2026-11-18",
+      "reason": "Libellés techniques visibles dans les pixels; logique merchant_payload T1/T2 non respectée.",
+      "attachments": [
+        "/home/user/uploads/image-17.png",
+        "/home/user/uploads/image-18.png"
+      ],
+      "rejected_visible_labels": [
+        "SCÈNE 1 · 6 S",
+        "LES INGRÉDIENTS",
+        "DÉMO T3 · RUSHS PEXELS"
+      ]
+    }
   },
   "last_server_evidence": {
     "date": "2026-11-18",
@@ -205,5 +229,31 @@
     "conclusion": "success",
     "commit": "0e5f927f6fc155e3b602cef6b6f142e4e5d8ec4f",
     "video_sha256": "39d6dc9c7deb7f4158edef038edfbb0ccd8cc4ef3830f75d2f96c4577108ce08"
+  },
+  "correction_v0_2": {
+    "status": "local_preflight_pass_pending_github_render",
+    "render_job": "demo/render_job_silent_demo.json",
+    "text_motion_contract": "config/T3_TEXT_MOTION_V0_2_0.json",
+    "visible_text_contract": "docs/T3_VISIBLE_TEXT_CONTRACT.md",
+    "engine": "engine/render_silent.py",
+    "local_video_sha256": "18bf54d9ca3ef393b79b1f7f7fd0046453919ea698d4f0782b0382dbebc3795f",
+    "local_validation": {
+      "status": "PASS",
+      "passed": 22,
+      "failed": 0
+    },
+    "technical_labels_rendered": false,
+    "visible_fields": [
+      "nom",
+      "produit",
+      "prix",
+      "whatsapp",
+      "quartier",
+      "accroche"
+    ],
+    "fixed_texts": [
+      "COMMANDER MAINTENANT"
+    ],
+    "github_render_started": false
   }
 }
