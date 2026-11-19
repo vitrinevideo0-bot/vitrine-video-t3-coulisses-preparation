@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "id": "t3_voice_candidates_v1_0_0",
   "template_id": "RESTAURATION-T3",
-  "status": "pending_owner_selection",
+  "status": "owner_selected",
   "created_on": "2026-11-18",
   "provider": "Arena.ai Agent Mode",
   "language": "fr",
@@ -80,8 +80,13 @@
     }
   ],
   "owner_gate": {
-    "decision": null,
-    "selected_candidate": null,
+    "decision": "selected",
+    "selected_candidate": "VOIX-A",
+    "selected_internal_voice_id": "voice-02",
+    "decided_on": "2026-11-18",
+    "decision_channel": "arena_ask_user",
+    "question_id": "t3_voice_selection_remediation",
+    "approval_record": "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-18.json",
     "silence_is_approval": false
   },
   "chronology": {

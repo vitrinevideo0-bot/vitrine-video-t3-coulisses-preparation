@@ -4,17 +4,17 @@
 
 **Référentiel : `INSTRUCTION_UNIVERSELLE_VITRINE_VIDEO_V1.md`**
 
-## Verdict honnête
+## Verdict honnête après remédiation T3
 
-**Non : les trois dépôts ne sont pas, au sens strict, conformes à 100 % au protocole universel actuel.**
+**T1 et T2 ne sont pas strictement conformes à 100 % au protocole universel actuel. T3 est désormais conforme à l’architecture de gabarit de référence et son unique écart de preuve vocale est remédié dans l’état courant.**
 
-Leurs masters créatifs et techniques sont valides dans leurs périmètres respectifs, mais le protocole universel est plus exigeant que les architectures historiques de T1/T2 et que l’état initial de T3. Aucun écart n’est masqué dans cet audit.
+Le style de montage propre à T2 ou T3 n’est pas un écart : T1 fournit une méthode et des contrats, pas une identité graphique à copier. La chronologie rétrospective de la correction T3 reste déclarée au lieu d’être réécrite. La clôture exige encore les workflows GitHub exacts de rendu et de paquet avant fusion.
 
 | Gabarit | Tests réexécutés | Master/rendu | Architecture universelle stricte | Cloudflare production |
 |---|---:|---|---|---|
 | T1 | **104/104 PASS** après rematérialisation du golden depuis sa Release | Release complète existante | **Non** — héritage ancien, voix candidates non archivées, workflow Release destructif, branches fragmentées | **Non déployé** |
 | T2 | **59/59 PASS** + dry-build et intégration Worker/R2/GitHub PASS | v0.7 approuvé en artefact privé | **Non** — rotation 4 pistes absente, quatre voix candidates absentes, paquet OTA/ZIP absent, Release v0.7 non autorisée | **Plan testé, non déployé** |
-| T3 | **36/36 PASS** après consolidation; master 45/45 serveur et 45/45 après téléchargement | Release complète D existante | **Presque**, mais pas strictement 100 % : quatre fichiers de voix candidates comparables ne sont pas archivés | **Non déployé, frontière documentée** |
+| T3 | **43/43 PASS** local après remédiation; master historique 45/45 serveur et 45/45 après téléchargement | Release complète D existante; rejeu GitHub de remédiation requis avant fusion | **Oui pour le paquet de gabarit courant** — quatre voix comparables archivées, VOIX-A / voice-02 choisie, zéro écart connu restant | **Non déployé, frontière documentée** |
 
 ## T1
 
@@ -73,19 +73,24 @@ Le master n’a pas été modifié. Ont été ajoutés :
 - frontière Cloudflare/intégrateur explicite;
 - publication de Release désormais désactivée par défaut.
 
-Préflight du paquet :
+Préflight local du paquet après correction vocale :
 
-- **36/36 tests PASS**;
-- **29/29 contrôles du ZIP PASS**;
+- **43/43 tests PASS**;
+- **32/32 contrôles du ZIP PASS**;
 - deux constructions locales byte-identiques;
+- 111 fichiers dans le payload contrôlé;
+- quatre démonstrations vocales sources et quatre WAV normalisés, même texte français, sans retiming;
+- choix propriétaire enregistré : **VOIX-A**, identifiant interne `voice-02`;
 - golden master complet inclus et verrouillé;
 - aucun original Pixabay complet;
 - aucun secret, endpoint de production ou Worker Cloudflare embarqué;
 - `ota_implemented=false` et `cloudflare_deployed=false` explicites.
 
-### Écart restant
+### Remédiation de l’écart vocal
 
-Le propriétaire a réellement sélectionné `voice-02` et a approuvé son débit puis le rendu final. Toutefois, le dépôt ne conserve pas **quatre fichiers distincts de démonstrations vocales candidates comparables**. C’est l’unique écart T3 encore déclaré par rapport au protocole universel strict. Il ne sera pas répété pour T4/T5.
+L’audit initial avait correctement signalé l’absence de quatre fichiers comparables. La porte a été rouverte avant T4 : quatre candidats distincts `VOIX-A` à `VOIX-D` ont été synthétisés avec le même texte tiré des scripts approuvés, normalisés à 48 kHz sans modifier leur débit, hashés, schématisés et testés. Le propriétaire a choisi `VOIX-A`, qui correspond à `voice-02` déjà utilisée par les quatre clips de scène et le master approuvé.
+
+La correction est explicitement qualifiée de **rétrospective** : elle ne prétend pas que ces quatre fichiers existaient avant le premier master. À l’état courant, `known_protocol_deviations` est vide et le validateur de paquet indique `strict_universal_protocol_100_percent=true`. Cette conclusion ne couvre ni Android, ni OTA opérationnel, ni Cloudflare de production, qui restent une mission d’intégration séparée.
 
 ## Cloudflare : réponse précise
 

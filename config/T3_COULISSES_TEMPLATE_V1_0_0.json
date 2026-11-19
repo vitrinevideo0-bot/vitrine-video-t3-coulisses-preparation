@@ -40,6 +40,8 @@
     "transitions": "reverse-engineering/T3_TRANSITIONS_30S.json",
     "text_motion": "config/T3_TEXT_MOTION_V0_4_0.json",
     "music_pack": "config/T3_MUSIC_PACK_V1_0_0.json",
+    "voice_candidates": "audio/voice/t3-voice-candidates-v1/manifest.json",
+    "voice_candidate_approval": "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-18.json",
     "voice_mix": "config/T3_VOICE_MIX_V1_0_0.json"
   },
   "runtime_contracts": {
@@ -65,11 +67,5 @@
     "network_or_cloudflare_code_added": false,
     "android_integration_implemented": false
   },
-  "known_protocol_deviations": [
-    {
-      "id": "VOICE_CANDIDATE_EVIDENCE_COUNT",
-      "status": "owner_accepted_final_voice_but_not_four_archived_candidate_files",
-      "detail": "The owner selected voice-02 through the platform audition and approved the final rate and mix; the repository does not archive four comparable candidate voice demonstration files."
-    }
-  ]
+  "known_protocol_deviations": []
 }

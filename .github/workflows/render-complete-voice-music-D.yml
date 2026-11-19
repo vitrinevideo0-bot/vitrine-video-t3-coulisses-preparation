@@ -45,8 +45,9 @@ jobs:
           set -euo pipefail
           python -m compileall -q engine tools audio/scripts tests
           python -m unittest discover -s tests -v
-          (cd audio/music/t3-afrobeat-v1 && sha256sum --check SHA256SUMS.txt)
-          (cd audio/voice/t3-voice-v1 && sha256sum --check SHA256SUMS.txt)
+          (cd audio/music/t3-afrobeat-v1 && sha256sum --check --strict SHA256SUMS.txt)
+          (cd audio/voice/t3-voice-v1 && sha256sum --check --strict SHA256SUMS.txt)
+          (cd audio/voice/t3-voice-candidates-v1 && sha256sum --check --strict SHA256SUMS.txt)
 
       - name: Télécharger le silencieux v0.4 approuvé et verrouiller ses hashes
         run: |
@@ -105,7 +106,7 @@ jobs:
           print(f"- vidéo : `{v['video']['file']}`")
           print(f"- SHA-256 : `{v['video']['sha256']}`")
           print('- musique : **D — Dlozi Lam / PremiumMusicOdyssey**')
-          print('- voix : **voice-02**, placements 1,2 / 6,8 / 14,7 / 21,8 s')
+          print('- voix : **VOIX-A / voice-02**, choisie parmi quatre candidates comparables; placements 1,2 / 6,8 / 14,7 / 21,8 s')
           print(f"- audio : {float(a['input_i']):.2f} LUFS, {float(a['input_tp']):.2f} dBTP, AAC stéréo 48 kHz")
           print(f"- flux vidéo immuable : `{v['visual']['actual_bitstream_sha256']}`")
           PY
@@ -125,6 +126,9 @@ jobs:
           cp audio/music/t3-afrobeat-v1/source_manifest.json release/T3_MUSIC_SOURCE_MANIFEST.json
           cp audio/music/t3-afrobeat-v1/BUILD_PROVENANCE.json release/T3_MUSIC_BUILD_PROVENANCE.json
           cp audio/voice/t3-voice-v1/manifest.json release/T3_VOICE_MANIFEST.json
+          cp audio/voice/t3-voice-candidates-v1/manifest.json release/T3_VOICE_CANDIDATES_MANIFEST.json
+          cp audio/voice/t3-voice-candidates-v1/NORMALIZATION_REPORT.json release/T3_VOICE_CANDIDATES_NORMALIZATION.json
+          cp approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-18.json release/T3_VOICE_CANDIDATE_APPROVAL.json
           test "$(find release -maxdepth 1 -type f -name '*.mp4' | wc -l)" -eq 1
           if find release -maxdepth 1 -type f -name '*.mp3' | grep -q .; then
             echo 'Les dérivés musicaux restent versionnés dans le dépôt; aucun MP3 autonome dans la Release.' >&2
@@ -153,7 +157,7 @@ jobs:
           - base visuelle : silencieux v0.4 approuvé, flux H.264 copié bit pour bit sans réencodage;
           - 30,000 s · 720 × 1280 · 30 i/s · 900 images;
           - musique choisie : **D — Dlozi Lam / PremiumMusicOdyssey**;
-          - voix française masculine `voice-02` aux quatre placements approuvés;
+          - voix française masculine `VOIX-A / voice-02`, choisie parmi quatre démonstrations comparables, aux quatre placements approuvés;
           - ducking repris de T1 : −3 dB hors parole, −10 dB sous parole, attaque 120 ms, relâchement 450 ms;
           - master cible −16 LUFS / −2 dBTP;
           - AAC stéréo 48 kHz;
@@ -161,7 +165,7 @@ jobs:
           - rapports de rendu et validation indépendante inclus;
           - aucun fichier source Pixabay intégral ou MP3 musical autonome dans la Release.
 
-          Les quatre dérivés musicaux approuvés A–D, leurs preuves, la voix et les configurations reproductibles sont versionnés dans le dépôt. Le rendu de cette Release utilise uniquement D.
+          Les quatre dérivés musicaux approuvés A–D, les quatre démonstrations vocales comparables, la décision propriétaire, les clips finaux et les configurations reproductibles sont versionnés dans le dépôt. Le rendu de cette Release utilise uniquement D et VOIX-A / voice-02.
           EOF
 
       - name: Publier une pré-Release additive et immuable

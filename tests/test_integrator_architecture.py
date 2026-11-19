@@ -117,10 +117,15 @@ class T3IntegratorArchitectureTest(unittest.TestCase):
         bundled = {path.name for path in (ROOT / "audio/music/t3-afrobeat-v1").glob("*.mp3")}
         self.assertFalse(originals & bundled)
 
-    def test_protocol_deviation_is_explicit_not_hidden(self) -> None:
-        deviations = self.canonical["known_protocol_deviations"]
-        self.assertEqual([item["id"] for item in deviations], ["VOICE_CANDIDATE_EVIDENCE_COUNT"])
-        self.assertIn("not_four_archived_candidate_files", deviations[0]["status"])
+    def test_voice_candidate_deviation_is_remediated_without_rewriting_history(self) -> None:
+        self.assertEqual(self.canonical["known_protocol_deviations"], [])
+        candidates = json.loads((ROOT / self.canonical["creative_contracts"]["voice_candidates"]).read_text(encoding="utf-8"))
+        approval = json.loads((ROOT / self.canonical["creative_contracts"]["voice_candidate_approval"]).read_text(encoding="utf-8"))
+        self.assertEqual(candidates["candidate_count"], 4)
+        self.assertEqual(candidates["owner_gate"]["selected_candidate"], "VOIX-A")
+        self.assertEqual(candidates["owner_gate"]["selected_internal_voice_id"], "voice-02")
+        self.assertTrue(candidates["chronology"]["historical_master_predates_this_four-candidate_archive"])
+        self.assertEqual(approval["selected_internal_voice_id"], "voice-02")
 
 
 if __name__ == "__main__":

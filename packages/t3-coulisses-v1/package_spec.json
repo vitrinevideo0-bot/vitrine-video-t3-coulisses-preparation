@@ -75,6 +75,14 @@
       "role": "selected_voice_and_four_scene_clips"
     },
     {
+      "path": "audio/voice/t3-voice-candidates-v1",
+      "role": "four_comparable_voice_candidates_and_owner_selection_manifest"
+    },
+    {
+      "path": "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-18.json",
+      "role": "owner_voice_candidate_selection"
+    },
+    {
       "path": "audio/scripts/build_t3_complete_voice.py",
       "role": "complete_audio_builder"
     },

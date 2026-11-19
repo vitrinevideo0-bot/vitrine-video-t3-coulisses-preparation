@@ -120,17 +120,21 @@
         "golden conformance lock",
         "deterministic integrator ZIP builder and clean-extraction validator",
         "Cloudflare/common-control-plane handoff boundary with no secrets or deployment claims",
-        "release publication disabled by default"
+        "release publication disabled by default",
+        "four distinct comparable French voice candidate demonstrations archived with source and normalized hashes",
+        "explicit owner selection VOIX-A mapped to historical final voice-02",
+        "retrospective remediation chronology declared without changing the approved visual master"
       ],
       "local_integrator_package": {
         "status": "PASS",
-        "checks": "29/29 PASS",
+        "checks": "32/32 PASS",
         "deterministic_two_builds_identical": true,
-        "zip_hash_authority": "GitHub package workflow artifact; local hash intentionally not canonical because the audit/status files are part of the ZIP payload."
+        "payload_file_count": 111,
+        "includes_four_voice_candidates": true,
+        "includes_owner_voice_approval": true,
+        "zip_hash_authority": "GitHub package workflow artifact; local hash is preflight-only because the GitHub rerun is the delivery authority."
       },
-      "remaining_gap_against_current_universal_protocol": [
-        "the repository does not archive exactly four comparable candidate voice demo files; voice-02 selection and final human approval are proven"
-      ],
+      "remaining_gap_against_current_universal_protocol": [],
       "cloudflare": {
         "worker_code_present": false,
         "boundary_contract_present": true,
@@ -141,7 +145,34 @@
         "deployed": false,
         "assessment": "correctly separated; common production deployment not authorized"
       },
-      "strict_100_percent": false
+      "strict_100_percent": true,
+      "test_result_after_voice_remediation": {
+        "status": "PASS",
+        "passed": 43,
+        "failed": 0,
+        "scope": "local preflight before mandatory GitHub render and package reruns"
+      },
+      "voice_candidate_remediation": {
+        "chronology": "retrospective_remediation_after_historical_master",
+        "candidate_count": 4,
+        "candidates": [
+          "VOIX-A",
+          "VOIX-B",
+          "VOIX-C",
+          "VOIX-D"
+        ],
+        "owner_selected_candidate": "VOIX-A",
+        "selected_internal_voice_id": "voice-02",
+        "same_as_previously_approved_final_voice": true,
+        "visual_master_modified": false
+      },
+      "known_protocol_deviations": [],
+      "github_remediation_validation": {
+        "contracts_workflow_run": 44573275374,
+        "contracts_workflow_status": "PASS before owner selection commit",
+        "post_selection_render_rerun_required": true,
+        "post_selection_package_rerun_required": true
+      }
     }
   },
   "shared_cloudflare": {
@@ -154,8 +185,9 @@
   },
   "overall_conclusion": {
     "creative_and_media_masters": "PASS for the validated T1, T2 and T3 reference outputs within their documented scopes",
-    "current_universal_architecture": "NOT 100 percent for any of the three legacy/current repositories",
+    "current_universal_architecture": "T3 package architecture is strict after retrospective voice-evidence remediation; T1 and T2 retain the documented legacy gaps.",
     "cloudflare_production": "NOT DEPLOYED",
-    "safe_next_step": "Use the remediated T3 package pattern and enforce four archived voice candidates, automatic music rotation, package/OTA metadata and Cloudflare separation from the beginning of T4 and T5."
-  }
+    "safe_next_step": "Run and validate the exact T3 GitHub render and integrator-package workflows on the owner-selection commit, merge the remediation, then resume T4."
+  },
+  "last_updated_local": "2026-11-18"
 }

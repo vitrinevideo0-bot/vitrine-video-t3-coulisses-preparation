@@ -71,14 +71,20 @@ class T3VoiceCandidateArchiveTest(unittest.TestCase):
             self.assertLessEqual(item["true_peak_dbtp"], -3.0)
             self.assertFalse(item["retimed"])
 
-    def test_current_master_voice_is_present_but_gate_remains_open(self) -> None:
+    def test_owner_selected_candidate_A_matching_current_master_voice(self) -> None:
         mix = json.loads((ROOT / "config/T3_VOICE_MIX_V1_0_0.json").read_text(encoding="utf-8"))
         mapping = {item["candidate"]: item["internal_voice_id"] for item in self.manifest["candidates"]}
+        gate = self.manifest["owner_gate"]
         self.assertEqual(mapping["VOIX-A"], mix["voice"]["voice_id"])
-        self.assertEqual(self.manifest["status"], "pending_owner_selection")
-        self.assertIsNone(self.manifest["owner_gate"]["decision"])
-        self.assertIsNone(self.manifest["owner_gate"]["selected_candidate"])
-        self.assertFalse(self.manifest["owner_gate"]["silence_is_approval"])
+        self.assertEqual(self.manifest["status"], "owner_selected")
+        self.assertEqual(gate["decision"], "selected")
+        self.assertEqual(gate["selected_candidate"], "VOIX-A")
+        self.assertEqual(gate["selected_internal_voice_id"], "voice-02")
+        self.assertFalse(gate["silence_is_approval"])
+        approval = json.loads((ROOT / gate["approval_record"]).read_text(encoding="utf-8"))
+        self.assertEqual(approval["selected_option_id"], "voice_a")
+        self.assertEqual(approval["selected_internal_voice_id"], mix["voice"]["voice_id"])
+        self.assertTrue(approval["same_as_previously_approved_final_voice"])
 
     def test_listening_board_references_each_candidate_once(self) -> None:
         board = (CANDIDATE_ROOT / "T3_ECOUTE_4_VOIX.html").read_text(encoding="utf-8")

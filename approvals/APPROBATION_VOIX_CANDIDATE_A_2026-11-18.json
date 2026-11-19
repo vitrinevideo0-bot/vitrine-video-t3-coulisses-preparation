@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "phase": "voice_candidate_selection_remediation",
+  "date": "2026-11-18",
+  "decision_channel": "arena_ask_user",
+  "question_id": "t3_voice_selection_remediation",
+  "prompt": "Dans la prévisualisation Audition des voix T3, écoutez les quatre fichiers complets. Quelle voix choisissez-vous pour T3 ?",
+  "options_presented": ["VOIX-A", "VOIX-B", "VOIX-C", "VOIX-D"],
+  "selected_option_id": "voice_a",
+  "selected_candidate": "VOIX-A",
+  "selected_internal_voice_id": "voice-02",
+  "decision": "Le propriétaire choisit VOIX-A parmi les quatre démonstrations comparables.",
+  "comparison_manifest": "audio/voice/t3-voice-candidates-v1/manifest.json",
+  "same_as_previously_approved_final_voice": true,
+  "consequences": {
+    "existing_final_scene_clips_remain_voice_consistent": true,
+    "existing_master_visual_modified": false,
+    "github_mix_render_must_be_replayed": true,
+    "integrator_package_must_be_rebuilt_and_revalidated": true
+  }
+}

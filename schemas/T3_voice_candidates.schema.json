@@ -87,10 +87,15 @@
     "owner_gate": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["decision", "selected_candidate", "silence_is_approval"],
+      "required": ["decision", "selected_candidate", "selected_internal_voice_id", "decided_on", "decision_channel", "question_id", "approval_record", "silence_is_approval"],
       "properties": {
-        "decision": {"type": ["string", "null"]},
-        "selected_candidate": {"type": ["string", "null"], "enum": ["VOIX-A", "VOIX-B", "VOIX-C", "VOIX-D", null]},
+        "decision": {"const": "selected"},
+        "selected_candidate": {"enum": ["VOIX-A", "VOIX-B", "VOIX-C", "VOIX-D"]},
+        "selected_internal_voice_id": {"type": "string", "pattern": "^voice-[0-9]{2,}$"},
+        "decided_on": {"type": "string", "format": "date"},
+        "decision_channel": {"const": "arena_ask_user"},
+        "question_id": {"const": "t3_voice_selection_remediation"},
+        "approval_record": {"type": "string", "pattern": "^approvals/.+\\.json$"},
         "silence_is_approval": {"const": false}
       }
     },
