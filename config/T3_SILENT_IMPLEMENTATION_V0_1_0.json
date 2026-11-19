@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "version": "0.1.0-silent-candidate",
+  "status": "github_rendered_pending_owner_validation",
+  "generated_at": "2026-11-18",
+  "source": {
+    "repository": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation",
+    "branch": "main",
+    "commit": "0e5f927f6fc155e3b602cef6b6f142e4e5d8ec4f",
+    "transition_contract": "reverse-engineering/T3_TRANSITIONS_30S.json",
+    "transition_contract_sha256": "ac2a5ac1bdb0b324b7b8c937fe71839092cb63cfacfaa5a6303e735128ac43e0",
+    "engine": "engine/render_silent.py",
+    "engine_sha256": "9ed2b678d8b611bfc36a5b0886c0e0eecabb435f2750f8582bdafadc50bcd28e",
+    "rush_manifest": "rushes/manifest.json",
+    "rush_manifest_sha256": "dd52c83c927ef77ba02f677619c1188b0bb5783b4824886d73d0fb1d1a0999ea"
+  },
+  "github": {
+    "ci_run_id": 44540324978,
+    "ci_run_url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44540324978",
+    "ci_conclusion": "success",
+    "render_run_id": 44540350371,
+    "render_run_url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44540350371",
+    "render_conclusion": "success",
+    "release_tag": "t3-coulisses-v0.1.0-silent-candidate-1",
+    "release_url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.1.0-silent-candidate-1",
+    "prerelease": true
+  },
+  "output": {
+    "filename": "VIDEO_T3_SILENCIEUSE_TRANSITIONS_2_4_A_VALIDER.mp4",
+    "download_url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/download/t3-coulisses-v0.1.0-silent-candidate-1/VIDEO_T3_SILENCIEUSE_TRANSITIONS_2_4_A_VALIDER.mp4",
+    "sha256": "39d6dc9c7deb7f4158edef038edfbb0ccd8cc4ef3830f75d2f96c4577108ce08",
+    "bytes": 11775029,
+    "duration_seconds": 30.0,
+    "width": 720,
+    "height": 1280,
+    "fps": 30,
+    "frames": 900,
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "audio_streams": 0
+  },
+  "coverage": {
+    "transition_profiles": 16,
+    "timeline_events": 17,
+    "reference_2": true,
+    "reference_4": true,
+    "extra_capture_required": false
+  },
+  "validation": {
+    "server_status": "PASS",
+    "server_checks_passed": 17,
+    "server_checks_failed": 0,
+    "server_proof": "proofs/T3_GITHUB_SERVER_VALIDATION_RUN_44540350371.json",
+    "downloaded_release_reverified_locally": true,
+    "sha256s_manifest_verified": true
+  },
+  "owner_approved": false,
+  "next_gate": "Visionnage et validation explicite du master silencieux par le propriétaire."
+}

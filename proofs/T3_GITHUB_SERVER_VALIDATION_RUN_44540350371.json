@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "status": "PASS",
+  "scope": "Master silencieux candidat produit sur GitHub Actions",
+  "video": {
+    "file": "VIDEO_T3_SILENCIEUSE_TRANSITIONS_2_4_A_VALIDER.mp4",
+    "sha256": "39d6dc9c7deb7f4158edef038edfbb0ccd8cc4ef3830f75d2f96c4577108ce08",
+    "bytes": 11775029,
+    "duration_seconds": 30.0,
+    "video_streams": 1,
+    "audio_streams": 0,
+    "decoded_frames": 900
+  },
+  "checks": [
+    {
+      "check": "video_exists",
+      "status": "PASS",
+      "detail": "output/t3-silent-v0.1.0/VIDEO_T3_SILENCIEUSE_TRANSITIONS_2_4_A_VALIDER.mp4"
+    },
+    {
+      "check": "one_video_stream",
+      "status": "PASS",
+      "detail": 1
+    },
+    {
+      "check": "zero_audio_stream",
+      "status": "PASS",
+      "detail": 0
+    },
+    {
+      "check": "h264_codec",
+      "status": "PASS",
+      "detail": "h264"
+    },
+    {
+      "check": "dimensions_720x1280",
+      "status": "PASS",
+      "detail": [
+        720,
+        1280
+      ]
+    },
+    {
+      "check": "pixel_format_yuv420p",
+      "status": "PASS",
+      "detail": "yuv420p"
+    },
+    {
+      "check": "fps_30",
+      "status": "PASS",
+      "detail": [
+        "30/1",
+        "30/1"
+      ]
+    },
+    {
+      "check": "duration_30_seconds",
+      "status": "PASS",
+      "detail": "30.000000"
+    },
+    {
+      "check": "900_frames_probe",
+      "status": "PASS",
+      "detail": [
+        "900",
+        "900"
+      ]
+    },
+    {
+      "check": "900_frames_decoded",
+      "status": "PASS",
+      "detail": 900
+    },
+    {
+      "check": "scene_boundaries_nonblack",
+      "status": "PASS",
+      "detail": 5
+    },
+    {
+      "check": "sha256_matches_render_report",
+      "status": "PASS",
+      "detail": "39d6dc9c7deb7f4158edef038edfbb0ccd8cc4ef3830f75d2f96c4577108ce08"
+    },
+    {
+      "check": "all_17_events_applied",
+      "status": "PASS",
+      "detail": 17
+    },
+    {
+      "check": "each_event_frame_count",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "references_2_and_4",
+      "status": "PASS",
+      "detail": [
+        "R3-B03-REF-02",
+        "R3-B03-REF-04"
+      ]
+    },
+    {
+      "check": "raw_rushes_not_published",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "transition_contact_sheet",
+      "status": "PASS",
+      "detail": 327151
+    }
+  ],
+  "summary": {
+    "passed": 17,
+    "failed": 0
+  },
+  "limitations": [
+    "La validation objective ne remplace pas le visionnage créatif du propriétaire.",
+    "Le master est un candidat silencieux; aucune musique ni voix off n’est incluse.",
+    "Les rushes Pexels servent à la démonstration et ne sont pas les captations d’un commerçant réel."
+  ],
+  "owner_approval_required": true,
+  "ffprobe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 720,
+        "height": 1280,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "900",
+        "nb_read_frames": "900"
+      }
+    ],
+    "format": {
+      "duration": "30.000000",
+      "size": "11775029",
+      "bit_rate": "3140007"
+    }
+  }
+}

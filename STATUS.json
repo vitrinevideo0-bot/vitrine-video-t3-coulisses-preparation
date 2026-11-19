@@ -3,8 +3,8 @@
   "sector": "RESTAURATION",
   "catalog_name": "Coulisses de préparation",
   "catalog_status": "À DÉVELOPPER",
-  "workflow_status_number": 8,
-  "workflow_status": "Développement silencieux en cours",
+  "workflow_status_number": 9,
+  "workflow_status": "Rendu silencieux en attente de validation",
   "reference_batch_current": "LOT-03",
   "selected_reference": "R3-B03-REF-02 + R3-B03-REF-04",
   "branch_planned": "main",
@@ -14,7 +14,9 @@
     "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation",
     "visibility": "PUBLIC",
     "repository_created": true,
-    "push_performed": false
+    "push_performed": true,
+    "default_branch": "main",
+    "render_source_commit": "0e5f927f6fc155e3b602cef6b6f142e4e5d8ec4f"
   },
   "proofs": [
     "FICHE_DEMARRAGE.md",
@@ -54,7 +56,13 @@
     "tests/test_effects.py",
     ".github/workflows/render-silent.yml",
     ".github/workflows/ci.yml",
-    "research/stock-selection/README.md"
+    "research/stock-selection/README.md",
+    "config/T3_SILENT_IMPLEMENTATION_V0_1_0.json",
+    "GITHUB_DELIVERY.md",
+    "proofs/T3_GITHUB_SERVER_VALIDATION_RUN_44540350371.json",
+    "proofs/T3_SILENT_RENDER_REPORT_RUN_44540350371.json",
+    "proofs/T3_TRANSITION_PROOF_RUN_44540350371.jpg",
+    "reports/RAPPORT_RENDU_SILENCIEUX_GITHUB_RUN_44540350371.md"
   ],
   "owner_decisions": [
     {
@@ -106,11 +114,11 @@
       "github_device_authorization": true
     }
   ],
-  "decision_expected": "Aucune décision pendant le rendu serveur. Après PASS GitHub : visionner le MP4 silencieux et l’approuver ou demander des corrections.",
+  "decision_expected": "Visionner le MP4 silencieux produit sur GitHub et répondre : approuver le rendu, ou demander des corrections précises.",
   "blockers": [
-    "Le rendu GitHub Actions doit réussir avant de passer au statut nº 9.",
-    "Le rendu silencieux restera non approuvé jusqu’au visionnage explicite du propriétaire.",
-    "Aucune musique ni voix off avant validation du silencieux."
+    "Le propriétaire doit visionner et approuver explicitement le rendu silencieux.",
+    "Aucune musique ni voix off avant cette approbation.",
+    "Le statut de pré-Release ne vaut pas approbation créative."
   ],
   "development_started": true,
   "music_started": false,
@@ -147,5 +155,55 @@
       "validation": "output/t3-silent-v0.1.0/T3_LOCAL_PREFLIGHT_VALIDATION.json",
       "note": "Le dossier output est ignoré par Git; le master autoritatif doit être produit par GitHub Actions."
     }
+  },
+  "silent_render": {
+    "status": "github_rendered_pending_owner_validation",
+    "implementation_lock": "config/T3_SILENT_IMPLEMENTATION_V0_1_0.json",
+    "source_commit": "0e5f927f6fc155e3b602cef6b6f142e4e5d8ec4f",
+    "ci": {
+      "run_id": 44540324978,
+      "conclusion": "success",
+      "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44540324978"
+    },
+    "github_actions": {
+      "run_id": 44540350371,
+      "conclusion": "success",
+      "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44540350371"
+    },
+    "release": {
+      "tag": "t3-coulisses-v0.1.0-silent-candidate-1",
+      "prerelease": true,
+      "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.1.0-silent-candidate-1"
+    },
+    "video": {
+      "filename": "VIDEO_T3_SILENCIEUSE_TRANSITIONS_2_4_A_VALIDER.mp4",
+      "download_url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/download/t3-coulisses-v0.1.0-silent-candidate-1/VIDEO_T3_SILENCIEUSE_TRANSITIONS_2_4_A_VALIDER.mp4",
+      "sha256": "39d6dc9c7deb7f4158edef038edfbb0ccd8cc4ef3830f75d2f96c4577108ce08",
+      "bytes": 11775029,
+      "duration_seconds": 30.0,
+      "width": 720,
+      "height": 1280,
+      "fps": 30,
+      "frames": 900,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "audio_streams": 0
+    },
+    "server_validation": {
+      "status": "PASS",
+      "passed": 17,
+      "failed": 0,
+      "proof": "proofs/T3_GITHUB_SERVER_VALIDATION_RUN_44540350371.json"
+    },
+    "release_sha256_manifest_verified": true,
+    "downloaded_release_revalidated": true,
+    "owner_approved": false
+  },
+  "last_server_evidence": {
+    "date": "2026-11-18",
+    "run_id": 44540350371,
+    "conclusion": "success",
+    "commit": "0e5f927f6fc155e3b602cef6b6f142e4e5d8ec4f",
+    "video_sha256": "39d6dc9c7deb7f4158edef038edfbb0ccd8cc4ef3830f75d2f96c4577108ce08"
   }
 }
