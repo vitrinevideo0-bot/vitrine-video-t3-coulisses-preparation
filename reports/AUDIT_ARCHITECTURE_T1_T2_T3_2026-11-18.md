@@ -2,6 +2,8 @@
 
 **Date locale : 18 novembre 2026**
 
+**Mise à jour de la remédiation vocale : 19 novembre 2026**
+
 **Référentiel : `INSTRUCTION_UNIVERSELLE_VITRINE_VIDEO_V1.md`**
 
 ## Verdict honnête après remédiation T3

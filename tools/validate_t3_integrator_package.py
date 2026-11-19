@@ -69,7 +69,7 @@ def main() -> int:
             music_pack = json.loads((package_root / "config/T3_MUSIC_PACK_V1_0_0.json").read_text(encoding="utf-8"))
             voice_mix = json.loads((package_root / "config/T3_VOICE_MIX_V1_0_0.json").read_text(encoding="utf-8"))
             voice_candidates = json.loads((package_root / "audio/voice/t3-voice-candidates-v1/manifest.json").read_text(encoding="utf-8"))
-            voice_approval = json.loads((package_root / "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-18.json").read_text(encoding="utf-8"))
+            voice_approval = json.loads((package_root / "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-19.json").read_text(encoding="utf-8"))
 
             manifest_matches = True
             for item in manifest["files"]:

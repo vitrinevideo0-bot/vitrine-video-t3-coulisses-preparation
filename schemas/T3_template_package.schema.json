@@ -37,7 +37,7 @@
         "text_motion": {"type": "string"},
         "music_pack": {"type": "string"},
         "voice_candidates": {"const": "audio/voice/t3-voice-candidates-v1/manifest.json"},
-        "voice_candidate_approval": {"const": "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-18.json"},
+        "voice_candidate_approval": {"const": "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-19.json"},
         "voice_mix": {"type": "string"}
       }
     },

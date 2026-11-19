@@ -150,7 +150,7 @@
     "audio/voice/t3-voice-candidates-v1/NORMALIZATION_REPORT.json",
     "audio/voice/t3-voice-candidates-v1/SHA256SUMS.txt",
     "audio/voice/t3-voice-candidates-v1/T3_ECOUTE_4_VOIX.html",
-    "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-18.json",
+    "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-19.json",
     "schemas/T3_voice_candidates.schema.json",
     "tests/test_voice_candidates.py"
   ],
@@ -287,14 +287,14 @@
     },
     {
       "phase": "voice_candidate_selection_remediation",
-      "date": "2026-11-18",
+      "date": "2026-11-19",
       "decision": "VOIX-A choisie parmi quatre démonstrations comparables.",
       "decision_channel": "arena_ask_user",
       "question_id": "t3_voice_selection_remediation",
       "selected_option_id": "voice_a",
       "selected_candidate": "VOIX-A",
       "selected_internal_voice_id": "voice-02",
-      "approval_record": "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-18.json"
+      "approval_record": "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-19.json"
     }
   ],
   "decision_expected": "Rejouer sur GitHub le rendu/mixage avec VOIX-A = voice-02, revalider l’artefact, reconstruire le paquet intégrateur puis fermer la remédiation.",
@@ -314,10 +314,10 @@
   "selection_mode": "combined",
   "last_owner_approval": {
     "phase": "voice_candidate_selection_remediation",
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "object": "Quatre démonstrations vocales comparables RESTAURATION-T3",
     "decision": "VOIX-A choisie explicitement; elle correspond à voice-02 déjà utilisée par le master approuvé.",
-    "approval_record": "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-18.json",
+    "approval_record": "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-19.json",
     "historical_render_run_id": 44564485698,
     "historical_release_tag": "t3-coulisses-v0.7.0-complete-D-1"
   },
@@ -329,7 +329,7 @@
     "manifest": "audio/voice/t3-voice-candidates-v1/manifest.json",
     "listening_board": "audio/voice/t3-voice-candidates-v1/T3_ECOUTE_4_VOIX.html",
     "schema": "schemas/T3_voice_candidates.schema.json",
-    "approval_record": "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-18.json",
+    "approval_record": "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-19.json",
     "master_visual_modified": false,
     "historical_master_still_approved": true
   },
@@ -340,7 +340,7 @@
     "approval_record": "approvals/APPROBATION_QUESTIONS_CAPTURE_12_ECRANS_2026-11-18.json",
     "music_pack": "config/T3_MUSIC_PACK_V1_0_0.json",
     "voice_candidates": "audio/voice/t3-voice-candidates-v1/manifest.json",
-    "voice_candidate_approval": "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-18.json",
+    "voice_candidate_approval": "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-19.json",
     "voice_mix": "config/T3_VOICE_MIX_V1_0_0.json",
     "complete_render_workflow": ".github/workflows/render-complete-voice-music-D.yml",
     "canonical_template": "config/T3_COULISSES_TEMPLATE_V1_0_0.json",

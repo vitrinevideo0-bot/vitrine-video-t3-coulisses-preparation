@@ -41,7 +41,7 @@
     "text_motion": "config/T3_TEXT_MOTION_V0_4_0.json",
     "music_pack": "config/T3_MUSIC_PACK_V1_0_0.json",
     "voice_candidates": "audio/voice/t3-voice-candidates-v1/manifest.json",
-    "voice_candidate_approval": "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-18.json",
+    "voice_candidate_approval": "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-19.json",
     "voice_mix": "config/T3_VOICE_MIX_V1_0_0.json"
   },
   "runtime_contracts": {

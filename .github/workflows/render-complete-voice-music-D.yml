@@ -128,7 +128,7 @@ jobs:
           cp audio/voice/t3-voice-v1/manifest.json release/T3_VOICE_MANIFEST.json
           cp audio/voice/t3-voice-candidates-v1/manifest.json release/T3_VOICE_CANDIDATES_MANIFEST.json
           cp audio/voice/t3-voice-candidates-v1/NORMALIZATION_REPORT.json release/T3_VOICE_CANDIDATES_NORMALIZATION.json
-          cp approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-18.json release/T3_VOICE_CANDIDATE_APPROVAL.json
+          cp approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-19.json release/T3_VOICE_CANDIDATE_APPROVAL.json
           test "$(find release -maxdepth 1 -type f -name '*.mp4' | wc -l)" -eq 1
           if find release -maxdepth 1 -type f -name '*.mp3' | grep -q .; then
             echo 'Les dérivés musicaux restent versionnés dans le dépôt; aucun MP3 autonome dans la Release.' >&2

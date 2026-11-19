@@ -29,7 +29,7 @@ La planche d’écoute masque volontairement les identifiants internes et affich
 - `VOIX-A` correspond à la voix `voice-02` déjà retenue pour le master approuvé ;
 - `VOIX-B`, `VOIX-C` et `VOIX-D` sont des comparaisons nouvelles ;
 - le propriétaire a écouté le lot et choisi explicitement **`VOIX-A`** via la porte `t3_voice_selection_remediation` ;
-- la décision durable est enregistrée dans `approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-18.json`.
+- la décision durable est enregistrée dans `approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-19.json`.
 
 ## Chronologie honnête
 

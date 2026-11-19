@@ -2,11 +2,16 @@
   "schema_version": "1.0.0",
   "template_id": "RESTAURATION-T3",
   "phase": "voice_candidate_selection_remediation",
-  "date": "2026-11-18",
+  "date": "2026-11-19",
   "decision_channel": "arena_ask_user",
   "question_id": "t3_voice_selection_remediation",
   "prompt": "Dans la prévisualisation Audition des voix T3, écoutez les quatre fichiers complets. Quelle voix choisissez-vous pour T3 ?",
-  "options_presented": ["VOIX-A", "VOIX-B", "VOIX-C", "VOIX-D"],
+  "options_presented": [
+    "VOIX-A",
+    "VOIX-B",
+    "VOIX-C",
+    "VOIX-D"
+  ],
   "selected_option_id": "voice_a",
   "selected_candidate": "VOIX-A",
   "selected_internal_voice_id": "voice-02",
