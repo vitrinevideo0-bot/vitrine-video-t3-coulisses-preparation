@@ -27,7 +27,11 @@ La correction v0.2 applique maintenant la logique T1/T2 :
 - aucun titre de scène, durée, mot démo, mot rush ou provenance média n’est composité ;
 - les textes sont ajoutés après les transitions afin de rester nets.
 
-La v0.2 reste un **candidat silencieux à valider**, pas un master créatif déjà approuvé. Musique, voix off, OTA et intégration mobile restent hors de ce jalon.
+La v0.2 a été rendue sur GitHub Actions au commit `1cbd7e02560d9d8da32d201f6b97064c53f7ea92`, puis revalidée après téléchargement : **22/22 contrôles PASS**. Elle reste un **candidat silencieux à valider**, pas un master créatif déjà approuvé. Musique, voix off, OTA et intégration mobile restent hors de ce jalon.
+
+- [Run de rendu GitHub Actions](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44548349489)
+- [Pré-Release corrigée v0.2](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.2.0-silent-candidate-2)
+- [Téléchargement direct du MP4](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/download/t3-coulisses-v0.2.0-silent-candidate-2/VIDEO_T3_SILENCIEUSE_MOTION_TEXT_V0_2_A_VALIDER.mp4)
 
 ## Reproduire localement
 

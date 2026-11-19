@@ -1,0 +1,415 @@
+{
+  "schema_version": "1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "engine_version": "1.0.0-silent-candidate",
+  "status": "silent_candidate_v0_2_corrected_pending_owner_validation",
+  "rendered_on": "github_actions",
+  "output": {
+    "file": "VIDEO_T3_SILENCIEUSE_MOTION_TEXT_V0_2_A_VALIDER.mp4",
+    "bytes": 11058782,
+    "sha256": "b3deeb1dac9196605bcb227d452d3dfe19e324e697633fbd3ddabca62a26ec26",
+    "width": 720,
+    "height": 1280,
+    "fps": 30,
+    "total_frames": 900,
+    "duration_seconds": 30,
+    "audio_streams_expected": 0
+  },
+  "source_manifest_sha256": "dd52c83c927ef77ba02f677619c1188b0bb5783b4824886d73d0fb1d1a0999ea",
+  "transition_contract_sha256": "ac2a5ac1bdb0b324b7b8c937fe71839092cb63cfacfaa5a6303e735128ac43e0",
+  "render_job_sha256": "b589e7adf600a4324d942ad5698fb97b0fba95aecd2ca6f9592510adb021fbc6",
+  "text_motion_config_sha256": "d8109ad25c0b48441be1cd70e132dc58e78ce501fb7e06403f306803e278860f",
+  "merchant_payload_fields": [
+    "nom",
+    "produit",
+    "prix",
+    "whatsapp",
+    "quartier",
+    "accroche"
+  ],
+  "visible_text_contract": {
+    "T3_G01_IDENTITY": [
+      "Casa Tacos",
+      "Tacos maison"
+    ],
+    "T3_G02_OFFER": [
+      "Tacos maison",
+      "2 500 FCFA"
+    ],
+    "T3_G03_HOOK": [
+      "Préparé à la commande",
+      "Casa Tacos"
+    ],
+    "T3_G04_FINAL": [
+      "Casa Tacos",
+      "Tacos maison",
+      "2 500 FCFA",
+      "Kandi · près du marché central",
+      "COMMANDER MAINTENANT",
+      "+229 01 97 00 00 00"
+    ]
+  },
+  "forbidden_visible_strings": [
+    "SCÈNE",
+    "6 S",
+    "7 S",
+    "8 S",
+    "9 S",
+    "DÉMO",
+    "RUSHS",
+    "PEXELS",
+    "T3",
+    "INGRÉDIENTS",
+    "GESTE SIGNATURE",
+    "DRESSAGE",
+    "PRÊT À SERVIR"
+  ],
+  "technical_labels_rendered": false,
+  "graphics": [
+    {
+      "id": "T3_G01_IDENTITY",
+      "frames": [
+        18,
+        155
+      ],
+      "expected_frame_count": 138,
+      "applied_frame_count": 138,
+      "fields": [
+        "nom",
+        "produit"
+      ]
+    },
+    {
+      "id": "T3_G02_OFFER",
+      "frames": [
+        210,
+        377
+      ],
+      "expected_frame_count": 168,
+      "applied_frame_count": 168,
+      "fields": [
+        "produit",
+        "prix"
+      ]
+    },
+    {
+      "id": "T3_G03_HOOK",
+      "frames": [
+        450,
+        605
+      ],
+      "expected_frame_count": 156,
+      "applied_frame_count": 156,
+      "fields": [
+        "accroche",
+        "nom"
+      ]
+    },
+    {
+      "id": "T3_G04_FINAL",
+      "frames": [
+        660,
+        899
+      ],
+      "expected_frame_count": 240,
+      "applied_frame_count": 240,
+      "fields": [
+        "nom",
+        "produit",
+        "prix",
+        "whatsapp",
+        "quartier"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "scene": "S1",
+      "pexels_id": 7613417,
+      "sha256": "31cca446e309e78b29b4aa23b5046e235e40f668959c48b6b8ef6a2fe62bccab",
+      "raw_published": false
+    },
+    {
+      "scene": "S2",
+      "pexels_id": 7613578,
+      "sha256": "db9d0132b370603431c2a9e5b73aafa2c5371d6900ff4357917fdd2cdeb6b755",
+      "raw_published": false
+    },
+    {
+      "scene": "S3",
+      "pexels_id": 8448200,
+      "sha256": "c6a79259f745d07f30797de7c8f3159b217aa1c497b1fc4b8d7f62cce796572c",
+      "raw_published": false
+    },
+    {
+      "scene": "S4",
+      "pexels_id": 7613415,
+      "sha256": "19c4fe53e7e3d074a8bfe84e7c52d720f3fc6a157324d454486c980115f42365",
+      "raw_published": false
+    }
+  ],
+  "events": [
+    {
+      "event": 1,
+      "transition_id": "R4_TILED_GRID_INTRO",
+      "frames": [
+        0,
+        17
+      ],
+      "expected_frame_count": 18,
+      "applied_frame_count": 18,
+      "sample_frame_sha256": {
+        "start": "42f63cb73275eecd994143426600834599ee66d67bfa329c578d208af7464342",
+        "middle": "9dee57d93d246896a336e75ccc48e2a6d48b214e8ed341b44143f9f369d7cba7",
+        "end": "41333f4ae6bcfe8e7b05211b4a19a414d2c321344581f05be4e4c76618a0f097"
+      }
+    },
+    {
+      "event": 2,
+      "transition_id": "R2_GEOMETRIC_ARROW_MASK",
+      "frames": [
+        18,
+        35
+      ],
+      "expected_frame_count": 18,
+      "applied_frame_count": 18,
+      "sample_frame_sha256": {
+        "start": "c03ba790410325311a7d05017a2b76cd38558ae1e983d493005478e5ed31cfde",
+        "middle": "526562ee21b4d4563fa8472eb93c6baab06b0b7d9ffd7b045280f6705e9dfb39",
+        "end": "ec90fe75f305e3adc036caa1a969707c99ba39314f059097df93835f1df3a456"
+      }
+    },
+    {
+      "event": 3,
+      "transition_id": "R2_RADIAL_ZOOM",
+      "frames": [
+        78,
+        86
+      ],
+      "expected_frame_count": 9,
+      "applied_frame_count": 9,
+      "sample_frame_sha256": {
+        "start": "7bb4e8e306e4d30f679beba4649c407a1bac074007bc2034d6bb6fe876d48240",
+        "middle": "92e7364aafc229f97f5b315174b44f478f66256ff3cc88d2173220b962f29603",
+        "end": "4ebc0f36d8bc3f7c75aaa164cca6a7a0821626c5e62cf83cc097b81b515e78e6"
+      }
+    },
+    {
+      "event": 4,
+      "transition_id": "R4_ORANGE_FLASH",
+      "frames": [
+        171,
+        179
+      ],
+      "expected_frame_count": 9,
+      "applied_frame_count": 9,
+      "sample_frame_sha256": {
+        "start": "b01fd024c8693cac1f5848e7ad7d00d60c96dd432d87b8cf5c974837c43d71b4",
+        "middle": "988fd18ab8414e98dfc8c3e8ee7fe61b46b2c2a3ed71973cb6d238b0ace77424",
+        "end": "ab780d777f0b9c5b0c3a782d105fda26d1bfab2e709037f5661cf18f6bcaf49c"
+      }
+    },
+    {
+      "event": 5,
+      "transition_id": "R2_HARD_ACTION_MATCH_CUT",
+      "frames": [
+        224,
+        225
+      ],
+      "expected_frame_count": 2,
+      "applied_frame_count": 2,
+      "sample_frame_sha256": {
+        "middle": "8b92186cd4ff46078ec69e1df37aac79a43b4c149cba4f38757c1be644c620b0",
+        "end": "02eb9dcae892df32b0d69fcf8b5066c1ac1b50951f8a5839453b8eecb74dbb56"
+      }
+    },
+    {
+      "event": 6,
+      "transition_id": "R2_SELECTIVE_COLOR_REVEAL",
+      "frames": [
+        252,
+        263
+      ],
+      "expected_frame_count": 12,
+      "applied_frame_count": 12,
+      "sample_frame_sha256": {
+        "start": "432deaf2f2af108c688d8b22ea27648a751a04931775996b9049c872c89ac040",
+        "middle": "2830f1838e8d61dc61d6b7a686beec91ddf9d18e2b3cd92ce9244b2f87989f69",
+        "end": "56d1ce9580561242fd24bc74e19e35ac85e81c3944a588f4357338e7b4444e49"
+      }
+    },
+    {
+      "event": 7,
+      "transition_id": "R2_FLASH_TRANSITION",
+      "frames": [
+        303,
+        312
+      ],
+      "expected_frame_count": 10,
+      "applied_frame_count": 10,
+      "sample_frame_sha256": {
+        "start": "54ada913263249802d993ace9956d02877f3d7af4b5a6cab0a96e3a3fc39bc22",
+        "middle": "997c3b51fccd9ee5691895d437514bd26ad8906836d809d177def6e766bb696e",
+        "end": "ba93558fe46e8e17ace68d776754a3338de9f6190305554ea657868df87985fb"
+      }
+    },
+    {
+      "event": 8,
+      "transition_id": "R4_SOFT_OVERLAY_BLEND",
+      "frames": [
+        344,
+        353
+      ],
+      "expected_frame_count": 10,
+      "applied_frame_count": 10,
+      "sample_frame_sha256": {
+        "start": "cb222afcee2056051d9247270a5e6250fdabcbf8cbdf6418669701de5e18f120",
+        "middle": "1d2b4847cbc2bc4cfa2d66093636976facacd3af8bbdfb8b9cade3bd67351f7b",
+        "end": "f5564a2fe42dfcc9d478511f71e5460e51fcf56f3d0e75edad7d71a9606d0d00"
+      }
+    },
+    {
+      "event": 9,
+      "transition_id": "R2_FLASH_TRANSITION",
+      "frames": [
+        374,
+        383
+      ],
+      "expected_frame_count": 10,
+      "applied_frame_count": 10,
+      "sample_frame_sha256": {
+        "start": "b61a1ec63df40f47cdb2811f6b71da279a84601ebe97a9d445d5c6daf784392d",
+        "middle": "13712004c5e547f87f7d41be49bc2ba8b812b710b34fd40c5968d3917d30cfee",
+        "end": "a0f228fc27169d6cf8702cda08b42f7106715c453de0cd2815a019f08e8150de"
+      }
+    },
+    {
+      "event": 10,
+      "transition_id": "R4_KALEIDOSCOPE_MOSAIC",
+      "frames": [
+        408,
+        419
+      ],
+      "expected_frame_count": 12,
+      "applied_frame_count": 12,
+      "sample_frame_sha256": {
+        "start": "b1eadbd6b2a1cb8abf01fabf1525b093cc3cc036c006eb125ea5ddffeebe7ebb",
+        "middle": "42403622a1c195b391270ff0c7709ee7846bb6773531b4ec08da09a74452cb34",
+        "end": "9437d72c1fff3f124031a3cae12c8f21418b17c5e6a0d65f1c5996edfaab1d1c"
+      }
+    },
+    {
+      "event": 11,
+      "transition_id": "R2_MULTI_PANEL_SPLIT",
+      "frames": [
+        453,
+        466
+      ],
+      "expected_frame_count": 14,
+      "applied_frame_count": 14,
+      "sample_frame_sha256": {
+        "start": "4e78a3ff1889576c3ef53b93ca230b523dcb2dd9c08c0f6a9eb1e146a040f3e9",
+        "middle": "7f7aa08e5bfd03ef730d519b84e8558b3327681b12b54551be0e252c2da8ebfa",
+        "end": "7f3594e582f108204b50093441bc619ed08ca4b3902abce5b390515ca28c0e67"
+      }
+    },
+    {
+      "event": 12,
+      "transition_id": "R4_ROTATING_MASK",
+      "frames": [
+        540,
+        551
+      ],
+      "expected_frame_count": 12,
+      "applied_frame_count": 12,
+      "sample_frame_sha256": {
+        "start": "703589a05a4a34808a3c43c0e01aed255cdac171cf89653b477f252ccd43f41f",
+        "middle": "bb994d3755d6a273573b20d51940c8f8940dff59c7b796815fdae4752aadfd2d",
+        "end": "c98ba6ed80d65dc7f35dcb245e7e4237641261b8e43a4c2fc5faa29bae051855"
+      }
+    },
+    {
+      "event": 13,
+      "transition_id": "R4_RADIAL_BLUR",
+      "frames": [
+        617,
+        629
+      ],
+      "expected_frame_count": 13,
+      "applied_frame_count": 13,
+      "sample_frame_sha256": {
+        "start": "a5d6d00c4a1ab41745347e91732135be676b3c0946eceb6bebe5ea864067aed1",
+        "middle": "b1c9aac040db5a1a5e9f8896a691e4093cb77c9e8a435ef8f96d3129d9ac4276",
+        "end": "1e0cdce9e40a284b287afe8bb769bbff6cefbb8719eeb602e71cb7b73e8d8798"
+      }
+    },
+    {
+      "event": 14,
+      "transition_id": "R4_WHIP_ZOOM",
+      "frames": [
+        699,
+        710
+      ],
+      "expected_frame_count": 12,
+      "applied_frame_count": 12,
+      "sample_frame_sha256": {
+        "start": "04b9aa7d550ca2268eb328ee8f61ea0a19e23b2e9cebbc6b1a024d8e182ac7a8",
+        "middle": "9ec47fbdd29762ca4e4de3388298b209b2262e6b167102694b7447795a0fe934",
+        "end": "e2493b63fdb9719baf99f27455d23882e4a7fc99c16cc6d1cbcea40152ae7f7f"
+      }
+    },
+    {
+      "event": 15,
+      "transition_id": "R4_MULTI_PANEL_MATCH_CUT",
+      "frames": [
+        768,
+        781
+      ],
+      "expected_frame_count": 14,
+      "applied_frame_count": 14,
+      "sample_frame_sha256": {
+        "start": "36f30168b20c2b7cc7a1029e48c38bfda37990ed797310e85f90a589347046c8",
+        "middle": "bd52014fe49320400a020b87ee6084ef02036d86f7e21ca53e5ebdcee2247fec",
+        "end": "dd35f7bb6649e751627d5075fb130420bc6d2b1cb4a20dd3d99cf032587b815b"
+      }
+    },
+    {
+      "event": 16,
+      "transition_id": "R2_DIAGONAL_ROTATING_WIPE",
+      "frames": [
+        824,
+        840
+      ],
+      "expected_frame_count": 17,
+      "applied_frame_count": 17,
+      "sample_frame_sha256": {
+        "start": "b6bc4025b93fa52a916e37e83fe89186180354b945b55c59ba0211ad729ab8ac",
+        "middle": "691c676e7b1edc7821227b32bff6a1aff74273feb18e06e33fa8ebaefa1f1bfd",
+        "end": "19938778ca4c50d14312826caf1e971843ae7e1d970ff567ed56511c2ef3265b"
+      }
+    },
+    {
+      "event": 17,
+      "transition_id": "R4_BACKGROUND_FADE_TO_BLACK",
+      "frames": [
+        885,
+        899
+      ],
+      "expected_frame_count": 15,
+      "applied_frame_count": 15,
+      "sample_frame_sha256": {
+        "start": "2dcdb459d4baf00b694be39c87205e17d869045a4d260d89e3fce94221b731e4",
+        "middle": "45f7c84956abd2db9100c8d3e63bd92be408d547a828d1ab573ae1e9df7f8e5c",
+        "end": "f59d156b8f5912433bbc58261abcbae66456ef4891348956e8c25f841f8bbb39"
+      }
+    }
+  ],
+  "all_17_events_applied": true,
+  "all_4_graphics_applied": true,
+  "references_covered": [
+    "R3-B03-REF-02",
+    "R3-B03-REF-04"
+  ],
+  "raw_rushes_embedded_as_standalone_assets": false,
+  "owner_approval_required": true
+}

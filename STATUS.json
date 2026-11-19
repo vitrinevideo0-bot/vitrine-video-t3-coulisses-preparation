@@ -3,8 +3,8 @@
   "sector": "RESTAURATION",
   "catalog_name": "Coulisses de préparation",
   "catalog_status": "À DÉVELOPPER",
-  "workflow_status_number": 8,
-  "workflow_status": "Développement silencieux en cours",
+  "workflow_status_number": 9,
+  "workflow_status": "Candidat silencieux corrigé à valider",
   "reference_batch_current": "LOT-03",
   "selected_reference": "R3-B03-REF-02 + R3-B03-REF-04",
   "branch_planned": "main",
@@ -16,7 +16,7 @@
     "repository_created": true,
     "push_performed": true,
     "default_branch": "main",
-    "render_source_commit": "0e5f927f6fc155e3b602cef6b6f142e4e5d8ec4f"
+    "render_source_commit": "1cbd7e02560d9d8da32d201f6b97064c53f7ea92"
   },
   "proofs": [
     "FICHE_DEMARRAGE.md",
@@ -67,7 +67,13 @@
     "demo/render_job_silent_demo.json",
     "docs/T3_VISIBLE_TEXT_CONTRACT.md",
     "engine/text_motion.py",
-    "tests/test_text_motion.py"
+    "tests/test_text_motion.py",
+    "docs/LICENCES_POLICES.md",
+    "proofs/T3_GITHUB_SERVER_VALIDATION_RUN_44548349489.json",
+    "proofs/T3_DOWNLOADED_RELEASE_VALIDATION_RUN_44548349489.json",
+    "proofs/T3_SILENT_RENDER_REPORT_RUN_44548349489.json",
+    "proofs/T3_TRANSITION_TEXT_PROOF_RUN_44548349489.jpg",
+    "reports/RAPPORT_RENDU_SILENCIEUX_GITHUB_RUN_44548349489.md"
   ],
   "owner_decisions": [
     {
@@ -125,10 +131,10 @@
       "feedback": "Retirer les titres de scènes, durées, mentions démo/rushs/Pexels et reprendre la logique T1/T2 : les textes visibles viennent du JSON commerçant et apparaissent en motion design."
     }
   ],
-  "decision_expected": "Aucune décision avant la correction serveur. Produire la v0.2 sur GitHub, la contrôler, puis présenter uniquement la vidéo corrigée.",
+  "decision_expected": "Visionner le candidat silencieux corrigé v0.2, puis l’approuver ou demander une correction créative précise.",
   "blockers": [
-    "Le candidat v0.1 est rejeté et ne doit pas être présenté comme actif.",
-    "La v0.2 corrigée doit être rendue et validée sur GitHub Actions.",
+    "Le candidat v0.1 est rejeté et ne doit pas être utilisé.",
+    "La v0.2 corrigée attend la validation visuelle explicite du propriétaire.",
     "Aucune musique ni voix off avant validation du nouveau silencieux."
   ],
   "development_started": true,
@@ -154,7 +160,7 @@
     "ui_screens_manifest": "ui-screens/approved/manifest.json",
     "approval_record": "approvals/APPROBATION_QUESTIONS_CAPTURE_12_ECRANS_2026-11-18.json"
   },
-  "workflow_note": "Les questions, les quatre prises et les douze écrans ont été approuvés avant la porte formelle du reverse engineering, conformément à la demande du propriétaire. Le statut officiel reste nº 4 jusqu’à validation de la timeline 2+4.",
+  "workflow_note": "La correction v0.2 a été rendue sur GitHub Actions et revalidée après téléchargement. Elle attend maintenant la validation visuelle du propriétaire.",
   "development_phase": {
     "engine": "engine/render_silent.py",
     "source_manifest": "rushes/manifest.json",
@@ -162,9 +168,11 @@
     "github_workflow": ".github/workflows/render-silent.yml",
     "local_preflight": {
       "status": "PASS",
-      "video_sha256": "355a27cf6f20df7079fb9e3637edbc0b788efeba2716852c90ac50f883e07c3a",
-      "validation": "output/t3-silent-v0.1.0/T3_LOCAL_PREFLIGHT_VALIDATION.json",
-      "note": "Le dossier output est ignoré par Git; le master autoritatif doit être produit par GitHub Actions."
+      "video_sha256": "18bf54d9ca3ef393b79b1f7f7fd0046453919ea698d4f0782b0382dbebc3795f",
+      "validation": "output/t3-silent-v0.2.0/T3_LOCAL_PREFLIGHT_VALIDATION_V0_2.json",
+      "passed": 22,
+      "failed": 0,
+      "note": "Le préflight local est non autoritatif; le master à valider est celui de la pré-Release GitHub v0.2."
     }
   },
   "silent_render": {
@@ -225,13 +233,23 @@
   },
   "last_server_evidence": {
     "date": "2026-11-18",
-    "run_id": 44540350371,
+    "run_id": 44548349489,
     "conclusion": "success",
-    "commit": "0e5f927f6fc155e3b602cef6b6f142e4e5d8ec4f",
-    "video_sha256": "39d6dc9c7deb7f4158edef038edfbb0ccd8cc4ef3830f75d2f96c4577108ce08"
+    "commit": "1cbd7e02560d9d8da32d201f6b97064c53f7ea92",
+    "video_sha256": "b3deeb1dac9196605bcb227d452d3dfe19e324e697633fbd3ddabca62a26ec26",
+    "server_validation": {
+      "status": "PASS",
+      "passed": 22,
+      "failed": 0
+    },
+    "downloaded_release_validation": {
+      "status": "PASS",
+      "passed": 22,
+      "failed": 0
+    }
   },
   "correction_v0_2": {
-    "status": "local_preflight_pass_pending_github_render",
+    "status": "github_server_pass_pending_owner_validation",
     "render_job": "demo/render_job_silent_demo.json",
     "text_motion_contract": "config/T3_TEXT_MOTION_V0_2_0.json",
     "visible_text_contract": "docs/T3_VISIBLE_TEXT_CONTRACT.md",
@@ -254,6 +272,53 @@
     "fixed_texts": [
       "COMMANDER MAINTENANT"
     ],
-    "github_render_started": false
+    "github_render_started": true,
+    "source_commit": "1cbd7e02560d9d8da32d201f6b97064c53f7ea92",
+    "ci": {
+      "run_id": 44548334925,
+      "conclusion": "success",
+      "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44548334925"
+    },
+    "github_actions": {
+      "run_id": 44548349489,
+      "conclusion": "success",
+      "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44548349489"
+    },
+    "release": {
+      "tag": "t3-coulisses-v0.2.0-silent-candidate-2",
+      "prerelease": true,
+      "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.2.0-silent-candidate-2"
+    },
+    "video": {
+      "filename": "VIDEO_T3_SILENCIEUSE_MOTION_TEXT_V0_2_A_VALIDER.mp4",
+      "download_url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/download/t3-coulisses-v0.2.0-silent-candidate-2/VIDEO_T3_SILENCIEUSE_MOTION_TEXT_V0_2_A_VALIDER.mp4",
+      "sha256": "b3deeb1dac9196605bcb227d452d3dfe19e324e697633fbd3ddabca62a26ec26",
+      "bytes": 11058782,
+      "duration_seconds": 30.0,
+      "width": 720,
+      "height": 1280,
+      "fps": 30,
+      "frames": 900,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "audio_streams": 0
+    },
+    "server_validation": {
+      "status": "PASS",
+      "passed": 22,
+      "failed": 0,
+      "proof": "proofs/T3_GITHUB_SERVER_VALIDATION_RUN_44548349489.json"
+    },
+    "downloaded_release_validation": {
+      "status": "PASS",
+      "passed": 22,
+      "failed": 0,
+      "proof": "proofs/T3_DOWNLOADED_RELEASE_VALIDATION_RUN_44548349489.json"
+    },
+    "release_sha256_manifest_verified": true,
+    "all_17_events_applied": true,
+    "all_4_graphics_applied": true,
+    "cta_whatsapp_visible_at_last_frame": true,
+    "owner_approved": false
   }
 }
