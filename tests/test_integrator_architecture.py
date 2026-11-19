@@ -1,13 +1,23 @@
 from __future__ import annotations
 
 import json
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 import tempfile
 import unittest
 
 from jsonschema import Draft202012Validator, FormatChecker
 
-from adapter.t3_adapter import MusicRepeatError, approved_variant_ids, build_render_job, select_music_variant
+from adapter.t3_adapter import (
+    MusicRepeatError,
+    approved_variant_ids,
+    build_render_job,
+    build_render_job_from_state,
+    load_music_selection_state,
+    record_music_render_result,
+    select_music_variant,
+    select_music_variant_from_state,
+)
 from tools.build_t3_capture_flow import build as build_capture_flow
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -78,12 +88,119 @@ class T3IntegratorArchitectureTest(unittest.TestCase):
         with self.assertRaises(MusicRepeatError):
             select_music_variant("t3-repeat", previous, previous)
 
+    def test_persistent_music_state_advances_only_after_success(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            state_path = Path(temporary) / "music-state.json"
+            first = select_music_variant_from_state("t3-state-job-0001", state_path)
+            initial = record_music_render_result(
+                state_path=state_path,
+                render_job_id="t3-state-job-0001",
+                selected_music_id=first,
+                succeeded=False,
+            )
+            self.assertIsNone(initial["last_successful_music_id"])
+            self.assertFalse(state_path.exists())
+            committed = record_music_render_result(
+                state_path=state_path,
+                render_job_id="t3-state-job-0001",
+                selected_music_id=first,
+                succeeded=True,
+            )
+            self.assertEqual(load_music_selection_state(state_path), committed)
+            self.assertEqual(committed["successful_render_count"], 1)
+            second = select_music_variant_from_state("t3-state-job-0002", state_path)
+            self.assertNotEqual(second, first)
+            unchanged = record_music_render_result(
+                state_path=state_path,
+                render_job_id="t3-state-job-0002",
+                selected_music_id=second,
+                succeeded=False,
+            )
+            self.assertEqual(unchanged, committed)
+            self.assertEqual(load_music_selection_state(state_path), committed)
+
+    def test_persistent_state_rejects_explicit_repeat_and_is_idempotent(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            state_path = Path(temporary) / "music-state.json"
+            selected = approved_variant_ids()[0]
+            committed = record_music_render_result(
+                state_path=state_path,
+                render_job_id="t3-success-job-0001",
+                selected_music_id=selected,
+                succeeded=True,
+            )
+            replayed = record_music_render_result(
+                state_path=state_path,
+                render_job_id="t3-success-job-0001",
+                selected_music_id=selected,
+                succeeded=True,
+            )
+            self.assertEqual(replayed, committed)
+            with self.assertRaises(MusicRepeatError):
+                select_music_variant_from_state("t3-success-job-0002", state_path, selected)
+            with self.assertRaises(MusicRepeatError):
+                record_music_render_result(
+                    state_path=state_path,
+                    render_job_id="t3-success-job-0002",
+                    selected_music_id=selected,
+                    succeeded=True,
+                )
+            schema = json.loads((ROOT / "schemas/T3_music_selection_state.schema.json").read_text(encoding="utf-8"))
+            Draft202012Validator(schema).validate(load_music_selection_state(state_path))
+
+    def test_concurrent_duplicate_success_is_serialized(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            state_path = Path(temporary) / "music-state.json"
+            selected = approved_variant_ids()[0]
+
+            def commit(job_id: str) -> str:
+                try:
+                    record_music_render_result(
+                        state_path=state_path,
+                        render_job_id=job_id,
+                        selected_music_id=selected,
+                        succeeded=True,
+                    )
+                    return "committed"
+                except MusicRepeatError:
+                    return "rejected"
+
+            with ThreadPoolExecutor(max_workers=2) as executor:
+                outcomes = list(executor.map(commit, ["t3-concurrent-0001", "t3-concurrent-0002"]))
+            self.assertEqual(sorted(outcomes), ["committed", "rejected"])
+            state = load_music_selection_state(state_path)
+            self.assertEqual(state["last_successful_music_id"], selected)
+            self.assertEqual(state["successful_render_count"], 1)
+
+    def test_render_job_can_be_built_from_persisted_last_success(self) -> None:
+        fixture = json.loads((ROOT / "fixtures/t3-coulisses/render_job.valid.json").read_text(encoding="utf-8"))
+        with tempfile.TemporaryDirectory() as temporary:
+            state_path = Path(temporary) / "music-state.json"
+            previous = approved_variant_ids()[0]
+            record_music_render_result(
+                state_path=state_path,
+                render_job_id="t3-prior-job-0001",
+                selected_music_id=previous,
+                succeeded=True,
+            )
+            job = build_render_job_from_state(
+                state_path=state_path,
+                job_id="t3-stateful-job-0002",
+                merchant_payload=fixture["merchant_payload"],
+                captures=fixture["captures"],
+                control_plane=fixture["control_plane"],
+            )
+            self.assertEqual(job["music"]["last_successful_variant_id"], previous)
+            self.assertNotEqual(job["music"]["selected_variant_id"], previous)
+
     def test_reference_render_D_does_not_replace_runtime_rotation(self) -> None:
         selection = self.music["selection_contract"]
         self.assertEqual(selection["reference_render"]["choice"], "D")
         self.assertTrue(selection["automatic_selection"]["offline"])
         self.assertEqual(selection["automatic_selection"]["explicit_repeat_policy"], "reject")
         self.assertEqual(selection["automatic_selection"]["state_update_policy"], "after_success_only")
+        self.assertEqual(selection["automatic_selection"]["failed_render_state_policy"], "unchanged")
+        self.assertEqual(selection["automatic_selection"]["persistent_state_schema"], "schemas/T3_music_selection_state.schema.json")
 
     def test_adapter_rebuilds_committed_complete_fixture(self) -> None:
         fixture = json.loads((ROOT / "fixtures/t3-coulisses/render_job.valid.json").read_text(encoding="utf-8"))

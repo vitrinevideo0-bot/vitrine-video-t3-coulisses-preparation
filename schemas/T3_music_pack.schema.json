@@ -22,10 +22,13 @@
         "final_render_variant_id": {"const": "t3_music_245452"},
         "automatic_selection": {
           "type": "object",
-          "required": ["algorithm", "first_render_pool", "subsequent_pool", "explicit_repeat_policy", "state_update_policy", "offline", "implementation"],
+          "required": ["algorithm", "first_render_pool", "subsequent_pool", "explicit_repeat_policy", "state_update_policy", "failed_render_state_policy", "persistent_state_schema", "state_writer", "offline", "implementation"],
           "properties": {
             "explicit_repeat_policy": {"const": "reject"},
             "state_update_policy": {"const": "after_success_only"},
+            "failed_render_state_policy": {"const": "unchanged"},
+            "persistent_state_schema": {"const": "schemas/T3_music_selection_state.schema.json"},
+            "state_writer": {"const": "tools/record_t3_music_result.py"},
             "offline": {"const": true},
             "implementation": {"const": "adapter/t3_adapter.py"}
           }

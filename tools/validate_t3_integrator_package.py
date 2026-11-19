@@ -206,6 +206,27 @@ def main() -> int:
             except module.MusicRepeatError:
                 explicit_rejected = True
             checks.append(check("explicit_repeat_rejected", explicit_rejected))
+            state_path = Path(temp_name) / "t3-music-state.json"
+            first = module.select_music_variant_from_state("t3-package-state-0001", state_path)
+            module.record_music_render_result(
+                state_path=state_path,
+                render_job_id="t3-package-state-0001",
+                selected_music_id=first,
+                succeeded=False,
+            )
+            failure_unchanged = not state_path.exists()
+            committed = module.record_music_render_result(
+                state_path=state_path,
+                render_job_id="t3-package-state-0001",
+                selected_music_id=first,
+                succeeded=True,
+            )
+            second = module.select_music_variant_from_state("t3-package-state-0002", state_path)
+            checks.append(check(
+                "music_state_persists_success_only",
+                failure_unchanged and committed["last_successful_music_id"] == first and second != first,
+                {"first": first, "second": second, "state": committed},
+            ))
 
             golden = spec["external_golden_master"]
             golden_path = package_root / golden["package_path"]

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "T3_music_selection_state.schema.json",
+  "title": "RESTAURATION-T3 persisted music rotation state",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "last_successful_music_id",
+    "last_successful_render_job_id",
+    "successful_render_count"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "last_successful_music_id": {
+      "enum": [
+        null,
+        "t3_music_481806",
+        "t3_music_360659",
+        "t3_music_485507",
+        "t3_music_245452"
+      ]
+    },
+    "last_successful_render_job_id": {"type": ["string", "null"], "minLength": 1},
+    "successful_render_count": {"type": "integer", "minimum": 0}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"last_successful_music_id": {"type": "null"}}},
+      "then": {
+        "properties": {
+          "last_successful_render_job_id": {"type": "null"},
+          "successful_render_count": {"const": 0}
+        }
+      },
+      "else": {
+        "properties": {
+          "last_successful_render_job_id": {"type": "string", "minLength": 1},
+          "successful_render_count": {"type": "integer", "minimum": 1}
+        }
+      }
+    }
+  ]
+}

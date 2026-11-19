@@ -127,6 +127,10 @@
       "role": "capture_contract_builder"
     },
     {
+      "path": "tools/record_t3_music_result.py",
+      "role": "after-success-only_music_state_writer"
+    },
+    {
       "path": "tools/fetch_rushes.py",
       "role": "capture_materializer"
     },

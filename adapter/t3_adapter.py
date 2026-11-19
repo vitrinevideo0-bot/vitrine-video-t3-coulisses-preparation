@@ -2,8 +2,11 @@
 """Offline T3 adapter and deterministic non-repeating music selector."""
 from __future__ import annotations
 
+import fcntl
 import hashlib
 import json
+import os
+import tempfile
 from pathlib import Path
 from typing import Any
 
@@ -51,6 +54,120 @@ def select_music_variant(
     eligible = [item for item in variants if item != last_successful_variant_id]
     digest = hashlib.sha256(render_job_id.encode("utf-8")).digest()
     return eligible[int.from_bytes(digest[:8], "big") % len(eligible)]
+
+
+MUSIC_STATE_SCHEMA_VERSION = "1.0.0"
+
+
+def load_music_selection_state(state_path: Path) -> dict[str, Any]:
+    """Load persistent rotation state; a missing file represents the first render."""
+    if not state_path.exists():
+        return {
+            "schema_version": MUSIC_STATE_SCHEMA_VERSION,
+            "last_successful_music_id": None,
+            "last_successful_render_job_id": None,
+            "successful_render_count": 0,
+        }
+    state = _load(state_path)
+    required = {
+        "schema_version",
+        "last_successful_music_id",
+        "last_successful_render_job_id",
+        "successful_render_count",
+    }
+    if set(state) != required or state["schema_version"] != MUSIC_STATE_SCHEMA_VERSION:
+        raise ValueError("Invalid T3 music rotation state")
+    if state["last_successful_music_id"] not in {None, *approved_variant_ids()}:
+        raise ValueError("Unknown last successful music ID in T3 state")
+    if not isinstance(state["successful_render_count"], int) or state["successful_render_count"] < 0:
+        raise ValueError("Invalid T3 successful render count")
+    if (state["last_successful_music_id"] is None) != (state["last_successful_render_job_id"] is None):
+        raise ValueError("T3 state must pair the successful music and render job IDs")
+    return state
+
+
+def select_music_variant_from_state(
+    render_job_id: str,
+    state_path: Path,
+    explicit_variant_id: str | None = None,
+    music_pack_path: Path = MUSIC_PACK,
+) -> str:
+    """Select using the last success stored by the caller-owned orchestrator."""
+    state = load_music_selection_state(state_path)
+    return select_music_variant(
+        render_job_id,
+        state["last_successful_music_id"],
+        explicit_variant_id,
+        music_pack_path,
+    )
+
+
+def _record_music_render_result_unlocked(
+    *,
+    state_path: Path,
+    render_job_id: str,
+    selected_music_id: str,
+    succeeded: bool,
+    music_pack_path: Path = MUSIC_PACK,
+) -> dict[str, Any]:
+    """Atomically persist only successful T3 renders; failures leave no trace."""
+    if not render_job_id:
+        raise ValueError("render_job_id is required")
+    if selected_music_id not in approved_variant_ids(music_pack_path):
+        raise ValueError("Rendered T3 music is not owner-approved")
+    current = load_music_selection_state(state_path)
+    if not succeeded:
+        return current
+    if current["last_successful_render_job_id"] == render_job_id:
+        if current["last_successful_music_id"] != selected_music_id:
+            raise ValueError("An idempotent successful callback cannot change music")
+        return current
+    if current["last_successful_music_id"] == selected_music_id:
+        raise MusicRepeatError("Successful render repeats the immediately previous music")
+    updated = {
+        "schema_version": MUSIC_STATE_SCHEMA_VERSION,
+        "last_successful_music_id": selected_music_id,
+        "last_successful_render_job_id": render_job_id,
+        "successful_render_count": current["successful_render_count"] + 1,
+    }
+    state_path.parent.mkdir(parents=True, exist_ok=True)
+    descriptor, temporary_name = tempfile.mkstemp(prefix=f".{state_path.name}.", dir=state_path.parent)
+    try:
+        with os.fdopen(descriptor, "w", encoding="utf-8") as stream:
+            json.dump(updated, stream, ensure_ascii=False, indent=2)
+            stream.write("\n")
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temporary_name, state_path)
+    finally:
+        if os.path.exists(temporary_name):
+            os.unlink(temporary_name)
+    return updated
+
+
+def record_music_render_result(
+    *,
+    state_path: Path,
+    render_job_id: str,
+    selected_music_id: str,
+    succeeded: bool,
+    music_pack_path: Path = MUSIC_PACK,
+) -> dict[str, Any]:
+    """Serialize callbacks across processes before applying the atomic update."""
+    state_path.parent.mkdir(parents=True, exist_ok=True)
+    lock_path = state_path.parent / f".{state_path.name}.lock"
+    with lock_path.open("a+", encoding="utf-8") as lock:
+        fcntl.flock(lock.fileno(), fcntl.LOCK_EX)
+        try:
+            return _record_music_render_result_unlocked(
+                state_path=state_path,
+                render_job_id=render_job_id,
+                selected_music_id=selected_music_id,
+                succeeded=succeeded,
+                music_pack_path=music_pack_path,
+            )
+        finally:
+            fcntl.flock(lock.fileno(), fcntl.LOCK_UN)
 
 
 def build_render_job(
@@ -105,3 +222,26 @@ def build_render_job(
         },
         "control_plane": control_plane
     }
+
+
+def build_render_job_from_state(
+    *,
+    state_path: Path,
+    job_id: str,
+    merchant_payload: dict[str, str],
+    captures: dict[str, dict[str, Any]],
+    explicit_variant_id: str | None = None,
+    voice_mode: str = "captured_or_registered_fallback",
+    control_plane: str = "github_actions_manual",
+) -> dict[str, Any]:
+    """Build a RenderJob using persisted last-success state."""
+    state = load_music_selection_state(state_path)
+    return build_render_job(
+        job_id=job_id,
+        merchant_payload=merchant_payload,
+        captures=captures,
+        last_successful_variant_id=state["last_successful_music_id"],
+        explicit_variant_id=explicit_variant_id,
+        voice_mode=voice_mode,
+        control_plane=control_plane,
+    )
