@@ -23,12 +23,12 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 try:
-    from engine.text_motion import normalize_payload, render_text_motion, validate_text_config, visible_text_contract
+    from engine.text_motion import normalize_payload, render_text_motion, typography_audit, validate_text_config, visible_text_contract
 except ModuleNotFoundError:  # exécution directe: python engine/render_silent.py
-    from text_motion import normalize_payload, render_text_motion, validate_text_config, visible_text_contract
+    from text_motion import normalize_payload, render_text_motion, typography_audit, validate_text_config, visible_text_contract
 
 W, H, FPS, TOTAL = 720, 1280, 30, 900
-ENGINE_VERSION = "1.0.0-silent-candidate"
+ENGINE_VERSION = "1.1.0-readable-type"
 ORANGE = (37, 82, 236)  # BGR #EC5225
 AMBER = (59, 181, 247)
 CREAM = (236, 247, 255)
@@ -469,11 +469,11 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--manifest", type=Path, default=Path("rushes/manifest.json"))
     parser.add_argument("--contract", type=Path, default=Path("reverse-engineering/T3_TRANSITIONS_30S.json"))
-    parser.add_argument("--render-job", type=Path, default=Path("demo/render_job_silent_demo.json"))
-    parser.add_argument("--text-config", type=Path, default=Path("config/T3_TEXT_MOTION_V0_2_0.json"))
+    parser.add_argument("--render-job", type=Path, default=Path("demo/render_job_silent_demo_v0_3.json"))
+    parser.add_argument("--text-config", type=Path, default=Path("config/T3_TEXT_MOTION_V0_3_0.json"))
     parser.add_argument("--cache", type=Path, default=Path("rushes/cache"))
     parser.add_argument("--work", type=Path, default=Path(".tmp/t3-silent"))
-    parser.add_argument("--output-dir", type=Path, default=Path("output/t3-silent-v0.2.0"))
+    parser.add_argument("--output-dir", type=Path, default=Path("output/t3-silent-v0.3.0"))
     args = parser.parse_args()
 
     manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
@@ -483,6 +483,7 @@ def main() -> int:
     validate_text_config(text_config)
     fields = normalize_payload(render_job["merchant_payload"])
     resolved_visible_texts = visible_text_contract(fields, text_config)
+    resolved_typography_audit = typography_audit(text_config)
     scenes = manifest["scenes"]
     if [int(scene["duration_seconds"]) for scene in scenes] != [6, 8, 7, 9]:
         raise SystemExit("Durées de scènes non conformes")
@@ -504,7 +505,7 @@ def main() -> int:
         preprocess_scene(ffmpeg, source, destination, scene)
         intermediates[scene["scene"]] = destination
 
-    output = args.output_dir / "VIDEO_T3_SILENCIEUSE_MOTION_TEXT_V0_2_A_VALIDER.mp4"
+    output = args.output_dir / text_config["output"]["video_filename"]
     command = [
         ffmpeg, "-hide_banner", "-loglevel", "error", "-y",
         "-f", "rawvideo", "-pix_fmt", "bgr24", "-s:v", f"{W}x{H}", "-r", str(FPS), "-i", "-",
@@ -627,7 +628,7 @@ def main() -> int:
         "schema_version": "1.0.0",
         "template_id": "RESTAURATION-T3",
         "engine_version": ENGINE_VERSION,
-        "status": "silent_candidate_v0_2_corrected_pending_owner_validation",
+        "status": "silent_candidate_v0_3_legibility_corrected_pending_owner_validation",
         "rendered_on": os.environ.get("GITHUB_ACTIONS") == "true" and "github_actions" or "local_preflight",
         "output": {
             "file": output.name,
@@ -643,7 +644,11 @@ def main() -> int:
         "source_manifest_sha256": sha256(args.manifest),
         "transition_contract_sha256": sha256(args.contract),
         "render_job_sha256": sha256(args.render_job),
+        "text_motion_config_id": text_config["id"],
         "text_motion_config_sha256": sha256(args.text_config),
+        "typography_audit": resolved_typography_audit,
+        "owner_feedback_legibility_corrected": True,
+        "contact_sheet_file": text_config["output"]["contact_sheet_filename"],
         "merchant_payload_fields": list(fields.keys()),
         "visible_text_contract": resolved_visible_texts,
         "forbidden_visible_strings": text_config["forbidden_visible_strings"],
@@ -672,7 +677,7 @@ def main() -> int:
     }
     report_path = args.output_dir / "T3_SILENT_RENDER_REPORT.json"
     report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    contact = args.output_dir / "T3_TRANSITION_TEXT_PROOF_V0_2.jpg"
+    contact = args.output_dir / text_config["output"]["contact_sheet_filename"]
     samples = [0, 17, 35, 86, 179, 225, 263, 312, 383, 419, 466, 551, 629, 710, 781, 840, 899]
     make_contact_sheet(output, contact, samples)
     sums = args.output_dir / "SHA256SUMS.txt"

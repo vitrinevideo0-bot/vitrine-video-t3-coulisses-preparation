@@ -1,12 +1,40 @@
 {
   "schema_version": "0.2.0",
   "id": "T3_TEXT_MOTION_V0_2_0",
-  "status": "corrected_after_owner_rejection_of_technical_labels",
-  "canvas": {"width": 720, "height": 1280, "fps": 30, "frames": 900},
+  "status": "rejected_by_owner_typography_unreadable",
+  "canvas": {
+    "width": 720,
+    "height": 1280,
+    "fps": 30,
+    "frames": 900
+  },
   "binding_rule": "Tout texte commercial variable provient exclusivement de merchant_payload. Aucun titre de scène, durée, mot démo, mot rush ou provenance média n'est visible dans la publicité.",
-  "allowed_merchant_fields": ["nom", "produit", "prix", "whatsapp", "quartier", "accroche"],
-  "allowed_fixed_texts": ["COMMANDER MAINTENANT"],
-  "forbidden_visible_strings": ["SCÈNE", "6 S", "7 S", "8 S", "9 S", "DÉMO", "RUSHS", "PEXELS", "T3", "INGRÉDIENTS", "GESTE SIGNATURE", "DRESSAGE", "PRÊT À SERVIR"],
+  "allowed_merchant_fields": [
+    "nom",
+    "produit",
+    "prix",
+    "whatsapp",
+    "quartier",
+    "accroche"
+  ],
+  "allowed_fixed_texts": [
+    "COMMANDER MAINTENANT"
+  ],
+  "forbidden_visible_strings": [
+    "SCÈNE",
+    "6 S",
+    "7 S",
+    "8 S",
+    "9 S",
+    "DÉMO",
+    "RUSHS",
+    "PEXELS",
+    "T3",
+    "INGRÉDIENTS",
+    "GESTE SIGNATURE",
+    "DRESSAGE",
+    "PRÊT À SERVIR"
+  ],
   "text_layer_affected_by_transitions": false,
   "hard_cards": false,
   "fonts": {
@@ -39,9 +67,17 @@
       "start_f": 18,
       "reveal_end_f": 48,
       "end_f_exclusive": 156,
-      "fields": ["nom", "produit"],
+      "fields": [
+        "nom",
+        "produit"
+      ],
       "motion": "left_to_right_mask_plus_soft_rise",
-      "safe_region": {"x_min": 0.08, "x_max": 0.92, "y_min": 0.10, "y_max": 0.43}
+      "safe_region": {
+        "x_min": 0.08,
+        "x_max": 0.92,
+        "y_min": 0.1,
+        "y_max": 0.43
+      }
     },
     {
       "id": "T3_G02_OFFER",
@@ -49,9 +85,17 @@
       "start_f": 210,
       "reveal_end_f": 234,
       "end_f_exclusive": 378,
-      "fields": ["produit", "prix"],
+      "fields": [
+        "produit",
+        "prix"
+      ],
       "motion": "split_reveal_with_price_settle",
-      "safe_region": {"x_min": 0.08, "x_max": 0.92, "y_min": 0.10, "y_max": 0.88}
+      "safe_region": {
+        "x_min": 0.08,
+        "x_max": 0.92,
+        "y_min": 0.1,
+        "y_max": 0.88
+      }
     },
     {
       "id": "T3_G03_HOOK",
@@ -59,11 +103,19 @@
       "start_f": 450,
       "reveal_end_f": 480,
       "end_f_exclusive": 606,
-      "fields": ["accroche", "nom"],
+      "fields": [
+        "accroche",
+        "nom"
+      ],
       "optional_field": "accroche",
       "empty_behavior": "show nom only; never invent a hook",
       "motion": "center_bloom_and_signature",
-      "safe_region": {"x_min": 0.08, "x_max": 0.92, "y_min": 0.12, "y_max": 0.45}
+      "safe_region": {
+        "x_min": 0.08,
+        "x_max": 0.92,
+        "y_min": 0.12,
+        "y_max": 0.45
+      }
     },
     {
       "id": "T3_G04_FINAL",
@@ -71,12 +123,26 @@
       "start_f": 660,
       "reveal_end_f": 708,
       "end_f_exclusive": 900,
-      "fields": ["nom", "produit", "prix", "whatsapp", "quartier"],
+      "fields": [
+        "nom",
+        "produit",
+        "prix",
+        "whatsapp",
+        "quartier"
+      ],
       "fixed_text": "COMMANDER MAINTENANT",
       "motion": "sequential_identity_contact_lockup",
-      "safe_region": {"x_min": 0.06, "x_max": 0.94, "y_min": 0.06, "y_max": 0.91},
+      "safe_region": {
+        "x_min": 0.06,
+        "x_max": 0.94,
+        "y_min": 0.06,
+        "y_max": 0.91
+      },
       "hold_through_frame": 899,
       "graphics_opacity_at_frame_899": 1.0
     }
-  ]
+  ],
+  "owner_approved": false,
+  "superseded_by": "T3_TEXT_MOTION_V0_3_0",
+  "rejection_reason": "Variable font weights were not explicit; Montserrat rendered at default Weight 100 and small text became unreadable in reduced previews."
 }

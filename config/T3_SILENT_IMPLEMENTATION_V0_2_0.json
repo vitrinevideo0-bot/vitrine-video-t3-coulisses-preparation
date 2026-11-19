@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "candidate_version": "0.2.0",
+  "status": "rejected_by_owner",
+  "owner_approved": false,
+  "source_commit": "1cbd7e02560d9d8da32d201f6b97064c53f7ea92",
+  "github_actions_run_id": 44548349489,
+  "release": {
+    "tag": "t3-coulisses-v0.2.0-silent-candidate-2",
+    "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.2.0-silent-candidate-2"
+  },
+  "video": {
+    "filename": "VIDEO_T3_SILENCIEUSE_MOTION_TEXT_V0_2_A_VALIDER.mp4",
+    "sha256": "b3deeb1dac9196605bcb227d452d3dfe19e324e697633fbd3ddabca62a26ec26"
+  },
+  "owner_rejection": {
+    "date": "2026-11-18",
+    "reason": "Plusieurs petits textes sont trop fins et trop peu contrastés pour rester lisibles dans la prévisualisation, notamment le nom, le quartier et le CTA final.",
+    "root_cause": "Montserrat-Variable.ttf possède un axe Weight dont la valeur par défaut est 100. La v0.2 ne fixait aucun poids; les textes sans utilisaient donc la graisse Thin. Les tailles 17 à 25 px aggravaient le défaut après réduction de l'image.",
+    "evidence": [
+      {
+        "file": "proofs/owner-feedback/T3_V0_2_POLICE_ILLISIBLE_FINAL.png",
+        "sha256": "3b1d4806a7079346527c817e3b8f47e255604b9cf464028699e178dc6b80f08f"
+      },
+      {
+        "file": "proofs/owner-feedback/T3_V0_2_POLICE_ILLISIBLE_IDENTITE.png",
+        "sha256": "1a215b5c9115a881cbc40b0304c06926be6a0e17e95ab900c11b051bc28e67f6"
+      }
+    ]
+  },
+  "superseded_by": "0.3.0-silent-candidate-readable-type"
+}

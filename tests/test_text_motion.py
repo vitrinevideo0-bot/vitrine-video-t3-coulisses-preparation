@@ -5,16 +5,25 @@ from pathlib import Path
 import unittest
 
 import numpy as np
+from PIL import Image, ImageDraw
 
-from engine.text_motion import active_graphics, normalize_payload, render_text_motion, validate_text_config, visible_text_contract
+from engine.text_motion import (
+    _font,
+    active_graphics,
+    normalize_payload,
+    render_text_motion,
+    typography_audit,
+    validate_text_config,
+    visible_text_contract,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 class TextMotionContractTest(unittest.TestCase):
     def setUp(self) -> None:
-        self.config = json.loads((ROOT / "config/T3_TEXT_MOTION_V0_2_0.json").read_text())
-        self.job = json.loads((ROOT / "demo/render_job_silent_demo.json").read_text())
+        self.config = json.loads((ROOT / "config/T3_TEXT_MOTION_V0_3_0.json").read_text())
+        self.job = json.loads((ROOT / "demo/render_job_silent_demo_v0_3.json").read_text())
         validate_text_config(self.config)
         self.fields = normalize_payload(self.job["merchant_payload"])
 
@@ -53,6 +62,24 @@ class TextMotionContractTest(unittest.TestCase):
         rendered, ids = render_text_motion(frame.copy(), 60, self.fields, self.config)
         self.assertEqual(ids, ["T3_G01_IDENTITY"])
         self.assertGreater(float(np.mean(np.abs(rendered.astype(np.int16) - frame.astype(np.int16)))), 1.0)
+
+    def test_small_text_legibility_is_locked_in_json(self) -> None:
+        audit = typography_audit(self.config)
+        self.assertTrue(audit["variable_font_weights_explicit"])
+        for name in ("merchant_name", "location", "cta", "phone"):
+            role = audit["roles"][name]
+            self.assertGreaterEqual(role["weight"], 600)
+            self.assertGreaterEqual(role["effective_minimum_at_preview_scale_px"], 11.0)
+            self.assertGreaterEqual(role["contrast_ratio"], 7.0)
+
+    def test_montserrat_weight_axis_is_actually_applied(self) -> None:
+        def ink(weight: int) -> int:
+            font = _font(self.config, "light_sans", 40, weight)
+            image = Image.new("L", (500, 100), 0)
+            ImageDraw.Draw(image).text((0, 0), "CASA TACOS", font=font, fill=255)
+            return int(np.asarray(image).sum())
+
+        self.assertGreater(ink(700), ink(100) * 4)
 
 
 if __name__ == "__main__":

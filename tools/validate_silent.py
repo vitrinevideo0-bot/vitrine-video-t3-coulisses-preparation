@@ -26,15 +26,18 @@ def check(name: str, condition: bool, detail: object = "") -> dict[str, object]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--output-dir", type=Path, default=Path("output/t3-silent-v0.2.0"))
+    parser.add_argument("--output-dir", type=Path, default=Path("output/t3-silent-v0.3.0"))
     parser.add_argument("--proof", type=Path)
     args = parser.parse_args()
 
-    video = args.output_dir / "VIDEO_T3_SILENCIEUSE_MOTION_TEXT_V0_2_A_VALIDER.mp4"
     render_report_path = args.output_dir / "T3_SILENT_RENDER_REPORT.json"
-    contact = args.output_dir / "T3_TRANSITION_TEXT_PROOF_V0_2.jpg"
-    if not video.exists() or not render_report_path.exists():
-        raise SystemExit("Rendu ou rapport absent")
+    if not render_report_path.exists():
+        raise SystemExit("Rapport de rendu absent")
+    report = json.loads(render_report_path.read_text(encoding="utf-8"))
+    video = args.output_dir / report["output"]["file"]
+    contact = args.output_dir / report["contact_sheet_file"]
+    if not video.exists():
+        raise SystemExit("Rendu vidéo absent")
 
     ffprobe = shutil.which("ffprobe")
     if not ffprobe:
@@ -48,8 +51,6 @@ def main() -> int:
     video_streams = [stream for stream in streams if stream.get("codec_type") == "video"]
     audio_streams = [stream for stream in streams if stream.get("codec_type") == "audio"]
     stream = video_streams[0] if video_streams else {}
-    report = json.loads(render_report_path.read_text(encoding="utf-8"))
-
     cap = cv2.VideoCapture(str(video))
     decoded = 0
     sampled_nonblack = 0
@@ -82,6 +83,11 @@ def main() -> int:
         check("canonical_merchant_fields_only", report.get("merchant_payload_fields") == ["nom", "produit", "prix", "whatsapp", "quartier", "accroche"], report.get("merchant_payload_fields")),
         check("technical_labels_not_rendered", report.get("technical_labels_rendered") is False),
         check("visible_texts_do_not_contain_forbidden_labels", not ({text.upper() for values in report.get("visible_text_contract", {}).values() for text in values} & {text.upper() for text in report.get("forbidden_visible_strings", [])})),
+        check("owner_feedback_legibility_corrected", report.get("owner_feedback_legibility_corrected") is True),
+        check("variable_font_weights_explicit", report.get("typography_audit", {}).get("variable_font_weights_explicit") is True),
+        check("small_text_effective_size", all(float(report.get("typography_audit", {}).get("roles", {}).get(name, {}).get("effective_minimum_at_preview_scale_px", 0)) >= float(report.get("typography_audit", {}).get("required_effective_font_px", 999)) for name in ["merchant_name", "location", "cta", "phone"])),
+        check("text_contrast_ratio", all(float(item.get("contrast_ratio", 0)) >= float(report.get("typography_audit", {}).get("required_contrast_ratio", 999)) for item in report.get("typography_audit", {}).get("roles", {}).values())),
+        check("small_text_weight_at_least_600", all(int(report.get("typography_audit", {}).get("roles", {}).get(name, {}).get("weight") or 0) >= 600 for name in ["merchant_name", "location", "cta", "phone"])),
         check("references_2_and_4", report.get("references_covered") == ["R3-B03-REF-02", "R3-B03-REF-04"], report.get("references_covered")),
         check("raw_rushes_not_published", report.get("raw_rushes_embedded_as_standalone_assets") is False),
         check("transition_contact_sheet", contact.exists() and contact.stat().st_size > 10000, contact.stat().st_size if contact.exists() else 0),
@@ -127,6 +133,8 @@ def main() -> int:
         "- zéro piste audio ;\n"
         "- 17 événements appliqués, couvrant les références 2 et 4 ;\n"
         "- quatre blocs de motion design alimentés uniquement par merchant_payload ;\n"
+        "- poids variables explicites, petits textes ≥ 600, taille effective ≥ 11 px à 40 % ;\n"
+        "- contraste typographique contractuel ≥ 7:1 sur le fond protégé ;\n"
         "- aucun titre de scène, durée, mot démo, mot rush ou provenance média visible ;\n"
         "- validation humaine encore requise.\n",
         encoding="utf-8",

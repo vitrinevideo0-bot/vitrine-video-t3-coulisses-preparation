@@ -15,3 +15,5 @@ Textes de licence :
 - `assets/fonts/OFL-PlusJakartaSans.txt`.
 
 Le moteur échoue si une police manque ou si son empreinte diffère. Aucun fallback OpenCV/Hershey ou police système n’est utilisé pour les textes de la publicité.
+
+Depuis la v0.3, les axes variables sont obligatoirement fixés dans `config/T3_TEXT_MOTION_V0_3_0.json`. Montserrat n’utilise donc plus sa valeur par défaut 100 (Thin) : le nom et le CTA sont rendus respectivement en 700 et 750. Plus Jakarta Sans utilise 650 ou 700 selon le rôle.

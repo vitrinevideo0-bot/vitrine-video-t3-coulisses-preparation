@@ -1,8 +1,10 @@
 # T3 — Contrat des textes visibles dans la publicité
 
-## Correction imposée par le propriétaire
+## Corrections imposées par le propriétaire
 
-Le premier candidat silencieux a été rejeté parce qu’il affichait des informations de fabrication : titres de scènes, durées et provenance des rushes. Ces éléments appartiennent au parcours de capture ou aux preuves techniques; ils ne doivent jamais apparaître dans la publicité livrée.
+- v0.1 rejetée : informations de fabrication visibles dans la publicité ;
+- v0.2 rejetée : plusieurs petits textes utilisent une graisse Thin et deviennent illisibles dans la prévisualisation ;
+- v0.3 : même logique commerciale, avec poids, tailles minimales et contraste verrouillés dans le JSON.
 
 ## Source unique
 
@@ -27,6 +29,8 @@ Le seul texte fixe autorisé dans le montage est `COMMANDER MAINTENANT`. `FCFA` 
 | `T3_G04_FINAL` | images 660–899 | nom + produit + prix + quartier + WhatsApp + CTA fixe |
 
 Les textes sont composités **après** les transitions afin de rester nets. Les fonds n’emploient que des dégradés doux; aucun encart technique, badge, carte dure ou bordure de guide de capture n’est autorisé.
+
+Le contrat de lisibilité détaillé est `docs/T3_TYPOGRAPHY_LEGIBILITY_CONTRACT.md`. Les rôles exécutables sont dans `config/T3_TEXT_MOTION_V0_3_0.json`.
 
 ## Chaînes explicitement interdites à l’image
 

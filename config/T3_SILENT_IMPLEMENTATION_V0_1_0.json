@@ -67,5 +67,5 @@
     ],
     "action": "Conserver la v0.1 comme preuve rejetée; ne pas la réutiliser; produire une v0.2 additive."
   },
-  "superseded_by": "0.2.0-silent-candidate-pending-github-render"
+  "superseded_by": "0.3.0-silent-candidate-readable-type"
 }

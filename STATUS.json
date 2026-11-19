@@ -3,8 +3,8 @@
   "sector": "RESTAURATION",
   "catalog_name": "Coulisses de préparation",
   "catalog_status": "À DÉVELOPPER",
-  "workflow_status_number": 9,
-  "workflow_status": "Candidat silencieux corrigé à valider",
+  "workflow_status_number": 8,
+  "workflow_status": "Correction typographique v0.3 en cours",
   "reference_batch_current": "LOT-03",
   "selected_reference": "R3-B03-REF-02 + R3-B03-REF-04",
   "branch_planned": "main",
@@ -73,7 +73,13 @@
     "proofs/T3_DOWNLOADED_RELEASE_VALIDATION_RUN_44548349489.json",
     "proofs/T3_SILENT_RENDER_REPORT_RUN_44548349489.json",
     "proofs/T3_TRANSITION_TEXT_PROOF_RUN_44548349489.jpg",
-    "reports/RAPPORT_RENDU_SILENCIEUX_GITHUB_RUN_44548349489.md"
+    "reports/RAPPORT_RENDU_SILENCIEUX_GITHUB_RUN_44548349489.md",
+    "config/T3_SILENT_IMPLEMENTATION_V0_2_0.json",
+    "config/T3_TEXT_MOTION_V0_3_0.json",
+    "demo/render_job_silent_demo_v0_3.json",
+    "docs/T3_TYPOGRAPHY_LEGIBILITY_CONTRACT.md",
+    "proofs/owner-feedback/T3_V0_2_POLICE_ILLISIBLE_FINAL.png",
+    "proofs/owner-feedback/T3_V0_2_POLICE_ILLISIBLE_IDENTITE.png"
   ],
   "owner_decisions": [
     {
@@ -129,12 +135,19 @@
       "date": "2026-11-18",
       "decision": "Rendu silencieux v0.1 refusé",
       "feedback": "Retirer les titres de scènes, durées, mentions démo/rushs/Pexels et reprendre la logique T1/T2 : les textes visibles viennent du JSON commerçant et apparaissent en motion design."
+    },
+    {
+      "phase": "silent_candidate_v0_2_rejection",
+      "date": "2026-11-18",
+      "decision": "Rendu silencieux v0.2 refusé pour illisibilité typographique",
+      "positive_feedback": "Transitions hyper fluides et travail félicité.",
+      "feedback": "Le nom du commerce, le quartier et le CTA sont trop fins ou trop peu contrastés dans le lecteur. Corriger dans le JSON et la logique, puis rendre une nouvelle version sur GitHub."
     }
   ],
-  "decision_expected": "Visionner le candidat silencieux corrigé v0.2, puis l’approuver ou demander une correction créative précise.",
+  "decision_expected": "Aucune nouvelle décision avant le rendu v0.3 sur GitHub, sa revalidation après téléchargement et le contrôle des textes à 40 %.",
   "blockers": [
-    "Le candidat v0.1 est rejeté et ne doit pas être utilisé.",
-    "La v0.2 corrigée attend la validation visuelle explicite du propriétaire.",
+    "Les candidats v0.1 et v0.2 sont rejetés et ne doivent pas être utilisés.",
+    "La v0.3 typographique doit être rendue et validée sur GitHub Actions.",
     "Aucune musique ni voix off avant validation du nouveau silencieux."
   ],
   "development_started": true,
@@ -160,7 +173,7 @@
     "ui_screens_manifest": "ui-screens/approved/manifest.json",
     "approval_record": "approvals/APPROBATION_QUESTIONS_CAPTURE_12_ECRANS_2026-11-18.json"
   },
-  "workflow_note": "La correction v0.2 a été rendue sur GitHub Actions et revalidée après téléchargement. Elle attend maintenant la validation visuelle du propriétaire.",
+  "workflow_note": "La v0.2 conserve les transitions appréciées mais est rejetée pour illisibilité. La v0.3 fixe explicitement les axes Weight, tailles minimales et contrastes dans le JSON; le préflight local est PASS et le rendu GitHub reste à produire.",
   "development_phase": {
     "engine": "engine/render_silent.py",
     "source_manifest": "rushes/manifest.json",
@@ -249,7 +262,7 @@
     }
   },
   "correction_v0_2": {
-    "status": "github_server_pass_pending_owner_validation",
+    "status": "rejected_by_owner",
     "render_job": "demo/render_job_silent_demo.json",
     "text_motion_contract": "config/T3_TEXT_MOTION_V0_2_0.json",
     "visible_text_contract": "docs/T3_VISIBLE_TEXT_CONTRACT.md",
@@ -319,6 +332,58 @@
     "all_17_events_applied": true,
     "all_4_graphics_applied": true,
     "cta_whatsapp_visible_at_last_frame": true,
+    "owner_approved": false,
+    "owner_rejection": {
+      "date": "2026-11-18",
+      "reason": "Plusieurs petits textes deviennent illisibles dans la prévisualisation.",
+      "root_cause": "Montserrat Variable utilisait son axe Weight par défaut 100 (Thin); tailles de 17 à 25 px insuffisantes après réduction.",
+      "evidence": [
+        "proofs/owner-feedback/T3_V0_2_POLICE_ILLISIBLE_FINAL.png",
+        "proofs/owner-feedback/T3_V0_2_POLICE_ILLISIBLE_IDENTITE.png"
+      ]
+    }
+  },
+  "correction_v0_3": {
+    "status": "local_preflight_pass_pending_github_render",
+    "render_job": "demo/render_job_silent_demo_v0_3.json",
+    "text_motion_contract": "config/T3_TEXT_MOTION_V0_3_0.json",
+    "typography_contract": "docs/T3_TYPOGRAPHY_LEGIBILITY_CONTRACT.md",
+    "engine": "engine/text_motion.py",
+    "local_video_sha256": "783991c6f1a4856372af7d1124bd80ef303e07f85f99676ab960ce1810c5cb42",
+    "tests": {
+      "status": "PASS",
+      "passed": 14,
+      "failed": 0
+    },
+    "local_validation": {
+      "status": "PASS",
+      "passed": 27,
+      "failed": 0
+    },
+    "typography": {
+      "variable_font_weights_explicit": true,
+      "merchant_name_weight": 700,
+      "location_weight": 650,
+      "cta_weight": 750,
+      "phone_weight": 700,
+      "minimum_effective_font_px_at_40_percent": 11.2,
+      "minimum_contrast_ratio": 13.06,
+      "shadow_opacity": 230,
+      "stroke_width_px": 2
+    },
+    "technical_labels_rendered": false,
+    "visible_fields": [
+      "nom",
+      "produit",
+      "prix",
+      "whatsapp",
+      "quartier",
+      "accroche"
+    ],
+    "fixed_texts": [
+      "COMMANDER MAINTENANT"
+    ],
+    "github_render_started": false,
     "owner_approved": false
   }
 }

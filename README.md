@@ -15,9 +15,12 @@ Gabarit vertical Vitrine Vidéo pour montrer les coulisses d’un plat : ingréd
 
 ## État réel
 
-Les questions, les quatre prises et les 12 écrans ont été approuvés par le propriétaire le 18 novembre 2026. Le premier candidat silencieux v0.1 a ensuite été **rejeté** : il affichait des titres de scènes, des durées et une mention de provenance qui appartiennent aux preuves techniques, pas à la publicité.
+Les questions, les quatre prises et les 12 écrans ont été approuvés par le propriétaire le 18 novembre 2026. Deux candidats sont conservés uniquement pour l’audit :
 
-La correction v0.2 applique maintenant la logique T1/T2 :
+- **v0.1 rejetée** : titres de scènes, durées et provenance visibles dans la publicité ;
+- **v0.2 rejetée** : logique commerçant corrigée et transitions appréciées, mais nom, quartier et CTA trop fins pour rester lisibles dans le lecteur.
+
+La cause de la v0.2 est corrigée à la source : Montserrat Variable ouvrait sur son poids par défaut 100 (Thin), car aucun axe n’était fixé. La v0.3 applique maintenant la logique T1/T2 avec un contrat de lisibilité exécutable :
 
 - les textes visibles proviennent de `merchant_payload` dans le RenderJob ;
 - les seuls champs sont `nom`, `produit`, `prix`, `whatsapp`, `quartier` et `accroche` ;
@@ -25,13 +28,14 @@ La correction v0.2 applique maintenant la logique T1/T2 :
 - `FCFA` est ajouté une seule fois ;
 - le seul texte fixe est `COMMANDER MAINTENANT` ;
 - aucun titre de scène, durée, mot démo, mot rush ou provenance média n’est composité ;
-- les textes sont ajoutés après les transitions afin de rester nets.
+- les textes sont ajoutés après les transitions afin de rester nets ;
+- les poids 650 à 750 des petits textes sont imposés dans le JSON ;
+- leur taille effective reste au moins 11 px dans une prévisualisation à 40 % ;
+- le contraste contractuel est au moins 7:1, avec ombre et contour de 2 px.
 
-La v0.2 a été rendue sur GitHub Actions au commit `1cbd7e02560d9d8da32d201f6b97064c53f7ea92`, puis revalidée après téléchargement : **22/22 contrôles PASS**. Elle reste un **candidat silencieux à valider**, pas un master créatif déjà approuvé. Musique, voix off, OTA et intégration mobile restent hors de ce jalon.
+Le préflight local v0.3 passe **27/27 contrôles**. Le master autoritatif doit encore être produit puis revalidé sur GitHub Actions avant d’être présenté au propriétaire. Musique, voix off, OTA et intégration mobile restent hors de ce jalon.
 
-- [Run de rendu GitHub Actions](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44548349489)
-- [Pré-Release corrigée v0.2](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.2.0-silent-candidate-2)
-- [Téléchargement direct du MP4](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/download/t3-coulisses-v0.2.0-silent-candidate-2/VIDEO_T3_SILENCIEUSE_MOTION_TEXT_V0_2_A_VALIDER.mp4)
+Historique v0.2 rejeté : [run](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44548349489) · [pré-Release](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.2.0-silent-candidate-2).
 
 ## Reproduire localement
 
@@ -62,9 +66,10 @@ Lancer manuellement **Rendu silencieux T3 sur GitHub**. Le runner :
 - `capture-guide/consignes_T3.json` — quatre prises et machine A/B/C ;
 - `ui-screens/approved/` — 12 écrans approuvés ;
 - `reverse-engineering/T3_TRANSITIONS_30S.json` — 17 événements ;
-- `config/T3_TEXT_MOTION_V0_2_0.json` — quatre blocs graphiques liés aux champs commerçant ;
-- `demo/render_job_silent_demo.json` — fixture du même contrat `merchant_payload` que le runtime ;
+- `config/T3_TEXT_MOTION_V0_3_0.json` — quatre blocs graphiques et contrat de lisibilité liés aux champs commerçant ;
+- `demo/render_job_silent_demo_v0_3.json` — fixture du même contrat `merchant_payload` que le runtime ;
 - `docs/T3_VISIBLE_TEXT_CONTRACT.md` — chaînes autorisées et interdites ;
+- `docs/T3_TYPOGRAPHY_LEGIBILITY_CONTRACT.md` — poids, tailles, contraste et contrôles bloquants ;
 - `docs/LICENCES_POLICES.md` — familles et empreintes du motion design ;
 - `rushes/manifest.json` — sources Pexels verrouillées ;
 - `engine/render_silent.py` — moteur reproductible ;
