@@ -3,8 +3,8 @@
   "sector": "RESTAURATION",
   "catalog_name": "Coulisses de préparation",
   "catalog_status": "EXISTANT",
-  "workflow_status_number": 14,
-  "workflow_status": "Tests techniques en cours",
+  "workflow_status_number": 17,
+  "workflow_status": "Livrables contrôlés sur GitHub",
   "reference_batch_current": "LOT-03",
   "selected_reference": "R3-B03-REF-02 + R3-B03-REF-04",
   "branch_planned": "fix/t3-four-voice-candidates",
@@ -16,7 +16,8 @@
     "repository_created": true,
     "push_performed": true,
     "default_branch": "main",
-    "render_source_commit": "073888f7498385e576d42eed3a3c0f7dd71bb9d5"
+    "render_source_commit": "073888f7498385e576d42eed3a3c0f7dd71bb9d5",
+    "remediation_render_source_commit": "1e6a945ebb275c86fe3fafe389f56200ae8c1315"
   },
   "proofs": [
     "FICHE_DEMARRAGE.md",
@@ -152,7 +153,14 @@
     "audio/voice/t3-voice-candidates-v1/T3_ECOUTE_4_VOIX.html",
     "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-19.json",
     "schemas/T3_voice_candidates.schema.json",
-    "tests/test_voice_candidates.py"
+    "tests/test_voice_candidates.py",
+    "proofs/complete-remediation-server/T3_COMPLETE_RENDER_REPORT_RUN_44574915753.json",
+    "proofs/complete-remediation-server/T3_COMPLETE_SERVER_VALIDATION_RUN_44574915753.json",
+    "proofs/complete-remediation-server/T3_COMPLETE_DOWNLOADED_ARTIFACT_VALIDATION_RUN_44574915753.json",
+    "proofs/complete-remediation-server/T3_COMPLETE_GITHUB_RUN_44574915753.json",
+    "proofs/complete-remediation-server/SHA256SUMS_COMPLETE_ARTIFACT_RUN_44574915753.txt",
+    "proofs/complete-remediation-server/T3_VOICE_CANDIDATES_MANIFEST_RUN_44574915753.json",
+    "proofs/complete-remediation-server/T3_VOICE_CANDIDATE_APPROVAL_RUN_44574915753.json"
   ],
   "owner_decisions": [
     {
@@ -297,9 +305,9 @@
       "approval_record": "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-19.json"
     }
   ],
-  "decision_expected": "Rejouer sur GitHub le rendu/mixage avec VOIX-A = voice-02, revalider l’artefact, reconstruire le paquet intégrateur puis fermer la remédiation.",
+  "decision_expected": "Reconstruire le paquet intégrateur sur GitHub depuis ce commit, le télécharger et le valider après extraction propre; passer ensuite au statut 18.",
   "blockers": [
-    "Le rendu/mixage et le paquet GitHub doivent être rejoués sur le commit de remédiation avant de refermer T3.",
+    "Le paquet intégrateur GitHub doit encore être reconstruit et revalidé après extraction sur le commit incluant les preuves du rendu de remédiation.",
     "Cloudflare/Android/OTA de production relèvent d’une mission d’intégration distincte et ne sont pas autorisés ni déployés."
   ],
   "development_started": true,
@@ -331,7 +339,11 @@
     "schema": "schemas/T3_voice_candidates.schema.json",
     "approval_record": "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-19.json",
     "master_visual_modified": false,
-    "historical_master_still_approved": true
+    "historical_master_still_approved": true,
+    "github_render_revalidated": true,
+    "github_render_run_id": 44574915753,
+    "downloaded_artifact_revalidated": true,
+    "rendered_video_byte_identical_to_historical_approved_master": true
   },
   "approved_contracts": {
     "questions": "form/questions_T3.json",
@@ -352,7 +364,7 @@
     "integrator_package_spec": "packages/t3-coulisses-v1/package_spec.json",
     "cloudflare_boundary": "integration-handoff/T3_CLOUDFLARE_BOUNDARY_V1.json"
   },
-  "workflow_note": "T3 créatif et paquet intégrateur précédemment approuvés. Quatre voix comparables sont archivées et le propriétaire a choisi VOIX-A = voice-02. Les workflows GitHub de rendu/mixage et de paquet sont à rejouer sur le commit de remédiation. Le master visuel reste immuable; Cloudflare production reste volontairement non déployé.",
+  "workflow_note": "La remédiation vocale rétrospective est prouvée sans réécrire l’histoire. CI GitHub et rendu/mixage post-sélection sont PASS; le MP4 téléchargé est byte-identique au master approuvé et son flux visuel est inchangé. Seul le rejeu du paquet intégrateur reste requis avant fermeture T3.",
   "development_phase": {
     "engine": "engine/render_silent.py",
     "source_manifest": "rushes/manifest.json",
@@ -1042,49 +1054,52 @@
     "owner_final_approval_date": "2026-11-18"
   },
   "last_complete_server_evidence": {
-    "date_local": "2026-11-18",
-    "run_id": 44564485698,
-    "run_number": 1,
+    "date_local": "2026-11-19",
+    "run_id": 44574915753,
+    "run_number": 3,
     "conclusion": "success",
-    "commit": "073888f7498385e576d42eed3a3c0f7dd71bb9d5",
-    "release_tag": "t3-coulisses-v0.7.0-complete-D-1",
+    "commit": "1e6a945ebb275c86fe3fafe389f56200ae8c1315",
+    "release_created": false,
     "video_sha256": "4208d58f52804b2440845c9ce5b249695e9072d8b707ae134386d4bc494740de",
     "server_validation": {
       "status": "PASS",
       "passed": 45,
       "failed": 0
     },
-    "downloaded_release_validation": {
+    "downloaded_artifact_validation": {
       "status": "PASS",
       "passed": 45,
       "failed": 0
     },
-    "artifact_release_integrity": {
-      "asset_count": 11,
-      "sha256_verified": true,
-      "byte_identical": true
+    "artifact_integrity": {
+      "artifact_id": 14555897675,
+      "sha256_manifest_verified": true,
+      "byte_identical_to_historical_owner_approved_master": true
     },
     "visual_stream_unchanged": true,
     "music_choice": "D",
+    "selected_candidate": "VOIX-A",
     "voice_id": "voice-02"
   },
-  "catalog_status_note": "La preuve vocale T3 est remédiée localement par quatre démonstrations comparables et le choix explicite VOIX-A / voice-02. La clôture attend le rejeu et la validation des workflows GitHub de rendu et de paquet; le visuel approuvé reste immuable.",
+  "catalog_status_note": "T3 respecte l’architecture de référence T1 tout en conservant son montage propre. Les quatre voix comparables et le choix VOIX-A / voice-02 sont archivés; le rendu GitHub post-sélection est validé et byte-identique au master approuvé. Le paquet GitHub final reste à reconstruire.",
   "architecture_audit": {
-    "status": "T3_VOICE_GAP_REMEDIATED_LOCALLY_GITHUB_RERUN_PENDING",
+    "status": "T3_GITHUB_RENDER_VALIDATED_PACKAGE_RERUN_PENDING",
     "report": "reports/AUDIT_ARCHITECTURE_T1_T2_T3_2026-11-18.md",
     "machine_report": "reports/AUDIT_ARCHITECTURE_T1_T2_T3_2026-11-18.json",
     "t1_tests": "104/104 PASS after golden materialization",
     "t2_tests": "59/59 PASS plus Cloudflare dry-build and integration PASS",
-    "t3_tests": "43/43 PASS local after four-candidate voice remediation",
+    "t3_tests": "43/43 PASS locally and in GitHub CI run 44574921601",
     "strict_universal_architecture_100_percent": false,
     "remaining_t3_deviation": [],
     "t3_strict_template_architecture_100_percent": true,
     "voice_owner_selection": "VOIX-A / voice-02",
     "chronology": "retrospective_remediation_after_historical_master",
     "required_before_t3_close": [
-      "GitHub complete render rerun and downloaded-artifact validation",
       "GitHub integrator package rerun and clean-extraction validation"
-    ]
+    ],
+    "github_ci_run": 44574921601,
+    "github_render_run": 44574915753,
+    "github_render_validation": "22/22 builder, 45/45 server independent, 45/45 after download"
   },
   "catalogue_ota_preparation": {
     "status": "prepared_offline_not_operational",
@@ -1101,11 +1116,12 @@
     },
     "local_package_preflight": {
       "status": "PASS",
-      "checks": "32/32",
+      "checks": "33/33",
       "deterministic_two_builds": true,
-      "payload_file_count": 111,
+      "payload_file_count": 118,
       "four_voice_candidates_included": true,
-      "owner_voice_approval_included": true
+      "owner_voice_approval_included": true,
+      "post_selection_github_render_proofs_included": true
     },
     "ota_implemented": false,
     "android_integrated": false,
@@ -1126,5 +1142,32 @@
     "github_deployments_found": 0,
     "deployment_authorized": false,
     "reason": "Universal protocol forbids production deployment without a separate explicit owner order."
+  },
+  "remediation_render_validation": {
+    "date_local": "2026-11-19",
+    "source_commit": "1e6a945ebb275c86fe3fafe389f56200ae8c1315",
+    "ci_run_id": 44574921601,
+    "ci_conclusion": "success",
+    "render_run_id": 44574915753,
+    "render_run_url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44574915753",
+    "render_conclusion": "success",
+    "publish_prerelease": false,
+    "artifact": {
+      "id": 14555897675,
+      "name": "T3-complete-voice-music-D-44574915753",
+      "bytes": 19663059,
+      "file_count": 14
+    },
+    "builder_validation": "22/22 PASS",
+    "server_independent_validation": "45/45 PASS",
+    "downloaded_artifact_validation": "45/45 PASS",
+    "sha256_manifest_verified": true,
+    "video_sha256": "4208d58f52804b2440845c9ce5b249695e9072d8b707ae134386d4bc494740de",
+    "video_stream_sha256": "8e415063add70f5807e009b2306c6b1154b0ec19bf35d5b9350012a5f4abe666",
+    "byte_identical_to_historical_owner_approved_master": true,
+    "visual_master_modified": false,
+    "music_choice": "D — Dlozi Lam",
+    "selected_voice": "VOIX-A / voice-02",
+    "candidate_manifest_and_owner_approval_in_artifact": true
   }
 }

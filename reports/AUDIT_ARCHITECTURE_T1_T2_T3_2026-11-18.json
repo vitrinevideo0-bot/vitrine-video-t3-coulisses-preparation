@@ -127,12 +127,13 @@
       ],
       "local_integrator_package": {
         "status": "PASS",
-        "checks": "32/32 PASS",
+        "checks": "33/33 PASS",
         "deterministic_two_builds_identical": true,
-        "payload_file_count": 111,
+        "payload_file_count": 118,
         "includes_four_voice_candidates": true,
         "includes_owner_voice_approval": true,
-        "zip_hash_authority": "GitHub package workflow artifact; local hash is preflight-only because the GitHub rerun is the delivery authority."
+        "zip_hash_authority": "GitHub package workflow artifact; local hash is preflight-only because the GitHub rerun is the delivery authority.",
+        "includes_post_selection_github_render_proofs": true
       },
       "remaining_gap_against_current_universal_protocol": [],
       "cloudflare": {
@@ -150,7 +151,9 @@
         "status": "PASS",
         "passed": 43,
         "failed": 0,
-        "scope": "local preflight before mandatory GitHub render and package reruns"
+        "local": true,
+        "github_ci_run": 44574921601,
+        "github_ci_status": "success"
       },
       "voice_candidate_remediation": {
         "chronology": "retrospective_remediation_after_historical_master",
@@ -168,9 +171,22 @@
       },
       "known_protocol_deviations": [],
       "github_remediation_validation": {
-        "contracts_workflow_run": 44573275374,
-        "contracts_workflow_status": "PASS before owner selection commit",
-        "post_selection_render_rerun_required": true,
+        "contracts_workflow_run": 44574921601,
+        "contracts_workflow_status": "PASS after owner selection and date correction",
+        "render_run": 44574915753,
+        "render_source_commit": "1e6a945ebb275c86fe3fafe389f56200ae8c1315",
+        "render_status": "PASS",
+        "builder_checks": "22/22 PASS",
+        "server_independent_checks": "45/45 PASS",
+        "downloaded_artifact_checks": "45/45 PASS",
+        "artifact_id": 14555897675,
+        "artifact_sha256_manifest_verified": true,
+        "candidate_manifest_and_owner_approval_in_artifact": true,
+        "video_sha256": "4208d58f52804b2440845c9ce5b249695e9072d8b707ae134386d4bc494740de",
+        "video_stream_sha256": "8e415063add70f5807e009b2306c6b1154b0ec19bf35d5b9350012a5f4abe666",
+        "byte_identical_to_historical_owner_approved_master": true,
+        "visual_master_modified": false,
+        "post_selection_render_rerun_required": false,
         "post_selection_package_rerun_required": true
       }
     }
@@ -187,7 +203,7 @@
     "creative_and_media_masters": "PASS for the validated T1, T2 and T3 reference outputs within their documented scopes",
     "current_universal_architecture": "T3 package architecture is strict after retrospective voice-evidence remediation; T1 and T2 retain the documented legacy gaps.",
     "cloudflare_production": "NOT DEPLOYED",
-    "safe_next_step": "Run and validate the exact T3 GitHub render and integrator-package workflows on the owner-selection commit, merge the remediation, then resume T4."
+    "safe_next_step": "Build and validate the T3 integrator package on GitHub from the commit containing the post-selection render proofs, validate the downloaded ZIP after clean extraction, then merge PR #2 and resume T4."
   },
   "last_updated_local": "2026-11-19"
 }

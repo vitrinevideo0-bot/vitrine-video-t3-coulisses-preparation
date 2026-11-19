@@ -148,7 +148,11 @@
     },
     {
       "path": "proofs/complete-v0.7-server/T3_COMPLETE_GITHUB_RELEASE_AUDIT_RUN_44564485698.json",
-      "role": "github_release_audit"
+      "role": "historical_github_release_audit"
+    },
+    {
+      "path": "proofs/complete-remediation-server",
+      "role": "post_voice_selection_github_render_and_downloaded_artifact_proofs"
     },
     {
       "path": "reports/AUDIT_ARCHITECTURE_T1_T2_T3_2026-11-18.md",

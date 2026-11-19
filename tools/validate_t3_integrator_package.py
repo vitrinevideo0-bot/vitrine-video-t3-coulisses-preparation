@@ -70,6 +70,9 @@ def main() -> int:
             voice_mix = json.loads((package_root / "config/T3_VOICE_MIX_V1_0_0.json").read_text(encoding="utf-8"))
             voice_candidates = json.loads((package_root / "audio/voice/t3-voice-candidates-v1/manifest.json").read_text(encoding="utf-8"))
             voice_approval = json.loads((package_root / "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-19.json").read_text(encoding="utf-8"))
+            remediation_run = json.loads((package_root / "proofs/complete-remediation-server/T3_COMPLETE_GITHUB_RUN_44574915753.json").read_text(encoding="utf-8"))
+            remediation_server_validation = json.loads((package_root / "proofs/complete-remediation-server/T3_COMPLETE_SERVER_VALIDATION_RUN_44574915753.json").read_text(encoding="utf-8"))
+            remediation_downloaded_validation = json.loads((package_root / "proofs/complete-remediation-server/T3_COMPLETE_DOWNLOADED_ARTIFACT_VALIDATION_RUN_44574915753.json").read_text(encoding="utf-8"))
 
             manifest_matches = True
             for item in manifest["files"]:
@@ -162,6 +165,25 @@ def main() -> int:
                 and voice_candidates["chronology"]["historical_master_predates_this_four-candidate_archive"] is True
                 and voice_candidates["chronology"]["master_visual_modified"] is False
                 and voice_approval["consequences"]["existing_master_visual_modified"] is False
+            ))
+            render_run = remediation_run["run"]
+            downloaded_proof = remediation_run["downloaded_artifact_validation"]
+            checks.append(check(
+                "post_selection_github_render_and_downloaded_artifact_validated",
+                render_run["id"] == 44574915753
+                and render_run["head_sha"] == "1e6a945ebb275c86fe3fafe389f56200ae8c1315"
+                and render_run["conclusion"] == "success"
+                and remediation_server_validation["status"] == "PASS"
+                and remediation_server_validation["summary"] == {"passed": 45, "failed": 0, "total": 45}
+                and remediation_downloaded_validation["status"] == "PASS"
+                and remediation_downloaded_validation["summary"] == {"passed": 45, "failed": 0, "total": 45}
+                and downloaded_proof["sha256_manifest_verified"] is True
+                and downloaded_proof["video_sha256"] == "4208d58f52804b2440845c9ce5b249695e9072d8b707ae134386d4bc494740de"
+                and downloaded_proof["approved_visual_stream_sha256"] == "8e415063add70f5807e009b2306c6b1154b0ec19bf35d5b9350012a5f4abe666"
+                and downloaded_proof["byte_identical_to_historical_owner_approved_master"] is True
+                and downloaded_proof["candidate_manifest_in_artifact"] is True
+                and downloaded_proof["owner_voice_approval_in_artifact"] is True,
+                {"run_id": render_run["id"], "head_sha": render_run["head_sha"], "video_sha256": downloaded_proof["video_sha256"]}
             ))
 
             sys.path.insert(0, str(package_root))

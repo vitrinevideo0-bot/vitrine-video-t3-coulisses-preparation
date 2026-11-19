@@ -126,6 +126,13 @@ class T3IntegratorArchitectureTest(unittest.TestCase):
         self.assertEqual(candidates["owner_gate"]["selected_internal_voice_id"], "voice-02")
         self.assertTrue(candidates["chronology"]["historical_master_predates_this_four-candidate_archive"])
         self.assertEqual(approval["selected_internal_voice_id"], "voice-02")
+        reference = self.canonical["approved_reference"]
+        self.assertEqual(reference["post_selection_render_run_id"], 44574915753)
+        self.assertEqual(reference["selected_voice_candidate"], "VOIX-A")
+        server_validation = json.loads((ROOT / reference["validation"]).read_text(encoding="utf-8"))
+        downloaded_validation = json.loads((ROOT / reference["downloaded_artifact_validation"]).read_text(encoding="utf-8"))
+        self.assertEqual(server_validation["summary"], {"passed": 45, "failed": 0, "total": 45})
+        self.assertEqual(downloaded_validation["summary"], {"passed": 45, "failed": 0, "total": 45})
 
 
 if __name__ == "__main__":

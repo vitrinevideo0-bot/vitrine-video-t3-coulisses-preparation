@@ -1,0 +1,272 @@
+{
+  "schema_version": "1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "status": "PASS",
+  "purpose": "single_complete_GitHub_server_render_with_owner_selected_music_D",
+  "rendered_on": "github_actions",
+  "github": {
+    "repository": "vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation",
+    "run_id": "44574915753",
+    "run_number": "3",
+    "sha": "1e6a945ebb275c86fe3fafe389f56200ae8c1315"
+  },
+  "contracts": {
+    "music": "config/T3_MUSIC_PACK_V1_0_0.json",
+    "voice_mix": "config/T3_VOICE_MIX_V1_0_0.json"
+  },
+  "verified_music_derivatives": [
+    {
+      "id": "t3_music_481806",
+      "choice": "A",
+      "file": "audio/music/t3-afrobeat-v1/t3_481806_laser_30s.mp3",
+      "sha256": "f84455f2611bdd54c3907d1f13f90b1561f0bbff04b4d8279f51364b14579e21",
+      "bytes": 721334
+    },
+    {
+      "id": "t3_music_360659",
+      "choice": "B",
+      "file": "audio/music/t3-afrobeat-v1/t3_360659_omalicha_nwa_30s.mp3",
+      "sha256": "6ae8005d99dd67001b47a8137b1be4224d262b2e6bce8cc6b5f776c53e2251fc",
+      "bytes": 721340
+    },
+    {
+      "id": "t3_music_485507",
+      "choice": "C",
+      "file": "audio/music/t3-afrobeat-v1/t3_485507_safe_30s.mp3",
+      "sha256": "729e2c20058d005c432160297f8243b72026ed89cb26b85bc60f880b9bd8eedf",
+      "bytes": 721329
+    },
+    {
+      "id": "t3_music_245452",
+      "choice": "D",
+      "file": "audio/music/t3-afrobeat-v1/t3_245452_dlozi_lam_30s.mp3",
+      "sha256": "7128e7da92c1bf9b94b9973a8c190994bec2c227d55860f81e0db19a77e7ee87",
+      "bytes": 721345
+    }
+  ],
+  "selection": {
+    "choice": "D",
+    "variant_id": "t3_music_245452",
+    "pixabay_id": 245452,
+    "title": "Dlozi Lam",
+    "artist": "PremiumMusicOdyssey",
+    "file": "audio/music/t3-afrobeat-v1/t3_245452_dlozi_lam_30s.mp3",
+    "sha256": "7128e7da92c1bf9b94b9973a8c190994bec2c227d55860f81e0db19a77e7ee87"
+  },
+  "voice": {
+    "voice_id": "voice-02",
+    "stem_file": "audio/voice/t3-voice-v1/t3_voice_stem_30s.wav",
+    "stem_sha256": "588ac829f04aa88585ff17d5efa4f57dc886d4606e016a1b6a4be5cd5c85a82e",
+    "placements": [
+      {
+        "scene": 1,
+        "start_s": 1.2,
+        "end_s": 5.542,
+        "text": "Chez Casa Tacos, découvrez notre tacos maison."
+      },
+      {
+        "scene": 2,
+        "start_s": 6.8,
+        "end_s": 10.469,
+        "text": "Généreusement garni, et préparé à la commande."
+      },
+      {
+        "scene": 3,
+        "start_s": 14.7,
+        "end_s": 17.811,
+        "text": "Chaque geste révèle un tacos chaud et gourmand."
+      },
+      {
+        "scene": 4,
+        "start_s": 21.8,
+        "end_s": 26.618,
+        "text": "À Kandi, votre tacos est à deux mille cinq cents francs. Commandez sur WhatsApp."
+      }
+    ]
+  },
+  "mix_contract": {
+    "music_open_gain_db": -3.0,
+    "music_under_voice_gain_db": -10.0,
+    "duck_depth_db": -7.0,
+    "duck_attack_ms": 120,
+    "duck_release_ms": 450,
+    "duck_attack_curve": "linear_db",
+    "duck_release_curve": "linear_db",
+    "voice_gain_db": 0.0,
+    "sfx": "none",
+    "master_target_lufs": -16.0,
+    "master_true_peak_dbtp_max": -2.0,
+    "delivery_audio": "AAC stereo 48 kHz"
+  },
+  "visual": {
+    "input_file": "VIDEO_T3_SILENCIEUSE_SANS_TRAITS_BLEUS_V0_4_A_VALIDER.mp4",
+    "input_file_sha256": "cd61d3cf793874a8b7d2eb8fe694861048368ba64b01216395c6bba0eb879774",
+    "input_video_bitstream_sha256": "8e415063add70f5807e009b2306c6b1154b0ec19bf35d5b9350012a5f4abe666",
+    "output_video_bitstream_sha256": "8e415063add70f5807e009b2306c6b1154b0ec19bf35d5b9350012a5f4abe666",
+    "bitstream_copy": true
+  },
+  "pre_master": {
+    "integrated_lufs": -18.72,
+    "true_peak_dbtp": -3.17
+  },
+  "master_wav": {
+    "file": "T3_MASTER_AUDIO_VOIX_MUSIQUE_D_30S.wav",
+    "sha256": "1745ef3a330c01f65a08b5d53c21492818673d69a8906136a987ee7132041d8d",
+    "bytes": 8640102,
+    "duration_samples": 1440000,
+    "integrated_lufs": -16.19,
+    "true_peak_dbtp": -2.0,
+    "sample_peak_dbfs": -2.0,
+    "clipped_samples": 0,
+    "nan_count": 0,
+    "inf_count": 0
+  },
+  "final_video": {
+    "file": "VIDEO_T3_COMPLETE_VOIX_MUSIQUE_D_V0_7_A_VALIDER.mp4",
+    "sha256": "4208d58f52804b2440845c9ce5b249695e9072d8b707ae134386d4bc494740de",
+    "bytes": 11363724,
+    "duration_s": 30.0,
+    "frames": 900,
+    "width": 720,
+    "height": 1280,
+    "fps": "30/1",
+    "video_codec": "h264",
+    "pixel_format": "yuv420p",
+    "audio_codec": "aac",
+    "audio_sample_rate": 48000,
+    "audio_channels": 2,
+    "integrated_lufs": -16.23,
+    "true_peak_dbtp": -1.99,
+    "sample_peak_dbfs": -1.996,
+    "clipped_samples": 0,
+    "nan_count": 0,
+    "inf_count": 0
+  },
+  "intelligibility": {
+    "method": "20 ms frames; active voice above -38 dBFS; pre-master stems",
+    "active_speech_s": 11.32,
+    "aggregate_speech_to_music_db": 10.92,
+    "median_speech_to_music_db": 12.51,
+    "p10_speech_to_music_db": 0.52,
+    "scenes": [
+      {
+        "scene": 1,
+        "active_speech_s": 2.84,
+        "median_speech_to_music_db": 13.75,
+        "p10_speech_to_music_db": 2.61
+      },
+      {
+        "scene": 2,
+        "active_speech_s": 2.64,
+        "median_speech_to_music_db": 14.02,
+        "p10_speech_to_music_db": 0.62
+      },
+      {
+        "scene": 3,
+        "active_speech_s": 2.32,
+        "median_speech_to_music_db": 12.2,
+        "p10_speech_to_music_db": 0.47
+      },
+      {
+        "scene": 4,
+        "active_speech_s": 3.52,
+        "median_speech_to_music_db": 10.19,
+        "p10_speech_to_music_db": -0.44
+      }
+    ]
+  },
+  "checks": [
+    {
+      "check": "four_owner_approved_music_derivatives_verified",
+      "status": "PASS"
+    },
+    {
+      "check": "final_music_is_choice_D_Dlozi_Lam",
+      "status": "PASS"
+    },
+    {
+      "check": "voice_is_voice_02",
+      "status": "PASS"
+    },
+    {
+      "check": "four_voice_placements",
+      "status": "PASS"
+    },
+    {
+      "check": "ducking_minus_3_minus_10_db",
+      "status": "PASS"
+    },
+    {
+      "check": "ducking_attack_release",
+      "status": "PASS"
+    },
+    {
+      "check": "master_duration_samples",
+      "status": "PASS"
+    },
+    {
+      "check": "master_loudness",
+      "status": "PASS"
+    },
+    {
+      "check": "master_true_peak",
+      "status": "PASS"
+    },
+    {
+      "check": "aac_loudness",
+      "status": "PASS"
+    },
+    {
+      "check": "aac_true_peak",
+      "status": "PASS"
+    },
+    {
+      "check": "no_master_clipping",
+      "status": "PASS"
+    },
+    {
+      "check": "no_aac_clipping",
+      "status": "PASS"
+    },
+    {
+      "check": "speech_over_music",
+      "status": "PASS"
+    },
+    {
+      "check": "one_video_stream",
+      "status": "PASS"
+    },
+    {
+      "check": "one_audio_stream",
+      "status": "PASS"
+    },
+    {
+      "check": "dimensions_720x1280",
+      "status": "PASS"
+    },
+    {
+      "check": "fps_30",
+      "status": "PASS"
+    },
+    {
+      "check": "frames_900",
+      "status": "PASS"
+    },
+    {
+      "check": "duration_30s",
+      "status": "PASS"
+    },
+    {
+      "check": "aac_stereo_48khz",
+      "status": "PASS"
+    },
+    {
+      "check": "visual_stream_bit_exact",
+      "status": "PASS"
+    }
+  ],
+  "summary": {
+    "passed": 22,
+    "failed": 0
+  }
+}

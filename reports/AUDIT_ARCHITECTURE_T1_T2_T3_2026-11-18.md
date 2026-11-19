@@ -10,13 +10,13 @@
 
 **T1 et T2 ne sont pas strictement conformes à 100 % au protocole universel actuel. T3 est désormais conforme à l’architecture de gabarit de référence et son unique écart de preuve vocale est remédié dans l’état courant.**
 
-Le style de montage propre à T2 ou T3 n’est pas un écart : T1 fournit une méthode et des contrats, pas une identité graphique à copier. La chronologie rétrospective de la correction T3 reste déclarée au lieu d’être réécrite. La clôture exige encore les workflows GitHub exacts de rendu et de paquet avant fusion.
+Le style de montage propre à T2 ou T3 n’est pas un écart : T1 fournit une méthode et des contrats, pas une identité graphique à copier. La chronologie rétrospective de la correction T3 reste déclarée au lieu d’être réécrite. Le workflow GitHub de rendu post-sélection et la revalidation de son artefact téléchargé sont achevés; seul le paquet intégrateur GitHub doit encore être reconstruit avant fusion.
 
 | Gabarit | Tests réexécutés | Master/rendu | Architecture universelle stricte | Cloudflare production |
 |---|---:|---|---|---|
 | T1 | **104/104 PASS** après rematérialisation du golden depuis sa Release | Release complète existante | **Non** — héritage ancien, voix candidates non archivées, workflow Release destructif, branches fragmentées | **Non déployé** |
 | T2 | **59/59 PASS** + dry-build et intégration Worker/R2/GitHub PASS | v0.7 approuvé en artefact privé | **Non** — rotation 4 pistes absente, quatre voix candidates absentes, paquet OTA/ZIP absent, Release v0.7 non autorisée | **Plan testé, non déployé** |
-| T3 | **43/43 PASS** local après remédiation; master historique 45/45 serveur et 45/45 après téléchargement | Release complète D existante; rejeu GitHub de remédiation requis avant fusion | **Oui pour le paquet de gabarit courant** — quatre voix comparables archivées, VOIX-A / voice-02 choisie, zéro écart connu restant | **Non déployé, frontière documentée** |
+| T3 | **43/43 PASS** local et CI; rendu de remédiation **22/22 + 45/45 serveur + 45/45 téléchargé** | Run GitHub `44574915753`; MP4 byte-identique au master approuvé | **Oui pour le paquet de gabarit courant** — quatre voix comparables archivées, VOIX-A / voice-02 choisie, zéro écart connu restant | **Non déployé, frontière documentée** |
 
 ## T1
 
@@ -78,9 +78,9 @@ Le master n’a pas été modifié. Ont été ajoutés :
 Préflight local du paquet après correction vocale :
 
 - **43/43 tests PASS**;
-- **32/32 contrôles du ZIP PASS**;
+- **33/33 contrôles du ZIP PASS**;
 - deux constructions locales byte-identiques;
-- 111 fichiers dans le payload contrôlé;
+- 118 fichiers dans le payload contrôlé;
 - quatre démonstrations vocales sources et quatre WAV normalisés, même texte français, sans retiming;
 - choix propriétaire enregistré : **VOIX-A**, identifiant interne `voice-02`;
 - golden master complet inclus et verrouillé;
@@ -93,6 +93,24 @@ Préflight local du paquet après correction vocale :
 L’audit initial avait correctement signalé l’absence de quatre fichiers comparables. La porte a été rouverte avant T4 : quatre candidats distincts `VOIX-A` à `VOIX-D` ont été synthétisés avec le même texte tiré des scripts approuvés, normalisés à 48 kHz sans modifier leur débit, hashés, schématisés et testés. Le propriétaire a choisi `VOIX-A`, qui correspond à `voice-02` déjà utilisée par les quatre clips de scène et le master approuvé.
 
 La correction est explicitement qualifiée de **rétrospective** : elle ne prétend pas que ces quatre fichiers existaient avant le premier master. À l’état courant, `known_protocol_deviations` est vide et le validateur de paquet indique `strict_universal_protocol_100_percent=true`. Cette conclusion ne couvre ni Android, ni OTA opérationnel, ni Cloudflare de production, qui restent une mission d’intégration séparée.
+
+### Rejeu GitHub post-sélection
+
+- commit rendu : `1e6a945ebb275c86fe3fafe389f56200ae8c1315`;
+- CI contrats/moteur : run `44574921601`, **43/43 PASS**;
+- rendu/mixage : run `44574915753`, succès;
+- validation constructeur : **22/22 PASS**;
+- validation indépendante serveur : **45/45 PASS**;
+- manifeste SHA-256 de l’artefact téléchargé : vérifié intégralement;
+- revalidation indépendante après téléchargement : **45/45 PASS**;
+- MP4 : SHA-256 `4208d58f…400de`, byte-identique au master déjà approuvé;
+- flux vidéo : SHA-256 `8e415063…e666`, inchangé;
+- musique : uniquement **D — Dlozi Lam**;
+- voix : **VOIX-A / voice-02**;
+- manifeste des quatre voix et décision propriétaire : présents dans l’artefact;
+- aucune nouvelle pré-Release publiée.
+
+Le paquet intégrateur doit maintenant être reconstruit sur GitHub depuis l’état contenant ces preuves, puis téléchargé et validé après extraction propre.
 
 ## Cloudflare : réponse précise
 
