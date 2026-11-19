@@ -55,6 +55,10 @@
       "role": "capture_guide"
     },
     {
+      "path": "rushes/manifest.json",
+      "role": "licensed_capture_source_manifest_without_raw_media"
+    },
+    {
       "path": "ui-screens/approved",
       "role": "twelve_screen_proofs"
     },
@@ -109,6 +113,14 @@
     {
       "path": "demo/render_job_complete_v1_0_0.json",
       "role": "complete_render_job_example"
+    },
+    {
+      "path": "demo/render_job_silent_demo_v0_4.json",
+      "role": "approved_visual_test_fixture"
+    },
+    {
+      "path": ".github/workflows/render-complete-voice-music-D.yml",
+      "role": "github_render_and_release_safety_contract"
     },
     {
       "path": "tools/build_t3_capture_flow.py",

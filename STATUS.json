@@ -1116,12 +1116,13 @@
     },
     "local_package_preflight": {
       "status": "PASS",
-      "checks": "33/33",
+      "checks": "34/34",
       "deterministic_two_builds": true,
-      "payload_file_count": 118,
+      "payload_file_count": 121,
       "four_voice_candidates_included": true,
       "owner_voice_approval_included": true,
-      "post_selection_github_render_proofs_included": true
+      "post_selection_github_render_proofs_included": true,
+      "included_test_suite_after_clean_extraction": "43/43 PASS"
     },
     "ota_implemented": false,
     "android_integrated": false,

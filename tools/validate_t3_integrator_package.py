@@ -232,6 +232,20 @@ def main() -> int:
             deviations = canonical["known_protocol_deviations"]
             checks.append(check("no_known_template_protocol_deviation_remaining", deviations == [], deviations))
 
+            extracted_tests = subprocess.run(
+                [sys.executable, "-B", "-m", "unittest", "discover", "-s", "tests", "-q"],
+                cwd=package_root,
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                check=False
+            )
+            checks.append(check(
+                "included_test_suite_passes_after_clean_extraction",
+                extracted_tests.returncode == 0,
+                {"returncode": extracted_tests.returncode, "output_tail": extracted_tests.stdout[-4000:]}
+            ))
+
     status = "PASS" if all(item["status"] == "PASS" for item in checks) else "FAIL"
     proof = {
         "schema_version": "1.0.0", "status": status, "scope": "Clean extraction validation of RESTAURATION-T3 integrator package",

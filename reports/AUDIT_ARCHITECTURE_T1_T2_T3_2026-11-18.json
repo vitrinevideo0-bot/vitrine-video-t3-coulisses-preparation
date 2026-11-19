@@ -127,13 +127,14 @@
       ],
       "local_integrator_package": {
         "status": "PASS",
-        "checks": "33/33 PASS",
+        "checks": "34/34 PASS",
         "deterministic_two_builds_identical": true,
-        "payload_file_count": 118,
+        "payload_file_count": 121,
         "includes_four_voice_candidates": true,
         "includes_owner_voice_approval": true,
         "zip_hash_authority": "GitHub package workflow artifact; local hash is preflight-only because the GitHub rerun is the delivery authority.",
-        "includes_post_selection_github_render_proofs": true
+        "includes_post_selection_github_render_proofs": true,
+        "included_test_suite_after_clean_extraction": "43/43 PASS"
       },
       "remaining_gap_against_current_universal_protocol": [],
       "cloudflare": {

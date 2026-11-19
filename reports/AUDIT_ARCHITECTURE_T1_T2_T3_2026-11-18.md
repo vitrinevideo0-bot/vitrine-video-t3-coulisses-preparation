@@ -78,9 +78,10 @@ Le master n’a pas été modifié. Ont été ajoutés :
 Préflight local du paquet après correction vocale :
 
 - **43/43 tests PASS**;
-- **33/33 contrôles du ZIP PASS**;
+- **34/34 contrôles du ZIP PASS**;
 - deux constructions locales byte-identiques;
-- 118 fichiers dans le payload contrôlé;
+- suite embarquée rejouée après extraction propre : **43/43 PASS**;
+- 121 fichiers dans le payload contrôlé;
 - quatre démonstrations vocales sources et quatre WAV normalisés, même texte français, sans retiming;
 - choix propriétaire enregistré : **VOIX-A**, identifiant interne `voice-02`;
 - golden master complet inclus et verrouillé;
