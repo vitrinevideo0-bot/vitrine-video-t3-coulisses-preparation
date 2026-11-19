@@ -28,7 +28,19 @@
     },
     "merchant_payload": {"type": "object"},
     "capture": {"type": "object"},
-    "creative_contracts": {"type": "object"},
+    "creative_contracts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["transitions", "text_motion", "music_pack", "voice_candidates", "voice_candidate_approval", "voice_mix"],
+      "properties": {
+        "transitions": {"type": "string"},
+        "text_motion": {"type": "string"},
+        "music_pack": {"type": "string"},
+        "voice_candidates": {"const": "audio/voice/t3-voice-candidates-v1/manifest.json"},
+        "voice_candidate_approval": {"const": "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-19.json"},
+        "voice_mix": {"type": "string"}
+      }
+    },
     "runtime_contracts": {"type": "object"},
     "approved_reference": {"type": "object"},
     "catalogue_preparation": {
@@ -44,6 +56,6 @@
       },
       "additionalProperties": false
     },
-    "known_protocol_deviations": {"type": "array"}
+    "known_protocol_deviations": {"type": "array", "maxItems": 0}
   }
 }

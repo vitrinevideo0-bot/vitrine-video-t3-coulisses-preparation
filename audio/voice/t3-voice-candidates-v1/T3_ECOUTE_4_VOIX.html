@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>T3 — audition de quatre voix</title>
+<style>
+:root{color-scheme:dark;--bg:#0d1117;--card:#171d26;--ink:#f7f3ea;--muted:#b7c0cd;--gold:#ffbd59;--line:#35404e}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#283344 0,#0d1117 42%);font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);line-height:1.5}.wrap{max-width:900px;margin:auto;padding:28px 16px 64px}.hero,.gate{border:1px solid var(--line);background:#111722e8;border-radius:20px;padding:24px}h1{font-size:clamp(1.9rem,6vw,3.3rem);line-height:1.04;margin:.2em 0}h1 span,.badge{color:var(--gold)}p{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:18px 0}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}.label{display:flex;align-items:center;gap:12px;font-size:1.3rem;font-weight:900}.letter{display:grid;place-items:center;width:44px;height:44px;border-radius:13px;background:var(--gold);color:#211506}audio{width:100%;margin:18px 0 6px}.meta{font-size:.86rem;color:var(--muted)}.gate{border-left:5px solid var(--gold)}code{background:#090c11;padding:.15em .35em;border-radius:5px}.script{font-style:italic;color:#e8dfd2;border-left:3px solid #516175;padding-left:14px}.warn{color:#ffd28c;font-weight:750}
+</style>
+</head>
+<body><main class="wrap">
+<section class="hero"><div class="badge">RESTAURATION‑T3 · PORTE VOCALE ROUVERTE</div><h1>Écoutez les <span>quatre voix</span></h1><p>Même texte français, même cible de niveau, aucune accélération. Les lettres masquent les identifiants internes pour limiter le biais.</p><p class="script">« Chez Casa Tacos, découvrez notre tacos maison, généreusement garni et préparé à la commande. Chaque geste révèle un tacos chaud et gourmand. À Kandi, votre tacos est à deux mille cinq cents francs. Commandez simplement sur WhatsApp. »</p></section>
+<section class="grid">
+<article class="card"><div class="label"><span class="letter">A</span> VOIX‑A</div><audio controls preload="metadata" src="normalized/T3_VOIX_CANDIDATE_A_VOICE_02.wav"></audio><div class="meta">16,80 s · 48 kHz · −20,00 LUFS</div></article>
+<article class="card"><div class="label"><span class="letter">B</span> VOIX‑B</div><audio controls preload="metadata" src="normalized/T3_VOIX_CANDIDATE_B.wav"></audio><div class="meta">13,43 s · 48 kHz · −20,09 LUFS</div></article>
+<article class="card"><div class="label"><span class="letter">C</span> VOIX‑C</div><audio controls preload="metadata" src="normalized/T3_VOIX_CANDIDATE_C.wav"></audio><div class="meta">15,40 s · 48 kHz · −20,01 LUFS</div></article>
+<article class="card"><div class="label"><span class="letter">D</span> VOIX‑D</div><audio controls preload="metadata" src="normalized/T3_VOIX_CANDIDATE_D.wav"></audio><div class="meta">16,03 s · 48 kHz · −20,00 LUFS</div></article>
+</section>
+<section class="gate"><div class="warn">Décision nécessaire</div><p>Répondez dans le chat : <code>Je choisis VOIX‑A</code>, <code>VOIX‑B</code>, <code>VOIX‑C</code> ou <code>VOIX‑D</code>. Vous pouvez aussi demander un nouveau lot.</p><p>Après votre décision, les clips de scène, le mixage, les tests et le paquet seront rejoués sur GitHub. Le master visuel approuvé ne sera pas modifié.</p></section>
+</main>
+<script>document.querySelectorAll('audio').forEach(a=>a.addEventListener('play',()=>document.querySelectorAll('audio').forEach(b=>{if(b!==a)b.pause()})));</script>
+</body></html>

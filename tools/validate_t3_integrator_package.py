@@ -67,6 +67,12 @@ def main() -> int:
             canonical = json.loads((package_root / "config/T3_COULISSES_TEMPLATE_V1_0_0.json").read_text(encoding="utf-8"))
             capture_flow = json.loads((package_root / "config/T3_CAPTURE_FLOW_V1_0_0.json").read_text(encoding="utf-8"))
             music_pack = json.loads((package_root / "config/T3_MUSIC_PACK_V1_0_0.json").read_text(encoding="utf-8"))
+            voice_mix = json.loads((package_root / "config/T3_VOICE_MIX_V1_0_0.json").read_text(encoding="utf-8"))
+            voice_candidates = json.loads((package_root / "audio/voice/t3-voice-candidates-v1/manifest.json").read_text(encoding="utf-8"))
+            voice_approval = json.loads((package_root / "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-19.json").read_text(encoding="utf-8"))
+            remediation_run = json.loads((package_root / "proofs/complete-remediation-server/T3_COMPLETE_GITHUB_RUN_44574915753.json").read_text(encoding="utf-8"))
+            remediation_server_validation = json.loads((package_root / "proofs/complete-remediation-server/T3_COMPLETE_SERVER_VALIDATION_RUN_44574915753.json").read_text(encoding="utf-8"))
+            remediation_downloaded_validation = json.loads((package_root / "proofs/complete-remediation-server/T3_COMPLETE_DOWNLOADED_ARTIFACT_VALIDATION_RUN_44574915753.json").read_text(encoding="utf-8"))
 
             manifest_matches = True
             for item in manifest["files"]:
@@ -87,6 +93,7 @@ def main() -> int:
                 ("schemas/T3_template_package.schema.json", "config/T3_COULISSES_TEMPLATE_V1_0_0.json"),
                 ("schemas/T3_music_pack.schema.json", "config/T3_MUSIC_PACK_V1_0_0.json"),
                 ("schemas/T3_voice_mix.schema.json", "config/T3_VOICE_MIX_V1_0_0.json"),
+                ("schemas/T3_voice_candidates.schema.json", "audio/voice/t3-voice-candidates-v1/manifest.json"),
                 ("schemas/render_job.schema.json", "fixtures/t3-coulisses/render_job.valid.json"),
                 ("schemas/render_result.schema.json", "fixtures/t3-coulisses/render_result.valid.json"),
                 ("schemas/render_error.schema.json", "fixtures/t3-coulisses/render_error.unsupported_media.json")
@@ -121,6 +128,63 @@ def main() -> int:
             source_manifest = json.loads((package_root / "audio/music/t3-afrobeat-v1/source_manifest.json").read_text(encoding="utf-8"))
             originals = {item["official_original_filename"] for item in source_manifest["tracks"]}
             checks.append(check("no_full_pixabay_source", not (originals & {path.name for path in package_root.rglob("*.mp3")})))
+
+            candidate_rows = voice_candidates["candidates"]
+            candidate_files_ok = True
+            for item in candidate_rows:
+                source_path = package_root / "audio/voice/t3-voice-candidates-v1" / item["source_file"]
+                listening_path = package_root / "audio/voice/t3-voice-candidates-v1" / item["listening_file"]
+                candidate_files_ok &= source_path.is_file() and sha256(source_path) == item["source_sha256"]
+                candidate_files_ok &= listening_path.is_file() and sha256(listening_path) == item["listening_sha256"]
+            checks.append(check(
+                "exactly_four_comparable_voice_candidates",
+                voice_candidates["candidate_count"] == 4
+                and len(candidate_rows) == 4
+                and [item["candidate"] for item in candidate_rows] == ["VOIX-A", "VOIX-B", "VOIX-C", "VOIX-D"]
+                and len({item["internal_voice_id"] for item in candidate_rows}) == 4
+                and voice_candidates["same_text_for_all"] is True
+                and voice_candidates["language"] == "fr"
+                and candidate_files_ok,
+                [{"candidate": item["candidate"], "sha256": item["listening_sha256"]} for item in candidate_rows]
+            ))
+            gate = voice_candidates["owner_gate"]
+            checks.append(check(
+                "owner_selected_voice_A_matching_final_voice_02",
+                voice_candidates["status"] == "owner_selected"
+                and gate["decision"] == "selected"
+                and gate["selected_candidate"] == "VOIX-A"
+                and gate["selected_internal_voice_id"] == "voice-02"
+                and voice_approval["selected_candidate"] == "VOIX-A"
+                and voice_approval["selected_internal_voice_id"] == voice_mix["voice"]["voice_id"] == "voice-02"
+                and voice_approval["same_as_previously_approved_final_voice"] is True,
+                {"candidate": gate["selected_candidate"], "voice_id": gate["selected_internal_voice_id"]}
+            ))
+            checks.append(check(
+                "voice_remediation_chronology_declared_honestly",
+                voice_candidates["chronology"]["type"] == "retrospective_remediation"
+                and voice_candidates["chronology"]["historical_master_predates_this_four-candidate_archive"] is True
+                and voice_candidates["chronology"]["master_visual_modified"] is False
+                and voice_approval["consequences"]["existing_master_visual_modified"] is False
+            ))
+            render_run = remediation_run["run"]
+            downloaded_proof = remediation_run["downloaded_artifact_validation"]
+            checks.append(check(
+                "post_selection_github_render_and_downloaded_artifact_validated",
+                render_run["id"] == 44574915753
+                and render_run["head_sha"] == "1e6a945ebb275c86fe3fafe389f56200ae8c1315"
+                and render_run["conclusion"] == "success"
+                and remediation_server_validation["status"] == "PASS"
+                and remediation_server_validation["summary"] == {"passed": 45, "failed": 0, "total": 45}
+                and remediation_downloaded_validation["status"] == "PASS"
+                and remediation_downloaded_validation["summary"] == {"passed": 45, "failed": 0, "total": 45}
+                and downloaded_proof["sha256_manifest_verified"] is True
+                and downloaded_proof["video_sha256"] == "4208d58f52804b2440845c9ce5b249695e9072d8b707ae134386d4bc494740de"
+                and downloaded_proof["approved_visual_stream_sha256"] == "8e415063add70f5807e009b2306c6b1154b0ec19bf35d5b9350012a5f4abe666"
+                and downloaded_proof["byte_identical_to_historical_owner_approved_master"] is True
+                and downloaded_proof["candidate_manifest_in_artifact"] is True
+                and downloaded_proof["owner_voice_approval_in_artifact"] is True,
+                {"run_id": render_run["id"], "head_sha": render_run["head_sha"], "video_sha256": downloaded_proof["video_sha256"]}
+            ))
 
             sys.path.insert(0, str(package_root))
             module = importlib.import_module("adapter.t3_adapter")
@@ -166,7 +230,21 @@ def main() -> int:
             checks.append(check("no_embedded_secret_values", not leaked, leaked))
             checks.append(check("handoff_declares_cloudflare_not_deployed", json.loads((package_root / "integration-handoff/T3_CLOUDFLARE_BOUNDARY_V1.json").read_text(encoding="utf-8"))["cloudflare_deployed"] is False))
             deviations = canonical["known_protocol_deviations"]
-            checks.append(check("known_protocol_deviation_declared_not_hidden", len(deviations) == 1 and deviations[0]["id"] == "VOICE_CANDIDATE_EVIDENCE_COUNT", deviations))
+            checks.append(check("no_known_template_protocol_deviation_remaining", deviations == [], deviations))
+
+            extracted_tests = subprocess.run(
+                [sys.executable, "-B", "-m", "unittest", "discover", "-s", "tests", "-q"],
+                cwd=package_root,
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                check=False
+            )
+            checks.append(check(
+                "included_test_suite_passes_after_clean_extraction",
+                extracted_tests.returncode == 0,
+                {"returncode": extracted_tests.returncode, "output_tail": extracted_tests.stdout[-4000:]}
+            ))
 
     status = "PASS" if all(item["status"] == "PASS" for item in checks) else "FAIL"
     proof = {
@@ -174,8 +252,9 @@ def main() -> int:
         "zip": {"file": args.zip.name, "bytes": args.zip.stat().st_size, "sha256": sha256(args.zip)},
         "checks": checks,
         "summary": {"passed": sum(item["status"] == "PASS" for item in checks), "failed": sum(item["status"] == "FAIL" for item in checks), "total": len(checks)},
-        "strict_universal_protocol_100_percent": False,
-        "declared_deviation": "Four comparable candidate voice demo files are not archived; selected voice and final human approval are proven."
+        "strict_universal_protocol_100_percent": True,
+        "declared_deviation": None,
+        "remediation_chronology": "Four comparable candidates and a renewed owner selection were completed retrospectively; the historical order is preserved in the candidate manifest. Production deployment remains a separate integration scope."
     }
     args.proof.parent.mkdir(parents=True, exist_ok=True)
     args.proof.write_text(json.dumps(proof, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

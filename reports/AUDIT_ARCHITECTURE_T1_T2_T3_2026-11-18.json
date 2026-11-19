@@ -120,17 +120,24 @@
         "golden conformance lock",
         "deterministic integrator ZIP builder and clean-extraction validator",
         "Cloudflare/common-control-plane handoff boundary with no secrets or deployment claims",
-        "release publication disabled by default"
+        "release publication disabled by default",
+        "four distinct comparable French voice candidate demonstrations archived with source and normalized hashes",
+        "explicit owner selection VOIX-A mapped to historical final voice-02",
+        "retrospective remediation chronology declared without changing the approved visual master"
       ],
       "local_integrator_package": {
         "status": "PASS",
-        "checks": "29/29 PASS",
+        "checks": "34/34 PASS",
         "deterministic_two_builds_identical": true,
-        "zip_hash_authority": "GitHub package workflow artifact; local hash intentionally not canonical because the audit/status files are part of the ZIP payload."
+        "payload_file_count": 126,
+        "includes_four_voice_candidates": true,
+        "includes_owner_voice_approval": true,
+        "zip_hash_authority": "GitHub package workflow artifact; local hash is preflight-only because the GitHub rerun is the delivery authority.",
+        "includes_post_selection_github_render_proofs": true,
+        "included_test_suite_after_clean_extraction": "43/43 PASS",
+        "includes_prior_github_package_proofs": true
       },
-      "remaining_gap_against_current_universal_protocol": [
-        "the repository does not archive exactly four comparable candidate voice demo files; voice-02 selection and final human approval are proven"
-      ],
+      "remaining_gap_against_current_universal_protocol": [],
       "cloudflare": {
         "worker_code_present": false,
         "boundary_contract_present": true,
@@ -141,7 +148,74 @@
         "deployed": false,
         "assessment": "correctly separated; common production deployment not authorized"
       },
-      "strict_100_percent": false
+      "strict_100_percent": true,
+      "test_result_after_voice_remediation": {
+        "status": "PASS",
+        "passed": 43,
+        "failed": 0,
+        "local": true,
+        "github_ci_run": 44574921601,
+        "github_ci_status": "success"
+      },
+      "voice_candidate_remediation": {
+        "chronology": "retrospective_remediation_after_historical_master",
+        "candidate_count": 4,
+        "candidates": [
+          "VOIX-A",
+          "VOIX-B",
+          "VOIX-C",
+          "VOIX-D"
+        ],
+        "owner_selected_candidate": "VOIX-A",
+        "selected_internal_voice_id": "voice-02",
+        "same_as_previously_approved_final_voice": true,
+        "visual_master_modified": false
+      },
+      "known_protocol_deviations": [],
+      "github_remediation_validation": {
+        "contracts_workflow_run": 44574921601,
+        "contracts_workflow_status": "PASS after owner selection and date correction",
+        "render_run": 44574915753,
+        "render_source_commit": "1e6a945ebb275c86fe3fafe389f56200ae8c1315",
+        "render_status": "PASS",
+        "builder_checks": "22/22 PASS",
+        "server_independent_checks": "45/45 PASS",
+        "downloaded_artifact_checks": "45/45 PASS",
+        "artifact_id": 14555897675,
+        "artifact_sha256_manifest_verified": true,
+        "candidate_manifest_and_owner_approval_in_artifact": true,
+        "video_sha256": "4208d58f52804b2440845c9ce5b249695e9072d8b707ae134386d4bc494740de",
+        "video_stream_sha256": "8e415063add70f5807e009b2306c6b1154b0ec19bf35d5b9350012a5f4abe666",
+        "byte_identical_to_historical_owner_approved_master": true,
+        "visual_master_modified": false,
+        "post_selection_render_rerun_required": false,
+        "post_selection_package_rerun_required": false
+      },
+      "github_package_validation": {
+        "package_run": 44577055304,
+        "package_source_commit": "4885f1dc73482855798670187e3decaabfac6978",
+        "package_ci_run": 44577058921,
+        "status": "PASS",
+        "artifact_id": 14557651100,
+        "artifact_name": "T3-integrator-package-44577055304",
+        "zip_file": "restauration-t3-coulisses-v1.0.0.zip",
+        "zip_bytes": 29485605,
+        "zip_sha256": "59924b35fa1e76389940d2382840759246de29224eb0b2e4cd28cdf69b30f84e",
+        "payload_file_count": 121,
+        "deterministic_two_builds_identical": true,
+        "server_clean_extraction_checks": "34/34 PASS",
+        "downloaded_clean_extraction_checks": "34/34 PASS",
+        "included_test_suite_server_extraction": "43/43 PASS",
+        "included_test_suite_downloaded_extraction": "43/43 PASS",
+        "sha256_manifest_verified_after_download": true,
+        "strict_universal_protocol_100_percent": true,
+        "declared_deviation": null,
+        "package_release_created": false
+      },
+      "workflow_status": {
+        "number": 18,
+        "label": "Paquet prêt pour l’agent intégrateur"
+      }
     }
   },
   "shared_cloudflare": {
@@ -154,8 +228,9 @@
   },
   "overall_conclusion": {
     "creative_and_media_masters": "PASS for the validated T1, T2 and T3 reference outputs within their documented scopes",
-    "current_universal_architecture": "NOT 100 percent for any of the three legacy/current repositories",
+    "current_universal_architecture": "T3 package architecture is strict after retrospective voice-evidence remediation and validated GitHub render/package reruns; T1 and T2 retain the documented legacy gaps.",
     "cloudflare_production": "NOT DEPLOYED",
-    "safe_next_step": "Use the remediated T3 package pattern and enforce four archived voice candidates, automatic music rotation, package/OTA metadata and Cloudflare separation from the beginning of T4 and T5."
-  }
+    "safe_next_step": "Merge T3 PR #2. T4 may resume only after that consolidation; Android, OTA operation and production Cloudflare remain separate integration work."
+  },
+  "last_updated_local": "2026-11-19"
 }

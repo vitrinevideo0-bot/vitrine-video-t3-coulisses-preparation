@@ -69,7 +69,7 @@ Après l’approbation finale, l’audit croisé T1/T2/T3 a ajouté sans modifie
 
 `ota_implemented=false`, `android_integration_implemented=false` et `cloudflare_deployed=false` restent explicites. Aucun Worker, secret, compte, bucket ou endpoint de production n’est dupliqué dans le JSON du gabarit. Le workflow du paquet peut publier une Release uniquement sur demande, avec l’option désactivée par défaut.
 
-**Limite déclarée :** `voice-02` et le mix final sont approuvés, mais le dépôt ne conserve pas quatre fichiers comparables de démonstrations vocales candidates. T3 n’est donc pas présenté comme strictement conforme à 100 % au protocole universel actuel; T4 et T5 devront archiver ces quatre candidates.
+**Remédiation vocale clôturée :** l’audit avait déclaré l’absence de quatre démonstrations vocales candidates comparables. La branche `fix/t3-four-voice-candidates` archive maintenant `VOIX-A` à `VOIX-D`, toutes sur le même texte français, sans retiming, avec mesures et hashes. Le propriétaire a choisi explicitement **VOIX-A**, qui correspond à `voice-02` déjà utilisée par le master approuvé. Cette remédiation est rétrospective et ne réécrit pas l’histoire. La CI, le rendu/mixage GitHub post-sélection et le paquet intégrateur téléchargé sont validés; le MP4 est byte-identique au master approuvé, son visuel reste immuable et le statut atteint **18 — Paquet prêt pour l’agent intégrateur**.
 
 - [Run de rendu GitHub Actions v0.4](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44555498879)
 - [Pré-Release sans traits bleus v0.4](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.4.0-silent-candidate-4)

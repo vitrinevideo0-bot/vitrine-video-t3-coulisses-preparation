@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "purpose": "post-selection GitHub render and mix remediation proof",
+  "run": {
+    "id": 44574915753,
+    "run_number": 3,
+    "name": "Rendu complet T3 — voix + musique D",
+    "event": "workflow_dispatch",
+    "status": "completed",
+    "conclusion": "success",
+    "head_branch": "fix/t3-four-voice-candidates",
+    "head_sha": "1e6a945ebb275c86fe3fafe389f56200ae8c1315",
+    "path": ".github/workflows/render-complete-voice-music-D.yml",
+    "html_url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44574915753",
+    "created_at": "2026-11-19T17:13:55Z",
+    "updated_at": "2026-11-19T17:16:19Z"
+  },
+  "workflow_inputs": {},
+  "jobs": [
+    {
+      "name": "render-validate-publish",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-19T17:13:58Z",
+      "completed_at": "2026-11-19T17:16:18Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Checkout T3",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Préparer Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Installer FFmpeg et les dépendances verrouillées",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Compiler et tester tous les contrats",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Télécharger le silencieux v0.4 approuvé et verrouiller ses hashes",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Produire un seul rendu complet avec Dlozi Lam",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Valider indépendamment vidéo, voix, musique et audio",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Écrire le résumé du run",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Assembler la livraison sans source Pixabay intégrale",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Publier l’artefact GitHub Actions",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Préparer les notes de pré-Release",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 12
+        },
+        {
+          "name": "Publier une pré-Release additive et immuable",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 13
+        },
+        {
+          "name": "Post Préparer Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25
+        },
+        {
+          "name": "Post Checkout T3",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 14555897675,
+      "name": "T3-complete-voice-music-D-44574915753",
+      "size_in_bytes": 19663059,
+      "expired": false,
+      "created_at": "2026-11-19T17:16:15Z",
+      "updated_at": "2026-11-19T17:16:15Z"
+    }
+  ],
+  "downloaded_artifact_validation": {
+    "sha256_manifest_verified": true,
+    "independent_checks": "45/45 PASS",
+    "video_sha256": "4208d58f52804b2440845c9ce5b249695e9072d8b707ae134386d4bc494740de",
+    "approved_visual_stream_sha256": "8e415063add70f5807e009b2306c6b1154b0ec19bf35d5b9350012a5f4abe666",
+    "byte_identical_to_historical_owner_approved_master": true,
+    "candidate_manifest_in_artifact": true,
+    "owner_voice_approval_in_artifact": true
+  }
+}
