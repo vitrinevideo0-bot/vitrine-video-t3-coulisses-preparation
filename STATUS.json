@@ -2,9 +2,9 @@
   "template_id": "RESTAURATION-T3",
   "sector": "RESTAURATION",
   "catalog_name": "Coulisses de préparation",
-  "catalog_status": "À DÉVELOPPER",
-  "workflow_status_number": 12,
-  "workflow_status": "Voix et musique D approuvées — paquet GitHub prêt, rendu serveur à lancer",
+  "catalog_status": "CANDIDAT COMPLET GITHUB À VALIDER",
+  "workflow_status_number": 13,
+  "workflow_status": "Rendu complet GitHub voix + musique D produit et revalidé 45/45",
   "reference_batch_current": "LOT-03",
   "selected_reference": "R3-B03-REF-02 + R3-B03-REF-04",
   "branch_planned": "main",
@@ -16,7 +16,7 @@
     "repository_created": true,
     "push_performed": true,
     "default_branch": "main",
-    "render_source_commit": "cfbc1f82de20a3faf48fbad09efa831d323ce470"
+    "render_source_commit": "073888f7498385e576d42eed3a3c0f7dd71bb9d5"
   },
   "proofs": [
     "FICHE_DEMARRAGE.md",
@@ -121,7 +121,13 @@
     "audio/scripts/build_t3_complete_voice.py",
     "tools/validate_complete.py",
     "tests/test_audio_contract.py",
-    ".github/workflows/render-complete-voice-music-D.yml"
+    ".github/workflows/render-complete-voice-music-D.yml",
+    "proofs/complete-v0.7-server/T3_COMPLETE_RENDER_REPORT_RUN_44564485698.json",
+    "proofs/complete-v0.7-server/T3_COMPLETE_SERVER_VALIDATION_RUN_44564485698.json",
+    "proofs/complete-v0.7-server/T3_COMPLETE_DOWNLOADED_RELEASE_VALIDATION_RUN_44564485698.json",
+    "proofs/complete-v0.7-server/T3_COMPLETE_GITHUB_RELEASE_AUDIT_RUN_44564485698.json",
+    "proofs/complete-v0.7-server/SHA256SUMS_COMPLETE_RELEASE_RUN_44564485698.txt",
+    "reports/RAPPORT_RENDU_COMPLET_GITHUB_RUN_44564485698.md"
   ],
   "owner_decisions": [
     {
@@ -232,7 +238,7 @@
       "artist": "PremiumMusicOdyssey"
     }
   ],
-  "decision_expected": "Aucune validation vocale supplémentaire. Pousser les quatre dérivés et la voix, puis lancer un seul rendu GitHub Actions avec D — Dlozi Lam.",
+  "decision_expected": "Visionner le MP4 complet produit sur GitHub avec la musique D, puis confirmer la validation finale ou demander une correction précise.",
   "blockers": [],
   "development_started": true,
   "music_started": true,
@@ -261,7 +267,7 @@
     "voice_mix": "config/T3_VOICE_MIX_V1_0_0.json",
     "complete_render_workflow": ".github/workflows/render-complete-voice-music-D.yml"
   },
-  "workflow_note": "Les quatre dérivés musicaux A–D et la voix voice-02 sont approuvés. Le rendu complet est verrouillé sur D — Dlozi Lam; la vidéo v0.4 reste immuable et sera copiée bit pour bit. Paquet et workflow prêts avant push.",
+  "workflow_note": "Rendu complet produit exclusivement sur GitHub Actions avec D — Dlozi Lam et voice-02. Constructeur 22/22 PASS, validation serveur 45/45 PASS, revalidation après téléchargement 45/45 PASS; flux vidéo v0.4 inchangé.",
   "development_phase": {
     "engine": "engine/render_silent.py",
     "source_manifest": "rushes/manifest.json",
@@ -745,15 +751,16 @@
       "proof": "/home/user/T3_AUDITION_4_MUSIQUES_AFROBEAT/T3_MUSIC_AUDITION_VALIDATION.json"
     },
     "final_selection": "D",
-    "github_publication_performed": false,
+    "github_publication_performed": true,
     "source_mp3_publication_allowed": false,
-    "next_step": "Publish the four approved derivatives and voice assets, then render one complete GitHub master with D.",
+    "next_step": "Completed: four derivatives published in the repository; final server render used D only.",
     "owner_approval": "100_percent",
     "final_selection_details": {
       "pixabay_id": 245452,
       "title": "Dlozi Lam",
       "artist": "PremiumMusicOdyssey"
-    }
+    },
+    "github_publication_commit": "073888f7498385e576d42eed3a3c0f7dd71bb9d5"
   },
   "voice_music_audition_v0_6": {
     "status": "owner_approved",
@@ -820,10 +827,11 @@
       "proof": "/home/user/T3_AUDITION_4_MUSIQUES_AFROBEAT/T3_VOIX_MUSIQUES_4_VARIANTES/T3_VOICE_MUSIC_INDEPENDENT_VALIDATION.json"
     },
     "video_stream_unchanged": true,
-    "github_final_render_started": false,
+    "github_final_render_started": true,
     "owner_voice_rate_approved": true,
     "owner_approval_date": "2026-11-18",
-    "next_step": "Push and dispatch the complete GitHub render locked to music D."
+    "next_step": "Completed: server master rendered with choice D; owner final viewing pending.",
+    "github_final_render_completed": true
   },
   "music_selection": {
     "approved_choices": [
@@ -857,12 +865,120 @@
     "contract": "config/T3_VOICE_MIX_V1_0_0.json"
   },
   "complete_render": {
-    "status": "ready_to_push_and_dispatch",
+    "status": "github_server_pass_downloaded_release_revalidated",
     "workflow": ".github/workflows/render-complete-voice-music-D.yml",
     "music_choice": "D",
-    "expected_output": "VIDEO_T3_COMPLETE_VOIX_MUSIQUE_D_V0_7_A_VALIDER.mp4",
-    "github_run_started": false,
-    "release_created": false,
+    "music_title": "Dlozi Lam",
+    "music_artist": "PremiumMusicOdyssey",
+    "voice_id": "voice-02",
+    "voice_placements_seconds": [
+      1.2,
+      6.8,
+      14.7,
+      21.8
+    ],
+    "render_commit": "073888f7498385e576d42eed3a3c0f7dd71bb9d5",
+    "ci_run": {
+      "id": 44564478503,
+      "conclusion": "success",
+      "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44564478503"
+    },
+    "github_actions": {
+      "run_id": 44564485698,
+      "run_number": 1,
+      "conclusion": "success",
+      "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44564485698"
+    },
+    "artifact": {
+      "id": 14550124006,
+      "name": "T3-complete-voice-music-D-44564485698",
+      "bytes": 19659315,
+      "retention_days": 30
+    },
+    "release": {
+      "tag": "t3-coulisses-v0.7.0-complete-D-1",
+      "prerelease": true,
+      "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.7.0-complete-D-1",
+      "asset_count": 11,
+      "artifact_byte_identical": true
+    },
+    "video": {
+      "filename": "VIDEO_T3_COMPLETE_VOIX_MUSIQUE_D_V0_7_A_VALIDER.mp4",
+      "download_url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/download/t3-coulisses-v0.7.0-complete-D-1/VIDEO_T3_COMPLETE_VOIX_MUSIQUE_D_V0_7_A_VALIDER.mp4",
+      "sha256": "4208d58f52804b2440845c9ce5b249695e9072d8b707ae134386d4bc494740de",
+      "bytes": 11363724,
+      "duration_seconds": 30.0,
+      "width": 720,
+      "height": 1280,
+      "fps": 30,
+      "frames": 900,
+      "video_codec": "h264",
+      "pixel_format": "yuv420p",
+      "audio_codec": "aac",
+      "audio_sample_rate_hz": 48000,
+      "audio_channels": 2
+    },
+    "audio": {
+      "integrated_lufs": -16.23,
+      "true_peak_dbtp": -1.99,
+      "clipped_samples": 0,
+      "speech_to_music_db": 10.92
+    },
+    "visual": {
+      "approved_silent_file_sha256": "cd61d3cf793874a8b7d2eb8fe694861048368ba64b01216395c6bba0eb879774",
+      "expected_video_stream_sha256": "8e415063add70f5807e009b2306c6b1154b0ec19bf35d5b9350012a5f4abe666",
+      "output_video_stream_sha256": "8e415063add70f5807e009b2306c6b1154b0ec19bf35d5b9350012a5f4abe666",
+      "unchanged": true
+    },
+    "validation": {
+      "builder": {
+        "status": "PASS",
+        "passed": 22,
+        "failed": 0
+      },
+      "server_independent": {
+        "status": "PASS",
+        "passed": 45,
+        "failed": 0
+      },
+      "downloaded_release": {
+        "status": "PASS",
+        "passed": 45,
+        "failed": 0
+      },
+      "release_sha256_manifest_verified": true
+    },
+    "github_run_started": true,
+    "release_created": true,
+    "authoritative_master_source": "github_actions",
+    "owner_final_viewing_pending": true,
     "local_outputs_are_not_final": true
+  },
+  "last_complete_server_evidence": {
+    "date_local": "2026-11-18",
+    "run_id": 44564485698,
+    "run_number": 1,
+    "conclusion": "success",
+    "commit": "073888f7498385e576d42eed3a3c0f7dd71bb9d5",
+    "release_tag": "t3-coulisses-v0.7.0-complete-D-1",
+    "video_sha256": "4208d58f52804b2440845c9ce5b249695e9072d8b707ae134386d4bc494740de",
+    "server_validation": {
+      "status": "PASS",
+      "passed": 45,
+      "failed": 0
+    },
+    "downloaded_release_validation": {
+      "status": "PASS",
+      "passed": 45,
+      "failed": 0
+    },
+    "artifact_release_integrity": {
+      "asset_count": 11,
+      "sha256_verified": true,
+      "byte_identical": true
+    },
+    "visual_stream_unchanged": true,
+    "music_choice": "D",
+    "voice_id": "voice-02"
   }
 }

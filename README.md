@@ -48,6 +48,12 @@ Le rendu complet est verrouillé sur **D — Dlozi Lam / PremiumMusicOdyssey** :
 
 Le workflow `.github/workflows/render-complete-voice-music-D.yml` télécharge le silencieux approuvé, vérifie ses deux hashes, construit le mix sur le runner, exécute une validation indépendante et publie l’artefact ainsi qu’une pré-Release immuable.
 
+Le rendu complet a été produit au commit `073888f` par le run GitHub Actions `44564485698` : **22/22 contrôles du constructeur et 45/45 contrôles indépendants PASS**. La pré-Release téléchargée a été revalidée **45/45 PASS**; l’artefact Actions et les 11 assets de la pré-Release sont identiques octet par octet.
+
+- [Run du rendu complet voix + musique D](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44564485698)
+- [Pré-Release du rendu complet](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.7.0-complete-D-1)
+- [Téléchargement direct du MP4 complet](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/download/t3-coulisses-v0.7.0-complete-D-1/VIDEO_T3_COMPLETE_VOIX_MUSIQUE_D_V0_7_A_VALIDER.mp4)
+
 - [Run de rendu GitHub Actions v0.4](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44555498879)
 - [Pré-Release sans traits bleus v0.4](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.4.0-silent-candidate-4)
 - [Téléchargement direct du MP4](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/download/t3-coulisses-v0.4.0-silent-candidate-4/VIDEO_T3_SILENCIEUSE_SANS_TRAITS_BLEUS_V0_4_A_VALIDER.mp4)
@@ -106,6 +112,8 @@ Le workflow historique **Rendu silencieux T3 sur GitHub** :
 - `audio/scripts/build_t3_complete_voice.py` — constructeur reproductible du master complet ;
 - `tools/validate_complete.py` — validation indépendante voix, musique, loudness et invariance visuelle ;
 - `.github/workflows/render-complete-voice-music-D.yml` — rendu serveur, artefact et pré-Release ;
+- `proofs/complete-v0.7-server/` — rapports serveur, audit Release et revalidation après téléchargement ;
+- `reports/RAPPORT_RENDU_COMPLET_GITHUB_RUN_44564485698.md` — synthèse du master complet ;
 - `docs/LICENCES_RUSHS.md` — provenance et limites de licence.
 
 ## Références créatives

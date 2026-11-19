@@ -1,0 +1,204 @@
+{
+  "schema_version": "1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "status": "PASS",
+  "date_local": "2026-11-18",
+  "repository": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation",
+  "render_commit": "073888f7498385e576d42eed3a3c0f7dd71bb9d5",
+  "ci": {
+    "run_id": 44564478503,
+    "conclusion": "success",
+    "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44564478503"
+  },
+  "render": {
+    "run_id": 44564485698,
+    "run_number": 1,
+    "conclusion": "success",
+    "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44564485698",
+    "artifact_id": 14550124006,
+    "artifact_name": "T3-complete-voice-music-D-44564485698",
+    "artifact_size_bytes": 19659315
+  },
+  "release": {
+    "tag": "t3-coulisses-v0.7.0-complete-D-1",
+    "prerelease": true,
+    "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.7.0-complete-D-1",
+    "direct_video_url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/download/t3-coulisses-v0.7.0-complete-D-1/VIDEO_T3_COMPLETE_VOIX_MUSIQUE_D_V0_7_A_VALIDER.mp4",
+    "asset_count": 11,
+    "assets": [
+      {
+        "name": "RAPPORT_RENDU_COMPLET.md",
+        "bytes": 716,
+        "sha256": "be51f555c4f6a5f3cd9d82b1f2e5066e548973d26529d0766306ac71ca8453bb"
+      },
+      {
+        "name": "SHA256SUMS.txt",
+        "bytes": 982,
+        "sha256": "85ca01b8321c18ce49f0b054f9ea96158bb490941b1a1c9dd5806837d9dc3adf"
+      },
+      {
+        "name": "T3_COMPLETE_INDEPENDENT_VALIDATION.json",
+        "bytes": 15751,
+        "sha256": "00912d7ba6c1aa14bb0e1d3014dd781c7220e7535baa29bb17a8b8727b709e97"
+      },
+      {
+        "name": "T3_COMPLETE_RENDER_REPORT.json",
+        "bytes": 7193,
+        "sha256": "fecada9c048a542e028c1b164051cbdccc54d7461e78f1c5810d700aba2bc6a8"
+      },
+      {
+        "name": "T3_MASTER_AUDIO_VOIX_MUSIQUE_D_30S.wav",
+        "bytes": 8640102,
+        "sha256": "1745ef3a330c01f65a08b5d53c21492818673d69a8906136a987ee7132041d8d"
+      },
+      {
+        "name": "T3_MUSIC_BUILD_PROVENANCE.json",
+        "bytes": 1000,
+        "sha256": "319f54ddfa5695801f91b3e3d70d3deb1fe115c33df814766922d2e1a5c3bc2d"
+      },
+      {
+        "name": "T3_MUSIC_PACK_V1_0_0.json",
+        "bytes": 6852,
+        "sha256": "140bde24f8672eb4fa4efabef75e1f82b205fee876176a39b0385253bca484e2"
+      },
+      {
+        "name": "T3_MUSIC_SOURCE_MANIFEST.json",
+        "bytes": 3464,
+        "sha256": "820e542fa0127623afaf7df5f2d6a43e03997628fa09ea11f901e350371d5cc0"
+      },
+      {
+        "name": "T3_VOICE_MANIFEST.json",
+        "bytes": 3295,
+        "sha256": "8f060e535e3e8bdc79ba72afb10a7fb07bebc20f5d4fc64977de18f8341f85a9"
+      },
+      {
+        "name": "T3_VOICE_MIX_V1_0_0.json",
+        "bytes": 5614,
+        "sha256": "50832c99ed66354174c6c299bc6cdb8b5bddc64fdf47132d2a2f0d1c881da10a"
+      },
+      {
+        "name": "VIDEO_T3_COMPLETE_VOIX_MUSIQUE_D_V0_7_A_VALIDER.mp4",
+        "bytes": 11363724,
+        "sha256": "4208d58f52804b2440845c9ce5b249695e9072d8b707ae134386d4bc494740de"
+      }
+    ]
+  },
+  "video": {
+    "name": "VIDEO_T3_COMPLETE_VOIX_MUSIQUE_D_V0_7_A_VALIDER.mp4",
+    "bytes": 11363724,
+    "sha256": "4208d58f52804b2440845c9ce5b249695e9072d8b707ae134386d4bc494740de"
+  },
+  "integrity": {
+    "artifact_sha256_manifest_verified": true,
+    "release_sha256_manifest_verified": true,
+    "artifact_and_release_file_sets_identical": true,
+    "artifact_and_release_byte_identical": true,
+    "downloaded_release_revalidated": true
+  },
+  "validation": {
+    "server": {
+      "status": "PASS",
+      "passed": 45,
+      "failed": 0,
+      "total": 45
+    },
+    "downloaded_release": {
+      "status": "PASS",
+      "passed": 45,
+      "failed": 0,
+      "total": 45
+    },
+    "builder": {
+      "status": "PASS",
+      "passed": 22,
+      "failed": 0
+    }
+  },
+  "contract": {
+    "music_choice": "D",
+    "music_title": "Dlozi Lam",
+    "music_artist": "PremiumMusicOdyssey",
+    "voice_id": "voice-02",
+    "voice_placements_s": [
+      1.2,
+      6.8,
+      14.7,
+      21.8
+    ],
+    "visual_stream_sha256": "8e415063add70f5807e009b2306c6b1154b0ec19bf35d5b9350012a5f4abe666",
+    "visual_bitstream_unchanged": true,
+    "duration_s": 30.0,
+    "frames": 900,
+    "width": 720,
+    "height": 1280,
+    "fps": 30,
+    "audio_sample_rate_hz": 48000,
+    "audio_channels": 2,
+    "integrated_lufs": -16.23,
+    "true_peak_dbtp": -1.99,
+    "clipped_samples": 0
+  },
+  "checks": [
+    {
+      "check": "ci_success",
+      "status": "PASS"
+    },
+    {
+      "check": "render_workflow_success",
+      "status": "PASS"
+    },
+    {
+      "check": "release_created",
+      "status": "PASS"
+    },
+    {
+      "check": "one_mp4_in_release",
+      "status": "PASS"
+    },
+    {
+      "check": "sha256_manifest_verified_artifact",
+      "status": "PASS"
+    },
+    {
+      "check": "sha256_manifest_verified_release",
+      "status": "PASS"
+    },
+    {
+      "check": "artifact_release_byte_identical",
+      "status": "PASS"
+    },
+    {
+      "check": "server_validation_45_of_45",
+      "status": "PASS"
+    },
+    {
+      "check": "downloaded_release_validation_45_of_45",
+      "status": "PASS"
+    },
+    {
+      "check": "visual_stream_immutable",
+      "status": "PASS"
+    },
+    {
+      "check": "music_D_selected_and_identified",
+      "status": "PASS"
+    },
+    {
+      "check": "voice_and_ducking_contract",
+      "status": "PASS"
+    },
+    {
+      "check": "no_clipping",
+      "status": "PASS"
+    },
+    {
+      "check": "no_full_pixabay_source_in_release",
+      "status": "PASS"
+    }
+  ],
+  "summary": {
+    "passed": 14,
+    "failed": 0,
+    "total": 14
+  }
+}
