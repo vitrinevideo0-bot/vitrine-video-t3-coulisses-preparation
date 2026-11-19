@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "candidate_version": "0.3.0",
+  "status": "github_server_pass_pending_owner_validation",
+  "owner_approved": false,
+  "source_commit": "cfbc1f82de20a3faf48fbad09efa831d323ce470",
+  "ci": {
+    "run_id": 44551107670,
+    "conclusion": "success",
+    "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44551107670"
+  },
+  "github_actions": {
+    "run_id": 44551121356,
+    "conclusion": "success",
+    "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44551121356"
+  },
+  "release": {
+    "tag": "t3-coulisses-v0.3.0-silent-candidate-3",
+    "prerelease": true,
+    "url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.3.0-silent-candidate-3"
+  },
+  "video": {
+    "filename": "VIDEO_T3_SILENCIEUSE_MOTION_TEXT_LISIBLE_V0_3_A_VALIDER.mp4",
+    "download_url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/download/t3-coulisses-v0.3.0-silent-candidate-3/VIDEO_T3_SILENCIEUSE_MOTION_TEXT_LISIBLE_V0_3_A_VALIDER.mp4",
+    "sha256": "757ba579bb6d1168fedd5e74c098c228d631d316449309eecc23ff21c6c1543b",
+    "bytes": 10616560,
+    "duration_seconds": 30.0,
+    "width": 720,
+    "height": 1280,
+    "fps": 30,
+    "frames": 900,
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "audio_streams": 0
+  },
+  "validation": {
+    "tests": {"status": "PASS", "passed": 14, "failed": 0},
+    "server": {"status": "PASS", "passed": 27, "failed": 0},
+    "downloaded_release": {"status": "PASS", "passed": 27, "failed": 0},
+    "release_sha256_manifest_verified": true,
+    "all_17_events_applied": true,
+    "all_4_graphics_applied": true,
+    "technical_labels_rendered": false
+  },
+  "typography": {
+    "config": "config/T3_TEXT_MOTION_V0_3_0.json",
+    "variable_font_weights_explicit": true,
+    "merchant_name_weight": 700,
+    "location_weight": 650,
+    "cta_weight": 750,
+    "phone_weight": 700,
+    "minimum_effective_font_px_at_40_percent": 11.2,
+    "minimum_contrast_ratio_measured": 13.06,
+    "shadow_opacity": 230,
+    "stroke_width_px": 2,
+    "server_frames_at_40_percent": [
+      "proofs/typography-v0.3-server/T3_V0_3_IDENTITE_FRAME_086_40_PERCENT_RUN_44551121356.png",
+      "proofs/typography-v0.3-server/T3_V0_3_ACCROCHE_FRAME_551_40_PERCENT_RUN_44551121356.png",
+      "proofs/typography-v0.3-server/T3_V0_3_FINAL_FRAME_899_40_PERCENT_RUN_44551121356.png"
+    ]
+  }
+}

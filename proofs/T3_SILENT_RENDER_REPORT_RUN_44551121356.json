@@ -1,0 +1,490 @@
+{
+  "schema_version": "1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "engine_version": "1.1.0-readable-type",
+  "status": "silent_candidate_v0_3_legibility_corrected_pending_owner_validation",
+  "rendered_on": "github_actions",
+  "output": {
+    "file": "VIDEO_T3_SILENCIEUSE_MOTION_TEXT_LISIBLE_V0_3_A_VALIDER.mp4",
+    "bytes": 10616560,
+    "sha256": "757ba579bb6d1168fedd5e74c098c228d631d316449309eecc23ff21c6c1543b",
+    "width": 720,
+    "height": 1280,
+    "fps": 30,
+    "total_frames": 900,
+    "duration_seconds": 30,
+    "audio_streams_expected": 0
+  },
+  "source_manifest_sha256": "dd52c83c927ef77ba02f677619c1188b0bb5783b4824886d73d0fb1d1a0999ea",
+  "transition_contract_sha256": "ac2a5ac1bdb0b324b7b8c937fe71839092cb63cfacfaa5a6303e735128ac43e0",
+  "render_job_sha256": "b8ae7245d72136d7d3e956921936a980e5859c4369e0b4b2b4ca2873f9f15de5",
+  "text_motion_config_id": "T3_TEXT_MOTION_V0_3_0",
+  "text_motion_config_sha256": "1d3dccd94f800cf43c555ac8a7ac6c69f28263166d4da7e5886f7a3e434c3c61",
+  "typography_audit": {
+    "config_id": "T3_TEXT_MOTION_V0_3_0",
+    "preview_scale_floor": 0.4,
+    "required_effective_font_px": 11.0,
+    "required_contrast_ratio": 7.0,
+    "variable_font_weights_explicit": true,
+    "shadow": {
+      "offset_x_px": 3,
+      "offset_y_px": 4,
+      "opacity": 230,
+      "stroke_width_px": 2,
+      "stroke_opacity": 230
+    },
+    "roles": {
+      "merchant_name": {
+        "font": "Montserrat",
+        "weight": 700,
+        "minimum_font_size_px": 30,
+        "effective_minimum_at_preview_scale_px": 12.0,
+        "contrast_ratio": 13.06
+      },
+      "hero_product": {
+        "font": "DM Serif Display",
+        "weight": null,
+        "minimum_font_size_px": 48,
+        "effective_minimum_at_preview_scale_px": 19.2,
+        "contrast_ratio": 17.97
+      },
+      "offer_product": {
+        "font": "DM Serif Display",
+        "weight": null,
+        "minimum_font_size_px": 42,
+        "effective_minimum_at_preview_scale_px": 16.8,
+        "contrast_ratio": 17.97
+      },
+      "hook": {
+        "font": "DM Serif Display",
+        "weight": null,
+        "minimum_font_size_px": 42,
+        "effective_minimum_at_preview_scale_px": 16.8,
+        "contrast_ratio": 17.97
+      },
+      "price": {
+        "font": "Plus Jakarta Sans",
+        "weight": 700,
+        "minimum_font_size_px": 44,
+        "effective_minimum_at_preview_scale_px": 17.6,
+        "contrast_ratio": 17.97
+      },
+      "location": {
+        "font": "Plus Jakarta Sans",
+        "weight": 650,
+        "minimum_font_size_px": 28,
+        "effective_minimum_at_preview_scale_px": 11.2,
+        "contrast_ratio": 17.97
+      },
+      "cta": {
+        "font": "Montserrat",
+        "weight": 750,
+        "minimum_font_size_px": 28,
+        "effective_minimum_at_preview_scale_px": 11.2,
+        "contrast_ratio": 13.06
+      },
+      "phone": {
+        "font": "Plus Jakarta Sans",
+        "weight": 700,
+        "minimum_font_size_px": 30,
+        "effective_minimum_at_preview_scale_px": 12.0,
+        "contrast_ratio": 17.97
+      }
+    }
+  },
+  "owner_feedback_legibility_corrected": true,
+  "contact_sheet_file": "T3_TRANSITION_TEXT_PROOF_V0_3.jpg",
+  "merchant_payload_fields": [
+    "nom",
+    "produit",
+    "prix",
+    "whatsapp",
+    "quartier",
+    "accroche"
+  ],
+  "visible_text_contract": {
+    "T3_G01_IDENTITY": [
+      "Casa Tacos",
+      "Tacos maison"
+    ],
+    "T3_G02_OFFER": [
+      "Tacos maison",
+      "2 500 FCFA"
+    ],
+    "T3_G03_HOOK": [
+      "Préparé à la commande",
+      "Casa Tacos"
+    ],
+    "T3_G04_FINAL": [
+      "Casa Tacos",
+      "Tacos maison",
+      "2 500 FCFA",
+      "Kandi · près du marché central",
+      "COMMANDER MAINTENANT",
+      "+229 01 97 00 00 00"
+    ]
+  },
+  "forbidden_visible_strings": [
+    "SCÈNE",
+    "6 S",
+    "7 S",
+    "8 S",
+    "9 S",
+    "DÉMO",
+    "RUSHS",
+    "PEXELS",
+    "T3",
+    "INGRÉDIENTS",
+    "GESTE SIGNATURE",
+    "DRESSAGE",
+    "PRÊT À SERVIR"
+  ],
+  "technical_labels_rendered": false,
+  "graphics": [
+    {
+      "id": "T3_G01_IDENTITY",
+      "frames": [
+        18,
+        155
+      ],
+      "expected_frame_count": 138,
+      "applied_frame_count": 138,
+      "fields": [
+        "nom",
+        "produit"
+      ]
+    },
+    {
+      "id": "T3_G02_OFFER",
+      "frames": [
+        210,
+        377
+      ],
+      "expected_frame_count": 168,
+      "applied_frame_count": 168,
+      "fields": [
+        "produit",
+        "prix"
+      ]
+    },
+    {
+      "id": "T3_G03_HOOK",
+      "frames": [
+        450,
+        605
+      ],
+      "expected_frame_count": 156,
+      "applied_frame_count": 156,
+      "fields": [
+        "accroche",
+        "nom"
+      ]
+    },
+    {
+      "id": "T3_G04_FINAL",
+      "frames": [
+        660,
+        899
+      ],
+      "expected_frame_count": 240,
+      "applied_frame_count": 240,
+      "fields": [
+        "nom",
+        "produit",
+        "prix",
+        "whatsapp",
+        "quartier"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "scene": "S1",
+      "pexels_id": 7613417,
+      "sha256": "31cca446e309e78b29b4aa23b5046e235e40f668959c48b6b8ef6a2fe62bccab",
+      "raw_published": false
+    },
+    {
+      "scene": "S2",
+      "pexels_id": 7613578,
+      "sha256": "db9d0132b370603431c2a9e5b73aafa2c5371d6900ff4357917fdd2cdeb6b755",
+      "raw_published": false
+    },
+    {
+      "scene": "S3",
+      "pexels_id": 8448200,
+      "sha256": "c6a79259f745d07f30797de7c8f3159b217aa1c497b1fc4b8d7f62cce796572c",
+      "raw_published": false
+    },
+    {
+      "scene": "S4",
+      "pexels_id": 7613415,
+      "sha256": "19c4fe53e7e3d074a8bfe84e7c52d720f3fc6a157324d454486c980115f42365",
+      "raw_published": false
+    }
+  ],
+  "events": [
+    {
+      "event": 1,
+      "transition_id": "R4_TILED_GRID_INTRO",
+      "frames": [
+        0,
+        17
+      ],
+      "expected_frame_count": 18,
+      "applied_frame_count": 18,
+      "sample_frame_sha256": {
+        "start": "42f63cb73275eecd994143426600834599ee66d67bfa329c578d208af7464342",
+        "middle": "9dee57d93d246896a336e75ccc48e2a6d48b214e8ed341b44143f9f369d7cba7",
+        "end": "41333f4ae6bcfe8e7b05211b4a19a414d2c321344581f05be4e4c76618a0f097"
+      }
+    },
+    {
+      "event": 2,
+      "transition_id": "R2_GEOMETRIC_ARROW_MASK",
+      "frames": [
+        18,
+        35
+      ],
+      "expected_frame_count": 18,
+      "applied_frame_count": 18,
+      "sample_frame_sha256": {
+        "start": "c9fb05b76392d0b799e3e9fab82c00eb5e5dcde54d27b25a42689b5fc59e3bc1",
+        "middle": "b5efa5f001f4e69ff7a37113b2c42c03358d4cfc4ef191ee5bd2fdcb7043ce5e",
+        "end": "99bf9419c8fce7fe83badeba71c0cdd275bef768bf46b09e6b521b4ecd9d1561"
+      }
+    },
+    {
+      "event": 3,
+      "transition_id": "R2_RADIAL_ZOOM",
+      "frames": [
+        78,
+        86
+      ],
+      "expected_frame_count": 9,
+      "applied_frame_count": 9,
+      "sample_frame_sha256": {
+        "start": "525b56a269b5454397402391e2be997d9dc25340f424dc01bdfcd22be3e2b67b",
+        "middle": "9ddf3ba629e53dcfbd36390fbffcde8e45b290762324d50d36fdd1985bb98331",
+        "end": "5f711eca62a4be7e1d41f768d7025490fe723ccbf637244cac25ff22c922ec94"
+      }
+    },
+    {
+      "event": 4,
+      "transition_id": "R4_ORANGE_FLASH",
+      "frames": [
+        171,
+        179
+      ],
+      "expected_frame_count": 9,
+      "applied_frame_count": 9,
+      "sample_frame_sha256": {
+        "start": "b01fd024c8693cac1f5848e7ad7d00d60c96dd432d87b8cf5c974837c43d71b4",
+        "middle": "988fd18ab8414e98dfc8c3e8ee7fe61b46b2c2a3ed71973cb6d238b0ace77424",
+        "end": "ab780d777f0b9c5b0c3a782d105fda26d1bfab2e709037f5661cf18f6bcaf49c"
+      }
+    },
+    {
+      "event": 5,
+      "transition_id": "R2_HARD_ACTION_MATCH_CUT",
+      "frames": [
+        224,
+        225
+      ],
+      "expected_frame_count": 2,
+      "applied_frame_count": 2,
+      "sample_frame_sha256": {
+        "middle": "ba4c529538e52e876acf1ca070e8a4221ff7dd69bd8fc406f92b27e6aa4d3952",
+        "end": "3f14d221a3b324dcbac57d53a608348f6687762464fbe0c9ac6dfe4f23302210"
+      }
+    },
+    {
+      "event": 6,
+      "transition_id": "R2_SELECTIVE_COLOR_REVEAL",
+      "frames": [
+        252,
+        263
+      ],
+      "expected_frame_count": 12,
+      "applied_frame_count": 12,
+      "sample_frame_sha256": {
+        "start": "a90bec27a7da9dd05e7a669f5f70f5c18735cdba63b906f464d44730ddefed86",
+        "middle": "27c5b12b89a8372200a02c74858720b69f460de6a820658caed6066d3781cf5b",
+        "end": "b2d40e8cc4cf31a91d453518bfed9a27dff22bf17328d49d0a4055a8cac3d343"
+      }
+    },
+    {
+      "event": 7,
+      "transition_id": "R2_FLASH_TRANSITION",
+      "frames": [
+        303,
+        312
+      ],
+      "expected_frame_count": 10,
+      "applied_frame_count": 10,
+      "sample_frame_sha256": {
+        "start": "249a14b06bb7de6f0765649f11ef6b0a45ec287d594e240ff459b438ccc58092",
+        "middle": "b219c0860fe89c70a6518412578dd3fd31c32f1f2886320877a87b2c47ac105b",
+        "end": "eb5eb75e5889c1cf5b0b7fa59aea0b80627431ed09d4dd52cebd876c8ca7378f"
+      }
+    },
+    {
+      "event": 8,
+      "transition_id": "R4_SOFT_OVERLAY_BLEND",
+      "frames": [
+        344,
+        353
+      ],
+      "expected_frame_count": 10,
+      "applied_frame_count": 10,
+      "sample_frame_sha256": {
+        "start": "558e3b650999edbf234321a3a743111d17ec6241068bcdb4370b05b40ee4079c",
+        "middle": "353616d921e8508fd5dc1e518dab429b99f1e4b839b2486e20ca03452cafd02d",
+        "end": "e16e590178a8809fc86586e77600b7bba7e051960da3c6a7bd1a6c7cc3dbea8f"
+      }
+    },
+    {
+      "event": 9,
+      "transition_id": "R2_FLASH_TRANSITION",
+      "frames": [
+        374,
+        383
+      ],
+      "expected_frame_count": 10,
+      "applied_frame_count": 10,
+      "sample_frame_sha256": {
+        "start": "b666ba15cb3772072a05869f6f1fa364ed5a145a46fc32810c0e5981c28ad076",
+        "middle": "13712004c5e547f87f7d41be49bc2ba8b812b710b34fd40c5968d3917d30cfee",
+        "end": "a0f228fc27169d6cf8702cda08b42f7106715c453de0cd2815a019f08e8150de"
+      }
+    },
+    {
+      "event": 10,
+      "transition_id": "R4_KALEIDOSCOPE_MOSAIC",
+      "frames": [
+        408,
+        419
+      ],
+      "expected_frame_count": 12,
+      "applied_frame_count": 12,
+      "sample_frame_sha256": {
+        "start": "b1eadbd6b2a1cb8abf01fabf1525b093cc3cc036c006eb125ea5ddffeebe7ebb",
+        "middle": "42403622a1c195b391270ff0c7709ee7846bb6773531b4ec08da09a74452cb34",
+        "end": "9437d72c1fff3f124031a3cae12c8f21418b17c5e6a0d65f1c5996edfaab1d1c"
+      }
+    },
+    {
+      "event": 11,
+      "transition_id": "R2_MULTI_PANEL_SPLIT",
+      "frames": [
+        453,
+        466
+      ],
+      "expected_frame_count": 14,
+      "applied_frame_count": 14,
+      "sample_frame_sha256": {
+        "start": "06eb883c73b735795fea5e83ad856295a67f2a32c763f7fdf74e02f9d50c21e0",
+        "middle": "66537687c0f1420f3f78a01098127f4cef20971ca179bd55427229ec90c11c08",
+        "end": "2e10e7b457f61101b372cfa0583c1678513262d7dfca446ad160b42a38a69631"
+      }
+    },
+    {
+      "event": 12,
+      "transition_id": "R4_ROTATING_MASK",
+      "frames": [
+        540,
+        551
+      ],
+      "expected_frame_count": 12,
+      "applied_frame_count": 12,
+      "sample_frame_sha256": {
+        "start": "a9c432defca7ba7954e9ba33b025d77dd99fb909ca91fdc0aa9b69c05ec9f9b3",
+        "middle": "d690f9dba6d04a6f53f22ba86067c67a94e2b9a9031840207129a97ccecac510",
+        "end": "19b9f768e6efe618b1da4be6adb5372db652a6254335d52e294a2fbced00244b"
+      }
+    },
+    {
+      "event": 13,
+      "transition_id": "R4_RADIAL_BLUR",
+      "frames": [
+        617,
+        629
+      ],
+      "expected_frame_count": 13,
+      "applied_frame_count": 13,
+      "sample_frame_sha256": {
+        "start": "a5d6d00c4a1ab41745347e91732135be676b3c0946eceb6bebe5ea864067aed1",
+        "middle": "b1c9aac040db5a1a5e9f8896a691e4093cb77c9e8a435ef8f96d3129d9ac4276",
+        "end": "1e0cdce9e40a284b287afe8bb769bbff6cefbb8719eeb602e71cb7b73e8d8798"
+      }
+    },
+    {
+      "event": 14,
+      "transition_id": "R4_WHIP_ZOOM",
+      "frames": [
+        699,
+        710
+      ],
+      "expected_frame_count": 12,
+      "applied_frame_count": 12,
+      "sample_frame_sha256": {
+        "start": "47541cb3eddf4ae68fd36ac3cc60fc3ead0c66d618aa3322503d61f65888b246",
+        "middle": "39607f73b088e14d1c59da55c28674f388ef0c65db9af1bcbacd2c2c4b9808c8",
+        "end": "65312d3fcf68f4d4b6bdd0d493cc99fed2273352f2fe7fddded0c99e291f0a16"
+      }
+    },
+    {
+      "event": 15,
+      "transition_id": "R4_MULTI_PANEL_MATCH_CUT",
+      "frames": [
+        768,
+        781
+      ],
+      "expected_frame_count": 14,
+      "applied_frame_count": 14,
+      "sample_frame_sha256": {
+        "start": "32d1565b934f948eb91c35b08c3c2982bdc0f237988b79e9ecd97ce7e74176a2",
+        "middle": "679d0ff552421b4dc0236716612f2b717dba75126c62b892e5684e4b1a308224",
+        "end": "aad0e554f3598b0eb291f5604037fed5f1764d445e65eae59ffa29780a7e4dab"
+      }
+    },
+    {
+      "event": 16,
+      "transition_id": "R2_DIAGONAL_ROTATING_WIPE",
+      "frames": [
+        824,
+        840
+      ],
+      "expected_frame_count": 17,
+      "applied_frame_count": 17,
+      "sample_frame_sha256": {
+        "start": "af1a3bb5b842a4879595fc5825aac6f3db0c5f49bccff2a6eed856a72d521ccf",
+        "middle": "e724fbfc199472b132407180bca84c016b587fef7d185e4e248452068a450941",
+        "end": "cb4fdb1dc3b2da1ccff0239ba69e14e3a6e2de2cc0f51d5f3cb4667172a1dc8b"
+      }
+    },
+    {
+      "event": 17,
+      "transition_id": "R4_BACKGROUND_FADE_TO_BLACK",
+      "frames": [
+        885,
+        899
+      ],
+      "expected_frame_count": 15,
+      "applied_frame_count": 15,
+      "sample_frame_sha256": {
+        "start": "688c88fc751a4804001f548e224451bf56fb6f32e145bac0e81ff5615a5279b8",
+        "middle": "cfaeada08ff03656fae0fc1d1553f79bffcd9050b0e08edb127313121be006b9",
+        "end": "f4b52e399ac555fc6cf141f942dfbe81a01bfbfc000724b1d20f51dc46063b52"
+      }
+    }
+  ],
+  "all_17_events_applied": true,
+  "all_4_graphics_applied": true,
+  "references_covered": [
+    "R3-B03-REF-02",
+    "R3-B03-REF-04"
+  ],
+  "raw_rushes_embedded_as_standalone_assets": false,
+  "owner_approval_required": true
+}

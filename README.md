@@ -33,7 +33,11 @@ La cause de la v0.2 est corrigée à la source : Montserrat Variable ouvrait sur
 - leur taille effective reste au moins 11 px dans une prévisualisation à 40 % ;
 - le contraste contractuel est au moins 7:1, avec ombre et contour de 2 px.
 
-Le préflight local v0.3 passe **27/27 contrôles**. Le master autoritatif doit encore être produit puis revalidé sur GitHub Actions avant d’être présenté au propriétaire. Musique, voix off, OTA et intégration mobile restent hors de ce jalon.
+La v0.3 a été produite sur GitHub Actions au commit `cfbc1f82de20a3faf48fbad09efa831d323ce470`, puis téléchargée et revalidée : **27/27 contrôles PASS**. Trois images issues du MP4 serveur ont aussi été contrôlées à 40 % de leur taille. Elle reste un **candidat silencieux à valider**, pas un master créatif déjà approuvé. Musique, voix off, OTA et intégration mobile restent hors de ce jalon.
+
+- [Run de rendu GitHub Actions v0.3](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44551121356)
+- [Pré-Release lisible v0.3](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.3.0-silent-candidate-3)
+- [Téléchargement direct du MP4](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/download/t3-coulisses-v0.3.0-silent-candidate-3/VIDEO_T3_SILENCIEUSE_MOTION_TEXT_LISIBLE_V0_3_A_VALIDER.mp4)
 
 Historique v0.2 rejeté : [run](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44548349489) · [pré-Release](https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/releases/tag/t3-coulisses-v0.2.0-silent-candidate-2).
 
@@ -70,6 +74,7 @@ Lancer manuellement **Rendu silencieux T3 sur GitHub**. Le runner :
 - `demo/render_job_silent_demo_v0_3.json` — fixture du même contrat `merchant_payload` que le runtime ;
 - `docs/T3_VISIBLE_TEXT_CONTRACT.md` — chaînes autorisées et interdites ;
 - `docs/T3_TYPOGRAPHY_LEGIBILITY_CONTRACT.md` — poids, tailles, contraste et contrôles bloquants ;
+- `proofs/typography-v0.3-server/` — images 86, 551 et 899 du MP4 serveur réduites à 40 % ;
 - `docs/LICENCES_POLICES.md` — familles et empreintes du motion design ;
 - `rushes/manifest.json` — sources Pexels verrouillées ;
 - `engine/render_silent.py` — moteur reproductible ;

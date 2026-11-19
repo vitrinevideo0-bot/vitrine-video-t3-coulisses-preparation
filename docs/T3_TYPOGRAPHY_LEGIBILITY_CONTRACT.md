@@ -44,6 +44,10 @@ Le moteur refuse la configuration si :
 
 Le test `test_montserrat_weight_axis_is_actually_applied` compare aussi l’encre rendue en poids 700 à celle du poids 100. Il empêche une régression où la valeur JSON serait présente sans être appliquée par Pillow.
 
+## Preuve serveur
+
+Le run GitHub Actions `44551121356` passe 27/27 contrôles. Le MP4 de la pré-Release a été téléchargé puis revalidé 27/27. Les images 86, 551 et 899 du MP4 serveur ont été réduites à 40 % et sont conservées dans `proofs/typography-v0.3-server/`; le nom, l’accroche, le quartier, le CTA et WhatsApp y restent lisibles.
+
 ## Données commerçant
 
 La correction ne change pas le contrat éditorial : seuls `nom`, `produit`, `prix`, `whatsapp`, `quartier` et `accroche` viennent du RenderJob. Le seul texte fixe reste `COMMANDER MAINTENANT`.
