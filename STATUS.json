@@ -3,8 +3,8 @@
   "sector": "RESTAURATION",
   "catalog_name": "Coulisses de préparation",
   "catalog_status": "EXISTANT",
-  "workflow_status_number": 17,
-  "workflow_status": "Livrables contrôlés sur GitHub",
+  "workflow_status_number": 18,
+  "workflow_status": "Paquet prêt pour l’agent intégrateur",
   "reference_batch_current": "LOT-03",
   "selected_reference": "R3-B03-REF-02 + R3-B03-REF-04",
   "branch_planned": "fix/t3-four-voice-candidates",
@@ -17,7 +17,8 @@
     "push_performed": true,
     "default_branch": "main",
     "render_source_commit": "073888f7498385e576d42eed3a3c0f7dd71bb9d5",
-    "remediation_render_source_commit": "1e6a945ebb275c86fe3fafe389f56200ae8c1315"
+    "remediation_render_source_commit": "1e6a945ebb275c86fe3fafe389f56200ae8c1315",
+    "package_source_commit": "4885f1dc73482855798670187e3decaabfac6978"
   },
   "proofs": [
     "FICHE_DEMARRAGE.md",
@@ -160,7 +161,12 @@
     "proofs/complete-remediation-server/T3_COMPLETE_GITHUB_RUN_44574915753.json",
     "proofs/complete-remediation-server/SHA256SUMS_COMPLETE_ARTIFACT_RUN_44574915753.txt",
     "proofs/complete-remediation-server/T3_VOICE_CANDIDATES_MANIFEST_RUN_44574915753.json",
-    "proofs/complete-remediation-server/T3_VOICE_CANDIDATE_APPROVAL_RUN_44574915753.json"
+    "proofs/complete-remediation-server/T3_VOICE_CANDIDATE_APPROVAL_RUN_44574915753.json",
+    "proofs/integrator-package-remediation-server/T3_INTEGRATOR_PACKAGE_BUILD_REPORT_RUN_44577055304.json",
+    "proofs/integrator-package-remediation-server/T3_INTEGRATOR_PACKAGE_SERVER_VALIDATION_RUN_44577055304.json",
+    "proofs/integrator-package-remediation-server/T3_INTEGRATOR_PACKAGE_DOWNLOADED_VALIDATION_RUN_44577055304.json",
+    "proofs/integrator-package-remediation-server/T3_INTEGRATOR_PACKAGE_GITHUB_RUN_44577055304.json",
+    "proofs/integrator-package-remediation-server/SHA256SUMS_INTEGRATOR_ARTIFACT_RUN_44577055304.txt"
   ],
   "owner_decisions": [
     {
@@ -305,11 +311,8 @@
       "approval_record": "approvals/APPROBATION_VOIX_CANDIDATE_A_2026-11-19.json"
     }
   ],
-  "decision_expected": "Reconstruire le paquet intégrateur sur GitHub depuis ce commit, le télécharger et le valider après extraction propre; passer ensuite au statut 18.",
-  "blockers": [
-    "Le paquet intégrateur GitHub doit encore être reconstruit et revalidé après extraction sur le commit incluant les preuves du rendu de remédiation.",
-    "Cloudflare/Android/OTA de production relèvent d’une mission d’intégration distincte et ne sont pas autorisés ni déployés."
-  ],
+  "decision_expected": "Aucune décision créative ou propriétaire n’est en attente pour T3. Fusionner la PR #2; T4 peut reprendre seulement après cette consolidation.",
+  "blockers": [],
   "development_started": true,
   "music_started": true,
   "voice_started": true,
@@ -364,7 +367,7 @@
     "integrator_package_spec": "packages/t3-coulisses-v1/package_spec.json",
     "cloudflare_boundary": "integration-handoff/T3_CLOUDFLARE_BOUNDARY_V1.json"
   },
-  "workflow_note": "La remédiation vocale rétrospective est prouvée sans réécrire l’histoire. CI GitHub et rendu/mixage post-sélection sont PASS; le MP4 téléchargé est byte-identique au master approuvé et son flux visuel est inchangé. Seul le rejeu du paquet intégrateur reste requis avant fermeture T3.",
+  "workflow_note": "Remédiation T3 close : CI, rendu/mixage post-sélection, artefact téléchargé, ZIP déterministe et validation après extraction sont PASS. La chronologie rétrospective reste explicite. La PR #2 peut être fusionnée; aucune intégration Android, OTA ou Cloudflare de production n’est revendiquée.",
   "development_phase": {
     "engine": "engine/render_silent.py",
     "source_manifest": "rushes/manifest.json",
@@ -1081,28 +1084,29 @@
     "selected_candidate": "VOIX-A",
     "voice_id": "voice-02"
   },
-  "catalog_status_note": "T3 respecte l’architecture de référence T1 tout en conservant son montage propre. Les quatre voix comparables et le choix VOIX-A / voice-02 sont archivés; le rendu GitHub post-sélection est validé et byte-identique au master approuvé. Le paquet GitHub final reste à reconstruire.",
+  "catalog_status_note": "T3 respecte l’architecture de référence T1 tout en conservant son montage propre. L’écart vocal rétrospectif est fermé par quatre voix comparables, le choix VOIX-A / voice-02, le rendu GitHub byte-identique au master approuvé et le paquet intégrateur validé après extraction propre. Android, OTA et Cloudflare de production restent hors périmètre et non déployés.",
   "architecture_audit": {
-    "status": "T3_GITHUB_RENDER_VALIDATED_PACKAGE_RERUN_PENDING",
+    "status": "PASS_T3_STRICT_REMEDIATION_CLOSED",
     "report": "reports/AUDIT_ARCHITECTURE_T1_T2_T3_2026-11-18.md",
     "machine_report": "reports/AUDIT_ARCHITECTURE_T1_T2_T3_2026-11-18.json",
     "t1_tests": "104/104 PASS after golden materialization",
     "t2_tests": "59/59 PASS plus Cloudflare dry-build and integration PASS",
-    "t3_tests": "43/43 PASS locally and in GitHub CI run 44574921601",
+    "t3_tests": "43/43 PASS locally, in GitHub CI, and from the extracted package",
     "strict_universal_architecture_100_percent": false,
     "remaining_t3_deviation": [],
     "t3_strict_template_architecture_100_percent": true,
     "voice_owner_selection": "VOIX-A / voice-02",
     "chronology": "retrospective_remediation_after_historical_master",
-    "required_before_t3_close": [
-      "GitHub integrator package rerun and clean-extraction validation"
-    ],
+    "required_before_t3_close": [],
     "github_ci_run": 44574921601,
     "github_render_run": 44574915753,
-    "github_render_validation": "22/22 builder, 45/45 server independent, 45/45 after download"
+    "github_render_validation": "22/22 builder, 45/45 server independent, 45/45 after download",
+    "github_package_ci_run": 44577058921,
+    "github_package_run": 44577055304,
+    "github_package_validation": "34/34 server and 34/34 after download; included suite 43/43 in both clean extractions"
   },
   "catalogue_ota_preparation": {
-    "status": "prepared_offline_not_operational",
+    "status": "integrator_package_ready_offline_ota_not_operational",
     "template_id": "RESTAURATION-T3",
     "version": "1.0.0",
     "audio_profile": "afrobeat_amapiano",
@@ -1118,15 +1122,23 @@
       "status": "PASS",
       "checks": "34/34",
       "deterministic_two_builds": true,
-      "payload_file_count": 121,
+      "payload_file_count": 126,
       "four_voice_candidates_included": true,
       "owner_voice_approval_included": true,
       "post_selection_github_render_proofs_included": true,
-      "included_test_suite_after_clean_extraction": "43/43 PASS"
+      "included_test_suite_after_clean_extraction": "43/43 PASS",
+      "prior_github_package_proofs_included": true
     },
     "ota_implemented": false,
     "android_integrated": false,
-    "cloudflare_deployed": false
+    "cloudflare_deployed": false,
+    "github_package": {
+      "run_id": 44577055304,
+      "status": "PASS",
+      "zip_sha256": "59924b35fa1e76389940d2382840759246de29224eb0b2e4cd28cdf69b30f84e",
+      "checks": "34/34 server + 34/34 downloaded",
+      "extracted_tests": "43/43 server + 43/43 downloaded"
+    }
   },
   "cloudflare": {
     "status": "not_deployed_by_design",
@@ -1170,5 +1182,40 @@
     "music_choice": "D — Dlozi Lam",
     "selected_voice": "VOIX-A / voice-02",
     "candidate_manifest_and_owner_approval_in_artifact": true
+  },
+  "integrator_package_delivery": {
+    "date_local": "2026-11-19",
+    "source_commit": "4885f1dc73482855798670187e3decaabfac6978",
+    "ci_run_id": 44577058921,
+    "ci_conclusion": "success",
+    "package_run_id": 44577055304,
+    "package_run_url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44577055304",
+    "package_conclusion": "success",
+    "publish_package_release": false,
+    "artifact": {
+      "id": 14557651100,
+      "name": "T3-integrator-package-44577055304",
+      "bytes": 29471854
+    },
+    "zip": {
+      "filename": "restauration-t3-coulisses-v1.0.0.zip",
+      "bytes": 29485605,
+      "sha256": "59924b35fa1e76389940d2382840759246de29224eb0b2e4cd28cdf69b30f84e"
+    },
+    "payload_file_count": 121,
+    "deterministic_two_builds_identical": true,
+    "server_clean_extraction_validation": "34/34 PASS",
+    "downloaded_clean_extraction_validation": "34/34 PASS",
+    "included_test_suite_server_extraction": "43/43 PASS",
+    "included_test_suite_downloaded_extraction": "43/43 PASS",
+    "strict_universal_protocol_100_percent": true,
+    "declared_deviation": null,
+    "sha256_manifest_verified_after_download": true,
+    "four_voice_candidates_included": true,
+    "owner_voice_approval_included": true,
+    "post_selection_github_render_proofs_included": true,
+    "ota_implemented": false,
+    "android_integrated": false,
+    "cloudflare_deployed": false
   }
 }

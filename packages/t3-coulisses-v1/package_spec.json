@@ -167,6 +167,10 @@
       "role": "post_voice_selection_github_render_and_downloaded_artifact_proofs"
     },
     {
+      "path": "proofs/integrator-package-remediation-server",
+      "role": "github_package_build_and_downloaded_clean_extraction_proofs"
+    },
+    {
       "path": "reports/AUDIT_ARCHITECTURE_T1_T2_T3_2026-11-18.md",
       "role": "cross_template_architecture_audit"
     },

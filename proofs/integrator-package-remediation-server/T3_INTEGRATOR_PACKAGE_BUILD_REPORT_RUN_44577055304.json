@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "status": "PASS",
+  "package_id": "restauration-t3-coulisses-v1.0.0",
+  "zip": {
+    "file": "restauration-t3-coulisses-v1.0.0.zip",
+    "bytes": 29485605,
+    "sha256": "59924b35fa1e76389940d2382840759246de29224eb0b2e4cd28cdf69b30f84e"
+  },
+  "payload": {
+    "file_count": 121,
+    "bytes": 36287345
+  },
+  "golden_master": {
+    "sha256": "4208d58f52804b2440845c9ce5b249695e9072d8b707ae134386d4bc494740de",
+    "bytes": 11363724,
+    "included": true
+  },
+  "constraints": {
+    "full_pixabay_sources_forbidden": true,
+    "secrets_forbidden": true,
+    "temporary_paths_forbidden": true,
+    "cloudflare_worker_bundled": false,
+    "ota_implemented": false,
+    "deterministic_zip": true
+  }
+}

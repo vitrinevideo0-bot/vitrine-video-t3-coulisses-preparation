@@ -33,7 +33,7 @@ La planche d’écoute masque volontairement les identifiants internes et affich
 
 ## Chronologie honnête
 
-Cette porte a été rouverte **après** la production historique du master T3. Le dépôt ne prétend pas que les quatre candidats avaient été archivés avant le premier choix. Le propriétaire a ensuite choisi `VOIX-A`; la CI et le rendu/mixage GitHub ont été rejoués avec succès, puis l’artefact téléchargé a été revalidé. La reconstruction finale du paquet intégrateur reste la dernière étape de clôture.
+Cette porte a été rouverte **après** la production historique du master T3. Le dépôt ne prétend pas que les quatre candidats avaient été archivés avant le premier choix. Le propriétaire a ensuite choisi `VOIX-A`; la CI et le rendu/mixage GitHub ont été rejoués avec succès, puis l’artefact téléchargé a été revalidé. Le paquet intégrateur a enfin été reconstruit sur GitHub et revalidé après extraction propre, ce qui ferme la remédiation.
 
 ## Fichiers
 

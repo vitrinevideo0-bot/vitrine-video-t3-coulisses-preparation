@@ -129,12 +129,13 @@
         "status": "PASS",
         "checks": "34/34 PASS",
         "deterministic_two_builds_identical": true,
-        "payload_file_count": 121,
+        "payload_file_count": 126,
         "includes_four_voice_candidates": true,
         "includes_owner_voice_approval": true,
         "zip_hash_authority": "GitHub package workflow artifact; local hash is preflight-only because the GitHub rerun is the delivery authority.",
         "includes_post_selection_github_render_proofs": true,
-        "included_test_suite_after_clean_extraction": "43/43 PASS"
+        "included_test_suite_after_clean_extraction": "43/43 PASS",
+        "includes_prior_github_package_proofs": true
       },
       "remaining_gap_against_current_universal_protocol": [],
       "cloudflare": {
@@ -188,7 +189,32 @@
         "byte_identical_to_historical_owner_approved_master": true,
         "visual_master_modified": false,
         "post_selection_render_rerun_required": false,
-        "post_selection_package_rerun_required": true
+        "post_selection_package_rerun_required": false
+      },
+      "github_package_validation": {
+        "package_run": 44577055304,
+        "package_source_commit": "4885f1dc73482855798670187e3decaabfac6978",
+        "package_ci_run": 44577058921,
+        "status": "PASS",
+        "artifact_id": 14557651100,
+        "artifact_name": "T3-integrator-package-44577055304",
+        "zip_file": "restauration-t3-coulisses-v1.0.0.zip",
+        "zip_bytes": 29485605,
+        "zip_sha256": "59924b35fa1e76389940d2382840759246de29224eb0b2e4cd28cdf69b30f84e",
+        "payload_file_count": 121,
+        "deterministic_two_builds_identical": true,
+        "server_clean_extraction_checks": "34/34 PASS",
+        "downloaded_clean_extraction_checks": "34/34 PASS",
+        "included_test_suite_server_extraction": "43/43 PASS",
+        "included_test_suite_downloaded_extraction": "43/43 PASS",
+        "sha256_manifest_verified_after_download": true,
+        "strict_universal_protocol_100_percent": true,
+        "declared_deviation": null,
+        "package_release_created": false
+      },
+      "workflow_status": {
+        "number": 18,
+        "label": "Paquet prêt pour l’agent intégrateur"
       }
     }
   },
@@ -202,9 +228,9 @@
   },
   "overall_conclusion": {
     "creative_and_media_masters": "PASS for the validated T1, T2 and T3 reference outputs within their documented scopes",
-    "current_universal_architecture": "T3 package architecture is strict after retrospective voice-evidence remediation; T1 and T2 retain the documented legacy gaps.",
+    "current_universal_architecture": "T3 package architecture is strict after retrospective voice-evidence remediation and validated GitHub render/package reruns; T1 and T2 retain the documented legacy gaps.",
     "cloudflare_production": "NOT DEPLOYED",
-    "safe_next_step": "Build and validate the T3 integrator package on GitHub from the commit containing the post-selection render proofs, validate the downloaded ZIP after clean extraction, then merge PR #2 and resume T4."
+    "safe_next_step": "Merge T3 PR #2. T4 may resume only after that consolidation; Android, OTA operation and production Cloudflare remain separate integration work."
   },
   "last_updated_local": "2026-11-19"
 }

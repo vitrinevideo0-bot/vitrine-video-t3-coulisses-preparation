@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.0.0",
+  "template_id": "RESTAURATION-T3",
+  "purpose": "GitHub integrator package build and downloaded clean-extraction proof after voice remediation",
+  "run": {
+    "id": 44577055304,
+    "run_number": 3,
+    "name": "T3 — paquet intégrateur hors ligne",
+    "event": "workflow_dispatch",
+    "status": "completed",
+    "conclusion": "success",
+    "head_branch": "fix/t3-four-voice-candidates",
+    "head_sha": "4885f1dc73482855798670187e3decaabfac6978",
+    "path": ".github/workflows/build-integrator-package.yml",
+    "html_url": "https://github.com/vitrinevideo0-bot/vitrine-video-t3-coulisses-preparation/actions/runs/44577055304",
+    "created_at": "2026-11-19T17:25:39Z",
+    "updated_at": "2026-11-19T17:26:52Z"
+  },
+  "workflow_inputs": {},
+  "jobs": [
+    {
+      "name": "build-validate-package",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-19T17:25:42Z",
+      "completed_at": "2026-11-19T17:26:52Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-python@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Installer les dépendances verrouillées",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Compiler et exécuter la suite complète",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Matérialiser le golden master approuvé depuis sa Release",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Construire deux fois et prouver le ZIP déterministe",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Valider après extraction propre",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Assembler la livraison",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Publier l’artefact GitHub Actions",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Publier éventuellement une Release additive",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 11
+        },
+        {
+          "name": "Post Run actions/setup-python@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21
+        },
+        {
+          "name": "Post Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 14557651100,
+      "name": "T3-integrator-package-44577055304",
+      "size_in_bytes": 29471854,
+      "expired": false,
+      "created_at": "2026-11-19T17:26:49Z",
+      "updated_at": "2026-11-19T17:26:49Z"
+    }
+  ],
+  "package": {
+    "file": "restauration-t3-coulisses-v1.0.0.zip",
+    "bytes": 29485605,
+    "sha256": "59924b35fa1e76389940d2382840759246de29224eb0b2e4cd28cdf69b30f84e",
+    "payload_file_count": 121,
+    "server_checks": "34/34 PASS",
+    "downloaded_clean_extraction_checks": "34/34 PASS",
+    "included_test_suite_after_server_extraction": "43/43 PASS",
+    "included_test_suite_after_downloaded_extraction": "43/43 PASS",
+    "strict_universal_protocol_100_percent": true,
+    "deterministic_two_builds_identical": true,
+    "sha256_manifest_verified_after_download": true,
+    "publication_release_created": false
+  }
+}

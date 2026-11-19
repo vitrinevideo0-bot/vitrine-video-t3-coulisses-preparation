@@ -1,0 +1,265 @@
+{
+  "schema_version": "1.0.0",
+  "status": "PASS",
+  "scope": "Clean extraction validation of RESTAURATION-T3 integrator package",
+  "zip": {
+    "file": "restauration-t3-coulisses-v1.0.0.zip",
+    "bytes": 29485605,
+    "sha256": "59924b35fa1e76389940d2382840759246de29224eb0b2e4cd28cdf69b30f84e"
+  },
+  "checks": [
+    {
+      "check": "zip_paths_safe_and_single_root",
+      "status": "PASS",
+      "detail": [
+        "restauration-t3-coulisses-v1.0.0/.github/workflows/render-complete-voice-music-D.yml",
+        "restauration-t3-coulisses-v1.0.0/PACKAGE_MANIFEST.json",
+        "restauration-t3-coulisses-v1.0.0/README.md",
+        "restauration-t3-coulisses-v1.0.0/SHA256SUMS.txt",
+        "restauration-t3-coulisses-v1.0.0/STATUS.json"
+      ]
+    },
+    {
+      "check": "manifest_all_files_sizes_hashes",
+      "status": "PASS",
+      "detail": 121
+    },
+    {
+      "check": "manifest_count",
+      "status": "PASS",
+      "detail": [
+        121,
+        121
+      ]
+    },
+    {
+      "check": "sha256sums_all_match",
+      "status": "PASS",
+      "detail": 122
+    },
+    {
+      "check": "strict_schemas_and_fixtures",
+      "status": "PASS",
+      "detail": [
+        {
+          "instance": "config/T3_COULISSES_TEMPLATE_V1_0_0.json",
+          "errors": []
+        },
+        {
+          "instance": "config/T3_MUSIC_PACK_V1_0_0.json",
+          "errors": []
+        },
+        {
+          "instance": "config/T3_VOICE_MIX_V1_0_0.json",
+          "errors": []
+        },
+        {
+          "instance": "audio/voice/t3-voice-candidates-v1/manifest.json",
+          "errors": []
+        },
+        {
+          "instance": "fixtures/t3-coulisses/render_job.valid.json",
+          "errors": []
+        },
+        {
+          "instance": "fixtures/t3-coulisses/render_result.valid.json",
+          "errors": []
+        },
+        {
+          "instance": "fixtures/t3-coulisses/render_error.unsupported_media.json",
+          "errors": []
+        }
+      ]
+    },
+    {
+      "check": "canonical_identity",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "canonical_audio_profile_semantic",
+      "status": "PASS",
+      "detail": "afrobeat_amapiano"
+    },
+    {
+      "check": "ota_explicitly_not_implemented",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "no_network_or_cloudflare_code_in_template",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "android_integration_not_overclaimed",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "exactly_twelve_stable_screens",
+      "status": "PASS",
+      "detail": 12
+    },
+    {
+      "check": "four_scenes_A_B_C",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "capture_durations_6_8_7_9",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "capture_audio_identity_speed",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "all_screen_proofs_present",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "exactly_four_music_derivatives",
+      "status": "PASS",
+      "detail": [
+        "t3_245452_dlozi_lam_30s.mp3",
+        "t3_360659_omalicha_nwa_30s.mp3",
+        "t3_481806_laser_30s.mp3",
+        "t3_485507_safe_30s.mp3"
+      ]
+    },
+    {
+      "check": "four_tracks_owner_approved",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "no_full_pixabay_source",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "exactly_four_comparable_voice_candidates",
+      "status": "PASS",
+      "detail": [
+        {
+          "candidate": "VOIX-A",
+          "sha256": "5ddda04ab3e8150eb378d761b108684251c9c1580ff85af747c5428c5e36a799"
+        },
+        {
+          "candidate": "VOIX-B",
+          "sha256": "5c294dca3b0dfbcfaf3c890286a56ce028583a733dbe92e6e931263eedfdfddf"
+        },
+        {
+          "candidate": "VOIX-C",
+          "sha256": "e6cd1dc1f0b32c73626a2b547e0c327323a7191b9360779b6cc88bd4e4f98c26"
+        },
+        {
+          "candidate": "VOIX-D",
+          "sha256": "4ace1eeb064bb69e1e3fd4db4f123bb46d955486222cfcd59cbe93c96fc2404c"
+        }
+      ]
+    },
+    {
+      "check": "owner_selected_voice_A_matching_final_voice_02",
+      "status": "PASS",
+      "detail": {
+        "candidate": "VOIX-A",
+        "voice_id": "voice-02"
+      }
+    },
+    {
+      "check": "voice_remediation_chronology_declared_honestly",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "post_selection_github_render_and_downloaded_artifact_validated",
+      "status": "PASS",
+      "detail": {
+        "run_id": 44574915753,
+        "head_sha": "1e6a945ebb275c86fe3fafe389f56200ae8c1315",
+        "video_sha256": "4208d58f52804b2440845c9ce5b249695e9072d8b707ae134386d4bc494740de"
+      }
+    },
+    {
+      "check": "music_rotation_10000_zero_adjacent_repeat",
+      "status": "PASS",
+      "detail": {
+        "t3_music_481806": 2483,
+        "t3_music_360659": 2508,
+        "t3_music_485507": 2492,
+        "t3_music_245452": 2517
+      }
+    },
+    {
+      "check": "music_rotation_deterministic",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "explicit_repeat_rejected",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "golden_master_hash_and_size",
+      "status": "PASS",
+      "detail": "4208d58f52804b2440845c9ce5b249695e9072d8b707ae134386d4bc494740de"
+    },
+    {
+      "check": "golden_30s_900_frames_720x1280_30fps",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "golden_aac_stereo_48khz",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "golden_visual_stream_immutable",
+      "status": "PASS",
+      "detail": "8e415063add70f5807e009b2306c6b1154b0ec19bf35d5b9350012a5f4abe666"
+    },
+    {
+      "check": "no_secret_files",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "no_embedded_secret_values",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "handoff_declares_cloudflare_not_deployed",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "no_known_template_protocol_deviation_remaining",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "included_test_suite_passes_after_clean_extraction",
+      "status": "PASS",
+      "detail": {
+        "returncode": 0,
+        "output_tail": "----------------------------------------------------------------------\nRan 43 tests in 2.407s\n\nOK\n"
+      }
+    }
+  ],
+  "summary": {
+    "passed": 34,
+    "failed": 0,
+    "total": 34
+  },
+  "strict_universal_protocol_100_percent": true,
+  "declared_deviation": null,
+  "remediation_chronology": "Four comparable candidates and a renewed owner selection were completed retrospectively; the historical order is preserved in the candidate manifest. Production deployment remains a separate integration scope."
+}
